@@ -1,1 +1,8 @@
+wheel==0.23.0
+Click
+six
+pyyaml
 bioblend
+docutils
+jinja2
+
