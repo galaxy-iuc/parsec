@@ -64,7 +64,6 @@ def name_to_command(name):
 class ParsecCLI(click.MultiCommand):
 
     def list_commands(self, ctx):
-        print "Listing: ", list_cmds()
         return list_cmds()
 
     def get_command(self, ctx, name):
