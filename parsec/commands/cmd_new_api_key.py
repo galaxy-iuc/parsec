@@ -4,6 +4,7 @@ from parsec.cli import pass_context
 from parsec.io import error
 from parsec import options
 from parsec.galaxy import get_galaxy_instance
+from parsec.decorators import bioblend_exception
 
 
 @click.command('new_api_key')
@@ -14,6 +15,7 @@ from parsec.galaxy import get_galaxy_instance
     help="Encoded ID of user",
 )
 
+@bioblend_exception
 @pass_context
 def cli(ctx, galaxy_instance, id):
     """(Re)generate API key for user
