@@ -6,7 +6,7 @@ from parsec import options
 from parsec.galaxy import get_galaxy_instance
 
 
-@click.command('add_user')
+@click.command('new_api_key')
 @options.galaxy_instance()
 
 @click.option(
