@@ -25,13 +25,8 @@ SUCCESS_MESSAGE = (
 
 
 @click.command("config_init")
-@options.optional_project_arg(exists=None)
-@click.option(
-    '--template',
-    default=None
-)
 @pass_context
-def cli(ctx, path, template=None, **kwds):
+def cli(ctx, path, **kwds):
     """Help initialize global configuration (in home directory)
     """
     # TODO: prompt for values someday.
