@@ -4,7 +4,7 @@ from .config import read_global_config
 def get_galaxy_instance(instance_name=None):
     # I don't like reading the config twice.
     conf = read_global_config()
-    if instance_name is None:
+    if instance_name is None or instance_name == '__default':
         try:
             instance_name = conf['__default']
         except KeyError:

@@ -6,5 +6,7 @@ import click
 def galaxy_instance():
     return click.option(
         "--galaxy_instance",
-        help='name of galaxy instance per ~/.planemo.yml'
+        help='name of galaxy instance per ~/.planemo.yml',
+        default='__default',
+        required=True
     )
