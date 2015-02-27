@@ -14,11 +14,10 @@ local:
     key: "<TODO>"
     email: "<TODO>"
     password: "<TODO>"
-test.galaxyproject:
-    key: "<TODO>"
-    email: "<TODO>"
-    password: "<TODO>"
+    host: "127.0.0.1"
+    port: "8080"
 """
+
 SUCCESS_MESSAGE = (
     "Wrote configuration template to %s, "
     "please open with editor and fill out."
