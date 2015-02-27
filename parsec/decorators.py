@@ -1,13 +1,13 @@
 import json
+import wrapt
 from .io import error
 
-def bioblend_exception(func):
-    def dec(*args, **kwargs):
+@wrapt.decorator
+def bioblend_exception(wrapped, instance, args, kwargs):
+    try:
+        return wrapped(*args, **kwargs)
+    except Exception, e:
         try:
-            func(*args, **kwargs)
-        except Exception, e:
-            try:
-                error(json.loads(e.body)['err_msg'])
-            except:
-                error(e)
-    return dec
+            error(json.loads(e.body)['err_msg'])
+        except:
+            print e
