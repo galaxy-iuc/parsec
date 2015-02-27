@@ -9,6 +9,9 @@ from parsec.io import warn, info
 
 CONFIG_TEMPLATE = """## Parsec Global Configuration File.
 # Each stanza should contian a single galaxy server to control.
+#
+# You can set the key __default to the name of a default instance
+# __default: local
 
 local:
     key: "%(key)s"
