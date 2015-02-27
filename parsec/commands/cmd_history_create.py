@@ -3,7 +3,7 @@ import click
 from parsec.cli import pass_context
 from parsec import options
 from parsec.galaxy import get_galaxy_instance
-from parsec.decorators import bioblend_exception
+from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('history_create')
 @options.galaxy_instance()
@@ -13,6 +13,7 @@ from parsec.decorators import bioblend_exception
     default="Unnamed History",
 )
 @bioblend_exception
+@dict_output
 @pass_context
 def cli(ctx, galaxy_instance, name, **kwds):
     """Create a new history and return the history ID
@@ -20,4 +21,4 @@ def cli(ctx, galaxy_instance, name, **kwds):
     gi = get_galaxy_instance(galaxy_instance)
     result = gi.histories.create_history(name=name)
     # So much information that we're tossing away...
-    print result['id']
+    return result['id']

@@ -4,7 +4,7 @@ from parsec.cli import pass_context
 from parsec.io import error, info
 from parsec import options
 from parsec.galaxy import get_galaxy_instance
-from parsec.decorators import bioblend_exception
+from parsec.decorators import bioblend_exception, dict_output
 
 
 @click.command('add_user')
@@ -34,6 +34,7 @@ from parsec.decorators import bioblend_exception
     help="This galaxy instance is configured for REMOTE_USER",
 )
 @bioblend_exception
+@dict_output
 @pass_context
 def cli(ctx, galaxy_instance, username, email, password, remote=False, **kwds):
     """Add a user to a galaxy instance
@@ -53,3 +54,4 @@ def cli(ctx, galaxy_instance, username, email, password, remote=False, **kwds):
         result = gi.users.create_local_user(username, email, password)
 
     info("Created user %(username)s with id %(id)s." % result)
+    return result
