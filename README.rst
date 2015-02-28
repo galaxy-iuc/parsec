@@ -1,5 +1,9 @@
+================================
 Parsec: the BioBlend CLI Utility
 ================================
+
+.. image:: https://readthedocs.org/projects/pip/badge/?version=latest
+		:target: https://parsec.readthedocs.org.
 
 Command-line utilities to assist in working with a Galaxy_ server instance.
 
