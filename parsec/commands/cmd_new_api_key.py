@@ -26,4 +26,4 @@ def cli(ctx, galaxy_instance, uid):
 
     gi = get_galaxy_instance(galaxy_instance)
 
-    print gi.users.create_user_apikey(id)
+    print gi.users.create_user_apikey(uid)
