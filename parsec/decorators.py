@@ -1,5 +1,4 @@
 import json
-import pprint
 import wrapt
 from .io import error
 
@@ -10,7 +9,7 @@ def bioblend_exception(wrapped, instance, args, kwargs):
     except Exception, e:
         try:
             error(json.loads(e.body)['err_msg'])
-        except:
+        except Exception, e:
             print e
 
 @wrapt.decorator
