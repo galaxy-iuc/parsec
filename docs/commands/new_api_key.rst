@@ -8,7 +8,7 @@ This section is auto-generated from the help text for the parsec command
 
 **Usage**::
 
-    parsec new_api_key [OPTIONS]
+    parsec new_api_key [OPTIONS] UID
 
 **Help**
 
@@ -19,6 +19,5 @@ This section is auto-generated from the help text for the parsec command
 
       --galaxy_instance TEXT  name of galaxy instance per ~/.planemo.yml
                               [required]
-      --id TEXT               Encoded ID of user
       --help                  Show this message and exit.
     

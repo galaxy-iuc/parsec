@@ -8,7 +8,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.command('history_create')
 @options.galaxy_instance()
 
-@click.argument('id')
+@click.argument('hid')
 @click.option(
     '--purge',
     help='Purge a history',
@@ -17,8 +17,8 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @dict_output
 @bioblend_exception
-def cli(ctx, galaxy_instance, id, purge=False, **kwds):
+def cli(ctx, galaxy_instance, hid, purge=False, **kwds):
     """Delete a history by ID
     """
     gi = get_galaxy_instance(galaxy_instance)
-    return gi.histories.delete_history(id, purge=purge)
+    return gi.histories.delete_history(hid, purge=purge)

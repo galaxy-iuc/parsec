@@ -8,7 +8,7 @@ This section is auto-generated from the help text for the parsec command
 
 **Usage**::
 
-    parsec history_delete [OPTIONS] ID
+    parsec history_delete [OPTIONS] HID
 
 **Help**
 

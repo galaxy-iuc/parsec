@@ -4,7 +4,7 @@ import bioblend.galaxy as bg
 import importlib
 import inspect
 import os
-from docutils.core import publish_doctree, publish_from_doctree, publish_parts
+from docutils.core import publish_doctree, publish_from_doctree  #, publish_parts
 #from lxml import etree
 import xml.etree.ElementTree as etree
 
@@ -128,7 +128,7 @@ for section in sections:
                 # So we hack around this
                 try:
                     v = argspec.defaults[i-1]
-                except:
+                except Exception, e:
                     v = None
 
                 # If v is not None, then it's a kwargs, otherwise an arg
