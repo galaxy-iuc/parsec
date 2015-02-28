@@ -4,7 +4,7 @@ from parsec.cli import pass_context
 from parsec import options
 from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import bioblend_exception
 
 @click.command('dataset_download')
 @options.galaxy_instance()
@@ -20,7 +20,6 @@ from parsec.decorators import bioblend_exception, dict_output
     help='Maximum amount of time to wait for a dataset to download'
 )
 @pass_context
-@dict_output
 @bioblend_exception
 def cli(ctx, galaxy_instance, dataset_id, file_path=None,
         wait_for_completion=True, maxwait=12000):
@@ -29,7 +28,7 @@ def cli(ctx, galaxy_instance, dataset_id, file_path=None,
     gi = get_galaxy_instance(galaxy_instance)
 
     kwargs = {
-        'file_path': '.',
+        'file_path': None,
         'use_default_filename': True,
         'wait_for_completion': True,
         'maxwait': maxwait
@@ -38,5 +37,9 @@ def cli(ctx, galaxy_instance, dataset_id, file_path=None,
     if file_path is not None:
         kwargs['use_default_filename'] = False
         kwargs['file_path'] = file_path
+    else:
+        kwargs['file_path'] = './'
 
-    return gi.dataset.download_dataset(dataset_id, **kwargs)
+    # Requires my PR being merged into bioblend
+    print gi.datasets.download_dataset(dataset_id, **kwargs)
+    #gi.histories.download_dataset(None, dataset_id, **kwargs)
