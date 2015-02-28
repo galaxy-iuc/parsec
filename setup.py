@@ -15,6 +15,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 requirements = [
     'Click',
     'bioblend',
+    'wrapt',
 ]
 
 test_requirements = [
