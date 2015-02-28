@@ -3,7 +3,6 @@ import os
 import click
 
 from parsec.cli import pass_context
-from parsec import options
 from parsec import config
 from parsec.io import warn, info
 

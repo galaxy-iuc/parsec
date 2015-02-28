@@ -10,14 +10,11 @@ from parsec.decorators import bioblend_exception
 @click.command('new_api_key')
 @options.galaxy_instance()
 
-@click.option(
-    '--id',
-    help="Encoded ID of user",
-)
+@click.argument('uid')
 
 @bioblend_exception
 @pass_context
-def cli(ctx, galaxy_instance, id):
+def cli(ctx, galaxy_instance, uid):
     """(Re)generate API key for user
     """
     global_config = ctx.global_config
