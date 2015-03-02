@@ -166,7 +166,7 @@ class ScriptBuilder(object):
             argdoc = func.__doc__
 
             data = {
-                'command_name': candidate,
+                'command_name': candidate.replace('.', '_'),
                 'click_arguments': "",
                 'click_options': "",
                 'args_with_defaults': "galaxy_instance",
@@ -249,7 +249,7 @@ class ScriptBuilder(object):
 
             # Generate a command name, prefix everything with auto_ to identify the
             # automatically generated stuff
-            cmd_name = 'cmd_%s.py' % candidate.split('.')[-1]
+            cmd_name = 'cmd_%s.py' % candidate.replace('.', '_')
             cmd_path = os.path.join('parsec', 'commands', cmd_name)
 
             # Save file
