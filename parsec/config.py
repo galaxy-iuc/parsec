@@ -8,7 +8,7 @@ DEFAULT_CONFIG = {
 def global_config_path():
     config_path = os.environ.get(
         "PARSEC_GLOBAL_CONFIG_PATH",
-        "~/.paresc.yml"
+        "~/.parsec.yml"
     )
     config_path = os.path.expanduser(config_path)
     return config_path

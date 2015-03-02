@@ -83,6 +83,5 @@ class ParsecCLI(click.MultiCommand):
 @pass_context
 def parsec(ctx, galaxy_instance, verbose):
     """Utilities to assist with the development of Galaxy tools."""
-    print galaxy_instance
     ctx.gi = get_galaxy_instance(galaxy_instance)
     ctx.verbose = verbose
