@@ -20,10 +20,6 @@ Quick Start
 This quick start demonstrates using ``parsec`` commands to help
 run Galaxy tools.
 
-TODO
-
-
-
 
 .. _Galaxy: (http://galaxyproject.org/)
 .. _GitHub: https://github.com/
