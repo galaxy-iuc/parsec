@@ -6,12 +6,13 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('workflows_delete_workflow')
 @options.galaxy_instance()
+@click.argument("workflow_id", type=str)
 
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance):
+def cli(ctx, galaxy_instance, workflow_id):
     """Delete a workflow identified by `workflow_id`.
     """
-    return ctx.gi.workflows.delete_workflow()
+    return ctx.gi.workflows.delete_workflow(workflow_id)

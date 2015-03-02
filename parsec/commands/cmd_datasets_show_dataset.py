@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--deleted",
     help="Whether to return results for a deleted dataset",
-    type=bool
+    is_flag=True
 )
 @click.option(
     "--hda_ldda",

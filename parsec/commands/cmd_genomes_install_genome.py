@@ -40,7 +40,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--indexers",
     help="POST array of indexers to run after downloading (indexers[] = first, indexers[] = second, ...)",
-    type=list
+    type=str
 )
 
 @pass_context

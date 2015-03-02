@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--contents",
     help="True if want to get contents of the library (rather than just the library details).",
-    type=bool
+    is_flag=True
 )
 
 @pass_context

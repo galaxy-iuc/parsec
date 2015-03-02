@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--undelete",
     help="If set to True, the folder will be undeleted (i.e. the `deleted` mark will be removed)",
-    type=bool
+    is_flag=True
 )
 
 @pass_context

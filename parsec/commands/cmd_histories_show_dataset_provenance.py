@@ -12,7 +12,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--follow",
     help="If ``follow`` is ``True``, recursively fetch dataset provenance information for all inputs and their inputs, etc....",
-    type=bool
+    is_flag=True
 )
 
 @pass_context

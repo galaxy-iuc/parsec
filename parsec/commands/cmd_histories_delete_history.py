@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--purge",
     help="Purge the history",
-    type=bool
+    is_flag=True
 )
 
 @pass_context

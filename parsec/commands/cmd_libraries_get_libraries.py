@@ -20,7 +20,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--deleted",
     help="If set to ``True``, return libraries that have been deleted.",
-    type=bool
+    is_flag=True
 )
 
 @pass_context

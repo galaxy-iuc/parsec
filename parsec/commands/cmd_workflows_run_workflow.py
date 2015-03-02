@@ -29,7 +29,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--import_inputs_to_history",
     help="If ``True``, used workflow inputs will be imported into the history. If ``False``, only workflow outputs will be visible in the given history.",
-    type=bool
+    is_flag=True
 )
 @click.option(
     "--replacement_params",

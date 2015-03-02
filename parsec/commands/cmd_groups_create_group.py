@@ -11,12 +11,12 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--user_ids",
     help="A list of encoded user IDs to add to the new group",
-    type=list
+    type=str
 )
 @click.option(
     "--role_ids",
     help="A list of encoded role IDs to add to the new group",
-    type=list
+    type=str
 )
 
 @pass_context

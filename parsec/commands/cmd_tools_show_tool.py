@@ -11,12 +11,12 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--io_details",
     help="if True, get also input and output details",
-    type=bool
+    is_flag=True
 )
 @click.option(
     "--link_details",
     help="if True, get also link details",
-    type=bool
+    is_flag=True
 )
 
 @pass_context

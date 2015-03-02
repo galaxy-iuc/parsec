@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--deleted",
     help="Include deleted users in listing",
-    type=bool
+    is_flag=True
 )
 
 @pass_context

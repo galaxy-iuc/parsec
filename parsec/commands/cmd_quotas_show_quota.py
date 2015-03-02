@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--deleted",
     help="Search for quota in list of ones already marked as deleted",
-    type=bool
+    is_flag=True
 )
 
 @pass_context

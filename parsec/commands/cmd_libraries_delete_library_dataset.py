@@ -12,7 +12,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--purged",
     help="Indicate that the dataset should be purged (permanently deleted)",
-    type=bool
+    is_flag=True
 )
 
 @pass_context

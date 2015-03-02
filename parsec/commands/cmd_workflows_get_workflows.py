@@ -20,12 +20,12 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--deleted",
     help="If set to ``True``, return workflows that have been deleted.",
-    type=bool
+    is_flag=True
 )
 @click.option(
     "--published",
     help="If set to ``True``, return published workflows.",
-    type=bool
+    is_flag=True
 )
 
 @pass_context
