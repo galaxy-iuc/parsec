@@ -245,7 +245,7 @@ class ScriptBuilder(object):
             # My function is more effective until can figure out docstring
             data['short_docstring'] = self.important_doc(argdoc)
             # Full method call
-            data['wrapped_method'] = 'gi.' + candidate
+            data['wrapped_method'] = 'ctx.gi.' + candidate
 
             # Generate a command name, prefix everything with auto_ to identify the
             # automatically generated stuff

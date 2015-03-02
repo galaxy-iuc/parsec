@@ -4,6 +4,7 @@ import click
 
 from .io import error
 from .config import read_global_config  # noqa, ditto
+from .galaxy import get_galaxy_instance
 from parsec import __version__  # noqa, ditto
 
 
@@ -73,7 +74,15 @@ class ParsecCLI(click.MultiCommand):
 @click.version_option(__version__)
 @click.option('-v', '--verbose', is_flag=True,
               help='Enables verbose mode.')
+@click.option(
+    "--galaxy_instance",
+    help='name of galaxy instance per ~/.planemo.yml',
+    default='__default',
+    required=True
+)
 @pass_context
-def parsec(ctx, verbose):
+def parsec(ctx, galaxy_instance, verbose):
     """Utilities to assist with the development of Galaxy tools."""
+    print galaxy_instance
+    ctx.gi = get_galaxy_instance(galaxy_instance)
     ctx.verbose = verbose

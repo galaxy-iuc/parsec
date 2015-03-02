@@ -2,13 +2,10 @@ import click
 
 from parsec import options
 from parsec.cli import pass_context
-from parsec.io import info
-from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('groups_create_group')
 @options.galaxy_instance()
-
 
 @click.option(
     "--group_name",
@@ -29,11 +26,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-
 def cli(ctx, galaxy_instance, group_name=[], user_ids=[], role_ids=[]):
     """Create a new Galaxy group
     """
-    gi = get_galaxy_instance(galaxy_instance)
-
-    return gi.groups.create_group(group_name=group_name, user_ids=user_ids, role_ids=role_ids)
-
+    return ctx.gi.groups.create_group(group_name=group_name, user_ids=user_ids, role_ids=role_ids)

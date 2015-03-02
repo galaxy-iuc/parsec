@@ -2,13 +2,10 @@ import click
 
 from parsec import options
 from parsec.cli import pass_context
-from parsec.io import info
-from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('datasets_show_dataset')
 @options.galaxy_instance()
-
 
 @click.option(
     "--dataset_id",
@@ -29,11 +26,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-
 def cli(ctx, galaxy_instance, dataset_id="", deleted=False, hda_ldda=""):
     """Display information about and/or content of a dataset. This can be a history or a library dataset.
     """
-    gi = get_galaxy_instance(galaxy_instance)
-
-    return gi.datasets.show_dataset(dataset_id=dataset_id, deleted=deleted, hda_ldda=hda_ldda)
-
+    return ctx.gi.datasets.show_dataset(dataset_id=dataset_id, deleted=deleted, hda_ldda=hda_ldda)

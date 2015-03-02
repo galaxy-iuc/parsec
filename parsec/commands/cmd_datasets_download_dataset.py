@@ -2,13 +2,10 @@ import click
 
 from parsec import options
 from parsec.cli import pass_context
-from parsec.io import info
-from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('datasets_download_dataset')
 @options.galaxy_instance()
-
 @click.argument("dataset_id", type=str)
 @click.argument("file_path", type=str)
 @click.argument("file_ext", type=str)
@@ -32,11 +29,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-
 def cli(ctx, galaxy_instance, dataset_id, file_path, file_ext, use_default_filename=True, wait_for_completion=False, maxwait=12000):
     """Downloads the dataset identified by 'id'.
     """
-    gi = get_galaxy_instance(galaxy_instance)
-
-    return gi.datasets.download_dataset(dataset_id, file_path, file_ext, use_default_filename=use_default_filename, wait_for_completion=wait_for_completion, maxwait=maxwait)
-
+    return ctx.gi.datasets.download_dataset(dataset_id, file_path, file_ext, use_default_filename=use_default_filename, wait_for_completion=wait_for_completion, maxwait=maxwait)

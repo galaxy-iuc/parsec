@@ -2,13 +2,10 @@ import click
 
 from parsec import options
 from parsec.cli import pass_context
-from parsec.io import info
-from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('libraries_upload_file_from_server')
 @options.galaxy_instance()
-
 @click.argument("server_dir", type=str)
 @click.argument("dbkey", type=str)
 @click.argument("roles", type=str)
@@ -37,11 +34,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-
 def cli(ctx, galaxy_instance, server_dir, dbkey, roles, library_id="", folder_id="", file_type="", link_data_only=""):
     """Upload all files in the specified subdirectory of the Galaxy library import directory to a library.
     """
-    gi = get_galaxy_instance(galaxy_instance)
-
-    return gi.libraries.upload_file_from_server(server_dir, dbkey, roles, library_id=library_id, folder_id=folder_id, file_type=file_type, link_data_only=link_data_only)
-
+    return ctx.gi.libraries.upload_file_from_server(server_dir, dbkey, roles, library_id=library_id, folder_id=folder_id, file_type=file_type, link_data_only=link_data_only)
