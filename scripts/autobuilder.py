@@ -154,15 +154,20 @@ class ScriptBuilder(object):
         except:
             raise Exception("Unknown parameter type " + k)
 
-    def orig(self):
+    def pair_arguments(self, func):
+        argspec = inspect.getargspec(func)
+        # Reverse, because args are paired from the end, removing self/cls
+        args = argspec.args[::-1][0:-1]
+        defaults = list(argspec.defaults[::-1])
+        for i in range(len(args) - len(defaults)):
+            defaults.append(None)
+        return zip(args[::-1], defaults[::-1])
 
-        targets = self.flatten(self.identify_functions(self.obj))
-
+    def orig(self, targets):
         for target in targets:
             func = self.recursive_attr_get(self.obj, target)
             candidate = '.'.join(target)
 
-            argspec = inspect.getargspec(func)
             argdoc = func.__doc__
 
             data = {
@@ -184,9 +189,9 @@ class ScriptBuilder(object):
                         param_docs[m.group('param_name')] = {'type': m.group('param_type'),
                                                              'desc': m.group('desc')}
 
-
+            argspec = self.pair_arguments(func)
             # Ignore with only cls/self
-            if len(argspec.args) > 1:
+            if len(argspec) > 1:
                 method_signature = ['galaxy_instance']
                 # Args and kwargs are separate, as args should come before kwargs
                 method_signature_args = []
@@ -194,14 +199,7 @@ class ScriptBuilder(object):
                 method_exec_args = []
                 method_exec_kwargs = []
 
-                for i, k in enumerate(argspec.args[1:]):
-                    # Sometimes deafults = None when it should = (None)
-                    # So we hack around this
-                    try:
-                        v = argspec.defaults[i-1]
-                    except Exception, e:
-                        v = None
-
+                for k, v in argspec:
                     try:
                         param_type = self.parameter_translation(param_docs[k]['type'])
                     except Exception, e:
@@ -258,4 +256,12 @@ class ScriptBuilder(object):
 
 if __name__ == '__main__':
     z = ScriptBuilder()
-    z.orig()
+    parser = argparse.ArgumentParser(description='process bioblend into CLI tools')
+    parser.add_argument('path', nargs='*', help='module path for the initial bioblend object')
+    args = parser.parse_args()
+    if len(args.path) == 0:
+        targets = z.flatten(z.identify_functions(z.obj))
+    else:
+        targets = [x.split('.') for x in args.path]
+
+    z.orig(targets)
