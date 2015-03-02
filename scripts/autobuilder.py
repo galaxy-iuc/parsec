@@ -236,6 +236,9 @@ class ScriptBuilder(object):
                         # Strings must be treated specially by removing their value
                         if isinstance(v, str):
                             v = '""'
+
+                        if v == []:
+                            v = None
                         # All other instances of V are fine, e.g. boolean=False or int=1000
 
                         # Register twice as the method invocation uses v=k
