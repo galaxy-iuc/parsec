@@ -1,0 +1,24 @@
+import click
+
+from parsec import options
+from parsec.cli import pass_context
+from parsec.io import info
+from parsec.galaxy import get_galaxy_instance
+from parsec.decorators import bioblend_exception, dict_output
+
+@click.command('%(command_name)s')
+@options.galaxy_instance()
+
+%(click_arguments)s
+%(click_options)s
+@pass_context
+@bioblend_exception
+@dict_output
+
+def cli(ctx, %(args_with_defaults)s):
+    """%(short_docstring)s
+    """
+    gi = get_galaxy_instance(galaxy_instance)
+
+    return %(wrapped_method)s(%(wrapped_method_args)s)
+

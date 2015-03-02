@@ -3,38 +3,72 @@
 import importlib
 import inspect
 import os
+import re
 import glob
 import argparse
-from docutils.core import publish_doctree
-import xml.etree.ElementTree as etree
 
 
 import bioblend.galaxy as bg
-sections = ['datasets', 'genomes', 'histories', 'libraries', 'quotas', 'tools', 'toolshed', 'users', 'visual', 'workflows']
+IGNORE_LIST = [
+    'histories.download_dataset',
+    'histories.get_current_history',
+    'make_delete_request',
+    'make_get_request',
+    'make_post_request',
+    'make_put_request',
+]
+
+
+
+PARAM_TRANSLATION = {
+    'str': 'str',
+    'dict': 'dict',
+    'int': 'int',
+    'float': 'float',
+    'bool': 'bool',
+    'list': 'list', #TODO
+    'file': 'click.File(\'rb+\')',
+}
 
 class ScriptBuilder(object):
 
     def __init__(self):
         self.path = os.path.realpath(__file__)
-        self.templates = glob.glob(os.path.join(self.path, 'templates', '*'))
+        templates = glob.glob(os.path.join(os.path.dirname(self.path), 'templates', '*'))
+        self.templates = {}
+        for template in templates:
+            (tpl_id, ext) = os.path.splitext(os.path.basename(template))
+            self.templates[tpl_id] = open(template, 'r').read()
 
         # TODO: refactor
         self.obj_init = 'gi = bg.GalaxyInstance("http://localhost:8080", "API_KEY")'
         self.obj_id = 'gi'
         self.obj = bg.GalaxyInstance("http://localhost:8080", "API_KEY")
 
-    @classmethod
-    def __click_option(cls, name='arg', helpstr='TODO'):
-        return '\n'.join([
-            '@click.option(',
-            '    "--%s",' % name,
-            '    help="%s"' % helpstr,
-            ')'
-        ])
+    def template(self, template, opts):
+        try:
+            return self.templates[template] % opts
+        except:
+            raise Exception("Template not found")
 
     @classmethod
-    def __click_argument(cls, name='arg'):
-        return '@click.argument("%s")\n' % name
+    def __click_option(cls, name='arg', helpstr='TODO', ptype=None):
+        args = [
+            '"--%s"' % name,
+            'help="%s"' % helpstr
+        ]
+        if ptype is not None:
+            args.append('type=%s' % ptype)
+        return '@click.option(%s)\n' % ('\n'.join(['    ' + x for x in args]))
+
+    @classmethod
+    def __click_argument(cls, name='arg', ptype=None):
+        args = [
+            '"%s"' % name,
+        ]
+        if ptype is not None:
+            args.append('type=%s' % ptype)
+        return '@click.argument(%s)\n' % (', '.join(args), )
 
     @classmethod
     def load_module(cls, module_path):
@@ -59,7 +93,6 @@ class ScriptBuilder(object):
         return str(type(obj)).startswith('<class ')
 
     def recursive_attr_get(self, obj, section):
-        #print "RAG: %s %s" % (obj, '.'.join(section))
         if len(section) == 0:
             return obj
         elif len(section) == 1:
@@ -85,14 +118,14 @@ class ScriptBuilder(object):
         if path is None:
             path = []
 
-        #print path
         current_module = self.recursive_attr_get(module, path)
 
         # Filter out boring
         current_module_attr = [x for x in dir(current_module) if not
                                self.boring(x) and not
-                               self.is_galaxyinstance(self.recursive_attr_get(current_module,[x]))]
-        #print current_module
+                               self.is_galaxyinstance(self.recursive_attr_get(current_module,[x]))
+                               and not '.'.join(path + [x]) in IGNORE_LIST
+                               ]
         # Filter out functions/classes
         current_module_classes =   [x for x in current_module_attr if self.is_class(self.recursive_attr_get(current_module, [x]))]
         current_module_functions = [x for x in current_module_attr if self.is_function(self.recursive_attr_get(current_module, [x]))]
@@ -116,9 +149,16 @@ class ScriptBuilder(object):
                 result.append(el)
         return result
 
+    @classmethod
+    def parameter_translation(cls, k):
+        try:
+            return PARAM_TRANSLATION[k]
+        except:
+            raise Exception("Unknown parameter type " + k)
+
     def orig(self):
 
-        targets = self.identify_functions(self.obj)
+        targets = self.flatten(self.identify_functions(self.obj))
 
         for target in targets:
             func = self.recursive_attr_get(self.obj, target)
@@ -134,29 +174,18 @@ class ScriptBuilder(object):
                 'args_with_defaults': "galaxy_instance",
                 'wrapped_method_args': "",
             }
+            param_docs = {}
+            if argdoc is not None:
+                sections = [x for x in argdoc.split("\n\n")]
+                sections = [re.sub('\s+', ' ', x.strip()) for x in sections if x != '']
+                paramre = re.compile(":type (?P<param_name>[^:]+): (?P<param_type>[^:]+) :param (?P<param_name2>[^:]+): (?P<desc>.+)")
+                for subsec in sections:
+                    m = paramre.match(subsec)
+                    if m:
+                        assert m.group('param_name') == m.group('param_name2')
+                        param_docs[m.group('param_name')] = {'type': m.group('param_type'),
+                                                             'desc': m.group('desc')}
 
-            doctree = publish_doctree(argdoc).asdom()
-            #<?xml version="1.0"?>
-            #<document source="<string>">  # Yes, malformed XML. Truly.
-            #<block_quote>
-                #<paragraph>Get details of a given tool.</paragraph>
-                #<field>
-                    #<field_name>param link_details</field_name>
-                    #<field_body>
-                    #<paragraph>if True, get also link details</paragraph>
-                    #</field_body>
-                #</field>
-                #</field_list>
-            #</block_quote>
-            #</document>
-
-            #print publish_doctree(argdoc)
-            doctree = etree.fromstring(doctree.toxml())
-            #print publish_from_doctree(publish_doctree(argdoc))
-            #import pprint; pprint.pprint(publish_parts(argdoc))
-            #for field in doctree.findall('.//field_list/field'):
-                #for child in field.getchildren():
-                    #pass
 
             # Ignore with only cls/self
             if len(argspec.args) > 1:
@@ -175,6 +204,12 @@ class ScriptBuilder(object):
                     except Exception, e:
                         v = None
 
+                    try:
+                        param_type = self.parameter_translation(param_docs[k]['type'])
+                    except Exception, e:
+                        param_type = None
+                        print candidate, e
+
                     # If v is not None, then it's a kwargs, otherwise an arg
                     if v is not None:
                         # Strings must be treated specially by removing their value
@@ -187,12 +222,19 @@ class ScriptBuilder(object):
                         method_exec_kwargs.append('%s=%s' % (k, k))
 
                         # TODO: refactor
-                        data['click_options'] += self.__click_option(name=k, helpstr="TODO")
+                        try:
+                            descstr = param_docs[k]['desc']
+                        except KeyError:
+                            print "Error finding %s in %s" % (k, candidate)
+                            print ""
+                            descstr = None
+                        data['click_options'] += self.__click_option(name=k, helpstr=descstr, ptype=param_type)
                     else:
                         # Args, not kwargs
                         method_signature_args.append(k)
                         method_exec_args.append(k)
-                        data['click_arguments'] += self.__click_argument(name=k)
+                        data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
+
 
 
                 # Complete args
@@ -209,18 +251,13 @@ class ScriptBuilder(object):
 
             # Generate a command name, prefix everything with auto_ to identify the
             # automatically generated stuff
-            import pprint; pprint.pprint(data)
-            print argdoc
-            return
-            cmd_name = 'cmd_auto_%s.py' % candidate
+            cmd_name = 'cmd_%s.py' % candidate
             cmd_path = os.path.join('parsec', 'commands', cmd_name)
 
             # Save file
-            #with open(cmd_path, 'w') as handle:
-                #handle.write(TEMPLATE % data)
+            with open(cmd_path, 'w') as handle:
+                handle.write(self.template('click', data))
 
 if __name__ == '__main__':
     z = ScriptBuilder()
-    #print z.flatten(z.identify_functions(z.obj))
-    print z.orig()
-    #z.identify_functions(z.obj.genomes)
+    z.orig()
