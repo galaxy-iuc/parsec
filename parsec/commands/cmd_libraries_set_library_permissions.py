@@ -11,22 +11,26 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--access_in",
     help="list of user ids",
-    type=str
+    type=str,
+    multiple=True
 )
 @click.option(
     "--modify_in",
     help="list of user ids",
-    type=str
+    type=str,
+    multiple=True
 )
 @click.option(
     "--add_in",
     help="list of user ids",
-    type=str
+    type=str,
+    multiple=True
 )
 @click.option(
     "--manage_in",
     help="list of user ids",
-    type=str
+    type=str,
+    multiple=True
 )
 
 @pass_context
