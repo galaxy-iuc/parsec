@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('create_local_user')
+@click.command('users.create_local_user')
 @options.galaxy_instance()
 
 @click.argument("username", type=str)
@@ -25,3 +24,4 @@ def cli(ctx, galaxy_instance, username, user_email, password):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.users.create_local_user(username, user_email, password)
+

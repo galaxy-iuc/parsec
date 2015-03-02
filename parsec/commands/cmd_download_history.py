@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('download_history')
+@click.command('histories.download_history')
 @options.galaxy_instance()
 
 @click.argument("outf", type=click.File('rb+'))
@@ -34,3 +33,4 @@ def cli(ctx, galaxy_instance, outf, chunk_size, history_id=4096, jeha_id=4096):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.histories.download_history(outf, chunk_size, history_id=history_id, jeha_id=jeha_id)
+

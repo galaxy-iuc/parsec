@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('show_dataset_provenance')
+@click.command('histories.show_dataset_provenance')
 @options.galaxy_instance()
 
 @click.argument("follow", type=bool)
@@ -33,3 +32,4 @@ def cli(ctx, galaxy_instance, follow, history_id=False, dataset_id=False):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.histories.show_dataset_provenance(follow, history_id=history_id, dataset_id=dataset_id)
+

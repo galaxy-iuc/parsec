@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('upload_file_from_local_path')
+@click.command('libraries.upload_file_from_local_path')
 @options.galaxy_instance()
 
 @click.argument("file_local_path", type=str)
@@ -39,3 +38,4 @@ def cli(ctx, galaxy_instance, file_local_path, dbkey, library_id="", folder_id="
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.libraries.upload_file_from_local_path(file_local_path, dbkey, library_id=library_id, folder_id=folder_id, file_type=file_type)
+

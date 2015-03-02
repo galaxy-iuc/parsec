@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('run_workflow')
+@click.command('workflows.run_workflow')
 @options.galaxy_instance()
 
 @click.argument("workflow_id", type=str)
@@ -33,3 +32,4 @@ def cli(ctx, galaxy_instance, workflow_id, dataset_map, params, history_id, hist
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.workflows.run_workflow(workflow_id, dataset_map, params, history_id, history_name, replacement_params, import_inputs_to_history=import_inputs_to_history)
+

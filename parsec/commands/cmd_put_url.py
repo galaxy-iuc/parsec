@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('put_url')
+@click.command('tools.put_url')
 @options.galaxy_instance()
 
 @click.argument("content", type=str)
@@ -24,3 +23,4 @@ def cli(ctx, galaxy_instance, content, history_id):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.tools.put_url(content, history_id)
+

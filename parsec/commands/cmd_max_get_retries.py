@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('max_get_retries')
+@click.command('workflows.max_get_retries')
 @options.galaxy_instance()
 
 
@@ -22,3 +21,4 @@ def cli(ctx, galaxy_instance):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.workflows.max_get_retries()
+

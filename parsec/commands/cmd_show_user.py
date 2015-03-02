@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('show_user')
+@click.command('users.show_user')
 @options.galaxy_instance()
 
 
@@ -32,3 +31,4 @@ def cli(ctx, galaxy_instance, user_id=False, deleted=False):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.users.show_user(user_id=user_id, deleted=deleted)
+

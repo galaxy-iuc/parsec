@@ -41,8 +41,6 @@ class ScriptBuilder(object):
             self.templates[tpl_id] = open(template, 'r').read()
 
         # TODO: refactor
-        self.obj_init = 'gi = bg.GalaxyInstance("http://localhost:8080", "API_KEY")'
-        self.obj_id = 'gi'
         self.obj = bg.GalaxyInstance("http://localhost:8080", "API_KEY")
 
     def template(self, template, opts):
@@ -59,7 +57,7 @@ class ScriptBuilder(object):
         ]
         if ptype is not None:
             args.append('type=%s' % ptype)
-        return '@click.option(%s)\n' % ('\n'.join(['    ' + x for x in args]))
+        return '@click.option(\n%s\n)\n' % (',\n'.join(['    ' + x for x in args]))
 
     @classmethod
     def __click_argument(cls, name='arg', ptype=None):
@@ -251,7 +249,7 @@ class ScriptBuilder(object):
 
             # Generate a command name, prefix everything with auto_ to identify the
             # automatically generated stuff
-            cmd_name = 'cmd_%s.py' % candidate
+            cmd_name = 'cmd_%s.py' % candidate.split('.')[-1]
             cmd_path = os.path.join('parsec', 'commands', cmd_name)
 
             # Save file

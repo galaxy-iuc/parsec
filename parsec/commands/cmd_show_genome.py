@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('show_genome')
+@click.command('genomes.show_genome')
 @options.galaxy_instance()
 
 @click.argument("id", type=str)
@@ -27,3 +26,4 @@ def cli(ctx, galaxy_instance, id, num, chrom, low, high):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.genomes.show_genome(id, num, chrom, low, high)
+

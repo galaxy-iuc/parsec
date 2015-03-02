@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('install_genome')
+@click.command('genomes.install_genome')
 @options.galaxy_instance()
 
 @click.argument("func", type=str)
@@ -33,3 +32,4 @@ def cli(ctx, galaxy_instance, func, dbkey, ncbi_name, ensembl_dbkey, url_dbkey, 
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.genomes.install_genome(func, dbkey, ncbi_name, ensembl_dbkey, url_dbkey, indexers, source=source)
+

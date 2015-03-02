@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('delete_history')
+@click.command('histories.delete_history')
 @options.galaxy_instance()
 
 
@@ -32,3 +31,4 @@ def cli(ctx, galaxy_instance, history_id=False, purge=False):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.histories.delete_history(history_id=history_id, purge=purge)
+

@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('copy_from_dataset')
+@click.command('libraries.copy_from_dataset')
 @options.galaxy_instance()
 
 @click.argument("dataset_id", type=str)
@@ -34,3 +33,4 @@ def cli(ctx, galaxy_instance, dataset_id, message, library_id="", folder_id=""):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.libraries.copy_from_dataset(dataset_id, message, library_id=library_id, folder_id=folder_id)
+

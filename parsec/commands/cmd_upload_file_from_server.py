@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,12 +6,12 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('upload_file_from_server')
+@click.command('libraries.upload_file_from_server')
 @options.galaxy_instance()
 
 @click.argument("server_dir", type=str)
 @click.argument("dbkey", type=str)
-@click.argument("roles")
+@click.argument("roles", type=str)
 
 @click.option(
     "--library_id",
@@ -45,3 +44,4 @@ def cli(ctx, galaxy_instance, server_dir, dbkey, roles, library_id="", folder_id
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.libraries.upload_file_from_server(server_dir, dbkey, roles, library_id=library_id, folder_id=folder_id, file_type=file_type, link_data_only=link_data_only)
+

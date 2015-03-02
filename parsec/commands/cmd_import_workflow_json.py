@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('import_workflow_json')
+@click.command('workflows.import_workflow_json')
 @options.galaxy_instance()
 
 @click.argument("workflow_json", type=str)
@@ -23,3 +22,4 @@ def cli(ctx, galaxy_instance, workflow_json):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.workflows.import_workflow_json(workflow_json)
+

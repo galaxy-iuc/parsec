@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('show_tool')
+@click.command('tools.show_tool')
 @options.galaxy_instance()
 
 
@@ -37,3 +36,4 @@ def cli(ctx, galaxy_instance, tool_id=False, io_details=False, link_details=Fals
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.tools.show_tool(tool_id=tool_id, io_details=io_details, link_details=link_details)
+

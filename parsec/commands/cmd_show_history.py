@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('show_history')
+@click.command('histories.show_history')
 @options.galaxy_instance()
 
 @click.argument("history_id", type=str)
@@ -32,3 +31,4 @@ def cli(ctx, galaxy_instance, history_id, deleted, visible, details, types, cont
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.histories.show_history(history_id, deleted, visible, details, types, contents=contents)
+

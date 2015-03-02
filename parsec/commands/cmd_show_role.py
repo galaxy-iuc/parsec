@@ -6,20 +6,20 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('datasets.show_stdout')
+@click.command('roles.show_role')
 @options.galaxy_instance()
 
-@click.argument("dataset_id", type=str)
+@click.argument("role_id", type=str)
 
 
 @pass_context
 @bioblend_exception
 @dict_output
 
-def cli(ctx, galaxy_instance, dataset_id):
-    """Display stdout output of a dataset.
+def cli(ctx, galaxy_instance, role_id):
+    """Display information on a single role
     """
     gi = get_galaxy_instance(galaxy_instance)
 
-    return gi.datasets.show_stdout(dataset_id)
+    return gi.roles.show_role(role_id)
 

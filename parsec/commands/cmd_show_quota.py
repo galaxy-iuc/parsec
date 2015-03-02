@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('show_quota')
+@click.command('quotas.show_quota')
 @options.galaxy_instance()
 
 
@@ -32,3 +31,4 @@ def cli(ctx, galaxy_instance, quota_id=False, deleted=False):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.quotas.show_quota(quota_id=quota_id, deleted=deleted)
+

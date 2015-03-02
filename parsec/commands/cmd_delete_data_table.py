@@ -6,20 +6,21 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('datasets.show_stdout')
+@click.command('tool_data.delete_data_table')
 @options.galaxy_instance()
 
-@click.argument("dataset_id", type=str)
+@click.argument("data_table_id", type=str)
+@click.argument("values", type=str)
 
 
 @pass_context
 @bioblend_exception
 @dict_output
 
-def cli(ctx, galaxy_instance, dataset_id):
-    """Display stdout output of a dataset.
+def cli(ctx, galaxy_instance, data_table_id, values):
+    """Delete an item from a data table.
     """
     gi = get_galaxy_instance(galaxy_instance)
 
-    return gi.datasets.show_stdout(dataset_id)
+    return gi.tool_data.delete_data_table(data_table_id, values)
 

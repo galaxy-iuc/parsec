@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('delete_library_dataset')
+@click.command('libraries.delete_library_dataset')
 @options.galaxy_instance()
 
 @click.argument("purged", type=bool)
@@ -33,3 +32,4 @@ def cli(ctx, galaxy_instance, purged, library_id=False, dataset_id=False):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.libraries.delete_library_dataset(purged, library_id=library_id, dataset_id=dataset_id)
+

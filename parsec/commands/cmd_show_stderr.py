@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('show_stderr')
+@click.command('datasets.show_stderr')
 @options.galaxy_instance()
 
 @click.argument("dataset_id", type=str)
@@ -23,3 +22,4 @@ def cli(ctx, galaxy_instance, dataset_id):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.datasets.show_stderr(dataset_id)
+

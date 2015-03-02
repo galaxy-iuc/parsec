@@ -1,4 +1,3 @@
-
 import click
 
 from parsec import options
@@ -7,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('show_library')
+@click.command('libraries.show_library')
 @options.galaxy_instance()
 
 
@@ -32,3 +31,4 @@ def cli(ctx, galaxy_instance, library_id=False, contents=False):
     gi = get_galaxy_instance(galaxy_instance)
 
     return gi.libraries.show_library(library_id=library_id, contents=contents)
+
