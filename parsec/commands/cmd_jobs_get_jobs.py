@@ -6,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('datasets_max_get_retries')
+@click.command('jobs_get_jobs')
 @options.galaxy_instance()
 
 
@@ -16,9 +16,9 @@ from parsec.decorators import bioblend_exception, dict_output
 @dict_output
 
 def cli(ctx, galaxy_instance):
-    """The maximum number of attempts for a GET request.
+    """Get a list of jobs for current user
     """
     gi = get_galaxy_instance(galaxy_instance)
 
-    return gi.datasets.max_get_retries()
+    return gi.jobs.get_jobs()
 

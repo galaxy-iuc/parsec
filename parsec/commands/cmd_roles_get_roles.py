@@ -6,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('config_max_get_retries')
+@click.command('roles_get_roles')
 @options.galaxy_instance()
 
 
@@ -16,9 +16,9 @@ from parsec.decorators import bioblend_exception, dict_output
 @dict_output
 
 def cli(ctx, galaxy_instance):
-    """The maximum number of attempts for a GET request.
+    """Displays a collection (list) of roles.
     """
     gi = get_galaxy_instance(galaxy_instance)
 
-    return gi.config.max_get_retries()
+    return gi.roles.get_roles()
 

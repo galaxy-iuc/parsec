@@ -6,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('quotas_max_get_retries')
+@click.command('histories_get_most_recently_used_history')
 @options.galaxy_instance()
 
 
@@ -16,9 +16,9 @@ from parsec.decorators import bioblend_exception, dict_output
 @dict_output
 
 def cli(ctx, galaxy_instance):
-    """The maximum number of attempts for a GET request.
+    """Returns the current user's most recently used history (not deleted).
     """
     gi = get_galaxy_instance(galaxy_instance)
 
-    return gi.quotas.max_get_retries()
+    return gi.histories.get_most_recently_used_history()
 

@@ -6,19 +6,20 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('workflows_max_get_retries')
+@click.command('histories_get_status')
 @options.galaxy_instance()
 
+@click.argument("history_id", type=str)
 
 
 @pass_context
 @bioblend_exception
 @dict_output
 
-def cli(ctx, galaxy_instance):
-    """The maximum number of attempts for a GET request.
+def cli(ctx, galaxy_instance, history_id):
+    """Returns the state of this history
     """
     gi = get_galaxy_instance(galaxy_instance)
 
-    return gi.workflows.max_get_retries()
+    return gi.histories.get_status(history_id)
 

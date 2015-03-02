@@ -76,7 +76,7 @@ class ScriptBuilder(object):
     def boring(self, method_name):
         if method_name.startswith('_'):
             return True
-        if method_name.startswith('set_') or method_name.startswith('get_'):
+        if 'max_retries' in method_name or 'retry_delay' in method_name or 'get_retries' in method_name:
             return True
         # TODO replace with check for height in hierachy
         return False

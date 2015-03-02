@@ -6,19 +6,23 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('tool_data_max_get_retries')
+@click.command('ftpfiles_get_ftp_files')
 @options.galaxy_instance()
 
 
+@click.option(
+    "--deleted",
+    help="None"
+)
 
 @pass_context
 @bioblend_exception
 @dict_output
 
-def cli(ctx, galaxy_instance):
-    """The maximum number of attempts for a GET request.
+def cli(ctx, galaxy_instance, deleted=False):
+    """Get a list of local files
     """
     gi = get_galaxy_instance(galaxy_instance)
 
-    return gi.tool_data.max_get_retries()
+    return gi.ftpfiles.get_ftp_files(deleted=deleted)
 

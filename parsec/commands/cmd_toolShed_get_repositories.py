@@ -6,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('libraries_max_get_retries')
+@click.command('toolShed_get_repositories')
 @options.galaxy_instance()
 
 
@@ -16,9 +16,9 @@ from parsec.decorators import bioblend_exception, dict_output
 @dict_output
 
 def cli(ctx, galaxy_instance):
-    """The maximum number of attempts for a GET request.
+    """Get a list of all repositories in the Tool Shed
     """
     gi = get_galaxy_instance(galaxy_instance)
 
-    return gi.libraries.max_get_retries()
+    return gi.toolShed.get_repositories()
 

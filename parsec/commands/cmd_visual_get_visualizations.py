@@ -6,7 +6,7 @@ from parsec.io import info
 from parsec.galaxy import get_galaxy_instance
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('forms_max_get_retries')
+@click.command('visual_get_visualizations')
 @options.galaxy_instance()
 
 
@@ -16,9 +16,9 @@ from parsec.decorators import bioblend_exception, dict_output
 @dict_output
 
 def cli(ctx, galaxy_instance):
-    """The maximum number of attempts for a GET request.
+    """Get a list of visualizations
     """
     gi = get_galaxy_instance(galaxy_instance)
 
-    return gi.forms.max_get_retries()
+    return gi.visual.get_visualizations()
 
