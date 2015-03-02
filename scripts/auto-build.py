@@ -3,12 +3,14 @@
 import bioblend.galaxy as bg
 import importlib
 import inspect
-import os
+import os, re
 from docutils.core import publish_doctree, publish_from_doctree  #, publish_parts
 #from lxml import etree
 import xml.etree.ElementTree as etree
 
-sections = ['tools']# ['datasets', 'genomes', 'histories', 'libraries', 'quotas', 'tools', 'toolshed', 'users', 'visual', 'workflows']
+IGNORE_LIST = ['histories.download_dataset', 'histories.get_current_history']
+
+sections = ['datasets', 'genomes', 'histories', 'libraries', 'quotas', 'tools', 'users', 'visual', 'workflows']
 TEMPLATE = """
 import click
 
@@ -35,22 +37,30 @@ def cli(ctx, %(args_with_defaults)s):
     return %(wrapped_method)s(%(wrapped_method_args)s)
 """
 
-def __click_option(name='arg', helpstr='TODO'):
+def __click_option(name='arg', helpstr='TODO', ptype=None):
     return '\n'.join([
         '@click.option(',
         '    "--%s",' % name,
-        '    help="%s"' % helpstr,
-        ')'
+        '    help="%s",' % helpstr,
+        '    type=%s' % ptype if ptype is not None else "",
+        ')\n'
     ])
 
-def __click_argument(name='arg'):
-    return '@click.argument("%s")' % name
+def __click_argument(name='arg', ptype='str'):
+    if ptype is None:
+        ptype = ""
+    else:
+        ptype = ", type=%s" % ptype
+    return '@click.argument("%s"%s)\n' % (name, ptype)
 
 def load_module(module_path):
     name = '.'.join(module_path)
     return importlib.import_module(name)
 
 def boring(section, method_name):
+    if '%s.%s' % (section, method_name) in IGNORE_LIST:
+        return True
+
     if method_name.startswith('_'):
         return True
     if method_name.startswith('set_') or method_name.startswith('get_'):
@@ -91,28 +101,22 @@ for section in sections:
             'wrapped_method_args': "",
         }
 
-        doctree = publish_doctree(argdoc).asdom()
-        #<?xml version="1.0"?>
-        #<document source="<string>">  # Yes, malformed XML. Truly.
-        #<block_quote>
-            #<paragraph>Get details of a given tool.</paragraph>
-            #<field>
-                #<field_name>param link_details</field_name>
-                #<field_body>
-                #<paragraph>if True, get also link details</paragraph>
-                #</field_body>
-            #</field>
-            #</field_list>
-        #</block_quote>
-        #</document>
 
-        #print publish_doctree(argdoc)
-        doctree = etree.fromstring(doctree.toxml())
-        #print publish_from_doctree(publish_doctree(argdoc))
-        #import pprint; pprint.pprint(publish_parts(argdoc))
-        #for field in doctree.findall('.//field_list/field'):
-            #for child in field.getchildren():
-                #pass
+        param_docs = {}
+        if argdoc is not None:
+            sections = [x for x in argdoc.split("\n\n")]
+            sections = [re.sub('\s+', ' ', x.strip()) for x in sections if x != '']
+            paramre = re.compile(":type (?P<param_name>[^:]+): (?P<param_type>[^:]+) :param (?P<param_name2>[^:]+): (?P<desc>.+)")
+            for subsec in sections:
+                m = paramre.match(subsec)
+                if m:
+                    assert m.group('param_name') == m.group('param_name2')
+                    param_docs[m.group('param_name')] = {'type': m.group('param_type'),
+                                                        'desc': m.group('desc')}
+        else:
+            param_docs = {}
+            print "No argdoc for gi.%s.%s" % (section, candidate)
+            print ""
 
         # Ignore with only cls/self
         if len(argspec.args) > 1:
@@ -131,6 +135,27 @@ for section in sections:
                 except Exception, e:
                     v = None
 
+                try:
+                    pt = param_docs[k]['type']
+                    param_translation = {
+                        'str': 'str',
+                        'dict': 'dict',
+                        'int': 'int',
+                        'float': 'float',
+                        'bool': 'bool',
+                        'list': 'list', #TODO
+                        'file': 'click.File(\'rb+\')',
+                    }
+                    try:
+                        param_type = param_translation[pt]
+                    except KeyError:
+                        raise Exception("Unknown param type " + pt)
+                except Exception, e:
+                    param_type = None
+                    print "Parsing error %s.%s"  % (section, candidate)
+                    print e
+                    print ""
+
                 # If v is not None, then it's a kwargs, otherwise an arg
                 if v is not None:
                     # Strings must be treated specially by removing their value
@@ -143,12 +168,18 @@ for section in sections:
                     method_exec_kwargs.append('%s=%s' % (k, k))
 
                     # TODO: refactor
-                    data['click_options'] += __click_option(name=k, helpstr="TODO")
+                    try:
+                        descstr = param_docs[k]['desc']
+                    except KeyError:
+                        print "Error finding %s in %s.%s" % (k, section, candidate)
+                        print ""
+                        descstr = None
+                    data['click_options'] += __click_option(name=k, helpstr=descstr, ptype=param_type)
                 else:
                     # Args, not kwargs
                     method_signature_args.append(k)
                     method_exec_args.append(k)
-                    data['click_arguments'] += __click_argument(name=k)
+                    data['click_arguments'] += __click_argument(name=k, ptype=param_type)
 
 
             # Complete args
@@ -165,7 +196,7 @@ for section in sections:
 
         # Generate a command name, prefix everything with auto_ to identify the
         # automatically generated stuff
-        cmd_name = 'cmd_auto_%s.py' % candidate
+        cmd_name = 'cmd_%s.py' % candidate
         cmd_path = os.path.join('parsec', 'commands', cmd_name)
 
         # Save file
