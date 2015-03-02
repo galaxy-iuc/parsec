@@ -6,13 +6,12 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('forms_create_form')
 @options.galaxy_instance()
-@click.argument("form_xml_text", type=str)
 
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, form_xml_text):
+def cli(ctx, galaxy_instance):
     """Create a new form
     """
-    return ctx.gi.forms.create_form(form_xml_text)
+    return ctx.gi.forms.create_form()

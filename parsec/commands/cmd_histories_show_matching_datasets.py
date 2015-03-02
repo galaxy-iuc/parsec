@@ -7,13 +7,17 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.command('histories_show_matching_datasets')
 @options.galaxy_instance()
 @click.argument("history_id", type=str)
-@click.argument("name_filter", type=str)
 
+@click.option(
+    "--name_filter",
+    help="Only datasets whose name matches the ``name_filter`` regular expression will be returned; use plain strings for exact matches and None to match all datasets in the history.",
+    type=str
+)
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, name_filter):
+def cli(ctx, galaxy_instance, history_id, name_filter=""):
     """Get dataset details for matching datasets within a history.
     """
-    return ctx.gi.histories.show_matching_datasets(history_id, name_filter)
+    return ctx.gi.histories.show_matching_datasets(history_id, name_filter=name_filter)

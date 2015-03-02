@@ -6,24 +6,20 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('histories_download_history')
 @options.galaxy_instance()
+@click.argument("history_id", type=str)
+@click.argument("jeha_id", type=str)
 @click.argument("outf", type=click.File('rb+'))
-@click.argument("chunk_size", type=int)
 
 @click.option(
-    "--history_id",
-    help="history ID",
-    type=str
-)
-@click.option(
-    "--jeha_id",
-    help="jeha ID (this should be obtained via :meth:`export_history`)",
-    type=str
+    "--chunk_size",
+    help="how many bytes at a time should be read into memory",
+    type=int
 )
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, outf, chunk_size, history_id=4096, jeha_id=4096):
+def cli(ctx, galaxy_instance, history_id, jeha_id, outf, chunk_size=4096):
     """Download a history export archive.  Use :meth:`export_history` to create an export.
     """
-    return ctx.gi.histories.download_history(outf, chunk_size, history_id=history_id, jeha_id=jeha_id)
+    return ctx.gi.histories.download_history(history_id, jeha_id, outf, chunk_size=chunk_size)

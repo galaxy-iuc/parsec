@@ -6,24 +6,24 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('libraries_copy_from_dataset')
 @options.galaxy_instance()
+@click.argument("library_id", type=str)
 @click.argument("dataset_id", type=str)
-@click.argument("message", type=str)
 
-@click.option(
-    "--library_id",
-    help="id of the library where to place the uploaded file. If not provided, the root library will be used",
-    type=str
-)
 @click.option(
     "--folder_id",
     help="id of the folder where to place the uploaded files. If not provided, the root folder will be used",
+    type=str
+)
+@click.option(
+    "--message",
+    help="message for copying action",
     type=str
 )
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, dataset_id, message, library_id="", folder_id=""):
+def cli(ctx, galaxy_instance, library_id, dataset_id, folder_id="", message=""):
     """Copy a Galaxy dataset into a library.
     """
-    return ctx.gi.libraries.copy_from_dataset(dataset_id, message, library_id=library_id, folder_id=folder_id)
+    return ctx.gi.libraries.copy_from_dataset(library_id, dataset_id, folder_id=folder_id, message=message)

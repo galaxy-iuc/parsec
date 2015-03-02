@@ -6,37 +6,33 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('histories_export_history')
 @options.galaxy_instance()
+@click.argument("history_id", type=str)
 
-@click.option(
-    "--history_id",
-    help="history ID",
-    type=str
-)
 @click.option(
     "--gzip",
     help="create .tar.gz archive if :obj:`True`, else .tar",
-    type=bool
+    is_flag=True
 )
 @click.option(
     "--include_hidden",
     help="whether to include hidden datasets in the export",
-    type=bool
+    is_flag=True
 )
 @click.option(
     "--include_deleted",
     help="whether to include deleted datasets in the export",
-    type=bool
+    is_flag=True
 )
 @click.option(
     "--wait",
     help="if :obj:`True`, block until the export is ready; else, return immediately",
-    type=bool
+    is_flag=True
 )
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id=False, gzip=True, include_hidden=False, include_deleted=False, wait=False):
+def cli(ctx, galaxy_instance, history_id, gzip=True, include_hidden=False, include_deleted=False, wait=False):
     """Start a job to create an export archive for the given history.
     """
-    return ctx.gi.histories.export_history(history_id=history_id, gzip=gzip, include_hidden=include_hidden, include_deleted=include_deleted, wait=wait)
+    return ctx.gi.histories.export_history(history_id, gzip=gzip, include_hidden=include_hidden, include_deleted=include_deleted, wait=wait)

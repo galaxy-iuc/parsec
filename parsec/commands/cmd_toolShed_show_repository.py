@@ -4,7 +4,7 @@ from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('workflows_show_workflow')
+@click.command('toolShed_show_repository')
 @options.galaxy_instance()
 
 
@@ -12,6 +12,6 @@ from parsec.decorators import bioblend_exception, dict_output
 @bioblend_exception
 @dict_output
 def cli(ctx, galaxy_instance):
-    """Display information needed to run a workflow
+    """Display information of a repository from the Tool Shed
     """
-    return ctx.gi.workflows.show_workflow()
+    return ctx.gi.toolShed.show_repository()

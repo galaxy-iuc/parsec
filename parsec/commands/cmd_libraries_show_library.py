@@ -6,12 +6,8 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('libraries_show_library')
 @options.galaxy_instance()
+@click.argument("library_id", type=str)
 
-@click.option(
-    "--library_id",
-    help="filter for library by library id",
-    type=str
-)
 @click.option(
     "--contents",
     help="True if want to get contents of the library (rather than just the library details).",
@@ -21,7 +17,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id=False, contents=False):
+def cli(ctx, galaxy_instance, library_id, contents=False):
     """Get information about a library.
     """
-    return ctx.gi.libraries.show_library(library_id=library_id, contents=contents)
+    return ctx.gi.libraries.show_library(library_id, contents=contents)

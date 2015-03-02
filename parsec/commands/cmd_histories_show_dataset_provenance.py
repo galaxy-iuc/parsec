@@ -6,23 +6,19 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('histories_show_dataset_provenance')
 @options.galaxy_instance()
-@click.argument("follow", type=bool)
+@click.argument("history_id", type=str)
+@click.argument("dataset_id", type=str)
 
 @click.option(
-    "--history_id",
-    help="Encoded history ID",
-    type=str
-)
-@click.option(
-    "--dataset_id",
-    help="Encoded dataset ID",
-    type=str
+    "--follow",
+    help="If ``follow`` is ``True``, recursively fetch dataset provenance information for all inputs and their inputs, etc....",
+    type=bool
 )
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, follow, history_id=False, dataset_id=False):
+def cli(ctx, galaxy_instance, history_id, dataset_id, follow=False):
     """Get details related to how dataset was created (``id``, ``job_id``, ``tool_id``, ``stdout``, ``stderr``, ``parameters``, ``inputs``, etc...).
     """
-    return ctx.gi.histories.show_dataset_provenance(follow, history_id=history_id, dataset_id=dataset_id)
+    return ctx.gi.histories.show_dataset_provenance(history_id, dataset_id, follow=follow)

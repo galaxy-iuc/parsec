@@ -6,12 +6,8 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('datasets_show_dataset')
 @options.galaxy_instance()
+@click.argument("dataset_id", type=str)
 
-@click.option(
-    "--dataset_id",
-    help="Encoded Dataset ID",
-    type=str
-)
 @click.option(
     "--deleted",
     help="Whether to return results for a deleted dataset",
@@ -26,7 +22,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, dataset_id="", deleted=False, hda_ldda=""):
+def cli(ctx, galaxy_instance, dataset_id, deleted=False, hda_ldda=""):
     """Display information about and/or content of a dataset. This can be a history or a library dataset.
     """
-    return ctx.gi.datasets.show_dataset(dataset_id=dataset_id, deleted=deleted, hda_ldda=hda_ldda)
+    return ctx.gi.datasets.show_dataset(dataset_id, deleted=deleted, hda_ldda=hda_ldda)

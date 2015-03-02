@@ -21,13 +21,28 @@ IGNORE_LIST = [
 
 
 PARAM_TRANSLATION = {
-    'str': 'str',
-    'dict': 'dict',
-    'int': 'int',
-    'float': 'float',
-    'bool': 'bool',
-    'list': 'list', #TODO
-    'file': 'click.File(\'rb+\')',
+    'str': [
+        'type=str',
+    ],
+    'dict': [
+        #TODO
+        'type=dict',
+    ],
+    'int': [
+        'type=int'
+    ],
+    'float': [
+        'type=float',
+    ],
+    'bool': [
+        'is_flag=True',
+    ],
+    'list': [
+        'type=str', # TODO
+    ],
+    'file': [
+        'type=click.File(\'rb+\')'
+    ],
 }
 
 class ScriptBuilder(object):
@@ -56,7 +71,7 @@ class ScriptBuilder(object):
             'help="%s"' % helpstr
         ]
         if ptype is not None:
-            args.append('type=%s' % ptype)
+            args.extend(ptype)
         return '@click.option(\n%s\n)\n' % (',\n'.join(['    ' + x for x in args]))
 
     @classmethod
@@ -65,7 +80,7 @@ class ScriptBuilder(object):
             '"%s"' % name,
         ]
         if ptype is not None:
-            args.append('type=%s' % ptype)
+            args.extend(ptype)
         return '@click.argument(%s)\n' % (', '.join(args), )
 
     @classmethod
@@ -158,7 +173,16 @@ class ScriptBuilder(object):
         argspec = inspect.getargspec(func)
         # Reverse, because args are paired from the end, removing self/cls
         args = argspec.args[::-1][0:-1]
-        defaults = list(argspec.defaults[::-1])
+
+        # If nothing there after removing 'self'
+        if len(args) == 0:
+            return []
+        if argspec.defaults is None:
+            defaults = []
+        else:
+            defaults = list(argspec.defaults[::-1])
+        # Convert all ``None`` to ""
+        defaults = ["" if x is None else x for x in defaults]
         for i in range(len(args) - len(defaults)):
             defaults.append(None)
         return zip(args[::-1], defaults[::-1])
@@ -189,9 +213,9 @@ class ScriptBuilder(object):
                         param_docs[m.group('param_name')] = {'type': m.group('param_type'),
                                                              'desc': m.group('desc')}
 
-            argspec = self.pair_arguments(func)
+            argspec = list(self.pair_arguments(func))
             # Ignore with only cls/self
-            if len(argspec) > 1:
+            if len(argspec) > 0:
                 method_signature = ['galaxy_instance']
                 # Args and kwargs are separate, as args should come before kwargs
                 method_signature_args = []
@@ -203,7 +227,7 @@ class ScriptBuilder(object):
                     try:
                         param_type = self.parameter_translation(param_docs[k]['type'])
                     except Exception, e:
-                        param_type = None
+                        param_type = []
                         print candidate, e
 
                     # If v is not None, then it's a kwargs, otherwise an arg

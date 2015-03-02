@@ -6,23 +6,19 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('libraries_delete_library_dataset')
 @options.galaxy_instance()
-@click.argument("purged", type=bool)
+@click.argument("library_id", type=str)
+@click.argument("dataset_id", type=str)
 
 @click.option(
-    "--library_id",
-    help="library id where dataset is found in",
-    type=str
-)
-@click.option(
-    "--dataset_id",
-    help="id of the dataset to be deleted",
-    type=str
+    "--purged",
+    help="Indicate that the dataset should be purged (permanently deleted)",
+    type=bool
 )
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, purged, library_id=False, dataset_id=False):
+def cli(ctx, galaxy_instance, library_id, dataset_id, purged=False):
     """Delete a library dataset in a data library.
     """
-    return ctx.gi.libraries.delete_library_dataset(purged, library_id=library_id, dataset_id=dataset_id)
+    return ctx.gi.libraries.delete_library_dataset(library_id, dataset_id, purged=purged)

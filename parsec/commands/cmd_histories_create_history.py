@@ -6,13 +6,12 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('histories_create_history')
 @options.galaxy_instance()
-@click.argument("name", type=str)
 
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, name):
+def cli(ctx, galaxy_instance):
     """Create a new history, optionally setting the ``name``.
     """
-    return ctx.gi.histories.create_history(name)
+    return ctx.gi.histories.create_history()
