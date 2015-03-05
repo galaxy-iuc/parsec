@@ -3,10 +3,9 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+
 @click.command('forms_create_form')
 @click.argument("form_xml_text", type=str)
-
-
 @pass_context
 @bioblend_exception
 @dict_output

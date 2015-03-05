@@ -3,15 +3,14 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+
 @click.command('users_show_user')
 @click.argument("user_id", type=str)
-
 @click.option(
     "--deleted",
     help="Whether to return results for a deleted user",
     is_flag=True
 )
-
 @pass_context
 @bioblend_exception
 @dict_output

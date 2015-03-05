@@ -3,9 +3,9 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+
 @click.command('histories_show_history')
 @click.argument("history_id", type=str)
-
 @click.option(
     "--contents",
     help="When true, the complete list of datasets in the given history.",
@@ -31,11 +31,23 @@ from parsec.decorators import bioblend_exception, dict_output
     help="???",
     type=str
 )
-
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, history_id, contents=False, deleted="", visible="", details="", types=""):
+def cli(
+        ctx,
+        history_id,
+        contents=False,
+        deleted="",
+        visible="",
+        details="",
+        types=""):
     """Get details of a given history. By default, just get the history meta information.
     """
-    return ctx.gi.histories.show_history(history_id, contents=contents, deleted=deleted, visible=visible, details=details, types=types)
+    return ctx.gi.histories.show_history(
+        history_id,
+        contents=contents,
+        deleted=deleted,
+        visible=visible,
+        details=details,
+        types=types)
