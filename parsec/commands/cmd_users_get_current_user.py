@@ -9,7 +9,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(galaxy_instance):
+def cli(ctx):
     """Returns the user id associated with this Galaxy connection
     """
     return ctx.gi.users.get_current_user()
