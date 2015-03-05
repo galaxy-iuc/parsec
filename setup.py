@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 
 
-import re
-import ast
 try:
     from setuptools import setup
 except ImportError:
@@ -22,7 +20,7 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
-version = '0.1'
+version = '0.9.2'
 
 setup(
     name='parsec',
