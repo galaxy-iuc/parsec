@@ -6,6 +6,9 @@ import os
 import re
 import glob
 import argparse
+import logging
+logging.basicConfig(level=logging.DEBUG)
+log = logging.getLogger()
 
 
 import bioblend.galaxy as bg
@@ -190,6 +193,7 @@ class ScriptBuilder(object):
 
     def orig(self, targets):
         for target in targets:
+            log.debug('.'.join(target))
             func = self.recursive_attr_get(self.obj, target)
             candidate = '.'.join(target)
 
@@ -199,7 +203,7 @@ class ScriptBuilder(object):
                 'command_name': candidate.replace('.', '_'),
                 'click_arguments': "",
                 'click_options': "",
-                'args_with_defaults': "galaxy_instance",
+                'args_with_defaults': "ctx",
                 'wrapped_method_args': "",
             }
             param_docs = {}
