@@ -3,14 +3,13 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('quotas_get_quotas')
 
+@click.command('quotas_get_quotas')
 @click.option(
     "--deleted",
     help="Only return quota(s) that have been deleted",
     is_flag=True
 )
-
 @pass_context
 @bioblend_exception
 @dict_output

@@ -3,14 +3,13 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('histories_create_history')
 
+@click.command('histories_create_history')
 @click.option(
     "--name",
     help="Optional name for new history",
     type=str
 )
-
 @pass_context
 @bioblend_exception
 @dict_output

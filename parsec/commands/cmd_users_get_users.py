@@ -3,13 +3,12 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('users_get_users')
 
+@click.command('users_get_users')
 @click.option(
     "--deleted",
     help="None"
 )
-
 @pass_context
 @bioblend_exception
 @dict_output

@@ -3,11 +3,10 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+
 @click.command('tools_paste_content')
 @click.argument("content", type=str)
 @click.argument("history_id", type=str)
-
-
 @pass_context
 @bioblend_exception
 @dict_output

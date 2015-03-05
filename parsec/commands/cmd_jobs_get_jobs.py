@@ -3,9 +3,8 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+
 @click.command('jobs_get_jobs')
-
-
 @pass_context
 @bioblend_exception
 @dict_output

@@ -3,11 +3,10 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+
 @click.command('histories_create_history_tag')
 @click.argument("history_id", type=str)
 @click.argument("tag", type=str)
-
-
 @pass_context
 @bioblend_exception
 @dict_output

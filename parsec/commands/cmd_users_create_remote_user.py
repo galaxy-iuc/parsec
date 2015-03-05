@@ -3,10 +3,9 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+
 @click.command('users_create_remote_user')
 @click.argument("user_email", type=str)
-
-
 @pass_context
 @bioblend_exception
 @dict_output
