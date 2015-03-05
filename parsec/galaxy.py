@@ -1,9 +1,16 @@
+import os
 from bioblend import galaxy
-from .config import read_global_config
+from .config import read_global_config, global_config_path
+from .io import warn
 
 def get_galaxy_instance(instance_name=None):
     # I don't like reading the config twice.
     conf = read_global_config()
+    if not os.path.exists(global_config_path()):
+        # Probably creating the file for the first time.
+        warn("No parsec config file found, continuning anyway...")
+        return None
+
     if instance_name is None or instance_name == '__default':
         try:
             instance_name = conf['__default']
