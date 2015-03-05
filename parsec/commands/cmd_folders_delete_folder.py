@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('folders_delete_folder')
-@options.galaxy_instance()
 @click.argument("folder_id", type=str)
 
 @click.option(

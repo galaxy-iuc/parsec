@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('tools_upload_file')
-@options.galaxy_instance()
 @click.argument("path", type=str)
 @click.argument("history_id", type=str)
 

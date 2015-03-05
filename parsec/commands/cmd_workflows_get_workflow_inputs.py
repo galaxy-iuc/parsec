@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('workflows_get_workflow_inputs')
-@options.galaxy_instance()
 @click.argument("workflow_id", type=str)
 @click.argument("label", type=str)
 

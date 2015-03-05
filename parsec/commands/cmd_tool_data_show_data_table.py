@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('tool_data_show_data_table')
-@options.galaxy_instance()
 @click.argument("data_table_id", type=str)
 
 

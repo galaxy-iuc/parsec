@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('workflows_get_workflows')
-@options.galaxy_instance()
 
 @click.option(
     "--workflow_id",
@@ -19,12 +17,12 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 @click.option(
     "--deleted",
-    help="If set to ``True``, return workflows that have been deleted.",
+    help="this parameter is deprecated and ignored, it will be removed in BioBlend 0.6",
     is_flag=True
 )
 @click.option(
     "--published",
-    help="If set to ``True``, return published workflows.",
+    help="if ``True``, return also published workflows",
     is_flag=True
 )
 

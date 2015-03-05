@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('users_create_user_apikey')
-@options.galaxy_instance()
 @click.argument("user_id", type=str)
 
 

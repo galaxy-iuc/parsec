@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('libraries_upload_from_galaxy_filesystem')
-@options.galaxy_instance()
 @click.argument("library_id", type=str)
 @click.argument("filesystem_paths", type=str)
 

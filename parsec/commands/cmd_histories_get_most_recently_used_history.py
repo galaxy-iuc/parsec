@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('histories_get_most_recently_used_history')
-@options.galaxy_instance()
 
 
 @pass_context

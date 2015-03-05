@@ -1,16 +1,14 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('users_show_user')
-@options.galaxy_instance()
 @click.argument("user_id", type=str)
 
 @click.option(
     "--deleted",
-    help="Include deleted users in listing",
+    help="Whether to return results for a deleted user",
     is_flag=True
 )
 

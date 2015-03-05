@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('toolShed_install_repository_revision')
-@options.galaxy_instance()
 @click.argument("tool_shed_url", type=str)
 @click.argument("name", type=str)
 @click.argument("owner", type=str)

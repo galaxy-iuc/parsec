@@ -1,17 +1,15 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('libraries_upload_file_from_url')
-@options.galaxy_instance()
 @click.argument("library_id", type=str)
 @click.argument("file_url", type=str)
 
 @click.option(
     "--folder_id",
-    help="id of the folder to download into",
+    help="id of the folder where to place the uploaded file. If not provided, the root folder will be used",
     type=str
 )
 @click.option(

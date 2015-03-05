@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('forms_create_form')
-@options.galaxy_instance()
 @click.argument("form_xml_text", type=str)
 
 

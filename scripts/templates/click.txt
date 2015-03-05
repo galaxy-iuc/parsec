@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('%(command_name)s')
-@options.galaxy_instance()
 %(click_arguments)s
 %(click_options)s
 @pass_context

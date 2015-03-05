@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('libraries_copy_from_dataset')
-@options.galaxy_instance()
 @click.argument("library_id", type=str)
 @click.argument("dataset_id", type=str)
 

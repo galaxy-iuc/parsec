@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('histories_undelete_history')
-@options.galaxy_instance()
 @click.argument("history_id", type=str)
 
 

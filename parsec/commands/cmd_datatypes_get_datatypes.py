@@ -1,11 +1,9 @@
 import click
 
-from parsec import options
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('datatypes_get_datatypes')
-@options.galaxy_instance()
 
 @click.option(
     "--extension_only",
