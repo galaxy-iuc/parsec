@@ -30,7 +30,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, id, num="", chrom="", low="", high=""):
+def cli(ctx, id, num="", chrom="", low="", high=""):
     """Returns information about build <id>
     """
     return ctx.gi.genomes.show_genome(id, num=num, chrom=chrom, low=low, high=high)

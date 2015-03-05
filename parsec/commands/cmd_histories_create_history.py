@@ -14,7 +14,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, name=""):
+def cli(ctx, name=""):
     """Create a new history, optionally setting the ``name``.
     """
     return ctx.gi.histories.create_history(name=name)

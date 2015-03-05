@@ -26,7 +26,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id, pasted_content, folder_id="", file_type="", dbkey=""):
+def cli(ctx, library_id, pasted_content, folder_id="", file_type="", dbkey=""):
     """Upload pasted_content to a data library as a new file.
     """
     return ctx.gi.libraries.upload_file_contents(library_id, pasted_content, folder_id=folder_id, file_type=file_type, dbkey=dbkey)

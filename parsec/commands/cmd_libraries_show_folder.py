@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id, folder_id):
+def cli(ctx, library_id, folder_id):
     """Get details about a given folder. The required ``folder_id`` can be obtained from the folder's library content details.
     """
     return ctx.gi.libraries.show_folder(library_id, folder_id)

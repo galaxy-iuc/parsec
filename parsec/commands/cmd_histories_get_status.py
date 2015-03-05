@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id):
+def cli(ctx, history_id):
     """Returns the state of this history
     """
     return ctx.gi.histories.get_status(history_id)

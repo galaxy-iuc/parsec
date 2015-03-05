@@ -16,7 +16,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, dataset_id, follow=False):
+def cli(ctx, history_id, dataset_id, follow=False):
     """Get details related to how dataset was created (``id``, ``job_id``, ``tool_id``, ``stdout``, ``stderr``, ``parameters``, ``inputs``, etc...).
     """
     return ctx.gi.histories.show_dataset_provenance(history_id, dataset_id, follow=follow)

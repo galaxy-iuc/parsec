@@ -34,7 +34,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id, access_in="", modify_in="", add_in="", manage_in=""):
+def cli(ctx, library_id, access_in="", modify_in="", add_in="", manage_in=""):
     """Sets the permissions for a library.  Note: it will override all security for this library even if you leave out a permission type.
     """
     return ctx.gi.libraries.set_library_permissions(library_id, access_in=access_in, modify_in=modify_in, add_in=add_in, manage_in=manage_in)

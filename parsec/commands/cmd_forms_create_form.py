@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, form_xml_text):
+def cli(ctx, form_xml_text):
     """Create a new form
     """
     return ctx.gi.forms.create_form(form_xml_text)

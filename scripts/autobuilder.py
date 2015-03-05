@@ -217,7 +217,7 @@ class ScriptBuilder(object):
             argspec = list(self.pair_arguments(func))
             # Ignore with only cls/self
             if len(argspec) > 0:
-                method_signature = ['galaxy_instance']
+                method_signature = ['ctx']
                 # Args and kwargs are separate, as args should come before kwargs
                 method_signature_args = []
                 method_signature_kwargs = []

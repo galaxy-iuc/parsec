@@ -30,7 +30,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, dataset_id, file_path="", use_default_filename=True, wait_for_completion=False, maxwait=12000):
+def cli(ctx, dataset_id, file_path="", use_default_filename=True, wait_for_completion=False, maxwait=12000):
     """Downloads the dataset identified by 'id'.
     """
     return ctx.gi.datasets.download_dataset(dataset_id, file_path=file_path, use_default_filename=use_default_filename, wait_for_completion=wait_for_completion, maxwait=maxwait)

@@ -21,7 +21,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id, dataset_id, folder_id="", message=""):
+def cli(ctx, library_id, dataset_id, folder_id="", message=""):
     """Copy a Galaxy dataset into a library.
     """
     return ctx.gi.libraries.copy_from_dataset(library_id, dataset_id, folder_id=folder_id, message=message)

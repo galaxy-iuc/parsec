@@ -24,7 +24,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id="", name="", deleted=False):
+def cli(ctx, library_id="", name="", deleted=False):
     """Get all the libraries or filter for specific one(s) via the provided name or ID. Provide only one argument: ``name`` or ``library_id``, but not both.
     """
     return ctx.gi.libraries.get_libraries(library_id=library_id, name=name, deleted=deleted)

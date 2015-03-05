@@ -15,7 +15,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, folder_id, undelete=False):
+def cli(ctx, folder_id, undelete=False):
     """Marks the folder with the given ``id`` as `deleted` (or removes the `deleted` mark if the `undelete` param is True).
     """
     return ctx.gi.folders.delete_folder(folder_id, undelete=undelete)

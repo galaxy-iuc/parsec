@@ -25,7 +25,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id, folder_id="", name="", deleted=False):
+def cli(ctx, library_id, folder_id="", name="", deleted=False):
     """Get all the folders or filter specific one(s) via the provided ``name`` or ``folder_id`` in data library with id ``library_id``. Provide only one argument: ``name`` or ``folder_id``, but not both.
     """
     return ctx.gi.libraries.get_folders(library_id, folder_id=folder_id, name=name, deleted=deleted)

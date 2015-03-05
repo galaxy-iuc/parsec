@@ -30,7 +30,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, gzip=True, include_hidden=False, include_deleted=False, wait=False):
+def cli(ctx, history_id, gzip=True, include_hidden=False, include_deleted=False, wait=False):
     """Start a job to create an export archive for the given history.
     """
     return ctx.gi.histories.export_history(history_id, gzip=gzip, include_hidden=include_hidden, include_deleted=include_deleted, wait=wait)

@@ -15,7 +15,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, name_filter=""):
+def cli(ctx, history_id, name_filter=""):
     """Get dataset details for matching datasets within a history.
     """
     return ctx.gi.histories.show_matching_datasets(history_id, name_filter=name_filter)

@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, workflow_id):
+def cli(ctx, workflow_id):
     """Exports a workflow
     """
     return ctx.gi.workflows.export_workflow_json(workflow_id)

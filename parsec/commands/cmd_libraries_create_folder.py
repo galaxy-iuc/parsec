@@ -21,7 +21,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id, folder_name, description="", base_folder_id=""):
+def cli(ctx, library_id, folder_name, description="", base_folder_id=""):
     """Create a folder in a library.
     """
     return ctx.gi.libraries.create_folder(library_id, folder_name, description=description, base_folder_id=base_folder_id)

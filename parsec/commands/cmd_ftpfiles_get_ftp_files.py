@@ -13,7 +13,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, deleted=False):
+def cli(ctx, deleted=False):
     """Get a list of local files
     """
     return ctx.gi.ftpfiles.get_ftp_files(deleted=deleted)

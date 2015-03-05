@@ -36,7 +36,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id, server_dir, folder_id="", file_type="", dbkey="", link_data_only="", roles=""):
+def cli(ctx, library_id, server_dir, folder_id="", file_type="", dbkey="", link_data_only="", roles=""):
     """Upload all files in the specified subdirectory of the Galaxy library import directory to a library.
     """
     return ctx.gi.libraries.upload_file_from_server(library_id, server_dir, folder_id=folder_id, file_type=file_type, dbkey=dbkey, link_data_only=link_data_only, roles=roles)

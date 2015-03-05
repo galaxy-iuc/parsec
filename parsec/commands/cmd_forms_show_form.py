@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, form_id):
+def cli(ctx, form_id):
     """Display information on a single form
     """
     return ctx.gi.forms.show_form(form_id)

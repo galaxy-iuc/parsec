@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, user_email):
+def cli(ctx, user_email):
     """Create a new Galaxy remote user.
     """
     return ctx.gi.users.create_remote_user(user_email)

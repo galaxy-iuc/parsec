@@ -12,7 +12,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, username, user_email, password):
+def cli(ctx, username, user_email, password):
     """Create a new Galaxy user.
     """
     return ctx.gi.users.create_local_user(username, user_email, password)

@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, user_id):
+def cli(ctx, user_id):
     """Create a new api key for a user
     """
     return ctx.gi.users.create_user_apikey(user_id)

@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id):
+def cli(ctx, library_id):
     """Delete a data library.
     """
     return ctx.gi.libraries.delete_library(library_id)

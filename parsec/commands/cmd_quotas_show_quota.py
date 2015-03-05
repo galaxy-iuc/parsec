@@ -15,7 +15,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, quota_id, deleted=False):
+def cli(ctx, quota_id, deleted=False):
     """Display information on a quota
     """
     return ctx.gi.quotas.show_quota(quota_id, deleted=deleted)

@@ -9,7 +9,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance):
+def cli(galaxy_instance):
     """Returns a list of installed genomes
     """
     return ctx.gi.genomes.get_genomes()

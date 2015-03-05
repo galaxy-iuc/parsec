@@ -17,7 +17,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, extension_only=False, upload_only=False):
+def cli(ctx, extension_only=False, upload_only=False):
     """Displays a collection (list) of datatypes.
     """
     return ctx.gi.datatypes.get_datatypes(extension_only=extension_only, upload_only=upload_only)

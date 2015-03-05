@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, collection_description):
+def cli(ctx, history_id, collection_description):
     """Create a new dataset collection
     """
     return ctx.gi.histories.create_dataset_collection(history_id, collection_description)

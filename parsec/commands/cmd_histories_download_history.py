@@ -17,7 +17,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, jeha_id, outf, chunk_size=4096):
+def cli(ctx, history_id, jeha_id, outf, chunk_size=4096):
     """Download a history export archive.  Use :meth:`export_history` to create an export.
     """
     return ctx.gi.histories.download_history(history_id, jeha_id, outf, chunk_size=chunk_size)

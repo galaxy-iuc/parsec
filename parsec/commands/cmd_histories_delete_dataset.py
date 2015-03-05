@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, dataset_id):
+def cli(ctx, history_id, dataset_id):
     """Mark corresponding dataset as deleted.
     """
     return ctx.gi.histories.delete_dataset(history_id, dataset_id)

@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, job_id):
+def cli(ctx, job_id):
     """Display the current state for a single job from current user.
     """
     return ctx.gi.jobs.get_state(job_id)

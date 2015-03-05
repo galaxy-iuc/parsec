@@ -23,7 +23,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, tool_id="", name="", trackster=""):
+def cli(ctx, tool_id="", name="", trackster=""):
     """Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_id``. Provide only one argument, ``name`` or ``tool_id``, but not both.
     """
     return ctx.gi.tools.get_tools(tool_id=tool_id, name=name, trackster=trackster)

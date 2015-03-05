@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, workflow_id):
+def cli(ctx, workflow_id):
     """Display information needed to run a workflow
     """
     return ctx.gi.workflows.show_workflow(workflow_id)

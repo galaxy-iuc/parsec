@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, group_id):
+def cli(ctx, group_id):
     """Display information on a single group
     """
     return ctx.gi.groups.show_group(group_id)

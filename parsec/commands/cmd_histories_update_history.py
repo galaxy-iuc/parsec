@@ -20,7 +20,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, name="", annotation=""):
+def cli(ctx, history_id, name="", annotation=""):
     """Update history metadata information. Some of the attributes that can be modified are documented below.
     """
     return ctx.gi.histories.update_history(history_id, name=name, annotation=annotation)

@@ -20,7 +20,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, dataset_id, deleted=False, hda_ldda=""):
+def cli(ctx, dataset_id, deleted=False, hda_ldda=""):
     """Display information about and/or content of a dataset. This can be a history or a library dataset.
     """
     return ctx.gi.datasets.show_dataset(dataset_id, deleted=deleted, hda_ldda=hda_ldda)

@@ -9,7 +9,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, %(args_with_defaults)s):
+def cli(%(args_with_defaults)s):
     """%(short_docstring)s
     """
     return %(wrapped_method)s(%(wrapped_method_args)s)

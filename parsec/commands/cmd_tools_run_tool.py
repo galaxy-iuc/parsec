@@ -12,7 +12,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, tool_id, tool_inputs):
+def cli(ctx, history_id, tool_id, tool_inputs):
     """Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with inputs from ``dict`` ``tool_inputs``.
     """
     return ctx.gi.tools.run_tool(history_id, tool_id, tool_inputs)

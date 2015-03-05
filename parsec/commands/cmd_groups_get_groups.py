@@ -9,7 +9,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance):
+def cli(galaxy_instance):
     """Displays a collection (list) of groups.
     """
     return ctx.gi.groups.get_groups()

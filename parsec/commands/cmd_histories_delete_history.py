@@ -15,7 +15,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, purge=False):
+def cli(ctx, history_id, purge=False):
     """Delete a history.
     """
     return ctx.gi.histories.delete_history(history_id, purge=purge)

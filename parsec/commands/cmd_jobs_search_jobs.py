@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, job_info):
+def cli(ctx, job_info):
     """Return jobs for current user based payload content
     """
     return ctx.gi.jobs.search_jobs(job_info)

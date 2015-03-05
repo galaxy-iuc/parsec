@@ -9,7 +9,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance):
+def cli(galaxy_instance):
     """Get a list of attributes about galaxy instance. More attributes will be present if user is an admin
     """
     return ctx.gi.config.get_config()

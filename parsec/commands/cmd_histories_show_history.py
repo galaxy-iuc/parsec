@@ -35,7 +35,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, contents=False, deleted="", visible="", details="", types=""):
+def cli(ctx, history_id, contents=False, deleted="", visible="", details="", types=""):
     """Get details of a given history. By default, just get the history meta information.
     """
     return ctx.gi.histories.show_history(history_id, contents=contents, deleted=deleted, visible=visible, details=details, types=types)

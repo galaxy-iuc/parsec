@@ -22,7 +22,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, group_name, user_ids=None, role_ids=None):
+def cli(ctx, group_name, user_ids=None, role_ids=None):
     """Create a new Galaxy group
     """
     return ctx.gi.groups.create_group(group_name, user_ids=user_ids, role_ids=role_ids)

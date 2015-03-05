@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, data_table_id):
+def cli(ctx, data_table_id):
     """Display information on a single data_table
     """
     return ctx.gi.tool_data.show_data_table(data_table_id)

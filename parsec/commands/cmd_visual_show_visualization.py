@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, visual_id):
+def cli(ctx, visual_id):
     """Display information on a visualization
     """
     return ctx.gi.visual.show_visualization(visual_id)

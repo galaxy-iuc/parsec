@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, role_id):
+def cli(ctx, role_id):
     """Display information on a single role
     """
     return ctx.gi.roles.show_role(role_id)

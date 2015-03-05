@@ -15,7 +15,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, user_id, deleted=False):
+def cli(ctx, user_id, deleted=False):
     """Display information about a user. If ``deleted`` is set to ``True``, display information about a deleted user.
     """
     return ctx.gi.users.show_user(user_id, deleted=deleted)

@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, history_id, dataset_id):
+def cli(ctx, history_id, dataset_id):
     """Update history dataset metadata. Some of the attributes that can be modified are documented below.
     """
     return ctx.gi.histories.update_dataset(history_id, dataset_id)

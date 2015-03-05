@@ -11,7 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, path, history_id):
+def cli(ctx, path, history_id):
     """Upload file specified by ``path`` to the history specified by ``history_id``.
     """
     return ctx.gi.tools.upload_file(path, history_id)

@@ -10,7 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, file_local_path):
+def cli(ctx, file_local_path):
     """Imports a new workflow given the path to a file containing a previously exported workflow.
     """
     return ctx.gi.workflows.import_workflow_from_local_path(file_local_path)

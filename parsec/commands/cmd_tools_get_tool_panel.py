@@ -9,7 +9,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance):
+def cli(galaxy_instance):
     """Get a list of available tool elements in Galaxy's configured toolbox.
     """
     return ctx.gi.tools.get_tool_panel()

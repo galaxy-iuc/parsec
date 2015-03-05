@@ -16,7 +16,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, library_id, dataset_id, purged=False):
+def cli(ctx, library_id, dataset_id, purged=False):
     """Delete a library dataset in a data library.
     """
     return ctx.gi.libraries.delete_library_dataset(library_id, dataset_id, purged=purged)

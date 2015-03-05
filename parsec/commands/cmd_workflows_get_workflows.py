@@ -29,7 +29,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, galaxy_instance, workflow_id="", name="", deleted=False, published=False):
+def cli(ctx, workflow_id="", name="", deleted=False, published=False):
     """Get all workflows or filter the specific one(s) via the provided ``name`` or ``workflow_id``. Provide only one argument, ``name`` or ``workflow_id``, but not both.
     """
     return ctx.gi.workflows.get_workflows(workflow_id=workflow_id, name=name, deleted=deleted, published=published)
