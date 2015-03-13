@@ -8,6 +8,11 @@ Parsec: the BioBlend CLI Utility
 .. image:: https://landscape.io/github/galaxy-iuc/parsec/master/landscape.svg?stytle=flat
         :target: https://landscape.io/github/galaxy-iuc/parsec/master
 
+.. image:: https://requires.io/github/galaxy-iuc/parsec/requirements.svg?branch=master
+        :target: https://requires.io/github/galaxy-iuc/parsec/requirements/?branch=master
+        :alt: Requirements Status
+
+
 Command-line utilities to assist in working with a Galaxy_ server instance.
 
 * Free software: Apache License v2
