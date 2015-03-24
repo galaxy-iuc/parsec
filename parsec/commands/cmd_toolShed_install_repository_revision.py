@@ -4,7 +4,7 @@ from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 
-@click.command('toolShed_install_repository_revision')
+@click.command('toolshed_install_repository_revision')
 @click.argument("tool_shed_url", type=str)
 @click.argument("name", type=str)
 @click.argument("owner", type=str)
@@ -44,7 +44,7 @@ def cli(
         new_tool_panel_section_label=""):
     """Install a specified repository revision from a specified Tool Shed into this Galaxy instance. This example demonstrates installation of a repository that contains valid tools, loading them into a section of the Galaxy tool panel or creating a new tool panel section. You can choose if tool dependencies or repository dependencies should be installed, use ``install_tool_dependencies`` or ``install_repository_dependencies``.
     """
-    return ctx.gi.toolShed.install_repository_revision(
+    return ctx.ti.repositories.install_repository_revision(
         tool_shed_url,
         name,
         owner,
