@@ -323,3 +323,11 @@ To get a list of users, call::
 
 .. _Galaxy: (http://galaxyproject.org/)
 .. _GitHub: https://github.com/
+
+
+In Depth Example
+~~~~~~~~~~~~~~~~
+
+::
+
+    parsec histories_get_most_recently_used_history | jq '.state_ids.error[]' | $TODO_dataset_to_tool | $TODO_rerun_job
