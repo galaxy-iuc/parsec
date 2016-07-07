@@ -84,6 +84,9 @@ class ParsecCLI(click.MultiCommand):
 def parsec(ctx, galaxy_instance, verbose):
     """Utilities to assist with the development of Galaxy tools."""
     # We abuse this, knowing that calls to one will fail.
-    ctx.gi = get_galaxy_instance(galaxy_instance)
-    ctx.ti = get_toolshed_instance(galaxy_instance)
+    try:
+        ctx.gi = get_galaxy_instance(galaxy_instance)
+        ctx.ti = get_toolshed_instance(galaxy_instance)
+    except TypeError:
+        ctx.log("Could not access Toolshed/Galaxy instance configuration")
     ctx.verbose = verbose

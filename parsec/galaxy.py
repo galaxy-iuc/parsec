@@ -16,16 +16,18 @@ def get_instance(instance_name=None):
             instance_name = conf['__default']
         except KeyError:
             raise Exception("Unknown Galaxy instance and no __default provided")
+
     if instance_name not in conf:
         raise Exception("Unknown Galaxy instance; check spelling or add to ~/.planemo.yml")
-    return conf
+
+    return conf[instance_name]
 
 def get_galaxy_instance(instance_name=None):
     conf = get_instance(instance_name=instance_name)
-    return galaxy.GalaxyInstance(conf[instance_name]['url'],
-                                 conf[instance_name]['key'])
+    return galaxy.GalaxyInstance(conf['url'],
+                                 conf['key'])
 
 def get_toolshed_instance(instance_name=None):
     conf = get_instance(instance_name=instance_name)
-    return toolshed.ToolShedInstance(conf[instance_name]['url'],
-                                     conf[instance_name]['key'])
+    return toolshed.ToolShedInstance(conf['url'],
+                                     conf['key'])
