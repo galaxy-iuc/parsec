@@ -20,7 +20,7 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
-version = '0.9.2'
+version = '0.9.3'
 
 setup(
     name='parsec',
