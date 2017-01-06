@@ -16,11 +16,6 @@ from parsec.decorators import bioblend_exception, dict_output
     type=str
 )
 @click.option(
-    "--deleted",
-    help="this parameter is deprecated and ignored, it will be removed in BioBlend 0.6",
-    is_flag=True
-)
-@click.option(
     "--published",
     help="if ``True``, return also published workflows",
     is_flag=True
@@ -34,5 +29,4 @@ def cli(ctx, workflow_id="", name="", deleted=False, published=False):
     return ctx.gi.workflows.get_workflows(
         workflow_id=workflow_id,
         name=name,
-        deleted=deleted,
         published=published)
