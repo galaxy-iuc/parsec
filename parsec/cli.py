@@ -2,6 +2,7 @@ from __future__ import absolute_import
 import os
 import sys
 import click
+import json
 
 from .io import error
 from .config import read_global_config  # noqa, ditto
@@ -108,3 +109,14 @@ def parsec(ctx, galaxy_instance, verbose):
     except TypeError:
         ctx.log("Could not access Toolshed/Galaxy instance configuration")
     ctx.verbose = verbose
+
+
+def json_loads(data):
+    """Load json data, allowing - to represent stdin."""
+    if data == "-":
+        return json.load(sys.stdin)
+    elif os.path.exists(data):
+        with open(data, 'r') as handle:
+            return json.load(handle)
+    else:
+        return json.loads(data)

@@ -278,7 +278,7 @@ class ScriptBuilder(object):
                     if v != 'None':
                         method_signature_kwargs.append("%s=%s" % (k, v))
                         if real_type == 'dict':
-                            v = 'json.loads(%s)' % v
+                            v = 'json_loads(%s)' % v
                         method_exec_kwargs.append('%s=%s' % (k, k))
 
                     # TODO: refactor
@@ -293,7 +293,7 @@ class ScriptBuilder(object):
                     tk = k
                     method_signature_args.append(tk)
                     if real_type == 'dict':
-                        tk = 'json.loads(%s)' % k
+                        tk = 'json_loads(%s)' % k
                     method_exec_args.append(tk)
                     data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
 

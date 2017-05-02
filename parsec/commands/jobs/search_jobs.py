@@ -1,6 +1,5 @@
 import click
-import json
-from parsec.cli import pass_context
+from parsec.cli import pass_context, json_loads
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('search_jobs')
@@ -13,4 +12,4 @@ from parsec.decorators import bioblend_exception, dict_output
 def cli(ctx, job_info):
     """Return jobs for the current user based payload content.
     """
-    return ctx.gi.jobs.search_jobs(json.loads(job_info))
+    return ctx.gi.jobs.search_jobs(json_loads(job_info))
