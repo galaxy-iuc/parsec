@@ -4,6 +4,7 @@ import json
 import wrapt
 from .io import error
 
+
 @wrapt.decorator
 def bioblend_exception(wrapped, instance, args, kwargs):
     try:
@@ -14,8 +15,9 @@ def bioblend_exception(wrapped, instance, args, kwargs):
         else:
             print(e)
 
+
 @wrapt.decorator
 def dict_output(wrapped, instance, args, kwargs):
-    #TODO enhance
+    # TODO enhance
     output = wrapped(*args, **kwargs)
     print((json.dumps(output, indent=4)))

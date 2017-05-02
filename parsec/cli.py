@@ -9,8 +9,8 @@ from .config import read_global_config  # noqa, ditto
 from .galaxy import get_galaxy_instance, get_toolshed_instance
 from parsec import __version__  # noqa, ditto
 
-
 CONTEXT_SETTINGS = dict(auto_envvar_prefix='PARSEC')
+
 
 class Context(object):
 
@@ -101,7 +101,9 @@ class ParsecCLI(click.MultiCommand):
 )
 @pass_context
 def parsec(ctx, galaxy_instance, verbose):
-    """Command line wrappers around BioBlend functions. While this sounds unexciting, with parsec and jq you can easily build powerful command line scripts."""
+    """Command line wrappers around BioBlend functions. While this sounds
+    unexciting, with parsec and jq you can easily build powerful command line
+    scripts."""
     # We abuse this, knowing that calls to one will fail.
     try:
         ctx.gi = get_galaxy_instance(galaxy_instance)

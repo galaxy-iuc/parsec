@@ -4,6 +4,7 @@ from bioblend import galaxy, toolshed
 from .config import read_global_config, global_config_path
 from .io import warn
 
+
 def get_instance(instance_name=None):
     # I don't like reading the config twice.
     conf = read_global_config()
@@ -23,10 +24,12 @@ def get_instance(instance_name=None):
 
     return conf[instance_name]
 
+
 def get_galaxy_instance(instance_name=None):
     conf = get_instance(instance_name=instance_name)
     return galaxy.GalaxyInstance(conf['url'],
                                  conf['key'])
+
 
 def get_toolshed_instance(instance_name=None):
     conf = get_instance(instance_name=instance_name)
