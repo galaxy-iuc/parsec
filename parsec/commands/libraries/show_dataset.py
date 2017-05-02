@@ -3,10 +3,11 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-
-@click.command('libraries_show_dataset')
+@click.command('show_dataset')
 @click.argument("library_id", type=str)
 @click.argument("dataset_id", type=str)
+
+
 @pass_context
 @bioblend_exception
 @dict_output

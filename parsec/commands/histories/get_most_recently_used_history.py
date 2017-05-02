@@ -3,8 +3,9 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+@click.command('get_most_recently_used_history')
 
-@click.command('histories_get_most_recently_used_history')
+
 @pass_context
 @bioblend_exception
 @dict_output

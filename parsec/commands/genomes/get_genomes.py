@@ -3,8 +3,9 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+@click.command('get_genomes')
 
-@click.command('genomes_get_genomes')
+
 @pass_context
 @bioblend_exception
 @dict_output

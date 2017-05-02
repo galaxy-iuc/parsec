@@ -3,10 +3,11 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-
-@click.command('histories_update_dataset')
+@click.command('update_dataset')
 @click.argument("history_id", type=str)
 @click.argument("dataset_id", type=str)
+
+
 @pass_context
 @bioblend_exception
 @dict_output

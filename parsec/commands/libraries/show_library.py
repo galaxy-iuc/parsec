@@ -3,14 +3,15 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-
-@click.command('libraries_show_library')
+@click.command('show_library')
 @click.argument("library_id", type=str)
+
 @click.option(
     "--contents",
-    help="True if want to get contents of the library (rather than just the library details).",
+    help="True if want to get contents of the library (rather than just the library details)",
     is_flag=True
 )
+
 @pass_context
 @bioblend_exception
 @dict_output

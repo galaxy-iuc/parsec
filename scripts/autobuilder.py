@@ -198,13 +198,12 @@ class ScriptBuilder(object):
     def process_client(self, module, sm, ssm_name):
         log.info("Processing bioblend.%s.%s", module, ssm_name)
         ssm = getattr(sm, ssm_name)
-        wrote_modules = []
         for f in dir(ssm):
             if f[0] == '_' or f[0].upper() == f[0]:
                 continue
             if f in IGNORE_LIST or '%s.%s' % (ssm, f) in IGNORE_LIST:
                 continue
-            wrote_modules.append(self.orig(module, sm, ssm, f))
+            self.orig(module, sm, ssm, f)
         # Write module __init__
         with open(os.path.join('parsec', 'commands', module, '__init__.py'), 'w') as handle:
             pass
@@ -212,13 +211,16 @@ class ScriptBuilder(object):
         with open(os.path.join('parsec', 'commands', 'cmd_%s.py' % module), 'w') as handle:
             handle.write('import click\n')
             # for function:
-            for idx, (module, func) in enumerate(wrote_modules):
-                handle.write('from parsec.commands.%s.%s import cli as func%s\n' % (module, func, idx))
+            files = list(glob.glob("parsec/commands/%s/*.py" % module))
+            files = [f for f in files if "__init__.py" not in f]
+            for idx, path in enumerate(files):
+                fn = path.replace('/', '.')[0:-3]
+                handle.write('from %s import cli as func%s\n' % (fn, idx))
 
             handle.write('\n@click.group()\n')
             handle.write('def cli():\n')
             handle.write('\tpass\n\n')
-            for i in range(len(wrote_modules)):
+            for i in range(len(files) - 1):
                 handle.write('cli.add_command(func%d)\n' % i)
 
     def orig(self, module_name, submodule, subsubmodule, function_name):
@@ -315,7 +317,6 @@ class ScriptBuilder(object):
         # Save file
         with open(cmd_path, 'w') as handle:
             handle.write(self.template('click', data))
-        return [module_name, function_name]
 
 if __name__ == '__main__':
     z = ScriptBuilder()

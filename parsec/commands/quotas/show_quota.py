@@ -3,14 +3,15 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-
-@click.command('quotas_show_quota')
+@click.command('show_quota')
 @click.argument("quota_id", type=str)
+
 @click.option(
     "--deleted",
     help="Search for quota in list of ones already marked as deleted",
     is_flag=True
 )
+
 @pass_context
 @bioblend_exception
 @dict_output

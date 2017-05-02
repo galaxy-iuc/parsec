@@ -3,12 +3,13 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
+@click.command('get_sniffers')
 
-@click.command('datatypes_get_sniffers')
+
 @pass_context
 @bioblend_exception
 @dict_output
 def cli(ctx):
-    """Displays a collection (list) of sniffers.
+    """Get the list of all installed sniffers.
     """
     return ctx.gi.datatypes.get_sniffers()
