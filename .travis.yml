@@ -1,0 +1,20 @@
+language: python
+python:
+- '2.7'
+- '3.5'
+
+install: pip install -r requirements.txt
+
+script:
+- pip install -U flake8
+- flake8 parsec --exclude=parsec/commands/ --ignore=E501
+deploy:
+  provider: pypi
+  user: erasche
+  password:
+    secure: XfxDtN97f2yRXqw0VVG+GqLfStZIlPQWX+4BT1mP7RwHSJUfPUMEUdzBOi361XHdNPUbuaVr95mFty6eCiTT9WUiEXyQ6FHtK0I8mBt84twlI3caRMCQjJQTsK8mYKKWWliJV2ywQPu/XkWgklZJRhauYU5MoY9hKUB1mNx6FwM=
+  on:
+    tags: true
+    all_branches: true
+    distributions: sdist bdist_wheel
+    repo: galaxy-iuc/parsec

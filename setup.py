@@ -11,7 +11,7 @@ readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 requirements = [
-    'Click',
+    'Click>=6.7',
     'bioblend',
     'wrapt',
 ]
@@ -20,7 +20,7 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
-version = '0.9.3'
+version = '1.0.0'
 
 setup(
     name='parsec',
@@ -42,15 +42,15 @@ setup(
     license="AFL",
     keywords='parsec',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Environment :: Console',
         'License :: OSI Approved :: MIT License',
         'Operating System :: POSIX',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
     tests_require=test_requirements

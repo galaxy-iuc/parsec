@@ -4,12 +4,13 @@ from bioblend import galaxy, toolshed
 from .config import read_global_config, global_config_path
 from .io import warn
 
+
 def get_instance(instance_name=None):
     # I don't like reading the config twice.
     conf = read_global_config()
     if not os.path.exists(global_config_path()):
         # Probably creating the file for the first time.
-        warn("No parsec config file found, continuning anyway...")
+        warn("No parsec config file found, continuing anyway...")
         return None
 
     if instance_name is None or instance_name == '__default':
@@ -23,10 +24,12 @@ def get_instance(instance_name=None):
 
     return conf[instance_name]
 
+
 def get_galaxy_instance(instance_name=None):
     conf = get_instance(instance_name=instance_name)
     return galaxy.GalaxyInstance(conf['url'],
                                  conf['key'])
+
 
 def get_toolshed_instance(instance_name=None):
     conf = get_instance(instance_name=instance_name)
