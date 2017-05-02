@@ -3,10 +3,11 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-
-@click.command('workflows_get_workflow_inputs')
+@click.command('get_workflow_inputs')
 @click.argument("workflow_id", type=str)
 @click.argument("label", type=str)
+
+
 @pass_context
 @bioblend_exception
 @dict_output

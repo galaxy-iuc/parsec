@@ -3,13 +3,13 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('get_current_user')
+@click.command('get_repositories')
 
 
 @pass_context
 @bioblend_exception
 @dict_output
 def cli(ctx):
-    """Display information about the user associated with this Galaxy connection.
+    """Get the list of all installed Tool Shed repositories on this Galaxy instance.
     """
-    return ctx.gi.users.get_current_user()
+    return ctx.gi.toolshed.get_repositories()

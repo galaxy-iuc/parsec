@@ -3,7 +3,7 @@ import click
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('import_shared_workflow')
+@click.command('get_invocations')
 @click.argument("workflow_id", type=str)
 
 
@@ -11,6 +11,6 @@ from parsec.decorators import bioblend_exception, dict_output
 @bioblend_exception
 @dict_output
 def cli(ctx, workflow_id):
-    """Imports a new workflow from the shared published workflows.
+    """Get a list containing all the workflow invocations corresponding to the specified workflow.
     """
-    return ctx.gi.workflows.import_shared_workflow(workflow_id)
+    return ctx.gi.workflows.get_invocations(workflow_id)
