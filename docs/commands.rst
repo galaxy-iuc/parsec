@@ -2,105 +2,30 @@
 Commands
 ========
 
-parsec is a set of utilities for talking to Galaxy servers. Each utility is
-implemented as a subcommand of the ``parsec`` executable. This section of the
-documentation describes these commands.
+parsec is a set of wrappers for BioBlend's API. It builds a set of small,
+useful utilities for talking to Galaxy servers. Each utility is implemented as
+a subcommand of ``parsec``. This section of the documentation
+describes these commands.
 
+.. toctree::
+   :maxdepth: 0
 
-.. include:: commands/config_get_config.rst
-.. include:: commands/config_init.rst
-.. include:: commands/datasets_download_dataset.rst
-.. include:: commands/datasets_show_dataset.rst
-.. include:: commands/datasets_show_stderr.rst
-.. include:: commands/datasets_show_stdout.rst
-.. include:: commands/datatypes_get_datatypes.rst
-.. include:: commands/datatypes_get_sniffers.rst
-.. include:: commands/folders_delete_folder.rst
-.. include:: commands/folders_show_folder.rst
-.. include:: commands/forms_create_form.rst
-.. include:: commands/forms_get_forms.rst
-.. include:: commands/forms_show_form.rst
-.. include:: commands/ftpfiles_get_ftp_files.rst
-.. include:: commands/genomes_get_genomes.rst
-.. include:: commands/genomes_install_genome.rst
-.. include:: commands/genomes_show_genome.rst
-.. include:: commands/groups_create_group.rst
-.. include:: commands/groups_get_groups.rst
-.. include:: commands/groups_show_group.rst
-.. include:: commands/histories_create_dataset_collection.rst
-.. include:: commands/histories_create_history.rst
-.. include:: commands/histories_create_history_tag.rst
-.. include:: commands/histories_delete_dataset.rst
-.. include:: commands/histories_delete_dataset_collection.rst
-.. include:: commands/histories_delete_history.rst
-.. include:: commands/histories_download_history.rst
-.. include:: commands/histories_export_history.rst
-.. include:: commands/histories_get_histories.rst
-.. include:: commands/histories_get_most_recently_used_history.rst
-.. include:: commands/histories_get_status.rst
-.. include:: commands/histories_show_dataset.rst
-.. include:: commands/histories_show_dataset_collection.rst
-.. include:: commands/histories_show_dataset_provenance.rst
-.. include:: commands/histories_show_history.rst
-.. include:: commands/histories_show_matching_datasets.rst
-.. include:: commands/histories_undelete_history.rst
-.. include:: commands/histories_update_dataset.rst
-.. include:: commands/histories_update_dataset_collection.rst
-.. include:: commands/histories_update_history.rst
-.. include:: commands/histories_upload_dataset_from_library.rst
-.. include:: commands/jobs_get_jobs.rst
-.. include:: commands/jobs_get_state.rst
-.. include:: commands/jobs_search_jobs.rst
-.. include:: commands/jobs_show_job.rst
-.. include:: commands/libraries_copy_from_dataset.rst
-.. include:: commands/libraries_create_folder.rst
-.. include:: commands/libraries_create_library.rst
-.. include:: commands/libraries_delete_library.rst
-.. include:: commands/libraries_delete_library_dataset.rst
-.. include:: commands/libraries_get_folders.rst
-.. include:: commands/libraries_get_libraries.rst
-.. include:: commands/libraries_set_library_permissions.rst
-.. include:: commands/libraries_show_dataset.rst
-.. include:: commands/libraries_show_folder.rst
-.. include:: commands/libraries_show_library.rst
-.. include:: commands/libraries_upload_file_contents.rst
-.. include:: commands/libraries_upload_file_from_local_path.rst
-.. include:: commands/libraries_upload_file_from_server.rst
-.. include:: commands/libraries_upload_file_from_url.rst
-.. include:: commands/libraries_upload_from_galaxy_filesystem.rst
-.. include:: commands/quotas_get_quotas.rst
-.. include:: commands/quotas_show_quota.rst
-.. include:: commands/roles_get_roles.rst
-.. include:: commands/roles_show_role.rst
-.. include:: commands/toolShed_get_repositories.rst
-.. include:: commands/toolShed_install_repository_revision.rst
-.. include:: commands/toolShed_show_repository.rst
-.. include:: commands/tool_data_delete_data_table.rst
-.. include:: commands/tool_data_get_data_tables.rst
-.. include:: commands/tool_data_show_data_table.rst
-.. include:: commands/tools_get_tool_panel.rst
-.. include:: commands/tools_get_tools.rst
-.. include:: commands/tools_paste_content.rst
-.. include:: commands/tools_put_url.rst
-.. include:: commands/tools_run_tool.rst
-.. include:: commands/tools_show_tool.rst
-.. include:: commands/tools_upload_file.rst
-.. include:: commands/users_create_local_user.rst
-.. include:: commands/users_create_remote_user.rst
-.. include:: commands/users_create_user.rst
-.. include:: commands/users_create_user_apikey.rst
-.. include:: commands/users_get_current_user.rst
-.. include:: commands/users_get_users.rst
-.. include:: commands/users_show_user.rst
-.. include:: commands/visual_get_visualizations.rst
-.. include:: commands/visual_show_visualization.rst
-.. include:: commands/workflows_delete_workflow.rst
-.. include:: commands/workflows_export_workflow_json.rst
-.. include:: commands/workflows_export_workflow_to_local_path.rst
-.. include:: commands/workflows_get_workflow_inputs.rst
-.. include:: commands/workflows_get_workflows.rst
-.. include:: commands/workflows_import_shared_workflow.rst
-.. include:: commands/workflows_import_workflow_from_local_path.rst
-.. include:: commands/workflows_import_workflow_json.rst
-.. include:: commands/workflows_run_workflow.rst
-.. include:: commands/workflows_show_workflow.rst
+   commands/config.rst
+   commands/datasets.rst
+   commands/datatypes.rst
+   commands/folders.rst
+   commands/forms.rst
+   commands/ftpfiles.rst
+   commands/genomes.rst
+   commands/groups.rst
+   commands/histories.rst
+   commands/jobs.rst
+   commands/libraries.rst
+   commands/quotas.rst
+   commands/roles.rst
+   commands/tool_data.rst
+   commands/tools.rst
+   commands/toolshed.rst
+   commands/users.rst
+   commands/visual.rst
+   commands/workflows.rst

@@ -50,11 +50,28 @@ def list_cmds():
     rv.sort()
     return rv
 
-def name_to_command(name):
+
+def list_subcmds(parent):
+    rv = []
+    for filename in os.listdir(os.path.join(cmd_folder, parent)):
+        if filename.endswith('.py') and \
+           not filename.startswith('__'):
+            rv.append(filename[:-len(".py")])
+    rv.sort()
+    return rv
+
+
+def name_to_command(parent, name):
     try:
         if sys.version_info[0] == 2:
+            if parent:
+                parent = parent.encode('ascii', 'replace')
             name = name.encode('ascii', 'replace')
-        mod_name = 'parsec.commands.cmd_' + name
+
+        if parent:
+            mod_name = 'parsec.commands.%s.%s' % (parent, name)
+        else:
+            mod_name = 'parsec.commands.cmd_' + name
         mod = __import__(mod_name, None, None, ['cli'])
     except ImportError as e:
         error("Problem loading command %s, exception %s" % (name, e))
@@ -68,7 +85,7 @@ class ParsecCLI(click.MultiCommand):
         return list_cmds()
 
     def get_command(self, ctx, name):
-        return name_to_command(name)
+        return name_to_command(None, name)
 
 
 @click.command(cls=ParsecCLI, context_settings=CONTEXT_SETTINGS)
