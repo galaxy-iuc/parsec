@@ -22,6 +22,9 @@ IGNORE_LIST = [
     'set_max_get_retries',
     'get_max_get_retries',
     'set_get_retry_delay',
+    'get_retry_delay',
+    'set_retry_delay',
+    'max_get_retries',
 ]
 
 
@@ -195,14 +198,28 @@ class ScriptBuilder(object):
     def process_client(self, module, sm, ssm_name):
         log.info("Processing bioblend.%s.%s", module, ssm_name)
         ssm = getattr(sm, ssm_name)
+        wrote_modules = []
         for f in dir(ssm):
             if f[0] == '_' or f[0].upper() == f[0]:
                 continue
             if f in IGNORE_LIST or '%s.%s' % (ssm, f) in IGNORE_LIST:
                 continue
-            self.orig(module, sm, ssm, f)
-        # Write module config.
-        import sys; sys.exit()
+            wrote_modules.append(self.orig(module, sm, ssm, f))
+        # Write module __init__
+        with open(os.path.join('parsec', 'commands', module, '__init__.py'), 'w') as handle:
+            pass
+
+        with open(os.path.join('parsec', 'commands', 'cmd_%s.py' % module), 'w') as handle:
+            handle.write('import click\n')
+            # for function:
+            for idx, (module, func) in enumerate(wrote_modules):
+                handle.write('from parsec.commands.%s.%s import cli as func%s\n' % (module, func, idx))
+
+            handle.write('\n@click.group()\n')
+            handle.write('def cli():\n')
+            handle.write('\tpass\n\n')
+            for i in range(len(wrote_modules)):
+                handle.write('cli.add_command(func%d)\n' % i)
 
     def orig(self, module_name, submodule, subsubmodule, function_name):
         target = [module_name, function_name]
@@ -214,7 +231,7 @@ class ScriptBuilder(object):
         argdoc = func.__doc__
 
         data = {
-            'command_name': candidate.replace('.', '_'),
+            'command_name': function_name,
             'click_arguments': "",
             'click_options': "",
             'args_with_defaults': "ctx",
@@ -292,13 +309,13 @@ class ScriptBuilder(object):
 
         # Generate a command name, prefix everything with auto_ to identify the
         # automatically generated stuff
-        cmd_name = 'cmd_%s.py' % candidate.replace('.', '_')
+        cmd_name = '%s.py' % function_name
         cmd_path = os.path.join('parsec', 'commands', module_name, cmd_name)
 
         # Save file
-        print("Writing %s" % cmd_path)
         with open(cmd_path, 'w') as handle:
             handle.write(self.template('click', data))
+        return [module_name, function_name]
 
 if __name__ == '__main__':
     z = ScriptBuilder()

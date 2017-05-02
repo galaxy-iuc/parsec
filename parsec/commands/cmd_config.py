@@ -1,9 +1,8 @@
 import click
-from parsec.commands.config.cmd_config_get_config import cli as ccgc
-
+from parsec.commands.config.get_config import cli as func0
 
 @click.group()
 def cli():
-    pass
+	pass
 
-cli.add_command(ccgc)
+cli.add_command(func0)
