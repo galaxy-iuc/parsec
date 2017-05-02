@@ -42,7 +42,7 @@ To connect to a running Galaxy server, you will need an account on that Galaxy i
 First initialize the parsec configuration file in ``~/.parsec.yml`` via the ``parsec`` command ``config_init``::
 
     user@host:~$ parsec config_init
-    No parsec config file found, continuning anyway...
+    No parsec config file found, continuing anyway...
     Wrote configuration template to ~/.paresc.yml, please open with editor and fill out.
 
 This will look something like the following::

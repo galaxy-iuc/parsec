@@ -1,10 +1,10 @@
 import click
-
+import json
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('search_jobs')
-@click.argument("job_info", type=dict)
+@click.argument("job_info", type=str)
 
 
 @pass_context

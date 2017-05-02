@@ -35,7 +35,7 @@ PARAM_TRANSLATION = {
     ],
     'dict': [
         #TODO
-        'type=dict',
+        'type=str',
     ],
     'int': [
         'type=int'
@@ -260,7 +260,7 @@ class ScriptBuilder(object):
             method_exec_args = []
             method_exec_kwargs = []
 
-            def process_arg(k, v, param_type):
+            def process_arg(k, v, param_type, real_type):
                 # If v is not None, then it's a kwargs, otherwise an arg
                 if v is not None:
                     # Strings must be treated specially by removing their value
@@ -275,6 +275,8 @@ class ScriptBuilder(object):
 
                     # Register twice as the method invocation uses v=k
                     if v != 'None':
+                        if real_type == 'dict':
+                            v = 'json.loads(%s)' % v
                         method_signature_kwargs.append("%s=%s" % (k, v))
                         method_exec_kwargs.append('%s=%s' % (k, k))
 
@@ -287,8 +289,11 @@ class ScriptBuilder(object):
                     data['click_options'] += self.__click_option(name=k, helpstr=descstr, ptype=param_type)
                 else:
                     # Args, not kwargs
-                    method_signature_args.append(k)
-                    method_exec_args.append(k)
+                    tk = k
+                    if real_type == 'dict':
+                        tk = 'json.loads(%s)' % k
+                    method_signature_args.append(tk)
+                    method_exec_args.append(tk)
                     data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
 
 
@@ -296,13 +301,15 @@ class ScriptBuilder(object):
             for k, v in argspec:
                 try:
                     param_type = self.parameter_translation(param_docs[k]['type'])
+                    real_type = param_docs[k]['type']
                 except Exception as e:
                     param_type = []
+                    real_type = None
                     print(candidate, e)
-                process_arg(k, v, param_type)
+                process_arg(k, v, param_type, None)
 
             had_weird_kwargs = False
-            for k in param_docs.keys():
+            for k in sorted(param_docs.keys()):
                 # Ignore things we've seen before
                 if k in argspec_keys:
                     continue
@@ -312,7 +319,7 @@ class ScriptBuilder(object):
                 else:
                     default_value = '__None__'
 
-                process_arg(k, default_value, self.parameter_translation(param_type))
+                process_arg(k, default_value, self.parameter_translation(param_type), param_docs[k]['type'])
                 # Booleans are diff
                 if param_type == 'bool':
                     data['kwarg_updates'] += "    if %s is not None:\n        kwargs['%s'] = %s\n" % (k, k, k)

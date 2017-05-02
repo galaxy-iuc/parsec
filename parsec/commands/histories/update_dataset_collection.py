@@ -1,5 +1,5 @@
 import click
-
+import json
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
@@ -8,14 +8,14 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.argument("dataset_collection_id", type=str)
 
 @click.option(
-    "--name",
-    help="Replace history dataset collection name with the given string",
-    type=str
-)
-@click.option(
     "--deleted",
     help="Mark or unmark history dataset collection as deleted",
     is_flag=True
+)
+@click.option(
+    "--name",
+    help="Replace history dataset collection name with the given string",
+    type=str
 )
 @click.option(
     "--visible",
@@ -30,10 +30,10 @@ def cli(ctx, history_id, dataset_collection_id):
     """Update history dataset collection metadata. Some of the attributes that can be modified are documented below.
     """
     kwargs = {}
-    if name and len(name) > 0:
-        kwargs['name'] = name
     if deleted is not None:
         kwargs['deleted'] = deleted
+    if name and len(name) > 0:
+        kwargs['name'] = name
     if visible is not None:
         kwargs['visible'] = visible
 

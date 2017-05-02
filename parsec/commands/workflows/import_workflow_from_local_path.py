@@ -1,5 +1,5 @@
 import click
-
+import json
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 

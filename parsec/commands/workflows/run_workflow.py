@@ -1,5 +1,5 @@
 import click
-
+import json
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
@@ -9,12 +9,12 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--dataset_map",
     help="A mapping of workflow inputs to datasets. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), or HistoryDatasetAssociation (``hda``). The map must be in the following format: ``{'<input>': {'id': <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}`` (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src': 'ld'}}``)",
-    type=dict
+    type=str
 )
 @click.option(
     "--params",
     help="A mapping of non-datasets tool parameters (see below)",
-    type=dict
+    type=str
 )
 @click.option(
     "--history_id",
@@ -34,7 +34,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--replacement_params",
     help="pattern-based replacements for post-job actions (see below)",
-    type=dict
+    type=str
 )
 
 @pass_context

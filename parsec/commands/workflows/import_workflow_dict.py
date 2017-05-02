@@ -1,10 +1,10 @@
 import click
-
+import json
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('import_workflow_dict')
-@click.argument("workflow_dict", type=dict)
+@click.argument("workflow_dict", type=str)
 
 
 @pass_context

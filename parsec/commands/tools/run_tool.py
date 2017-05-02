@@ -1,12 +1,12 @@
 import click
-
+import json
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception, dict_output
 
 @click.command('run_tool')
 @click.argument("history_id", type=str)
 @click.argument("tool_id", type=str)
-@click.argument("tool_inputs", type=dict)
+@click.argument("tool_inputs", type=str)
 
 
 @pass_context
