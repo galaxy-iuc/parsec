@@ -546,15 +546,20 @@ First, we'll create a history to manage all of our work:
 
 .. code-block:: shell
 
-   $ parsec histories create_history | jq .id | xargs -n 1 parsec histories update_history --name 'Parsec test'
+   $ HISTORY_ID=$(parsec histories create_history | jq .id)
+   $ parsec histories update_history --name 'Parsec test'
 
-This could be done in one step, but this shows another example of piping commands together. Next we have to fetch some datasets. You could upload them:
+Next we have to fetch some datasets. You could upload them:
+
+.. code-block:: shell
+
+   $ parsec tools upload_file my-file.gff3 $HISTORY_ID
 
 But in my case, I need to run a tool which produces them:
 
 .. code-block:: shell
 
-   JOB_ID=$(parsec tools run_tool 0d17c6f8cd8d49a5 edu.tamu.cpt2.webapollo.export \
+   JOB_ID=$(parsec tools run_tool $HISTORY_ID edu.tamu.cpt2.webapollo.export \
       '{"org_source|source_select": "direct", "org_source|org_raw": "Miro"}' | \
       jq .id)
 
@@ -625,7 +630,7 @@ Running the invocation:
 
 .. code-block:: shell
 
-   $ parsec workflows invoke_workflow ded67e5aa1371841 --inputs inputs.json --history_id 0d17c6f8cd8d49a5
+   $ parsec workflows invoke_workflow ded67e5aa1371841 --inputs inputs.json --history_id $HISTORY_ID
 
 Produces a very succinct workflow launch output:
 
