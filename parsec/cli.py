@@ -54,7 +54,7 @@ def name_to_command(name):
     try:
         if sys.version_info[0] == 2:
             name = name.encode('ascii', 'replace')
-        mod_name = 'parsec.commands.cmd_' + name
+        mod_name = 'parsec.commands.config.cmd_' + name
         mod = __import__(mod_name, None, None, ['cli'])
     except ImportError as e:
         error("Problem loading command %s, exception %s" % (name, e))
@@ -83,7 +83,7 @@ class ParsecCLI(click.MultiCommand):
 )
 @pass_context
 def parsec(ctx, galaxy_instance, verbose):
-    """Utilities to assist with the development of Galaxy tools."""
+    """Command line wrappers around BioBlend functions. While this sounds unexciting, with parsec and jq you can easily build powerful command line scripts."""
     # We abuse this, knowing that calls to one will fail.
     try:
         ctx.gi = get_galaxy_instance(galaxy_instance)
