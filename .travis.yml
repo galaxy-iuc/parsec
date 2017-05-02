@@ -1,0 +1,15 @@
+language: python
+python:
+- '2.7'
+- '3.3'
+- pypy
+
+deploy:
+  provider: pypi
+  user: erasche
+  password:
+    secure: XfxDtN97f2yRXqw0VVG+GqLfStZIlPQWX+4BT1mP7RwHSJUfPUMEUdzBOi361XHdNPUbuaVr95mFty6eCiTT9WUiEXyQ6FHtK0I8mBt84twlI3caRMCQjJQTsK8mYKKWWliJV2ywQPu/XkWgklZJRhauYU5MoY9hKUB1mNx6FwM=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    repo: galaxy-iuc/parsec
