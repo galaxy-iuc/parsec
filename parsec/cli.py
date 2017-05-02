@@ -54,7 +54,7 @@ def name_to_command(name):
     try:
         if sys.version_info[0] == 2:
             name = name.encode('ascii', 'replace')
-        mod_name = 'parsec.commands.config.cmd_' + name
+        mod_name = 'parsec.commands.cmd_' + name
         mod = __import__(mod_name, None, None, ['cli'])
     except ImportError as e:
         error("Problem loading command %s, exception %s" % (name, e))
