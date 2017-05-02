@@ -69,10 +69,7 @@ class ScriptBuilder(object):
         self.obj = bg.GalaxyInstance("http://localhost:8080", "API_KEY")
 
     def template(self, template, opts):
-        try:
-            return self.templates[template] % opts
-        except:
-            raise Exception("Template not found")
+        return self.templates[template] % opts
 
     @classmethod
     def __click_option(cls, name='arg', helpstr='TODO', ptype=None):
@@ -252,6 +249,8 @@ class ScriptBuilder(object):
                                                             'desc': m.group('desc')}
 
         argspec = list(self.pair_arguments(func))
+        data['kwarg_updates'] = ''
+        data['empty_kwargs'] = ''
         # Ignore with only cls/self
         if len(argspec) > 0:
             method_signature = ['ctx']
@@ -261,17 +260,13 @@ class ScriptBuilder(object):
             method_exec_args = []
             method_exec_kwargs = []
 
-            for k, v in argspec:
-                try:
-                    param_type = self.parameter_translation(param_docs[k]['type'])
-                except Exception as e:
-                    param_type = []
-                    print(candidate, e)
-
+            def process_arg(k, v, param_type):
                 # If v is not None, then it's a kwargs, otherwise an arg
                 if v is not None:
                     # Strings must be treated specially by removing their value
-                    if isinstance(v, str):
+                    if v == '__None__':
+                        v = 'None'
+                    elif isinstance(v, str):
                         v = '""'
 
                     if v == []:
@@ -279,8 +274,9 @@ class ScriptBuilder(object):
                     # All other instances of V are fine, e.g. boolean=False or int=1000
 
                     # Register twice as the method invocation uses v=k
-                    method_signature_kwargs.append("%s=%s" % (k, v))
-                    method_exec_kwargs.append('%s=%s' % (k, k))
+                    if v != 'None':
+                        method_signature_kwargs.append("%s=%s" % (k, v))
+                        method_exec_kwargs.append('%s=%s' % (k, k))
 
                     # TODO: refactor
                     try:
@@ -296,6 +292,33 @@ class ScriptBuilder(object):
                     data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
 
 
+            argspec_keys = [x[0] for x in argspec]
+            for k, v in argspec:
+                try:
+                    param_type = self.parameter_translation(param_docs[k]['type'])
+                except Exception as e:
+                    param_type = []
+                    print(candidate, e)
+                process_arg(k, v, param_type)
+
+            had_weird_kwargs = False
+            for k in param_docs.keys():
+                # Ignore things we've seen before
+                if k in argspec_keys:
+                    continue
+                param_type = param_docs[k]['type']
+                if param_type == 'list':
+                    default_value = []
+                else:
+                    default_value = '__None__'
+
+                process_arg(k, default_value, self.parameter_translation(param_type))
+                # Booleans are diff
+                if param_type == 'bool':
+                    data['kwarg_updates'] += "    if %s is not None:\n        kwargs['%s'] = %s\n" % (k, k, k)
+                elif param_type == 'str':
+                    data['kwarg_updates'] += "    if %s and len(%s) > 0:\n        kwargs['%s'] = %s\n" % (k, k, k, k)
+                had_weird_kwargs = True
 
             # Complete args
             data['args_with_defaults'] = ', '.join(method_signature +
@@ -303,6 +326,10 @@ class ScriptBuilder(object):
                                                 method_signature_kwargs)
             data['wrapped_method_args'] = ', '.join(method_exec_args +
                                                     method_exec_kwargs)
+            if had_weird_kwargs:
+                data['wrapped_method_args'] += ', **kwargs'
+                data['empty_kwargs'] = '\n    kwargs = {}\n'
+
 
         # My function is more effective until can figure out docstring
         data['short_docstring'] = self.important_doc(argdoc)

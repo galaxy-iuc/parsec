@@ -11,5 +11,5 @@ from parsec.decorators import bioblend_exception, dict_output
 @dict_output
 def cli(%(args_with_defaults)s):
     """%(short_docstring)s
-    """
+    """%(empty_kwargs)s%(kwarg_updates)s
     return %(wrapped_method)s(%(wrapped_method_args)s)
