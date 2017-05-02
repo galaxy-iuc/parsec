@@ -13,4 +13,4 @@ from parsec.decorators import bioblend_exception, dict_output
 def cli(ctx, job_info):
     """Return jobs for the current user based payload content.
     """
-    return ctx.gi.jobs.search_jobs(job_info)
+    return ctx.gi.jobs.search_jobs(json.loads(job_info))

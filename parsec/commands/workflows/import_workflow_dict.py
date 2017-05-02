@@ -13,4 +13,4 @@ from parsec.decorators import bioblend_exception, dict_output
 def cli(ctx, workflow_dict):
     """Imports a new workflow given a dictionary representing a previously exported workflow.
     """
-    return ctx.gi.workflows.import_workflow_dict(workflow_dict)
+    return ctx.gi.workflows.import_workflow_dict(json.loads(workflow_dict))

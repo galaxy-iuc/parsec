@@ -261,6 +261,7 @@ class ScriptBuilder(object):
             method_exec_kwargs = []
 
             def process_arg(k, v, param_type, real_type):
+                log.debug("Processing %s=%s %s %s", k, v, param_type, real_type)
                 # If v is not None, then it's a kwargs, otherwise an arg
                 if v is not None:
                     # Strings must be treated specially by removing their value
@@ -275,9 +276,9 @@ class ScriptBuilder(object):
 
                     # Register twice as the method invocation uses v=k
                     if v != 'None':
+                        method_signature_kwargs.append("%s=%s" % (k, v))
                         if real_type == 'dict':
                             v = 'json.loads(%s)' % v
-                        method_signature_kwargs.append("%s=%s" % (k, v))
                         method_exec_kwargs.append('%s=%s' % (k, k))
 
                     # TODO: refactor
@@ -290,9 +291,9 @@ class ScriptBuilder(object):
                 else:
                     # Args, not kwargs
                     tk = k
+                    method_signature_args.append(tk)
                     if real_type == 'dict':
                         tk = 'json.loads(%s)' % k
-                    method_signature_args.append(tk)
                     method_exec_args.append(tk)
                     data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
 
@@ -306,7 +307,7 @@ class ScriptBuilder(object):
                     param_type = []
                     real_type = None
                     print(candidate, e)
-                process_arg(k, v, param_type, None)
+                process_arg(k, v, param_type, real_type)
 
             had_weird_kwargs = False
             for k in sorted(param_docs.keys()):
@@ -319,7 +320,7 @@ class ScriptBuilder(object):
                 else:
                     default_value = '__None__'
 
-                process_arg(k, default_value, self.parameter_translation(param_type), param_docs[k]['type'])
+                process_arg(k, default_value, self.parameter_translation(param_type), param_type)
                 # Booleans are diff
                 if param_type == 'bool':
                     data['kwarg_updates'] += "    if %s is not None:\n        kwargs['%s'] = %s\n" % (k, k, k)
