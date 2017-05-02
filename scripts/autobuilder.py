@@ -220,7 +220,7 @@ class ScriptBuilder(object):
             handle.write('\n@click.group()\n')
             handle.write('def cli():\n')
             handle.write('\tpass\n\n')
-            for i in range(len(files) - 1):
+            for i in range(len(files)):
                 handle.write('cli.add_command(func%d)\n' % i)
 
     def orig(self, module_name, submodule, subsubmodule, function_name):

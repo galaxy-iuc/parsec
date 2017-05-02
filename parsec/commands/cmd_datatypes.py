@@ -7,3 +7,4 @@ def cli():
 	pass
 
 cli.add_command(func0)
+cli.add_command(func1)
