@@ -35,7 +35,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, path, history_id):
+def cli(ctx, path, history_id, dbkey=None, file_name=None, file_type=None, space_to_tab=None, to_posix_lines=None):
     """Upload the file specified by ``path`` to the history specified by ``history_id``.
     """
     kwargs = {}

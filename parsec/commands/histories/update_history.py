@@ -45,7 +45,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, history_id, tags=None):
+def cli(ctx, history_id, annotation=None, deleted=None, importable=None, name=None, published=None, purged=None, tags=None):
     """Update history metadata information. Some of the attributes that can be modified are documented below.
     """
     kwargs = {}

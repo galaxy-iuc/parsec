@@ -47,4 +47,11 @@ from parsec.decorators import bioblend_exception, dict_output
 def cli(ctx, workflow_id, inputs="", params="", history_id="", history_name="", import_inputs_to_history=False, replacement_params="", allow_tool_state_corrections=""):
     """Invoke the workflow identified by ``workflow_id``. This will cause a workflow to be scheduled and return an object describing the workflow invocation.
     """
-    return ctx.gi.workflows.invoke_workflow(workflow_id, inputs=inputs, params=params, history_id=history_id, history_name=history_name, import_inputs_to_history=import_inputs_to_history, replacement_params=replacement_params, allow_tool_state_corrections=allow_tool_state_corrections)
+    return ctx.gi.workflows.invoke_workflow(workflow_id,
+                                            inputs=json_loads(inputs),
+                                            params=json_loads(params),
+                                            history_id=history_id,
+                                            history_name=history_name,
+                                            import_inputs_to_history=import_inputs_to_history,
+                                            replacement_params=json_loads(replacement_params),
+                                            allow_tool_state_corrections=allow_tool_state_corrections)

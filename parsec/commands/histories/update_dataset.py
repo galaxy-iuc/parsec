@@ -35,7 +35,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, history_id, dataset_id):
+def cli(ctx, history_id, dataset_id, annotation=None, deleted=None, genome_build=None, name=None, visible=None):
     """Update history dataset metadata. Some of the attributes that can be modified are documented below.
     """
     kwargs = {}

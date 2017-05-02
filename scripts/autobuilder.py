@@ -280,6 +280,9 @@ class ScriptBuilder(object):
                         if real_type == 'dict':
                             v = 'json_loads(%s)' % v
                         method_exec_kwargs.append('%s=%s' % (k, k))
+                    else:
+                        # Add to signature, but NOT exec because we take care of that elsewhere.
+                        method_signature_kwargs.append("%s=%s" % (k, v))
 
                     # TODO: refactor
                     try:

@@ -113,6 +113,9 @@ def parsec(ctx, galaxy_instance, verbose):
 
 def json_loads(data):
     """Load json data, allowing - to represent stdin."""
+    if data is None:
+        return ""
+
     if data == "-":
         return json.load(sys.stdin)
     elif os.path.exists(data):
