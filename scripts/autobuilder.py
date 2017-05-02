@@ -19,6 +19,9 @@ IGNORE_LIST = [
     'make_get_request',
     'make_post_request',
     'make_put_request',
+    'set_max_get_retries',
+    'get_max_get_retries',
+    'set_get_retry_delay',
 ]
 
 
@@ -113,7 +116,10 @@ class ScriptBuilder(object):
         if len(section) == 0:
             return obj
         elif len(section) == 1:
-            return getattr(obj, section[0])
+            try:
+                return getattr(obj, section[0])
+            except AttributeError:
+                pass
         else:
             return getattr(self.recursive_attr_get(obj, section[0:-1]), section[-1])
 
@@ -130,38 +136,16 @@ class ScriptBuilder(object):
         else:
             return "Warning: Undocumented Method"
 
-    def identify_functions(self, module, path=None):
-        targets = []
-        if path is None:
-            path = []
-
-        current_module = self.recursive_attr_get(module, path)
-
-        # Filter out boring
-        current_module_attr = [x for x in dir(current_module) if not
-                               self.boring(x) and not
-                               self.is_galaxyinstance(self.recursive_attr_get(current_module,[x]))
-                               and not '.'.join(path + [x]) in IGNORE_LIST
-                               ]
-        # Filter out functions/classes
-        current_module_classes =   [x for x in current_module_attr if self.is_class(self.recursive_attr_get(current_module, [x]))]
-        current_module_functions = [x for x in current_module_attr if self.is_function(self.recursive_attr_get(current_module, [x]))]
-
-        # Add all functions as-is
-        targets += [path + [x] for x in current_module_functions if not self.boring(x)]
-        # Recursively add functions
-        targets += [self.identify_functions(module, path=[clsname]) for clsname in current_module_classes]
-        return targets
-
     def flatten(self, x):
         # http://stackoverflow.com/a/577971
         result = []
         for el in x:
             if isinstance(el, list):
-                if isinstance(el[0], str):
-                    result.append(el)
-                else:
-                    result.extend(self.flatten(el))
+                if len(el) > 0:
+                    if isinstance(el[0], str):
+                        result.append(el)
+                    else:
+                        result.extend(self.flatten(el))
             else:
                 result.append(el)
         return result
@@ -174,7 +158,11 @@ class ScriptBuilder(object):
             raise Exception("Unknown parameter type " + k)
 
     def pair_arguments(self, func):
-        argspec = inspect.getargspec(func)
+        try:
+            argspec = inspect.getargspec(func)
+        except TypeError as te:
+            log.debug(te)
+            return []
         # Reverse, because args are paired from the end, removing self/cls
         args = argspec.args[::-1][0:-1]
 
@@ -191,109 +179,128 @@ class ScriptBuilder(object):
             defaults.append(None)
         return zip(args[::-1], defaults[::-1])
 
-    def orig(self, targets):
-        for target in targets:
-            log.debug('.'.join(target))
-            func = self.recursive_attr_get(self.obj, target)
-            candidate = '.'.join(target)
+    def process(self):
+        for module in dir(bg):
+            if module[0] == '_' or module[0].upper() == module[0]:
+                continue
+            if module in ('client', ):
+                continue
 
-            argdoc = func.__doc__
+            sm = getattr(bg, module)
+            submodules = dir(sm)
+            # Find the "...Client"
+            wanted = [x for x in submodules if 'Client' in x and x != 'Client'][0]
+            self.process_client(module, sm, wanted)
 
-            data = {
-                'command_name': candidate.replace('.', '_'),
-                'click_arguments': "",
-                'click_options': "",
-                'args_with_defaults': "ctx",
-                'wrapped_method_args': "",
-            }
-            param_docs = {}
-            if argdoc is not None:
-                sections = [x for x in argdoc.split("\n\n")]
-                sections = [re.sub('\s+', ' ', x.strip()) for x in sections if x != '']
-                paramre = re.compile(":type (?P<param_name>[^:]+): (?P<param_type>[^:]+) :param (?P<param_name2>[^:]+): (?P<desc>.+)")
-                for subsec in sections:
-                    m = paramre.match(subsec)
-                    if m:
-                        assert m.group('param_name') == m.group('param_name2')
-                        param_docs[m.group('param_name')] = {'type': m.group('param_type'),
-                                                             'desc': m.group('desc')}
+    def process_client(self, module, sm, ssm_name):
+        log.info("Processing bioblend.%s.%s", module, ssm_name)
+        ssm = getattr(sm, ssm_name)
+        for f in dir(ssm):
+            if f[0] == '_' or f[0].upper() == f[0]:
+                continue
+            if f in IGNORE_LIST or '%s.%s' % (ssm, f) in IGNORE_LIST:
+                continue
+            self.orig(module, sm, ssm, f)
+        # Write module config.
+        import sys; sys.exit()
 
-            argspec = list(self.pair_arguments(func))
-            # Ignore with only cls/self
-            if len(argspec) > 0:
-                method_signature = ['ctx']
-                # Args and kwargs are separate, as args should come before kwargs
-                method_signature_args = []
-                method_signature_kwargs = []
-                method_exec_args = []
-                method_exec_kwargs = []
+    def orig(self, module_name, submodule, subsubmodule, function_name):
+        target = [module_name, function_name]
+        log.debug("Building %s", '.'.join(target))
 
-                for k, v in argspec:
+        func = getattr(subsubmodule, function_name)
+        candidate = '.'.join(target)
+
+        argdoc = func.__doc__
+
+        data = {
+            'command_name': candidate.replace('.', '_'),
+            'click_arguments': "",
+            'click_options': "",
+            'args_with_defaults': "ctx",
+            'wrapped_method_args': "",
+        }
+        param_docs = {}
+        if argdoc is not None:
+            sections = [x for x in argdoc.split("\n\n")]
+            sections = [re.sub('\s+', ' ', x.strip()) for x in sections if x != '']
+            paramre = re.compile(":type (?P<param_name>[^:]+): (?P<param_type>[^:]+) :param (?P<param_name2>[^:]+): (?P<desc>.+)")
+            for subsec in sections:
+                m = paramre.match(subsec)
+                if m:
+                    assert m.group('param_name') == m.group('param_name2')
+                    param_docs[m.group('param_name')] = {'type': m.group('param_type'),
+                                                            'desc': m.group('desc')}
+
+        argspec = list(self.pair_arguments(func))
+        # Ignore with only cls/self
+        if len(argspec) > 0:
+            method_signature = ['ctx']
+            # Args and kwargs are separate, as args should come before kwargs
+            method_signature_args = []
+            method_signature_kwargs = []
+            method_exec_args = []
+            method_exec_kwargs = []
+
+            for k, v in argspec:
+                try:
+                    param_type = self.parameter_translation(param_docs[k]['type'])
+                except Exception as e:
+                    param_type = []
+                    print(candidate, e)
+
+                # If v is not None, then it's a kwargs, otherwise an arg
+                if v is not None:
+                    # Strings must be treated specially by removing their value
+                    if isinstance(v, str):
+                        v = '""'
+
+                    if v == []:
+                        v = None
+                    # All other instances of V are fine, e.g. boolean=False or int=1000
+
+                    # Register twice as the method invocation uses v=k
+                    method_signature_kwargs.append("%s=%s" % (k, v))
+                    method_exec_kwargs.append('%s=%s' % (k, k))
+
+                    # TODO: refactor
                     try:
-                        param_type = self.parameter_translation(param_docs[k]['type'])
-                    except Exception, e:
-                        param_type = []
-                        print candidate, e
-
-                    # If v is not None, then it's a kwargs, otherwise an arg
-                    if v is not None:
-                        # Strings must be treated specially by removing their value
-                        if isinstance(v, str):
-                            v = '""'
-
-                        if v == []:
-                            v = None
-                        # All other instances of V are fine, e.g. boolean=False or int=1000
-
-                        # Register twice as the method invocation uses v=k
-                        method_signature_kwargs.append("%s=%s" % (k, v))
-                        method_exec_kwargs.append('%s=%s' % (k, k))
-
-                        # TODO: refactor
-                        try:
-                            descstr = param_docs[k]['desc']
-                        except KeyError:
-                            print "Error finding %s in %s" % (k, candidate)
-                            print ""
-                            descstr = None
-                        data['click_options'] += self.__click_option(name=k, helpstr=descstr, ptype=param_type)
-                    else:
-                        # Args, not kwargs
-                        method_signature_args.append(k)
-                        method_exec_args.append(k)
-                        data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
+                        descstr = param_docs[k]['desc']
+                    except KeyError:
+                        print("Error finding %s in %s" % (k, candidate))
+                        descstr = None
+                    data['click_options'] += self.__click_option(name=k, helpstr=descstr, ptype=param_type)
+                else:
+                    # Args, not kwargs
+                    method_signature_args.append(k)
+                    method_exec_args.append(k)
+                    data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
 
 
 
-                # Complete args
-                data['args_with_defaults'] = ', '.join(method_signature +
-                                                    method_signature_args +
-                                                    method_signature_kwargs)
-                data['wrapped_method_args'] = ', '.join(method_exec_args +
-                                                        method_exec_kwargs)
+            # Complete args
+            data['args_with_defaults'] = ', '.join(method_signature +
+                                                method_signature_args +
+                                                method_signature_kwargs)
+            data['wrapped_method_args'] = ', '.join(method_exec_args +
+                                                    method_exec_kwargs)
 
-            # My function is more effective until can figure out docstring
-            data['short_docstring'] = self.important_doc(argdoc)
-            # Full method call
-            data['wrapped_method'] = 'ctx.gi.' + candidate
+        # My function is more effective until can figure out docstring
+        data['short_docstring'] = self.important_doc(argdoc)
+        # Full method call
+        data['wrapped_method'] = 'ctx.gi.' + candidate
 
-            # Generate a command name, prefix everything with auto_ to identify the
-            # automatically generated stuff
-            cmd_name = 'cmd_%s.py' % candidate.replace('.', '_')
-            cmd_path = os.path.join('parsec', 'commands', cmd_name)
+        # Generate a command name, prefix everything with auto_ to identify the
+        # automatically generated stuff
+        cmd_name = 'cmd_%s.py' % candidate.replace('.', '_')
+        cmd_path = os.path.join('parsec', 'commands', module_name, cmd_name)
 
-            # Save file
-            with open(cmd_path, 'w') as handle:
-                handle.write(self.template('click', data))
+        # Save file
+        print("Writing %s" % cmd_path)
+        with open(cmd_path, 'w') as handle:
+            handle.write(self.template('click', data))
 
 if __name__ == '__main__':
     z = ScriptBuilder()
     parser = argparse.ArgumentParser(description='process bioblend into CLI tools')
-    parser.add_argument('path', nargs='*', help='module path for the initial bioblend object')
-    args = parser.parse_args()
-    if len(args.path) == 0:
-        targets = z.flatten(z.identify_functions(z.obj))
-    else:
-        targets = [x.split('.') for x in args.path]
-
-    z.orig(targets)
+    z.process()
