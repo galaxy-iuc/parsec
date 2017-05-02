@@ -19,11 +19,20 @@ Command-line utilities to assist in working with a Galaxy_ server instance.
 * Documentation: https://parsec.readthedocs.org.
 * Code: https://github.com/galaxy-iuc/parsec
 
+Installation
+------------
+
+.. code-block:: shell
+
+   pip install galaxy-parsec
+
+
 Quick Start
 -----------
 
-This quick start demonstrates using ``parsec`` commands to help
-run Galaxy tools.
+This quick start demonstrates using ``parsec`` commands to manipulate Galaxy
+histories and datasets. You will want to install `jq <https://stedolan.github.io/jq/download/>`__
+if you do not have it already.
 
 Connect to a Galaxy server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31,7 +40,6 @@ Connect to a Galaxy server
 To connect to a running Galaxy server, you will need an account on that Galaxy instance and an API key for the account. Instructions on getting an API key can be found at http://wiki.galaxyproject.org/Learn/API .
 
 First initialize the parsec configuration file in ``~/.parsec.yml`` via the ``parsec`` command ``config_init``::
-
 
     user@host:~$ parsec config_init
     No parsec config file found, continuning anyway...
@@ -54,35 +62,96 @@ This will look something like the following::
 
 Once those fields are filled out (and setting ``__default`` is highly recommended), parsec will now be usable from the command line.
 
-A quick note about using different galaxy instance, the syntax is a little different than one might expect::
-
-    user@host:~$ parsec --galaxy_instance admin histories_get_histories
-
-Otherwise parsec will use the default galaxy instance. An admin account is required for a few actions like creation of data libraries.
+An admin account is required for a few actions like creation of data libraries.
 
 .. _view-histories-and-datasets:
 
-View Histories and Datasets
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Introduction To Parsec
+~~~~~~~~~~~~~~~~~~~~~~
 
-Methods for accessing histories and datasets are grouped under ``parsec histories_*`` and ``parsec datasets_*``, respectively.
+Parsec is a set of automatically generated wrappers for BioBlend functions. I
+found myself writing a large number of small / one-off scripts that invoked
+simple bioblend functions. These scripts were impossible to compose and use in
+a linux-friendly manner. I copied and pasted code between all of these utility scripts.
 
-To get information on the Histories currently in your account, call::
+Parsec is the answer to all of these problems. It extracts all of the
+individual functions I was writing as separate CLI commands that can be piped
+together, run in parallel, etc.
 
-    user@host:~$ parsec histories_get_histories
-    [
-        {
-            "name": "RNAseq_DGE_BASIC_Prep",
-            "tags": [],
-            "deleted": false,
-            "purged": false,
-            "id": "f3c2b0f3ecac9f02",
-            "url": "/api/histories/f3c2b0f3ecac9f02",
-            "published": false,
-            "model_class": "History",
-            "annotation": null
-        }
-    ]
+After installation, running ``parsec`` will present you with a list of sub-commands you can execute.
+
+.. code-block:: shell
+
+   $ parsec
+   Usage: parsec [OPTIONS] COMMAND [ARGS]...
+   
+     Command line wrappers around BioBlend functions. While this sounds
+     unexciting, with parsec and jq you can easily build powerful command line
+     scripts.
+   
+   Options:
+     --version               Show the version and exit.
+     -v, --verbose           Enables verbose mode.
+     --galaxy_instance TEXT  name of galaxy instance from ~/.planemo.yml
+                             [required]
+     --help                  Show this message and exit.
+   
+   Commands:
+     config
+     datasets
+     datatypes
+     folders
+     forms
+     ...
+
+Each of these commands has more commands under it:
+
+.. code-block:: shell
+   $ parsec histories
+   Usage: parsec histories [OPTIONS] COMMAND [ARGS]...
+   
+   Options:
+     --help  Show this message and exit.
+   
+   Commands:
+     create_dataset_collection       Create a new dataset collection
+     create_history                  Create a new history, optionally setting
+                                     the...
+     create_history_tag              Create history tag
+     delete_dataset                  Mark corresponding dataset as deleted.
+     delete_dataset_collection       Mark corresponding dataset collection as...
+     delete_history                  Delete a history.
+     download_dataset                Deprecated method, use...
+     download_history                Download a history export archive.
+     export_history                  Start a job to create an export archive
+                                     for...
+     ...
+
+
+
+Viewing Histories and Datasets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To get information on the Histories currently in your account, call
+
+.. code-block:: shell
+
+    $ parsec histories get_histories | jq .[0]
+    {
+      "name": "BuildID=Manual-2017.05.02T16:13 WF=PAP_2017_Comparative_(v1.0)_BOOTSTRAPPED Org=CCS Source=Jenkins",
+      "url": "/galaxy/api/histories/548c0777ac615645",
+      "annotation": null,
+      "model_class": "History",
+      "id": "548c0777ac615645",
+      "tags": [
+        "Automated",
+        "Annotation",
+        "BICH464"
+      ],
+      "purged": false,
+      "published": false,
+      "deleted": false
+    }
 
 This returns a list of dictionaries containing basic metadata, including the id
 and name of each History. To get more detailed information about a History we
