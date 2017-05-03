@@ -165,13 +165,13 @@ Upload the file specified by ``path`` to the history specified by ``history_id``
 
 
       --dbkey TEXT      (optional) genome dbkey
+      --file_name TEXT  (optional) name of the new history dataset
+      --file_type TEXT  Galaxy datatype for the new dataset, default is auto
+      --space_to_tab    whether to convert spaces to tabs. Default is False.
+                        Applicable only if to_posix_lines is True
       --to_posix_lines  if True, convert universal line endings to POSIX line
                         endings. Default is True. Set to False if you upload a gzip,
                         bz2 or zip archive containing a binary file
-      --file_name TEXT  (optional) name of the new history dataset
-      --space_to_tab    whether to convert spaces to tabs. Default is False.
-                        Applicable only if to_posix_lines is True
-      --file_type TEXT  Galaxy datatype for the new dataset, default is auto
       --help            Show this message and exit.
     
 

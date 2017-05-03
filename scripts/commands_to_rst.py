@@ -42,11 +42,14 @@ command_doc_dir = os.path.join("docs", "commands")
 commands = COMMANDS_TEMPLATE
 
 for command in list_cmds():
+    if command == 'init':
+        # Skip documenting init because it's special
+        continue
+
     commands += "\n   commands/%s.rst" % command
     parent_doc_handle = open(os.path.join(command_doc_dir, command + ".rst"), "w")
     parent_doc_handle.write('%s\n' % command)
     parent_doc_handle.write('%s\n' % ('=' * len(command)))
-
     for subcommand in list_subcmds(command):
 
         command_obj = cli.name_to_command(command, subcommand)

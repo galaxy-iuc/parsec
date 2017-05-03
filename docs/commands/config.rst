@@ -20,18 +20,3 @@ Get a list of attributes about the Galaxy instance. More attributes will be pres
 
       --help  Show this message and exit.
     
-
-``init`` command
-----------------
-
-This section is auto-generated from the help text for the parsec command
-``config``.
-
-**Usage**::
-
-    parsec config [OPTIONS] COMMAND [ARGS]...
-
-**Help**
-
-Help initialize global configuration (in home directory)
-

@@ -25,6 +25,8 @@ IGNORE_LIST = [
     'get_retry_delay',
     'set_retry_delay',
     'max_get_retries',
+    'show_stderr',
+    'show_stdout',
 ]
 
 

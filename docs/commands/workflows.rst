@@ -268,14 +268,14 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
 **Options**::
 
 
-      --inputs DICT                   A mapping of workflow inputs to datasets and
+      --inputs TEXT                   A mapping of workflow inputs to datasets and
                                       dataset collections. The datasets source can
                                       be a LibraryDatasetDatasetAssociation
                                       (``ldda``), LibraryDataset (``ld``),
                                       HistoryDatasetAssociation (``hda``), or
                                       HistoryDatasetCollectionAssociation
                                       (``hdca``).
-      --params DICT                   A mapping of non-datasets tool parameters (see
+      --params TEXT                   A mapping of non-datasets tool parameters (see
                                       below)
       --history_id TEXT               The encoded history ID where to store the
                                       workflow output. Alternatively,
@@ -291,7 +291,7 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
                                       imported into the history. If ``False``, only
                                       workflow outputs will be visible in the given
                                       history.
-      --replacement_params DICT       pattern-based replacements for post-job
+      --replacement_params TEXT       pattern-based replacements for post-job
                                       actions (see below)
       --allow_tool_state_corrections  If True, allow Galaxy to fill in missing tool
                                       state when running workflows. This may be
@@ -339,7 +339,7 @@ Run the workflow identified by ``workflow_id``. This method is deprecated, pleas
 **Options**::
 
 
-      --dataset_map DICT          A mapping of workflow inputs to datasets. The
+      --dataset_map TEXT          A mapping of workflow inputs to datasets. The
                                   datasets source can be a
                                   LibraryDatasetDatasetAssociation (``ldda``),
                                   LibraryDataset (``ld``), or
@@ -348,7 +348,7 @@ Run the workflow identified by ``workflow_id``. This method is deprecated, pleas
                                   <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}``
                                   (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src':
                                   'ld'}}``)
-      --params DICT               A mapping of non-datasets tool parameters (see
+      --params TEXT               A mapping of non-datasets tool parameters (see
                                   below)
       --history_id TEXT           The encoded history ID where to store the workflow
                                   output. Alternatively, ``history_name`` may be
@@ -361,7 +361,7 @@ Run the workflow identified by ``workflow_id``. This method is deprecated, pleas
       --import_inputs_to_history  If ``True``, used workflow inputs will be imported
                                   into the history. If ``False``, only workflow
                                   outputs will be visible in the given history.
-      --replacement_params DICT   pattern-based replacements for post-job actions
+      --replacement_params TEXT   pattern-based replacements for post-job actions
                                   (see below)
       --help                      Show this message and exit.
     

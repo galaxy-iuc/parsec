@@ -426,11 +426,11 @@ Update history dataset metadata. Some of the attributes that can be modified are
 **Options**::
 
 
-      --name TEXT          Replace history dataset name with the given string
       --annotation TEXT    Replace history dataset annotation with given string
       --deleted            Mark or unmark history dataset as deleted
-      --visible            Mark or unmark history dataset as visible
       --genome_build TEXT  Replace history dataset genome build (dbkey)
+      --name TEXT          Replace history dataset name with the given string
+      --visible            Mark or unmark history dataset as visible
       --help               Show this message and exit.
     
 
@@ -451,8 +451,8 @@ Update history dataset collection metadata. Some of the attributes that can be m
 **Options**::
 
 
-      --name TEXT  Replace history dataset collection name with the given string
       --deleted    Mark or unmark history dataset collection as deleted
+      --name TEXT  Replace history dataset collection name with the given string
       --visible    Mark or unmark history dataset collection as visible
       --help       Show this message and exit.
     
@@ -474,14 +474,14 @@ Update history metadata information. Some of the attributes that can be modified
 **Options**::
 
 
-      --tags TEXT        Replace history tags with the given list
-      --importable       Mark or unmark history as importable
-      --purged           If True, mark history as purged (permanently deleted).
-                         Ignored on Galaxy release_15.01 and earlier
-      --name TEXT        Replace history name with the given string
       --annotation TEXT  Replace history annotation with given string
       --deleted          Mark or unmark history as deleted
+      --importable       Mark or unmark history as importable
+      --name TEXT        Replace history name with the given string
       --published        Mark or unmark history as published
+      --purged           If True, mark history as purged (permanently deleted).
+                         Ignored on Galaxy release_15.01 and earlier
+      --tags TEXT        Replace history tags with the given list
       --help             Show this message and exit.
     
 
