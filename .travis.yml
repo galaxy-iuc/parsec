@@ -9,6 +9,10 @@ install: pip install -r requirements.txt
 script:
 - pip install -U flake8
 - flake8 parsec --exclude=parsec/commands/ --ignore=E501
+- python setup.py install
+- printf "https://usegalaxy.org\ntesting\ny" | parsec init
+- sed -i 's/testing//g' ~/.parsec.yml
+- parsec config get_config | grep version
 
 deploy:
   provider: pypi
