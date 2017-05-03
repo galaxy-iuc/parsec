@@ -83,7 +83,14 @@ def name_to_command(parent, name):
 class ParsecCLI(click.MultiCommand):
 
     def list_commands(self, ctx):
-        return list_cmds()
+        # We pre-calculate this so it works more nicely within packaged
+        # versions of parsec. Please feel free to fix this?
+
+        commands = ['config', 'datasets', 'datatypes', 'folders', 'forms',
+                    'ftpfiles', 'genomes', 'groups', 'histories', 'jobs',
+                    'libraries', 'quotas', 'roles', 'tool', 'tool_data',
+                    'tools', 'toolshed', 'users', 'visual', 'workflows']
+        return commands
 
     def get_command(self, ctx, name):
         return name_to_command(None, name)
