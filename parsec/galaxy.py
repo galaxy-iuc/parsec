@@ -10,7 +10,6 @@ def get_instance(instance_name=None):
     conf = read_global_config()
     if not os.path.exists(global_config_path()):
         # Probably creating the file for the first time.
-        warn("No parsec config file found, continuing anyway...")
         return None
 
     if instance_name is None or instance_name == '__default':

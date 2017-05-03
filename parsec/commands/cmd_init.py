@@ -2,6 +2,7 @@ import os
 
 import click
 
+from bioblend import galaxy
 from parsec.cli import pass_context
 from parsec import config
 from parsec.io import warn, info
@@ -10,49 +11,65 @@ CONFIG_TEMPLATE = """## Parsec Global Configuration File.
 # Each stanza should contian a single galaxy server to control.
 #
 # You can set the key __default to the name of a default instance
-# __default: local
+__default: local
 
 local:
     key: "%(key)s"
-    email: "<TODO>"
-    password: "<TODO>"
     url: "%(url)s"
-    admin: %(admin)s
+    # email: ""
+    # password: ""
 """
 
 SUCCESS_MESSAGE = (
-    "Wrote configuration template to %s, "
-    "please open with editor and fill out."
+    "Ready to go! Type `parsec` to get a list of commands you can execute."
 )
 
 
 @click.command("config_init")
-@click.option(
-    '--url',
-    help="URL to galaxy server",
-)
-@click.option(
-    '--api_key',
-    help="API key for galaxy server",
-)
-@click.option(
-    '--admin',
-    is_flag=True,
-    help="This API key is an admin/master API key",
-)
 @pass_context
 def cli(ctx, url=None, api_key=None, admin=False, **kwds):
     """Help initialize global configuration (in home directory)
     """
     # TODO: prompt for values someday.
+    click.echo("""
+Welcome to
+          ====  _____         _____   ____  ______   ___
+          ====  |    \   /\   |    | |      |       /
+      ==  ====  |----/  /  \  |----/ \____  |_____ |
+      ==  ====  |      /----\ |   \       \ |      |
+   == ==  ====  |     /      \|    \ _____/ |_____  \___/
+                Access Galaxy at the Speed of Light
+""")
+
+    while True:
+        galaxy_url = click.prompt("Please entry your Galaxy's URL")
+        galaxy_key = click.prompt("Please entry your Galaxy API Key")
+        info("Testing connection...")
+        try:
+            gi = galaxy.GalaxyInstance(galaxy_url, galaxy_key)
+            if 'version_major' in gi.config.get_config():
+                # Ok, success
+                info("Ok! Everything looks good.")
+                break
+            else:
+                warn("Error, we could not access the configuration data for your instance.")
+                should_break = click.prompt("Continue despite inability to contact this Galaxy Instance? [y/n]")
+                if should_break in ('Y', 'y'):
+                    break
+        except Exception as e:
+            warn("Error, we could not access the configuration data for your instance.")
+            should_break = click.prompt("Continue despite inability to contact this Galaxy Instance? [y/n]")
+            if should_break in ('Y', 'y'):
+                break
+
     config_path = config.global_config_path()
     if os.path.exists(config_path):
-        warn("File %s already exists, exiting." % config_path)
+        warn("File %s already exists, refusing to overwrite." % config_path)
         return -1
     with open(config_path, "w") as f:
         f.write(
             CONFIG_TEMPLATE % {
-                'key': '<TODO>' if api_key is None else api_key,
-                'url': '<TODO>' if url is None else url,
-                'admin': admin})
+                'key': galaxy_key,
+                'url': galaxy_url,
+            })
         info(SUCCESS_MESSAGE % config_path)
