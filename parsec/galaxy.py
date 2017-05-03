@@ -2,7 +2,6 @@ from __future__ import absolute_import
 import os
 from bioblend import galaxy, toolshed
 from .config import read_global_config, global_config_path
-from .io import warn
 
 
 def get_instance(instance_name=None):
