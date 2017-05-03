@@ -107,9 +107,13 @@ def parsec(ctx, galaxy_instance, verbose):
     # We abuse this, knowing that calls to one will fail.
     try:
         ctx.gi = get_galaxy_instance(galaxy_instance)
+    except TypeError:
+        ctx.log("Could not access Galaxy instance configuration")
+
+    try:
         ctx.ti = get_toolshed_instance(galaxy_instance)
     except TypeError:
-        ctx.log("Could not access Toolshed/Galaxy instance configuration")
+        ctx.log("Could not access Toolshed instance configuration")
     ctx.verbose = verbose
 
 
