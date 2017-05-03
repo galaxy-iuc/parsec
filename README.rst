@@ -30,7 +30,10 @@ Installation
 Questions?
 ----------
 
-[![Gitter](https://badges.gitter.im/galaxy-iuc/parsec.svg)](https://gitter.im/galaxy-iuc/parsec?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+|Gitter|
+
+.. |Gitter| image:: https://badges.gitter.im/galaxy-iuc/parsec.svg
+   :target: https://gitter.im/galaxy-iuc/parsec?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 
 Quick Start
 -----------
