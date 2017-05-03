@@ -1,6 +1,6 @@
-================================
-Parsec: the BioBlend CLI Utility
-================================
+====================================
+Parsec: Galaxy at the Speed of Light
+====================================
 
 .. image:: https://readthedocs.org/projects/pip/badge/?version=latest
 		:target: https://parsec.readthedocs.org.
@@ -13,7 +13,7 @@ Parsec: the BioBlend CLI Utility
         :alt: Requirements Status
 
 
-Command-line utilities to assist in working with a Galaxy_ server instance.
+Command-line utilities to assist in working with Galaxy_ servers.
 
 * Free software: Apache License v2
 * Documentation: https://parsec.readthedocs.org.
@@ -25,7 +25,12 @@ Installation
 .. code-block:: shell
 
    pip install galaxy-parsec
+   parsec init
 
+Questions?
+----------
+
+[![Gitter](https://badges.gitter.im/galaxy-iuc/parsec.svg)](https://gitter.im/galaxy-iuc/parsec?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Quick Start
 -----------
