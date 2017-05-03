@@ -24,8 +24,8 @@ Installation
 
 .. code-block:: shell
 
-   pip install galaxy-parsec
-   parsec init
+   $ pip install galaxy-parsec
+   $ parsec init
 
 Questions?
 ----------
