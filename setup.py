@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import glob
 
 try:
     from setuptools import setup
@@ -21,6 +21,7 @@ test_requirements = [
 ]
 
 version = '1.0.0-rc1'
+subpackages = [x.replace('/', '.') for x in glob.glob('parsec/commands/*') if not x.endswith('.py')]
 
 setup(
     name='galaxy-parsec',
@@ -33,7 +34,7 @@ setup(
     packages=[
         'parsec',
         'parsec.commands',
-    ],
+    ] + subpackages,
     entry_points='''
         [console_scripts]
         parsec=parsec.cli:parsec
