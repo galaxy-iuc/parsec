@@ -40,6 +40,9 @@ Welcome to
   == ==  ====  |     /      \|    \ _____/ |_____  \___/
                   Access Galaxy at the Speed of Light
 """)
+    if os.path.exists(config.global_config_path()):
+        info("Your parsec configuration already exists. Please edit it instead: %s" % config.global_config_path())
+        return 0
 
     while True:
         galaxy_url = click.prompt("Please entry your Galaxy's URL")
