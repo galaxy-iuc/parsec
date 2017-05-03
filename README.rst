@@ -51,9 +51,7 @@ First initialize the parsec configuration file in ``~/.parsec.yml`` via the ``pa
 
 .. code-block:: shell
 
-    $ parsec config_init
-    No parsec config file found, continuing anyway...
-    Wrote configuration template to ~/.paresc.yml, please open with editor and fill out.
+    $ parsec init
 
 This will look something like the following::
 
@@ -61,16 +59,13 @@ This will look something like the following::
     # Each stanza should contian a single galaxy server to control.
     #
     # You can set the key __default to the name of a default instance
-    # __default: local
+    __default: local
 
     local:
-        key: "<TODO>"
-        email: "<TODO>"
-        password: "<TODO>"
-        url: "<TODO>"
-        admin: False
+        key: "..."
+        url: "https://..."
 
-Once those fields are filled out (and setting ``__default`` is highly recommended), parsec will now be usable from the command line.
+Once those fields are filled out, parsec will be usable from the command line.
 
 An admin account is required for a few actions like creation of data libraries.
 
