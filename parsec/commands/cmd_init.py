@@ -75,4 +75,4 @@ Welcome to
                 'key': galaxy_key,
                 'url': galaxy_url,
             })
-        info(SUCCESS_MESSAGE % config_path)
+        info(SUCCESS_MESSAGE)
