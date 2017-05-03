@@ -11,9 +11,12 @@ def bioblend_exception(wrapped, instance, args, kwargs):
         return wrapped(*args, **kwargs)
     except Exception as e:
         if hasattr(e, 'body'):
-            error(json.loads(e.body)['err_msg'])
+            try:
+                error(json.loads(e.body)['err_msg'])
+            except json.decoder.JSONDecodeError:
+                error(str(e))
         else:
-            print(e)
+            error(str(e))
 
 
 @wrapt.decorator

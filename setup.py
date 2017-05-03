@@ -20,12 +20,13 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
-version = '1.0.0'
+version = '1.0.0-rc1'
 
 setup(
-    name='parsec',
+    name='galaxy-parsec',
     version=version,
     description='Command-line utilities to assist in interacting with Galaxy servers (http://galaxyproject.org/).',
+    long_description=readme + '\n\n' + history,
     author='Galaxy Project and Community',
     author_email='rasche.eric@gmail.com',
     url='https://github.com/galaxy-iuc/parsec',
