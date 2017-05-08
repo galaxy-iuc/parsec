@@ -1,6 +1,6 @@
 Click
 pyyaml
 # pre-release version
-git+https://github.com/galaxyproject/bioblend.git@49e48e365f21b080529e1485915374f73254473e
+git+https://github.com/erasche/bioblend.git@4fc0803ffc86bab14bf36eeb30bb055c7ef6cd94
 docutils
 wrapt
