@@ -1,6 +1,6 @@
 Click
 pyyaml
 # pre-release version
-git+https://github.com/erasche/bioblend.git@4fc0803ffc86bab14bf36eeb30bb055c7ef6cd94
+git+https://github.com/erasche/bioblend.git@2e92cbcc22d2e1d9dec6554f3ad21b12112925d5
 docutils
 wrapt

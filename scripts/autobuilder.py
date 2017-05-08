@@ -52,6 +52,10 @@ PARAM_TRANSLATION = {
         'type=str', # TODO
         'multiple=True',
     ],
+    'list of str': [
+        'type=str', # TODO
+        'multiple=True',
+    ],
     'file': [
         'type=click.File(\'rb+\')'
     ],

@@ -32,17 +32,21 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 @click.option(
     "--in_users",
-    help="A list of user IDs or user emails."
+    help="A list of user IDs or user emails.",
+    type=str,
+    multiple=True
 )
 @click.option(
     "--in_groups",
-    help="A list of group IDs or names."
+    help="A list of group IDs or names.",
+    type=str,
+    multiple=True
 )
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, quota_id, name="", description="", amount="", operation="", default="", in_users="", in_groups=""):
+def cli(ctx, quota_id, name="", description="", amount="", operation="", default="", in_users=None, in_groups=None):
     """Update an existing quota
     """
     return ctx.gi.quotas.update_quota(quota_id, name=name, description=description, amount=amount, operation=operation, default=default, in_users=in_users, in_groups=in_groups)

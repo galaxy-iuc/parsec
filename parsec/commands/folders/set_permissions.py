@@ -12,15 +12,21 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 @click.option(
     "--add_ids",
-    help="list of role IDs which can add datasets to the folder"
+    help="list of role IDs which can add datasets to the folder",
+    type=str,
+    multiple=True
 )
 @click.option(
     "--manage_ids",
-    help="list of role IDs which can manage datasets in the folder"
+    help="list of role IDs which can manage datasets in the folder",
+    type=str,
+    multiple=True
 )
 @click.option(
     "--modify_ids",
-    help="list of role IDs which can modify datasets in the folder"
+    help="list of role IDs which can modify datasets in the folder",
+    type=str,
+    multiple=True
 )
 
 @pass_context
