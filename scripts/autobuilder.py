@@ -7,7 +7,7 @@ import re
 import glob
 import argparse
 import logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
 
@@ -311,7 +311,6 @@ class ScriptBuilder(object):
                 except Exception as e:
                     param_type = []
                     real_type = None
-                    print(candidate, e)
                 process_arg(k, v, param_type, real_type)
 
             had_weird_kwargs = False
