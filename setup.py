@@ -12,8 +12,9 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 requirements = [
     'Click>=6.7',
-    'bioblend',
+    'git+https://github.com/erasche/bioblend.git@2e92cbcc22d2e1d9dec6554f3ad21b12112925d5',
     'wrapt',
+    'pyyaml',
 ]
 
 test_requirements = [
