@@ -20,7 +20,7 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
-version = '1.0.0-rc1'
+version = '1.0.0-rc4'
 subpackages = [x.replace('/', '.') for x in glob.glob('parsec/commands/*') if not x.endswith('.py')]
 
 setup(
