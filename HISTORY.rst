@@ -1,7 +1,7 @@
 .. :changelog:
 
 History
--------
+=======
 
 .. to_doc
 
