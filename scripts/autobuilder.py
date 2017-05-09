@@ -81,7 +81,7 @@ class ScriptBuilder(object):
     def __click_option(cls, name='arg', helpstr='TODO', ptype=None):
         args = [
             '"--%s"' % name,
-            'help="%s"' % helpstr
+            'help="%s"' % (helpstr.replace('"', '\\"') if helpstr else "")
         ]
         if ptype is not None:
             args.extend(ptype)

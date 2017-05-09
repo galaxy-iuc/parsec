@@ -6,11 +6,11 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.option(
     "--extension_only",
-    help="None"
+    help=""
 )
 @click.option(
     "--upload_only",
-    help="None"
+    help=""
 )
 
 @pass_context

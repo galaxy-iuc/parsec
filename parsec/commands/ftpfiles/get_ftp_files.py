@@ -6,7 +6,7 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.option(
     "--deleted",
-    help="None"
+    help=""
 )
 
 @pass_context

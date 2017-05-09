@@ -7,7 +7,7 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.option(
     "--action",
-    help="action to execute, only "set_permissions" is supported.",
+    help="action to execute, only \"set_permissions\" is supported.",
     type=str
 )
 @click.option(

@@ -9,7 +9,7 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.option(
     "--use_default_filename",
-    help="None"
+    help=""
 )
 
 @pass_context
