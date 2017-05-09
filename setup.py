@@ -28,7 +28,7 @@ setup(
     name='galaxy-parsec',
     version=version,
     description='Command-line utilities to assist in interacting with Galaxy servers (http://galaxyproject.org/).',
-    long_description=readme + '\n\n' + history,
+    long_description=readme,  # TODO: + '\n\n' + history,
     author='Galaxy Project and Community',
     author_email='rasche.eric@gmail.com',
     url='https://github.com/galaxy-iuc/parsec',
