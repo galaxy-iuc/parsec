@@ -18,5 +18,5 @@ Get a list of attributes about the Galaxy instance. More attributes will be pres
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     

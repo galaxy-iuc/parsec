@@ -18,7 +18,7 @@ Get the list of all installed Tool Shed repositories on this Galaxy instance.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``install_repository_revision`` command
@@ -61,7 +61,7 @@ Install a specified repository revision from a specified Tool Shed into this Gal
                                       The name of a Galaxy tool panel section that
                                       should be created and the repository installed
                                       into.
-      --help                          Show this message and exit.
+      -h, --help                      Show this message and exit.
     
 
 ``show_repository`` command
@@ -81,5 +81,5 @@ Get details of a given Tool Shed repository as it is installed on this Galaxy in
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     

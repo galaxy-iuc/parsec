@@ -23,7 +23,7 @@ Create a new quota
                         to ``no``.
       --in_users TEXT   A list of user IDs or user emails.
       --in_groups TEXT  A list of group IDs or names.
-      --help            Show this message and exit.
+      -h, --help        Show this message and exit.
     
 
 ``delete_quota`` command
@@ -43,7 +43,7 @@ Delete a quota
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_quotas`` command
@@ -63,8 +63,8 @@ Get a list of quotas
 **Options**::
 
 
-      --deleted  Only return quota(s) that have been deleted
-      --help     Show this message and exit.
+      --deleted   Only return quota(s) that have been deleted
+      -h, --help  Show this message and exit.
     
 
 ``show_quota`` command
@@ -84,8 +84,8 @@ Display information on a quota
 **Options**::
 
 
-      --deleted  Search for quota in list of ones already marked as deleted
-      --help     Show this message and exit.
+      --deleted   Search for quota in list of ones already marked as deleted
+      -h, --help  Show this message and exit.
     
 
 ``undelete_quota`` command
@@ -105,7 +105,7 @@ Unelete a quota
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``update_quota`` command
@@ -140,5 +140,5 @@ Update an existing quota
                           passing this parameter is equivalent to passing ``no``.
       --in_users TEXT     A list of user IDs or user emails.
       --in_groups TEXT    A list of group IDs or names.
-      --help              Show this message and exit.
+      -h, --help          Show this message and exit.
     

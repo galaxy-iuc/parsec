@@ -18,7 +18,7 @@ Get the list of all visualizations.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_visualization`` command
@@ -38,5 +38,5 @@ Get details of a given visualization.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     

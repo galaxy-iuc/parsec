@@ -18,7 +18,7 @@ Create a new dataset collection
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``create_history`` command
@@ -39,7 +39,7 @@ Create a new history, optionally setting the ``name``.
 
 
       --name TEXT  Optional name for new history
-      --help       Show this message and exit.
+      -h, --help   Show this message and exit.
     
 
 ``create_history_tag`` command
@@ -59,7 +59,7 @@ Create history tag
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``delete_dataset`` command
@@ -79,8 +79,8 @@ Mark corresponding dataset as deleted.
 **Options**::
 
 
-      --purge  if ``True``, also purge (permanently delete) the dataset
-      --help   Show this message and exit.
+      --purge     if ``True``, also purge (permanently delete) the dataset
+      -h, --help  Show this message and exit.
     
 
 ``delete_dataset_collection`` command
@@ -100,7 +100,7 @@ Mark corresponding dataset collection as deleted.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``delete_history`` command
@@ -120,8 +120,8 @@ Delete a history.
 **Options**::
 
 
-      --purge  if ``True``, also purge (permanently delete) the history
-      --help   Show this message and exit.
+      --purge     if ``True``, also purge (permanently delete) the history
+      -h, --help  Show this message and exit.
     
 
 ``download_dataset`` command
@@ -142,7 +142,7 @@ Deprecated method, use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_d
 
 
       --use_default_filename TEXT
-      --help                       Show this message and exit.
+      -h, --help                   Show this message and exit.
     
 
 ``download_history`` command
@@ -163,7 +163,7 @@ Download a history export archive.  Use :meth:`export_history` to create an expo
 
 
       --chunk_size INTEGER  how many bytes at a time should be read into memory
-      --help                Show this message and exit.
+      -h, --help            Show this message and exit.
     
 
 ``export_history`` command
@@ -188,7 +188,7 @@ Start a job to create an export archive for the given history.
       --include_deleted  whether to include deleted datasets in the export
       --wait             if ``True``, block until the export is ready; else, return
                          immediately
-      --help             Show this message and exit.
+      -h, --help         Show this message and exit.
     
 
 ``get_current_history`` command
@@ -208,7 +208,7 @@ Deprecated method.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_histories`` command
@@ -231,7 +231,7 @@ Get all histories or filter the specific one(s) via the provided ``name`` or ``h
       --history_id TEXT  Encoded history ID to filter on
       --name TEXT        Name of history to filter on
       --deleted TEXT
-      --help             Show this message and exit.
+      -h, --help         Show this message and exit.
     
 
 ``get_most_recently_used_history`` command
@@ -251,7 +251,7 @@ Returns the current user's most recently used history (not deleted).
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_status`` command
@@ -271,7 +271,7 @@ Returns the state of this history
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_dataset`` command
@@ -291,7 +291,7 @@ Get details about a given history dataset.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_dataset_collection`` command
@@ -311,7 +311,7 @@ Get details about a given history dataset collection.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_dataset_provenance`` command
@@ -331,9 +331,9 @@ Get details related to how dataset was created (``id``, ``job_id``, ``tool_id``,
 **Options**::
 
 
-      --follow  If ``follow`` is ``True``, recursively fetch dataset provenance
-                information for all inputs and their inputs, etc...
-      --help    Show this message and exit.
+      --follow    If ``follow`` is ``True``, recursively fetch dataset provenance
+                  information for all inputs and their inputs, etc...
+      -h, --help  Show this message and exit.
     
 
 ``show_history`` command
@@ -362,7 +362,7 @@ Get details of a given history. By default, just get the history meta informatio
       --details TEXT  Used when contents=True, includes dataset details. Set to
                       'all' for the most information
       --types TEXT    ???
-      --help          Show this message and exit.
+      -h, --help      Show this message and exit.
     
 
 ``show_matching_datasets`` command
@@ -386,7 +386,7 @@ Get dataset details for matching datasets within a history.
                           regular expression will be returned; use plain strings for
                           exact matches and None to match all datasets in the
                           history
-      --help              Show this message and exit.
+      -h, --help          Show this message and exit.
     
 
 ``undelete_history`` command
@@ -406,7 +406,7 @@ Undelete a history
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``update_dataset`` command
@@ -431,7 +431,7 @@ Update history dataset metadata. Some of the attributes that can be modified are
       --genome_build TEXT  Replace history dataset genome build (dbkey)
       --name TEXT          Replace history dataset name with the given string
       --visible            Mark or unmark history dataset as visible
-      --help               Show this message and exit.
+      -h, --help           Show this message and exit.
     
 
 ``update_dataset_collection`` command
@@ -454,7 +454,7 @@ Update history dataset collection metadata. Some of the attributes that can be m
       --deleted    Mark or unmark history dataset collection as deleted
       --name TEXT  Replace history dataset collection name with the given string
       --visible    Mark or unmark history dataset collection as visible
-      --help       Show this message and exit.
+      -h, --help   Show this message and exit.
     
 
 ``update_history`` command
@@ -482,7 +482,7 @@ Update history metadata information. Some of the attributes that can be modified
       --purged           If True, mark history as purged (permanently deleted).
                          Ignored on Galaxy release_15.01 and earlier
       --tags TEXT        Replace history tags with the given list
-      --help             Show this message and exit.
+      -h, --help         Show this message and exit.
     
 
 ``upload_dataset_from_library`` command
@@ -502,5 +502,5 @@ Upload a dataset into the history from a library. Requires the library dataset I
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     

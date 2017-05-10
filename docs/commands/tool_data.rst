@@ -18,7 +18,7 @@ Delete an item from a data table.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_data_tables`` command
@@ -38,7 +38,7 @@ Get the list of all data tables.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``reload_data_table`` command
@@ -58,7 +58,7 @@ Reload a data table.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_data_table`` command
@@ -78,5 +78,5 @@ Get details of a given data table.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     

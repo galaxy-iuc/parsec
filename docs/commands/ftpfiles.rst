@@ -19,5 +19,5 @@ Get a list of local files.
 
 
       --deleted TEXT
-      --help          Show this message and exit.
+      -h, --help      Show this message and exit.
     

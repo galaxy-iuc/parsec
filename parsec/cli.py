@@ -9,7 +9,7 @@ from .config import read_global_config  # noqa, ditto
 from .galaxy import get_galaxy_instance, get_toolshed_instance
 from parsec import __version__  # noqa, ditto
 
-CONTEXT_SETTINGS = dict(auto_envvar_prefix='PARSEC')
+CONTEXT_SETTINGS = dict(auto_envvar_prefix='PARSEC', help_option_names=['-h', '--help'])
 
 
 class Context(object):

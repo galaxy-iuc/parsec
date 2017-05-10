@@ -19,7 +19,7 @@ Create a folder.
 
 
       --description TEXT  folder's description
-      --help              Show this message and exit.
+      -h, --help          Show this message and exit.
     
 
 ``delete_folder`` command
@@ -41,7 +41,7 @@ Marks the folder with the given ``id`` as `deleted` (or removes the `deleted` ma
 
       --undelete  If set to True, the folder will be undeleted (i.e. the `deleted`
                   mark will be removed)
-      --help      Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_permissions`` command
@@ -61,7 +61,7 @@ Get the permissions of a folder.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``set_permissions`` command
@@ -85,7 +85,7 @@ Set the permissions of a folder.
       --add_ids TEXT     list of role IDs which can add datasets to the folder
       --manage_ids TEXT  list of role IDs which can manage datasets in the folder
       --modify_ids TEXT  list of role IDs which can modify datasets in the folder
-      --help             Show this message and exit.
+      -h, --help         Show this message and exit.
     
 
 ``show_folder`` command
@@ -105,7 +105,7 @@ Display information about a folder.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``update_folder`` command
@@ -126,5 +126,5 @@ Update folder information.
 
 
       --description TEXT  folder's description
-      --help              Show this message and exit.
+      -h, --help          Show this message and exit.
     

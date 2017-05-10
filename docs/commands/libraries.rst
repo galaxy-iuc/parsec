@@ -21,7 +21,7 @@ Copy a Galaxy dataset into a library.
       --folder_id TEXT  id of the folder where to place the uploaded files. If not
                         provided, the root folder will be used
       --message TEXT    message for copying action
-      --help            Show this message and exit.
+      -h, --help        Show this message and exit.
     
 
 ``create_folder`` command
@@ -44,7 +44,7 @@ Create a folder in a library.
       --description TEXT     description of the new folder in the data library
       --base_folder_id TEXT  id of the folder where to create the new folder. If not
                              provided, the root folder will be used
-      --help                 Show this message and exit.
+      -h, --help             Show this message and exit.
     
 
 ``create_library`` command
@@ -66,7 +66,7 @@ Create a data library with the properties defined in the arguments.
 
       --description TEXT  Optional data library description
       --synopsis TEXT     Optional data library synopsis
-      --help              Show this message and exit.
+      -h, --help          Show this message and exit.
     
 
 ``delete_library`` command
@@ -86,7 +86,7 @@ Delete a data library.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``delete_library_dataset`` command
@@ -106,8 +106,8 @@ Delete a library dataset in a data library.
 **Options**::
 
 
-      --purged  Indicate that the dataset should be purged (permanently deleted)
-      --help    Show this message and exit.
+      --purged    Indicate that the dataset should be purged (permanently deleted)
+      -h, --help  Show this message and exit.
     
 
 ``get_folders`` command
@@ -131,7 +131,7 @@ Get all the folders or filter specific one(s) via the provided ``name`` or ``fol
       --name TEXT       filter for folder by name. For ``name`` specify the full
                         path of the folder starting from the library's root folder,
                         e.g. ``/subfolder/subsubfolder``.
-      --help            Show this message and exit.
+      -h, --help        Show this message and exit.
     
 
 ``get_libraries`` command
@@ -155,7 +155,7 @@ Get all the libraries or filter for specific one(s) via the provided name or ID.
       --name TEXT        If ``name`` is set and multiple names match the given name,
                          all the libraries matching the argument will be returned
       --deleted          If set to ``True``, return libraries that have been deleted
-      --help             Show this message and exit.
+      -h, --help         Show this message and exit.
     
 
 ``get_library_permissions`` command
@@ -175,7 +175,7 @@ Get the permessions for a library.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``set_library_permissions`` command
@@ -199,7 +199,7 @@ Set the permissions for a library.  Note: it will override all security for this
       --modify_in TEXT  list of role ids
       --add_in TEXT     list of role ids
       --manage_in TEXT  list of role ids
-      --help            Show this message and exit.
+      -h, --help        Show this message and exit.
     
 
 ``show_dataset`` command
@@ -219,7 +219,7 @@ Get details about a given library dataset. The required ``library_id`` can be ob
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_folder`` command
@@ -239,7 +239,7 @@ Get details about a given folder. The required ``folder_id`` can be obtained fro
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_library`` command
@@ -261,7 +261,7 @@ Get information about a library.
 
       --contents  True if want to get contents of the library (rather than just the
                   library details)
-      --help      Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``upload_file_contents`` command
@@ -285,7 +285,7 @@ Upload pasted_content to a data library as a new file.
                         provided, the root folder will be used
       --file_type TEXT  Galaxy file format name
       --dbkey TEXT      Dbkey
-      --help            Show this message and exit.
+      -h, --help        Show this message and exit.
     
 
 ``upload_file_from_local_path`` command
@@ -309,7 +309,7 @@ Read local file contents from file_local_path and upload data to a library.
                         provided, the root folder will be used
       --file_type TEXT  Galaxy file format name
       --dbkey TEXT      Dbkey
-      --help            Show this message and exit.
+      -h, --help        Show this message and exit.
     
 
 ``upload_file_from_server`` command
@@ -337,7 +337,7 @@ Upload all files in the specified subdirectory of the Galaxy library import dire
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
       --roles TEXT           ???
-      --help                 Show this message and exit.
+      -h, --help             Show this message and exit.
     
 
 ``upload_file_from_url`` command
@@ -361,7 +361,7 @@ Upload a file to a library from a URL.
                         provided, the root folder will be used
       --file_type TEXT  Galaxy file format name
       --dbkey TEXT      Dbkey
-      --help            Show this message and exit.
+      -h, --help        Show this message and exit.
     
 
 ``upload_from_galaxy_filesystem`` command
@@ -389,5 +389,5 @@ Upload a set of files already present on the filesystem of the Galaxy server to 
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
       --roles TEXT           ???
-      --help                 Show this message and exit.
+      -h, --help             Show this message and exit.
     

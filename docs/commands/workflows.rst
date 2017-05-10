@@ -18,7 +18,7 @@ Cancel the scheduling of a workflow.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``delete_workflow`` command
@@ -38,7 +38,7 @@ Delete a workflow identified by `workflow_id`.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``export_workflow_dict`` command
@@ -58,7 +58,7 @@ Exports a workflow.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``export_workflow_json`` command
@@ -78,7 +78,7 @@ Deprecated method.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``export_workflow_to_local_path`` command
@@ -103,7 +103,7 @@ Exports a workflow in JSON format to a given local path.
                               Workflow-%s.ga, where %s is the workflow name. If
                               use_default_name is False, file_local_path is assumed
                               to contain the full file path including filename.
-      --help                  Show this message and exit.
+      -h, --help              Show this message and exit.
     
 
 ``get_invocations`` command
@@ -123,7 +123,7 @@ Get a list containing all the workflow invocations corresponding to the specifie
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_workflow_inputs`` command
@@ -143,7 +143,7 @@ Get a list of workflow input IDs that match the given label. If no input matches
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_workflows`` command
@@ -168,7 +168,7 @@ Get all workflows or filter the specific one(s) via the provided ``name`` or ``w
                           ``workflow_id``). If multiple names match the given name,
                           all the workflows matching the argument will be returned.
       --published         if ``True``, return also published workflows
-      --help              Show this message and exit.
+      -h, --help          Show this message and exit.
     
 
 ``import_shared_workflow`` command
@@ -188,7 +188,7 @@ Imports a new workflow from the shared published workflows.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``import_workflow_dict`` command
@@ -208,7 +208,7 @@ Imports a new workflow given a dictionary representing a previously exported wor
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``import_workflow_from_local_path`` command
@@ -228,7 +228,7 @@ Imports a new workflow given the path to a file containing a previously exported
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``import_workflow_json`` command
@@ -248,7 +248,7 @@ Deprecated method.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``invoke_workflow`` command
@@ -299,7 +299,7 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
                                       changed over time or for workflows built
                                       outside of Galaxy with only a subset of inputs
                                       defined.
-      --help                          Show this message and exit.
+      -h, --help                      Show this message and exit.
     
 
 ``run_invocation_step_action`` command
@@ -319,7 +319,7 @@ nature of this action and what is expected will vary based on the the type of wo
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``run_workflow`` command
@@ -363,7 +363,7 @@ Run the workflow identified by ``workflow_id``. This method is deprecated, pleas
                                   outputs will be visible in the given history.
       --replacement_params TEXT   pattern-based replacements for post-job actions
                                   (see below)
-      --help                      Show this message and exit.
+      -h, --help                  Show this message and exit.
     
 
 ``show_invocation`` command
@@ -383,7 +383,7 @@ Get a workflow invocation object representing the scheduling of a workflow. This
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_invocation_step`` command
@@ -403,7 +403,7 @@ See the details of a particular workflow invocation step.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_workflow`` command
@@ -423,5 +423,5 @@ Display information needed to run a workflow
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     

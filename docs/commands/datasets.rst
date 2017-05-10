@@ -36,7 +36,7 @@ Download a dataset to file or in memory.
       --maxwait FLOAT         Time (in seconds) to wait for dataset to complete. If
                               the dataset state is not complete within this time, a
                               DatasetTimeoutException will be thrown.
-      --help                  Show this message and exit.
+      -h, --help              Show this message and exit.
     
 
 ``show_dataset`` command
@@ -59,5 +59,5 @@ Get details about a given dataset. This can be a history or a library dataset.
       --deleted        Whether to return results for a deleted dataset
       --hda_ldda TEXT  Whether to show a history dataset ('hda' - the default) or
                        library dataset ('ldda').
-      --help           Show this message and exit.
+      -h, --help       Show this message and exit.
     

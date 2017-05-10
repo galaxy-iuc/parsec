@@ -18,7 +18,7 @@ Returns a list of installed genomes
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``install_genome`` command
@@ -52,7 +52,7 @@ Download and/or index a genome.
                             specified as the source
       --indexers TEXT       POST array of indexers to run after downloading
                             (indexers[] = first, indexers[] = second, ...)
-      --help                Show this message and exit.
+      -h, --help            Show this message and exit.
     
 
 ``show_genome`` command
@@ -76,5 +76,5 @@ Returns information about build <id>
       --chrom TEXT  chrom
       --low TEXT    low
       --high TEXT   high
-      --help        Show this message and exit.
+      -h, --help    Show this message and exit.
     

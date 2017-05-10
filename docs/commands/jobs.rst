@@ -18,7 +18,7 @@ Get the list of jobs of the current user.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_state`` command
@@ -38,7 +38,7 @@ Display the current state for a given job of the current user.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``search_jobs`` command
@@ -58,7 +58,7 @@ Return jobs for the current user based payload content.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_job`` command
@@ -79,5 +79,5 @@ Get details of a given job of the current user.
 
 
       --full_details  when ``True``, the complete list of details for the given job.
-      --help          Show this message and exit.
+      -h, --help      Show this message and exit.
     

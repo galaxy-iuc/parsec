@@ -18,7 +18,7 @@ Create a new Galaxy local user.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``create_remote_user`` command
@@ -38,7 +38,7 @@ Create a new Galaxy remote user.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``create_user`` command
@@ -73,7 +73,7 @@ Create a new API key for a given user.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``delete_user`` command
@@ -93,8 +93,8 @@ Delete a user.
 **Options**::
 
 
-      --purge  if ``True``, also purge (permanently delete) the history
-      --help   Show this message and exit.
+      --purge     if ``True``, also purge (permanently delete) the history
+      -h, --help  Show this message and exit.
     
 
 ``get_current_user`` command
@@ -114,7 +114,7 @@ Display information about the user associated with this Galaxy connection.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_users`` command
@@ -135,7 +135,7 @@ Get a list of all registered users. If ``deleted`` is set to ``True``, get a lis
 
 
       --deleted TEXT
-      --help          Show this message and exit.
+      -h, --help      Show this message and exit.
     
 
 ``show_user`` command
@@ -155,6 +155,6 @@ Display information about a user.
 **Options**::
 
 
-      --deleted  whether to return results for a deleted user
-      --help     Show this message and exit.
+      --deleted   whether to return results for a deleted user
+      -h, --help  Show this message and exit.
     

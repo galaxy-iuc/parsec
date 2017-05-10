@@ -20,7 +20,7 @@ Get the list of all installed datatypes.
 
       --extension_only TEXT
       --upload_only TEXT
-      --help                 Show this message and exit.
+      -h, --help             Show this message and exit.
     
 
 ``get_sniffers`` command
@@ -40,5 +40,5 @@ Get the list of all installed sniffers.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     

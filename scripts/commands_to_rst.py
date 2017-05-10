@@ -70,6 +70,7 @@ for command in list_cmds():
         new_lines = []
         help_lines = False
         option_lines = False
+        output_lines = False
 
         for line in lines:
             if line.startswith("Usage: "):
@@ -77,11 +78,19 @@ for command in list_cmds():
                 new_lines.append("\n**Help**\n")
                 new_lines.append(clean_rst)
                 help_lines = True
+                option_lines = False
+                output_lines = False
             elif line.startswith("Options:"):
                 help_lines = False
-                new_lines.append("**Options**::\n\n")
                 option_lines = True
-            elif option_lines:
+                output_lines = False
+                new_lines.append("**Options**::\n\n")
+            elif line.strip().startswith("Output:"):
+                help_lines = False
+                option_lines = False
+                output_lines = True
+                new_lines.append("**Output**::\n\n")
+            elif option_lines or output_lines:
                 new_lines.append("    %s" % line)
         text = COMMAND_TEMPLATE.safe_substitute(
             command=command,

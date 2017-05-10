@@ -18,7 +18,7 @@ Add a role to the given group.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``add_group_user`` command
@@ -38,7 +38,7 @@ Add a user to the given group.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``create_group`` command
@@ -60,7 +60,7 @@ Create a new group.
 
       --user_ids TEXT  A list of encoded user IDs to add to the new group
       --role_ids TEXT  A list of encoded role IDs to add to the new group
-      --help           Show this message and exit.
+      -h, --help       Show this message and exit.
     
 
 ``delete_group_role`` command
@@ -80,7 +80,7 @@ Remove a role from the given group.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``delete_group_user`` command
@@ -100,7 +100,7 @@ Remove a user from the given group.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_group_roles`` command
@@ -120,7 +120,7 @@ Get the list of roles associated to the given group.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_group_users`` command
@@ -140,7 +140,7 @@ Get the list of users associated to the given group.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_groups`` command
@@ -160,7 +160,7 @@ Get all (not deleted) groups.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_group`` command
@@ -180,7 +180,7 @@ Get details of a given group.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``update_group`` command
@@ -208,5 +208,5 @@ Update a group.
       --role_ids TEXT    New list of encoded role IDs for the group. It will
                          substitute the previous list of roles (with [] if not
                          specified)
-      --help             Show this message and exit.
+      -h, --help         Show this message and exit.
     

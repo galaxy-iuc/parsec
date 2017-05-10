@@ -18,7 +18,7 @@ Get a list of available tool elements in Galaxy's configured toolbox.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_tools`` command
@@ -42,7 +42,7 @@ Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_
       --name TEXT     name of the requested tool(s)
       --trackster     if True, only tools that are compatible with Trackster are
                       returned
-      --help          Show this message and exit.
+      -h, --help      Show this message and exit.
     
 
 ``install_dependencies`` command
@@ -62,7 +62,7 @@ Install dependencies for a given tool via a resolver. This works only for Conda 
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``paste_content`` command
@@ -82,7 +82,7 @@ Upload a string to a new dataset in the history specified by ``history_id``.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``put_url`` command
@@ -102,7 +102,7 @@ Upload a string to a new dataset in the history specified by ``history_id``.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``run_tool`` command
@@ -122,7 +122,7 @@ Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with i
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_tool`` command
@@ -144,7 +144,7 @@ Get details of a given tool.
 
       --io_details    if True, get also input and output details
       --link_details  if True, get also link details
-      --help          Show this message and exit.
+      -h, --help      Show this message and exit.
     
 
 ``upload_file`` command
@@ -172,7 +172,7 @@ Upload the file specified by ``path`` to the history specified by ``history_id``
       --to_posix_lines  if True, convert universal line endings to POSIX line
                         endings. Default is True. Set to False if you upload a gzip,
                         bz2 or zip archive containing a binary file
-      --help            Show this message and exit.
+      -h, --help        Show this message and exit.
     
 
 ``upload_from_ftp`` command
@@ -192,5 +192,5 @@ Upload the file specified by ``path`` from the user's FTP directory to the histo
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     

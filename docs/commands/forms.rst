@@ -18,7 +18,7 @@ Create a new form.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``get_forms`` command
@@ -38,7 +38,7 @@ Get the list of all forms.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_form`` command
@@ -58,5 +58,5 @@ Get details of a given form.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     

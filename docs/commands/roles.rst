@@ -18,7 +18,7 @@ Displays a collection (list) of roles.
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
 
 ``show_role`` command
@@ -38,5 +38,5 @@ Display information on a single role
 **Options**::
 
 
-      --help  Show this message and exit.
+      -h, --help  Show this message and exit.
     
