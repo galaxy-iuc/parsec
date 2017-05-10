@@ -18,8 +18,8 @@ Get the list of all installed datatypes.
 **Options**::
 
 
-      --extension_only TEXT  None
-      --upload_only TEXT     None
+      --extension_only TEXT
+      --upload_only TEXT
       --help                 Show this message and exit.
     
 

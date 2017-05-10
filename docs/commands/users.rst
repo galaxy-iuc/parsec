@@ -134,7 +134,7 @@ Get a list of all registered users. If ``deleted`` is set to ``True``, get a lis
 **Options**::
 
 
-      --deleted TEXT  None
+      --deleted TEXT
       --help          Show this message and exit.
     
 

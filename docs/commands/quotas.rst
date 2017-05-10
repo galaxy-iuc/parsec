@@ -1,6 +1,51 @@
 quotas
 ======
 
+``create_quota`` command
+------------------------
+
+This section is auto-generated from the help text for the parsec command
+``quotas``.
+
+**Usage**::
+
+    parsec quotas create_quota [OPTIONS] NAME DESCRIPTION AMOUNT OPERATION
+
+**Help**
+
+Create a new quota
+
+**Options**::
+
+
+      --default TEXT    Whether or not this is a default quota. Valid values are
+                        ``no``, ``unregistered``, ``registered``. None is equivalent
+                        to ``no``.
+      --in_users TEXT   A list of user IDs or user emails.
+      --in_groups TEXT  A list of group IDs or names.
+      --help            Show this message and exit.
+    
+
+``delete_quota`` command
+------------------------
+
+This section is auto-generated from the help text for the parsec command
+``quotas``.
+
+**Usage**::
+
+    parsec quotas delete_quota [OPTIONS] QUOTA_ID
+
+**Help**
+
+Delete a quota
+
+**Options**::
+
+
+      --help  Show this message and exit.
+    
+
 ``get_quotas`` command
 ----------------------
 
@@ -41,4 +86,59 @@ Display information on a quota
 
       --deleted  Search for quota in list of ones already marked as deleted
       --help     Show this message and exit.
+    
+
+``undelete_quota`` command
+--------------------------
+
+This section is auto-generated from the help text for the parsec command
+``quotas``.
+
+**Usage**::
+
+    parsec quotas undelete_quota [OPTIONS] QUOTA_ID
+
+**Help**
+
+Unelete a quota
+
+**Options**::
+
+
+      --help  Show this message and exit.
+    
+
+``update_quota`` command
+------------------------
+
+This section is auto-generated from the help text for the parsec command
+``quotas``.
+
+**Usage**::
+
+    parsec quotas update_quota [OPTIONS] QUOTA_ID
+
+**Help**
+
+Update an existing quota
+
+**Options**::
+
+
+      --name TEXT         Name for the new quota. This must be unique within a
+                          Galaxy instance.
+      --description TEXT  Quota description. If you supply this parameter, but not
+                          the name, an error will be thrown.
+      --amount TEXT       Quota size (E.g. ``10000MB``, ``99 gb``, ``0.2T``,
+                          ``unlimited``)
+      --operation TEXT    One of (``+``, ``-``, ``=``). If you wish to change this
+                          value, you must also provide the ``amount``, otherwise it
+                          will not take effect.
+      --default TEXT      Whether or not this is a default quota. Valid values are
+                          ``no``, ``unregistered``, ``registered``. Calling update
+                          twice with a default of ``no`` will throw an error. Not
+                          passing this parameter is equivalent to passing ``no``.
+      --in_users TEXT     A list of user IDs or user emails.
+      --in_groups TEXT    A list of group IDs or names.
+      --help              Show this message and exit.
     

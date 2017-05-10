@@ -141,7 +141,7 @@ Deprecated method, use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_d
 **Options**::
 
 
-      --use_default_filename TEXT  None
+      --use_default_filename TEXT
       --help                       Show this message and exit.
     
 
@@ -230,7 +230,7 @@ Get all histories or filter the specific one(s) via the provided ``name`` or ``h
 
       --history_id TEXT  Encoded history ID to filter on
       --name TEXT        Name of history to filter on
-      --deleted TEXT     None
+      --deleted TEXT
       --help             Show this message and exit.
     
 

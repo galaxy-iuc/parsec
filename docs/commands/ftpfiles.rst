@@ -18,6 +18,6 @@ Get a list of local files.
 **Options**::
 
 
-      --deleted TEXT  None
+      --deleted TEXT
       --help          Show this message and exit.
     
