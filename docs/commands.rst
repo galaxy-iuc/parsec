@@ -27,5 +27,6 @@ describes these commands.
    commands/tools.rst
    commands/toolshed.rst
    commands/users.rst
+   commands/utils.rst
    commands/visual.rst
    commands/workflows.rst

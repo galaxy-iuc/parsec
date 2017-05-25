@@ -17,7 +17,6 @@ from parsec.commands.workflows.run_workflow import cli as func14
 from parsec.commands.workflows.show_invocation import cli as func15
 from parsec.commands.workflows.show_invocation_step import cli as func16
 from parsec.commands.workflows.show_workflow import cli as func17
-from parsec.commands.workflows.wait_on_invocation import cli as func18
 
 @click.group()
 def cli():
@@ -41,4 +40,3 @@ cli.add_command(func14)
 cli.add_command(func15)
 cli.add_command(func16)
 cli.add_command(func17)
-cli.add_command(func18)

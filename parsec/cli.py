@@ -89,7 +89,8 @@ class ParsecCLI(click.MultiCommand):
         commands = ['config', 'datasets', 'datatypes', 'folders', 'forms',
                     'ftpfiles', 'genomes', 'groups', 'histories', 'jobs',
                     'libraries', 'quotas', 'roles', 'tool', 'tool_data',
-                    'tools', 'toolshed', 'users', 'visual', 'workflows']
+                    'tools', 'toolshed', 'users', 'utils', 'visual',
+                    'workflows']
         return commands
 
     def get_command(self, ctx, name):
@@ -103,7 +104,7 @@ class ParsecCLI(click.MultiCommand):
 @click.option(
     "-g",
     "--galaxy_instance",
-    help='Name of galaxy instance in ~/.planemo.yml. This parameter can also be set via the environment variable PARSEC_GALAXY_INSTANCE',
+    help='Name of galaxy instance in ~/.parsec.yml. This parameter can also be set via the environment variable PARSEC_GALAXY_INSTANCE',
     default='__default',
     show_default=True,
     required=True
