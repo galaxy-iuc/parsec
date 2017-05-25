@@ -1,7 +1,13 @@
 import sys
 import time
 import click
+import tempfile
 import json
+try:
+    import StringIO as io
+except:
+    import io
+
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception
 from justbackoff import Backoff
@@ -82,13 +88,16 @@ def cli(ctx, _):
         else:
             xunit_name = xunit_identifier
 
+        stderr = tempfile.NamedTemporaryFile()
         output = ""
         with xunit(xunit_name, xunit_identifier) as test_case:
             ctx.vlog('Executing: %s', ' '.join(built_command))
-            output = check_output(' '.join(built_command), shell=True)
+            output = check_output(' '.join(built_command), shell=True, stderr=stderr)
 
         # Set stdout
+        stderr.seek(0)
         test_case._tc.stdout = unicodify(output).strip()
+        test_case._tc.stderr = unicodify(stderr.read()).strip()
         # Append to list
         test_cases.append(test_case)
 

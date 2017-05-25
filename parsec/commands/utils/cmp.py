@@ -33,24 +33,22 @@ def cli(ctx, method, cmp_with):
 
     """
     data = sys.stdin.read()
-    # Print it back out for output's convenience
-    sys.stderr.write("Input Data: " + data)
     if method in ('lt', 'gt', 'ne', 'eq'):
-        data = float(data)
-        cmp_with = float(cmp_with)
+        data = float(data.strip())
+        cmp_with = float(cmp_with.strip())
 
         if method == 'lt':
-            ctx.exit(0) if data < cmp_with else ctx.exit(1)
+            ctx.exit(0) if data < cmp_with else sys.stderr.write('%s >= %s' % (data, cmp_with)); ctx.exit(1)
         elif method == 'gt':
-            ctx.exit(0) if data > cmp_with else ctx.exit(1)
+            ctx.exit(0) if data > cmp_with else sys.stderr.write('%s <= %s' % (data, cmp_with)); ctx.exit(1)
         elif method == 'ne':
-            ctx.exit(0) if data != cmp_with else ctx.exit(1)
+            ctx.exit(0) if data != cmp_with else sys.stderr.write('%s == %s' % (data, cmp_with)); ctx.exit(1)
         elif method == 'eq':
-            ctx.exit(0) if data == cmp_with else ctx.exit(1)
+            ctx.exit(0) if data == cmp_with else sys.stderr.write('%s != %s' % (data, cmp_with)); ctx.exit(1)
 
     elif method in ('teq', 'tneq'):
         if method == 'tneq':
-            ctx.exit(0) if data != cmp_with else ctx.exit(1)
+            ctx.exit(0) if data != cmp_with else sys.stderr.write('%s == %s' % (data, cmp_with)); ctx.exit(1)
         elif method == 'teq':
-            ctx.exit(0) if data == cmp_with else ctx.exit(1)
+            ctx.exit(0) if data == cmp_with else sys.stderr.write('%s != %s' % (data, cmp_with)); ctx.exit(1)
     ctx.exit(2)
