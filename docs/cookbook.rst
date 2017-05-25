@@ -53,7 +53,7 @@ history id passed in.
         <testcase classname="parsec.histories.get_status.90c9282cb8718062_|.jq..percent_complete.|.parsec.utils.cmp.eq.100" name="parsec.histories.get_status.90c9282cb8718062_" time="0.566199">
           <failure message="Command 'parsec histories get_status 90c9282cb8718062 | jq .percent_complete | parsec utils cmp eq 100' returned non-zero exit status 1" type="failure">Traceback (most recent call last):
 
-      File &quot;/home/hxr/work-freiburg/parsec/parsec/commands/utils/xunit_xargs.py&quot;, line 95, in cli
+      File &quot;xunit_xargs.py&quot;, line 95, in cli
         output = check_output(' '.join(built_command), shell=True, stderr=stderr)
 
       File &quot;/usr/lib/python3.5/subprocess.py&quot;, line 626, in check_output
