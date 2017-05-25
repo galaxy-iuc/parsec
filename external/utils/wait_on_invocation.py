@@ -26,11 +26,10 @@ from justbackoff import Backoff
     default=60,
     type=float,
 )
-@click.option('-v', '--verbose', count=True)
 
 @pass_context
 @bioblend_exception
-def cli(ctx, workflow_id, invocation_id, verbose, exit_early=False, backoff_min=1, backoff_max=60):
+def cli(ctx, workflow_id, invocation_id, exit_early=False, backoff_min=1, backoff_max=60):
     """Given a workflow and invocation id, wait until that invocation is
     complete (or one or more steps have errored)
 
@@ -58,35 +57,27 @@ def cli(ctx, workflow_id, invocation_id, verbose, exit_early=False, backoff_min=
 
         # If it's scheduled, then let's look at steps. Otherwise steps probably don't exist yet.
         if latest_state['state'] == 'scheduled':
-            if verbose > 1:
-                click.echo("Checking workflow %s states: %s" % (workflow_id, state_rep), err=True)
-            elif verbose > 0:
-                click.echo('.', nl=False, err=True)
+            ctx.vlog("Checking workflow %s states: %s", workflow_id, state_rep)
 
             if exit_early:
-                if verbose > 0:
-                    print(json.dumps({'state': 'running', 'job_states': states}))
-                    ctx.exit(code=1)
+                print(json.dumps({'state': 'running', 'job_states': states}))
+                ctx.exit(1)
 
             # Conditions which must be true for all jobs before we can be done
             if all([state == 'ok' for state in states]):
                 print(json.dumps({'state': 'done', 'job_states': states}))
-                ctx.exit(code=0)
+                ctx.exit(0)
 
             # Conditions on which to exit immediately (i.e. due to a failure)
             if any([state in ('error', 'paused') for state in states]):
                 print(json.dumps({'state': 'failure', 'job_states': states}))
-                ctx.exit(code=2)
+                ctx.exit(2)
         else:
-            if verbose > 1:
-                click.echo("Waiting for invocation to be scheduled", err=True)
-            elif verbose > 0:
-                click.echo("+", nl=False, err=True)
+            ctx.vlog("Waiting for invocation to be scheduled")
 
             if exit_early:
-                if verbose > 0:
-                    print(json.dumps({'state': 'unscheduled'}))
-                    ctx.exit(code=exit_code)
+                print(json.dumps({'state': 'unscheduled'}))
+                ctx.exit(0)
 
         time.sleep(backoff.duration())
-    ctx.exit(code=3)
+    ctx.exit(3)

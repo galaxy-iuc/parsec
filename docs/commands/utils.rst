@@ -31,6 +31,5 @@ This will exit with the following error codes:
                            sleeping indefinitely
       --backoff_min FLOAT  Minimum time to sleep between checks, in seconds.
       --backoff_max FLOAT  Maximum time to sleep between checks, in seconds
-      -v, --verbose
       -h, --help           Show this message and exit.
     
