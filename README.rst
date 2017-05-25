@@ -5,9 +5,6 @@ Parsec: Galaxy at the Speed of Light
 .. image:: https://readthedocs.org/projects/pip/badge/?version=latest
         :target: https://parsec.readthedocs.org.
 
-.. image:: https://landscape.io/github/galaxy-iuc/parsec/master/landscape.svg?stytle=flat
-        :target: https://landscape.io/github/galaxy-iuc/parsec/master
-
 .. image:: https://requires.io/github/galaxy-iuc/parsec/requirements.svg?branch=master
         :target: https://requires.io/github/galaxy-iuc/parsec/requirements/?branch=master
         :alt: Requirements Status
