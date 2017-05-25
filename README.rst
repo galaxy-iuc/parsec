@@ -657,3 +657,10 @@ We can now use parsec to check on the status of all of the datasets:
      72 "new"
       3 null
       1 "ok"
+
+Or we can use one of the utility scripts to wait on that workflow to finish before continuing on to some other task:
+
+.. code-block:: shell
+
+   $ parsec utils wait_on_invocation 3daf5606d767a471 c7f60cfda02f0f46 && ...
+
