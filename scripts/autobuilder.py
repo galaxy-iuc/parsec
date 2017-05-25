@@ -220,7 +220,7 @@ class ScriptBuilder(object):
             handle.write('import click\n')
             # for function:
             files = list(glob.glob("parsec/commands/%s/*.py" % module))
-            files = [f for f in files if "__init__.py" not in f]
+            files = sorted([f for f in files if "__init__.py" not in f])
             for idx, path in enumerate(files):
                 fn = path.replace('/', '.')[0:-3]
                 handle.write('from %s import cli as func%s\n' % (fn, idx))

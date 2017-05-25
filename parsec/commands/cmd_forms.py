@@ -1,7 +1,7 @@
 import click
-from parsec.commands.forms.show_form import cli as func0
+from parsec.commands.forms.create_form import cli as func0
 from parsec.commands.forms.get_forms import cli as func1
-from parsec.commands.forms.create_form import cli as func2
+from parsec.commands.forms.show_form import cli as func2
 
 @click.group()
 def cli():

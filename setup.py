@@ -15,6 +15,7 @@ requirements = [
     'bioblend',
     'wrapt',
     'pyyaml',
+    'justbackoff',
 ]
 
 test_requirements = [

@@ -1,6 +1,6 @@
 import click
-from parsec.commands.config.get_version import cli as func0
-from parsec.commands.config.get_config import cli as func1
+from parsec.commands.config.get_config import cli as func0
+from parsec.commands.config.get_version import cli as func1
 
 @click.group()
 def cli():
