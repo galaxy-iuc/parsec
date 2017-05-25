@@ -10,6 +10,6 @@ from parsec.decorators import bioblend_exception, dict_output
 @bioblend_exception
 @dict_output
 def cli(ctx, quota_id):
-    """Unelete a quota
+    """Undelete a quota
     """
     return ctx.gi.quotas.undelete_quota(quota_id)

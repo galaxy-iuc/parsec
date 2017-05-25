@@ -17,6 +17,6 @@ from parsec.decorators import bioblend_exception, dict_output
 @bioblend_exception
 @dict_output
 def cli(ctx, workflow_id, file_local_path, use_default_filename=True):
-    """Exports a workflow in json format to a given local path.
+    """Exports a workflow in JSON format to a given local path.
     """
     return ctx.gi.workflows.export_workflow_to_local_path(workflow_id, file_local_path, use_default_filename=use_default_filename)

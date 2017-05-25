@@ -17,6 +17,6 @@ from parsec.decorators import bioblend_exception, dict_output
 @bioblend_exception
 @dict_output
 def cli(ctx, history_id, dataset_id, file_path, use_default_filename=True):
-    """Deprecated method, use ``bioblend.galaxy.dataset.DatasetClient.download_dataset()`` instead.
+    """.. deprecated:: 0.8.0 Use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_dataset` instead.
     """
     return ctx.gi.histories.download_dataset(history_id, dataset_id, file_path, use_default_filename=use_default_filename)

@@ -10,17 +10,17 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.option(
     "--install_tool_dependencies",
-    help="Whether or not to automatically handle tool dependencies (see http://wiki.galaxyproject.org/AToolOrASuitePerRepository for more details)",
+    help="Whether or not to automatically handle tool dependencies (see https://galaxyproject.org/toolshed/tool-dependency-recipes/ for more details)",
     is_flag=True
 )
 @click.option(
     "--install_repository_dependencies",
-    help="Whether or not to automatically handle repository dependencies (see http://wiki.galaxyproject.org/DefiningRepositoryDependencies for more details)",
+    help="Whether or not to automatically handle repository dependencies (see https://galaxyproject.org/toolshed/defining-repository-dependencies/ for more details)",
     is_flag=True
 )
 @click.option(
     "--install_resolver_dependencies",
-    help="Whether or not to automatically install resolver dependencies (e.g. conda). This parameter is silently ignored in Galaxy ``release_2016.04`` and earlier.",
+    help="Whether or not to automatically install resolver dependencies (e.g. conda). This parameter is silently ignored in Galaxy ``release_16.04`` and earlier.",
     is_flag=True
 )
 @click.option(

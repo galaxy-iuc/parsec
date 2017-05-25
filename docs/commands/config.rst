@@ -21,3 +21,20 @@ Get a list of attributes about the Galaxy instance. More attributes will be pres
 
       -h, --help  Show this message and exit.
     
+
+``get_version`` command
+-----------------------
+
+**Usage**::
+
+    parsec config get_version [OPTIONS]
+
+**Help**
+
+Get the current version of the Galaxy instance. This functionality is available since Galaxy ``release_15.03``.
+
+**Options**::
+
+
+      -h, --help  Show this message and exit.
+    

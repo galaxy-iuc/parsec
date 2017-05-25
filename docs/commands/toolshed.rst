@@ -37,18 +37,19 @@ Install a specified repository revision from a specified Tool Shed into this Gal
 
 
       --install_tool_dependencies     Whether or not to automatically handle tool
-                                      dependencies (see http://wiki.galaxyproject.or
-                                      g/AToolOrASuitePerRepository for more details)
+                                      dependencies (see
+                                      https://galaxyproject.org/toolshed/tool-
+                                      dependency-recipes/ for more details)
       --install_repository_dependencies
                                       Whether or not to automatically handle
-                                      repository dependencies (see http://wiki.galax
-                                      yproject.org/DefiningRepositoryDependencies
-                                      for more details)
+                                      repository dependencies (see
+                                      https://galaxyproject.org/toolshed/defining-
+                                      repository-dependencies/ for more details)
       --install_resolver_dependencies
                                       Whether or not to automatically install
                                       resolver dependencies (e.g. conda). This
                                       parameter is silently ignored in Galaxy
-                                      ``release_2016.04`` and earlier.
+                                      ``release_16.04`` and earlier.
       --tool_panel_section_id TEXT    The ID of the Galaxy tool panel section where
                                       the tool should be insterted under. Note that
                                       you should specify either this parameter or

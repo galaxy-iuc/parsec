@@ -71,6 +71,7 @@ Mark corresponding dataset as deleted.
 **Options**::
 
 
+      --purge     if ``True``, also purge (permanently delete) the dataset
       -h, --help  Show this message and exit.
     
 
@@ -118,7 +119,7 @@ Delete a history.
 
 **Help**
 
-Deprecated method, use ``bioblend.galaxy.dataset.DatasetClient.download_dataset()`` instead.
+.. deprecated:: 0.8.0 Use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_dataset` instead.
 
 **Options**::
 
@@ -176,7 +177,7 @@ Start a job to create an export archive for the given history.
 
 **Help**
 
-Deprecated method.
+.. deprecated:: 0.5.2 Use :meth:`get_most_recently_used_history` instead.
 
 **Options**::
 
@@ -411,11 +412,13 @@ Update history metadata information. Some of the attributes that can be modified
 **Options**::
 
 
-      --name TEXT        Replace history name with the given string
       --annotation TEXT  Replace history annotation with given string
       --deleted          Mark or unmark history as deleted
       --importable       Mark or unmark history as importable
+      --name TEXT        Replace history name with the given string
       --published        Mark or unmark history as published
+      --purged           If True, mark history as purged (permanently deleted).
+                         Ignored on Galaxy release_15.01 and earlier
       --tags TEXT        Replace history tags with the given list
       -h, --help         Show this message and exit.
     

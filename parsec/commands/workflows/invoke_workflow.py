@@ -12,7 +12,8 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 @click.option(
     "--params",
-    help="A mapping of tool parameters that are non-datasets parameters. The map must be in the following format: ``{'blastn': {'param': 'evalue', 'value': '1e-06'}}``"
+    help="A mapping of non-datasets tool parameters (see below)",
+    type=str
 )
 @click.option(
     "--history_id",

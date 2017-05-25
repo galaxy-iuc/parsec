@@ -27,7 +27,8 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 @click.option(
     "--default",
-    help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. Calling update twice with a default of ``no`` will throw an error. Not passing this parameter is equivalent to passing ``no``.",
+    help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. Calling this method with ``default=\"no\"`` on a non-default quota will throw an error. Not passing this parameter is equivalent to passing ``no``.",
+    default="no",
     type=str
 )
 @click.option(
@@ -46,7 +47,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, quota_id, name="", description="", amount="", operation="", default="", in_users=None, in_groups=None):
+def cli(ctx, quota_id, name="", description="", amount="", operation="", default="no", in_users=None, in_groups=None):
     """Update an existing quota
     """
     return ctx.gi.quotas.update_quota(quota_id, name=name, description=description, amount=amount, operation=operation, default=default, in_users=in_users, in_groups=in_groups)

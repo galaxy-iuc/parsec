@@ -65,7 +65,7 @@ Exports a workflow.
 
 **Help**
 
-Exports a workflow
+.. deprecated:: 0.9.0 Use :meth:`export_workflow_dict` instead.
 
 **Options**::
 
@@ -82,7 +82,7 @@ Exports a workflow
 
 **Help**
 
-Exports a workflow in json format to a given local path.
+Exports a workflow in JSON format to a given local path.
 
 **Options**::
 
@@ -211,7 +211,7 @@ Imports a new workflow given the path to a file containing a previously exported
 
 **Help**
 
-Imports a new workflow given a json representation of a previously exported workflow.
+.. deprecated:: 0.9.0 Use :meth:`import_workflow_dict` instead.
 
 **Options**::
 
@@ -240,10 +240,8 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
                                       HistoryDatasetAssociation (``hda``), or
                                       HistoryDatasetCollectionAssociation
                                       (``hdca``).
-      --params TEXT                   A mapping of tool parameters that are non-
-                                      datasets parameters. The map must be in the
-                                      following format: ``{'blastn': {'param':
-                                      'evalue', 'value': '1e-06'}}``
+      --params TEXT                   A mapping of non-datasets tool parameters (see
+                                      below)
       --history_id TEXT               The encoded history ID where to store the
                                       workflow output. Alternatively,
                                       ``history_name`` may be specified to create a
@@ -295,7 +293,7 @@ nature of this action and what is expected will vary based on the the type of wo
 
 **Help**
 
-Run the workflow identified by ``workflow_id``. This method is deprecated please use ``invoke_workflow`` instead.
+Run the workflow identified by ``workflow_id``.
 
 **Options**::
 
@@ -309,10 +307,8 @@ Run the workflow identified by ``workflow_id``. This method is deprecated please
                                   <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}``
                                   (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src':
                                   'ld'}}``)
-      --params TEXT               A mapping of tool parameters that are non-datasets
-                                  parameters. The map must be in the following
-                                  format: ``{'blastn': {'param': 'evalue', 'value':
-                                  '1e-06'}}``
+      --params TEXT               A mapping of non-datasets tool parameters (see
+                                  below)
       --history_id TEXT           The encoded history ID where to store the workflow
                                   output. Alternatively, ``history_name`` may be
                                   specified to create a new history.
@@ -372,7 +368,7 @@ See the details of a particular workflow invocation step.
 
 **Help**
 
-Display information needed to run a workflow
+Display information needed to run a workflow.
 
 **Options**::
 

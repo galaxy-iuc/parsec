@@ -8,6 +8,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--action",
     help="action to execute, only \"set_permissions\" is supported.",
+    default="set_permissions",
     type=str
 )
 @click.option(
@@ -32,7 +33,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, folder_id, action="", add_ids="", manage_ids="", modify_ids=""):
+def cli(ctx, folder_id, action="set_permissions", add_ids="", manage_ids="", modify_ids=""):
     """Set the permissions of a folder.
     """
     return ctx.gi.folders.set_permissions(folder_id, action=action, add_ids=add_ids, manage_ids=manage_ids, modify_ids=modify_ids)

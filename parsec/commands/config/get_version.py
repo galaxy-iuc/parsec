@@ -2,13 +2,13 @@ import click
 from parsec.cli import pass_context, json_loads
 from parsec.decorators import bioblend_exception, dict_output
 
-@click.command('get_current_history')
+@click.command('get_version')
 
 
 @pass_context
 @bioblend_exception
 @dict_output
 def cli(ctx):
-    """.. deprecated:: 0.5.2 Use :meth:`get_most_recently_used_history` instead.
+    """Get the current version of the Galaxy instance. This functionality is available since Galaxy ``release_15.03``.
     """
-    return ctx.gi.histories.get_current_history()
+    return ctx.gi.config.get_version()

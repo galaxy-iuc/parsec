@@ -11,6 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--default",
     help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. None is equivalent to ``no``.",
+    default="no",
     type=str
 )
 @click.option(
@@ -29,7 +30,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, name, description, amount, operation, default="", in_users=None, in_groups=None):
+def cli(ctx, name, description, amount, operation, default="no", in_users=None, in_groups=None):
     """Create a new quota
     """
     return ctx.gi.quotas.create_quota(name, description, amount, operation, default=default, in_users=in_users, in_groups=in_groups)
