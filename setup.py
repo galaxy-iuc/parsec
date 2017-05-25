@@ -16,6 +16,8 @@ requirements = [
     'wrapt',
     'pyyaml',
     'justbackoff',
+    'xunit-wrapper',
+    'future',
 ]
 
 test_requirements = [
