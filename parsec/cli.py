@@ -101,6 +101,7 @@ class ParsecCLI(click.MultiCommand):
 @click.option('-v', '--verbose', is_flag=True,
               help='Enables verbose mode.')
 @click.option(
+    "-g",
     "--galaxy_instance",
     help='name of galaxy instance from ~/.planemo.yml',
     default='__default',
