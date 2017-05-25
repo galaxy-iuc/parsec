@@ -1,7 +1,8 @@
 import time
 import click
+import json
 from parsec.cli import pass_context
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import bioblend_exception
 from justbackoff import Backoff
 
 
@@ -29,10 +30,16 @@ from justbackoff import Backoff
 
 @pass_context
 @bioblend_exception
-@dict_output
 def cli(ctx, workflow_id, invocation_id, verbose, exit_early=False, backoff_min=1, backoff_max=60):
     """Given a workflow and invocation id, wait until that invocation is
     complete (or one or more steps have errored)
+
+    This will exit with the following error codes:
+
+    - 0: done successfully
+    - 1: running (if --exit_early)
+    - 2: failure
+    - 3: unknown
     """
     backoff = Backoff(min_ms=backoff_min * 1000, max_ms=backoff_max * 1000, factor=2, jitter=True)
 
@@ -52,29 +59,34 @@ def cli(ctx, workflow_id, invocation_id, verbose, exit_early=False, backoff_min=
         # If it's scheduled, then let's look at steps. Otherwise steps probably don't exist yet.
         if latest_state['state'] == 'scheduled':
             if verbose > 1:
-                click.echo("Checking workflow %s states: %s" % (workflow_id, state_rep))
+                click.echo("Checking workflow %s states: %s" % (workflow_id, state_rep), err=True)
             elif verbose > 0:
-                click.echo('.', nl=False)
+                click.echo('.', nl=False, err=True)
 
             if exit_early:
                 if verbose > 0:
-                    return {'state': 'running', 'job_states': states}
+                    print(json.dumps({'state': 'running', 'job_states': states}))
+                    ctx.exit(code=1)
 
             # Conditions which must be true for all jobs before we can be done
             if all([state == 'ok' for state in states]):
-                return {'state': 'done', 'job_states': states}
+                print(json.dumps({'state': 'done', 'job_states': states}))
+                ctx.exit(code=0)
 
             # Conditions on which to exit immediately (i.e. due to a failure)
             if any([state in ('error', 'paused') for state in states]):
-                return {'state': 'failure', 'job_states': states}
+                print(json.dumps({'state': 'failure', 'job_states': states}))
+                ctx.exit(code=2)
         else:
             if verbose > 1:
-                click.echo("Waiting for invocation to be scheduled")
+                click.echo("Waiting for invocation to be scheduled", err=True)
             elif verbose > 0:
-                click.echo("+", nl=False)
+                click.echo("+", nl=False, err=True)
 
             if exit_early:
                 if verbose > 0:
-                    return {'state': 'unscheduled'}
+                    print(json.dumps({'state': 'unscheduled'}))
+                    ctx.exit(code=exit_code)
 
         time.sleep(backoff.duration())
+    ctx.exit(code=3)
