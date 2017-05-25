@@ -20,7 +20,7 @@ COMMAND_TEMPLATE = Template('''
 ${module_underline}
 
 This section is auto-generated from the help text for the parsec command
-``${command}``.
+``${command} ${subcommand}``.
 
 ${command_help}
 ''')
