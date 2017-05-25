@@ -5,7 +5,7 @@ import click
 import json
 
 from .io import error
-from .config import read_global_config  # noqa, ditto
+from .config import read_global_config, global_config_path  # noqa, ditto
 from .galaxy import get_galaxy_instance, get_toolshed_instance
 from parsec import __version__  # noqa, ditto
 
@@ -103,7 +103,7 @@ class ParsecCLI(click.MultiCommand):
 @click.option(
     "-g",
     "--galaxy_instance",
-    help='Name of galaxy instance in ~/.parsec.yml. This parameter can also be set via the environment variable PARSEC_GALAXY_INSTANCE',
+    help='Name of galaxy instance in %s. This parameter can also be set via the environment variable PARSEC_GALAXY_INSTANCE' % global_config_path(),
     default='__default',
     show_default=True,
     required=True

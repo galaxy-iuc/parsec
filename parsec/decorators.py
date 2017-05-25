@@ -20,7 +20,28 @@ def bioblend_exception(wrapped, instance, args, kwargs):
 
 
 @wrapt.decorator
-def dict_output(wrapped, instance, args, kwargs):
-    # TODO enhance
+def list_output(wrapped, instance, args, kwargs):
     output = wrapped(*args, **kwargs)
     print((json.dumps(output, indent=4)))
+
+
+@wrapt.decorator
+def dict_output(wrapped, instance, args, kwargs):
+    output = wrapped(*args, **kwargs)
+    print((json.dumps(output, indent=4)))
+
+
+@wrapt.decorator
+def str_output(wrapped, instance, args, kwargs):
+    print(wrapped(*args, **kwargs))
+
+
+@wrapt.decorator
+def None_output(wrapped, instance, args, kwargs):
+    print(wrapped(*args, **kwargs))
+
+
+def _arg_split(ctx, param, value):
+    # split columns by ',' and remove whitespace
+    columns = [c.strip() for c in value.split(',')]
+    return columns
