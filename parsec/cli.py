@@ -103,8 +103,9 @@ class ParsecCLI(click.MultiCommand):
 @click.option(
     "-g",
     "--galaxy_instance",
-    help='name of galaxy instance from ~/.planemo.yml',
+    help='Name of galaxy instance in ~/.planemo.yml. This parameter can also be set via the environment variable PARSEC_GALAXY_INSTANCE',
     default='__default',
+    show_default=True,
     required=True
 )
 @pass_context
