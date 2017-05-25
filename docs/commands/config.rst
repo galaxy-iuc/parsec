@@ -1,11 +1,12 @@
 config
 ======
 
+This section is auto-generated from the help text for the arrow command
+``config``.
+
+
 ``get_config`` command
 ----------------------
-
-This section is auto-generated from the help text for the parsec command
-``config``.
 
 **Usage**::
 

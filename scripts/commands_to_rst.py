@@ -19,9 +19,6 @@ COMMAND_TEMPLATE = Template('''
 ``${subcommand}`` command
 ${module_underline}
 
-This section is auto-generated from the help text for the parsec command
-``${command} ${subcommand}``.
-
 ${command_help}
 ''')
 
@@ -50,6 +47,13 @@ for command in list_cmds():
     parent_doc_handle = open(os.path.join(command_doc_dir, command + ".rst"), "w")
     parent_doc_handle.write('%s\n' % command)
     parent_doc_handle.write('%s\n' % ('=' * len(command)))
+    parent_doc_handle.write(Template("""
+This section is auto-generated from the help text for the arrow command
+``${command}``.
+
+""").safe_substitute(command=command))
+
+
     for subcommand in list_subcmds(command):
 
         command_obj = cli.name_to_command(command, subcommand)
@@ -57,12 +61,18 @@ for command in list_cmds():
         function = command_obj.callback
         raw_rst = function.__doc__
 
-        def clean_rst_line(line):
-            if line.startswith("    "):
-                return line[4:]
+        def clean_rst_line(line, remove=4):
+            if line.startswith(" " * remove):
+                return line[remove:]
             else:
                 return line
         clean_rst = "\n".join(map(clean_rst_line, raw_rst.split("\n")))
+        if 'Output:' in clean_rst:
+            output_rst = clean_rst[clean_rst.index('Output:') + len('Output:'):].lstrip('\n')
+            clean_rst = clean_rst[0:clean_rst.index('Output:')]
+            output_rst = "\n".join([clean_rst_line(x, remove=5) for x in raw_rst.split("\n")])
+        else:
+            output_rst = ""
 
         result = runner.invoke(parsec_cli, [command, subcommand, "--help"])
         output = result.output
@@ -89,9 +99,12 @@ for command in list_cmds():
                 help_lines = False
                 option_lines = False
                 output_lines = True
-                new_lines.append("**Output**::\n\n")
-            elif option_lines or output_lines:
+                new_lines.append("**Output**\n\n")
+                new_lines.append(output_rst[output_rst.index('Output:') + len('Output:'):].lstrip('\n'))
+            elif option_lines:
                 new_lines.append("    %s" % line)
+            elif output_lines:
+                pass
         text = COMMAND_TEMPLATE.safe_substitute(
             command=command,
             subcommand=subcommand,

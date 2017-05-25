@@ -1,11 +1,12 @@
 groups
 ======
 
+This section is auto-generated from the help text for the arrow command
+``groups``.
+
+
 ``add_group_role`` command
 --------------------------
-
-This section is auto-generated from the help text for the parsec command
-``groups``.
 
 **Usage**::
 
@@ -24,9 +25,6 @@ Add a role to the given group.
 ``add_group_user`` command
 --------------------------
 
-This section is auto-generated from the help text for the parsec command
-``groups``.
-
 **Usage**::
 
     parsec groups add_group_user [OPTIONS] GROUP_ID USER_ID
@@ -43,9 +41,6 @@ Add a user to the given group.
 
 ``create_group`` command
 ------------------------
-
-This section is auto-generated from the help text for the parsec command
-``groups``.
 
 **Usage**::
 
@@ -66,9 +61,6 @@ Create a new group.
 ``delete_group_role`` command
 -----------------------------
 
-This section is auto-generated from the help text for the parsec command
-``groups``.
-
 **Usage**::
 
     parsec groups delete_group_role [OPTIONS] GROUP_ID ROLE_ID
@@ -85,9 +77,6 @@ Remove a role from the given group.
 
 ``delete_group_user`` command
 -----------------------------
-
-This section is auto-generated from the help text for the parsec command
-``groups``.
 
 **Usage**::
 
@@ -106,9 +95,6 @@ Remove a user from the given group.
 ``get_group_roles`` command
 ---------------------------
 
-This section is auto-generated from the help text for the parsec command
-``groups``.
-
 **Usage**::
 
     parsec groups get_group_roles [OPTIONS] GROUP_ID
@@ -125,9 +111,6 @@ Get the list of roles associated to the given group.
 
 ``get_group_users`` command
 ---------------------------
-
-This section is auto-generated from the help text for the parsec command
-``groups``.
 
 **Usage**::
 
@@ -146,9 +129,6 @@ Get the list of users associated to the given group.
 ``get_groups`` command
 ----------------------
 
-This section is auto-generated from the help text for the parsec command
-``groups``.
-
 **Usage**::
 
     parsec groups get_groups [OPTIONS]
@@ -166,9 +146,6 @@ Get all (not deleted) groups.
 ``show_group`` command
 ----------------------
 
-This section is auto-generated from the help text for the parsec command
-``groups``.
-
 **Usage**::
 
     parsec groups show_group [OPTIONS] GROUP_ID
@@ -185,9 +162,6 @@ Get details of a given group.
 
 ``update_group`` command
 ------------------------
-
-This section is auto-generated from the help text for the parsec command
-``groups``.
 
 **Usage**::
 

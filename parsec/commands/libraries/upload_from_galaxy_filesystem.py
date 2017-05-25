@@ -14,11 +14,13 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--file_type",
     help="Galaxy file format name",
+    default="auto",
     type=str
 )
 @click.option(
     "--dbkey",
     help="Dbkey",
+    default="?",
     type=str
 )
 @click.option(
@@ -35,7 +37,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, library_id, filesystem_paths, folder_id="", file_type="", dbkey="", link_data_only="", roles=""):
+def cli(ctx, library_id, filesystem_paths, folder_id="", file_type="auto", dbkey="?", link_data_only="", roles=""):
     """Upload a set of files already present on the filesystem of the Galaxy server to a library.
     """
     return ctx.gi.libraries.upload_from_galaxy_filesystem(library_id, filesystem_paths, folder_id=folder_id, file_type=file_type, dbkey=dbkey, link_data_only=link_data_only, roles=roles)

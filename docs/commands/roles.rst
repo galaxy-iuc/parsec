@@ -1,11 +1,12 @@
 roles
 =====
 
+This section is auto-generated from the help text for the arrow command
+``roles``.
+
+
 ``get_roles`` command
 ---------------------
-
-This section is auto-generated from the help text for the parsec command
-``roles``.
 
 **Usage**::
 
@@ -23,9 +24,6 @@ Displays a collection (list) of roles.
 
 ``show_role`` command
 ---------------------
-
-This section is auto-generated from the help text for the parsec command
-``roles``.
 
 **Usage**::
 

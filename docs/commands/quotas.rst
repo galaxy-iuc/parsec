@@ -1,11 +1,12 @@
 quotas
 ======
 
+This section is auto-generated from the help text for the arrow command
+``quotas``.
+
+
 ``create_quota`` command
 ------------------------
-
-This section is auto-generated from the help text for the parsec command
-``quotas``.
 
 **Usage**::
 
@@ -29,9 +30,6 @@ Create a new quota
 ``delete_quota`` command
 ------------------------
 
-This section is auto-generated from the help text for the parsec command
-``quotas``.
-
 **Usage**::
 
     parsec quotas delete_quota [OPTIONS] QUOTA_ID
@@ -48,9 +46,6 @@ Delete a quota
 
 ``get_quotas`` command
 ----------------------
-
-This section is auto-generated from the help text for the parsec command
-``quotas``.
 
 **Usage**::
 
@@ -70,9 +65,6 @@ Get a list of quotas
 ``show_quota`` command
 ----------------------
 
-This section is auto-generated from the help text for the parsec command
-``quotas``.
-
 **Usage**::
 
     parsec quotas show_quota [OPTIONS] QUOTA_ID
@@ -91,9 +83,6 @@ Display information on a quota
 ``undelete_quota`` command
 --------------------------
 
-This section is auto-generated from the help text for the parsec command
-``quotas``.
-
 **Usage**::
 
     parsec quotas undelete_quota [OPTIONS] QUOTA_ID
@@ -110,9 +99,6 @@ Unelete a quota
 
 ``update_quota`` command
 ------------------------
-
-This section is auto-generated from the help text for the parsec command
-``quotas``.
 
 **Usage**::
 

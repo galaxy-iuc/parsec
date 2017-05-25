@@ -10,12 +10,12 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.option(
     "--install_tool_dependencies",
-    help="Whether or not to automatically handle tool dependencies (see https://galaxyproject.org/toolshed/tool-dependency-recipes/ for more details)",
+    help="Whether or not to automatically handle tool dependencies (see http://wiki.galaxyproject.org/AToolOrASuitePerRepository for more details)",
     is_flag=True
 )
 @click.option(
     "--install_repository_dependencies",
-    help="Whether or not to automatically handle repository dependencies (see https://galaxyproject.org/toolshed/defining-repository-dependencies/ for more details)",
+    help="Whether or not to automatically handle repository dependencies (see http://wiki.galaxyproject.org/DefiningRepositoryDependencies for more details)",
     is_flag=True
 )
 @click.option(

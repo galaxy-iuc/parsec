@@ -1,11 +1,12 @@
 users
 =====
 
+This section is auto-generated from the help text for the arrow command
+``users``.
+
+
 ``create_local_user`` command
 -----------------------------
-
-This section is auto-generated from the help text for the parsec command
-``users``.
 
 **Usage**::
 
@@ -24,9 +25,6 @@ Create a new Galaxy local user.
 ``create_remote_user`` command
 ------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``users``.
-
 **Usage**::
 
     parsec users create_remote_user [OPTIONS] USER_EMAIL
@@ -44,9 +42,6 @@ Create a new Galaxy remote user.
 ``create_user`` command
 -----------------------
 
-This section is auto-generated from the help text for the parsec command
-``users``.
-
 **Usage**::
 
     parsec users [OPTIONS] COMMAND [ARGS]...
@@ -58,9 +53,6 @@ Deprecated method.
 
 ``create_user_apikey`` command
 ------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``users``.
 
 **Usage**::
 
@@ -78,9 +70,6 @@ Create a new API key for a given user.
 
 ``delete_user`` command
 -----------------------
-
-This section is auto-generated from the help text for the parsec command
-``users``.
 
 **Usage**::
 
@@ -100,9 +89,6 @@ Delete a user.
 ``get_current_user`` command
 ----------------------------
 
-This section is auto-generated from the help text for the parsec command
-``users``.
-
 **Usage**::
 
     parsec users get_current_user [OPTIONS]
@@ -119,9 +105,6 @@ Display information about the user associated with this Galaxy connection.
 
 ``get_users`` command
 ---------------------
-
-This section is auto-generated from the help text for the parsec command
-``users``.
 
 **Usage**::
 
@@ -140,9 +123,6 @@ Get a list of all registered users. If ``deleted`` is set to ``True``, get a lis
 
 ``show_user`` command
 ---------------------
-
-This section is auto-generated from the help text for the parsec command
-``users``.
 
 **Usage**::
 

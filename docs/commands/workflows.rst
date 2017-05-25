@@ -1,11 +1,12 @@
 workflows
 =========
 
+This section is auto-generated from the help text for the arrow command
+``workflows``.
+
+
 ``cancel_invocation`` command
 -----------------------------
-
-This section is auto-generated from the help text for the parsec command
-``workflows``.
 
 **Usage**::
 
@@ -24,9 +25,6 @@ Cancel the scheduling of a workflow.
 ``delete_workflow`` command
 ---------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows delete_workflow [OPTIONS] WORKFLOW_ID
@@ -43,9 +41,6 @@ Delete a workflow identified by `workflow_id`.
 
 ``export_workflow_dict`` command
 --------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``workflows``.
 
 **Usage**::
 
@@ -64,16 +59,13 @@ Exports a workflow.
 ``export_workflow_json`` command
 --------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows export_workflow_json [OPTIONS] WORKFLOW_ID
 
 **Help**
 
-Deprecated method.
+Exports a workflow
 
 **Options**::
 
@@ -84,16 +76,13 @@ Deprecated method.
 ``export_workflow_to_local_path`` command
 -----------------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows export_workflow_to_local_path [OPTIONS] WORKFLOW_ID
 
 **Help**
 
-Exports a workflow in JSON format to a given local path.
+Exports a workflow in json format to a given local path.
 
 **Options**::
 
@@ -108,9 +97,6 @@ Exports a workflow in JSON format to a given local path.
 
 ``get_invocations`` command
 ---------------------------
-
-This section is auto-generated from the help text for the parsec command
-``workflows``.
 
 **Usage**::
 
@@ -129,9 +115,6 @@ Get a list containing all the workflow invocations corresponding to the specifie
 ``get_workflow_inputs`` command
 -------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows get_workflow_inputs [OPTIONS] WORKFLOW_ID LABEL
@@ -148,9 +131,6 @@ Get a list of workflow input IDs that match the given label. If no input matches
 
 ``get_workflows`` command
 -------------------------
-
-This section is auto-generated from the help text for the parsec command
-``workflows``.
 
 **Usage**::
 
@@ -174,9 +154,6 @@ Get all workflows or filter the specific one(s) via the provided ``name`` or ``w
 ``import_shared_workflow`` command
 ----------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows import_shared_workflow [OPTIONS] WORKFLOW_ID
@@ -193,9 +170,6 @@ Imports a new workflow from the shared published workflows.
 
 ``import_workflow_dict`` command
 --------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``workflows``.
 
 **Usage**::
 
@@ -214,9 +188,6 @@ Imports a new workflow given a dictionary representing a previously exported wor
 ``import_workflow_from_local_path`` command
 -------------------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows import_workflow_from_local_path [OPTIONS]
@@ -234,16 +205,13 @@ Imports a new workflow given the path to a file containing a previously exported
 ``import_workflow_json`` command
 --------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows import_workflow_json [OPTIONS] WORKFLOW_JSON
 
 **Help**
 
-Deprecated method.
+Imports a new workflow given a json representation of a previously exported workflow.
 
 **Options**::
 
@@ -253,9 +221,6 @@ Deprecated method.
 
 ``invoke_workflow`` command
 ---------------------------
-
-This section is auto-generated from the help text for the parsec command
-``workflows``.
 
 **Usage**::
 
@@ -275,8 +240,10 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
                                       HistoryDatasetAssociation (``hda``), or
                                       HistoryDatasetCollectionAssociation
                                       (``hdca``).
-      --params TEXT                   A mapping of non-datasets tool parameters (see
-                                      below)
+      --params TEXT                   A mapping of tool parameters that are non-
+                                      datasets parameters. The map must be in the
+                                      following format: ``{'blastn': {'param':
+                                      'evalue', 'value': '1e-06'}}``
       --history_id TEXT               The encoded history ID where to store the
                                       workflow output. Alternatively,
                                       ``history_name`` may be specified to create a
@@ -305,9 +272,6 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
 ``run_invocation_step_action`` command
 --------------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows run_invocation_step_action [OPTIONS] WORKFLOW_ID
@@ -325,16 +289,13 @@ nature of this action and what is expected will vary based on the the type of wo
 ``run_workflow`` command
 ------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows run_workflow [OPTIONS] WORKFLOW_ID
 
 **Help**
 
-Run the workflow identified by ``workflow_id``. This method is deprecated, please use :meth:`invoke_workflow` instead.
+Run the workflow identified by ``workflow_id``. This method is deprecated please use ``invoke_workflow`` instead.
 
 **Options**::
 
@@ -348,8 +309,10 @@ Run the workflow identified by ``workflow_id``. This method is deprecated, pleas
                                   <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}``
                                   (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src':
                                   'ld'}}``)
-      --params TEXT               A mapping of non-datasets tool parameters (see
-                                  below)
+      --params TEXT               A mapping of tool parameters that are non-datasets
+                                  parameters. The map must be in the following
+                                  format: ``{'blastn': {'param': 'evalue', 'value':
+                                  '1e-06'}}``
       --history_id TEXT           The encoded history ID where to store the workflow
                                   output. Alternatively, ``history_name`` may be
                                   specified to create a new history.
@@ -369,9 +332,6 @@ Run the workflow identified by ``workflow_id``. This method is deprecated, pleas
 ``show_invocation`` command
 ---------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows show_invocation [OPTIONS] WORKFLOW_ID INVOCATION_ID
@@ -389,9 +349,6 @@ Get a workflow invocation object representing the scheduling of a workflow. This
 ``show_invocation_step`` command
 --------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``workflows``.
-
 **Usage**::
 
     parsec workflows show_invocation_step [OPTIONS] WORKFLOW_ID INVOCATION_ID
@@ -408,9 +365,6 @@ See the details of a particular workflow invocation step.
 
 ``show_workflow`` command
 -------------------------
-
-This section is auto-generated from the help text for the parsec command
-``workflows``.
 
 **Usage**::
 

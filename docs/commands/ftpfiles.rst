@@ -1,11 +1,12 @@
 ftpfiles
 ========
 
+This section is auto-generated from the help text for the arrow command
+``ftpfiles``.
+
+
 ``get_ftp_files`` command
 -------------------------
-
-This section is auto-generated from the help text for the parsec command
-``ftpfiles``.
 
 **Usage**::
 

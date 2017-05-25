@@ -7,13 +7,11 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.option(
     "--dataset_map",
-    help="A mapping of workflow inputs to datasets. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), or HistoryDatasetAssociation (``hda``). The map must be in the following format: ``{'<input>': {'id': <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}`` (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src': 'ld'}}``)",
-    type=str
+    help="A mapping of workflow inputs to datasets. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), or HistoryDatasetAssociation (``hda``). The map must be in the following format: ``{'<input>': {'id': <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}`` (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src': 'ld'}}``)"
 )
 @click.option(
     "--params",
-    help="A mapping of non-datasets tool parameters (see below)",
-    type=str
+    help="A mapping of tool parameters that are non-datasets parameters. The map must be in the following format: ``{'blastn': {'param': 'evalue', 'value': '1e-06'}}``"
 )
 @click.option(
     "--history_id",
@@ -40,6 +38,6 @@ from parsec.decorators import bioblend_exception, dict_output
 @bioblend_exception
 @dict_output
 def cli(ctx, workflow_id, dataset_map="", params="", history_id="", history_name="", import_inputs_to_history=False, replacement_params=""):
-    """Run the workflow identified by ``workflow_id``. This method is deprecated, please use :meth:`invoke_workflow` instead.
+    """Run the workflow identified by ``workflow_id``. This method is deprecated please use ``invoke_workflow`` instead.
     """
     return ctx.gi.workflows.run_workflow(workflow_id, dataset_map=dataset_map, params=params, history_id=history_id, history_name=history_name, import_inputs_to_history=import_inputs_to_history, replacement_params=replacement_params)

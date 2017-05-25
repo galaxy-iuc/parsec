@@ -14,18 +14,20 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--file_type",
     help="Galaxy file format name",
+    default="auto",
     type=str
 )
 @click.option(
     "--dbkey",
     help="Dbkey",
+    default="?",
     type=str
 )
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, library_id, file_url, folder_id="", file_type="", dbkey=""):
+def cli(ctx, library_id, file_url, folder_id="", file_type="auto", dbkey="?"):
     """Upload a file to a library from a URL.
     """
     return ctx.gi.libraries.upload_file_from_url(library_id, file_url, folder_id=folder_id, file_type=file_type, dbkey=dbkey)

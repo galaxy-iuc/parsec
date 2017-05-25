@@ -8,6 +8,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--gzip",
     help="create .tar.gz archive if ``True``, else .tar",
+    default="True",
     is_flag=True
 )
 @click.option(

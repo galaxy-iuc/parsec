@@ -9,13 +9,14 @@ from parsec.decorators import bioblend_exception, dict_output
 
 @click.option(
     "--use_default_filename",
-    help=""
+    help="",
+    default="True"
 )
 
 @pass_context
 @bioblend_exception
 @dict_output
 def cli(ctx, history_id, dataset_id, file_path, use_default_filename=True):
-    """Deprecated method, use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_dataset` instead.
+    """Deprecated method, use ``bioblend.galaxy.dataset.DatasetClient.download_dataset()`` instead.
     """
     return ctx.gi.histories.download_dataset(history_id, dataset_id, file_path, use_default_filename=use_default_filename)

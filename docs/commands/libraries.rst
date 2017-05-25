@@ -1,11 +1,12 @@
 libraries
 =========
 
+This section is auto-generated from the help text for the arrow command
+``libraries``.
+
+
 ``copy_from_dataset`` command
 -----------------------------
-
-This section is auto-generated from the help text for the parsec command
-``libraries``.
 
 **Usage**::
 
@@ -27,9 +28,6 @@ Copy a Galaxy dataset into a library.
 ``create_folder`` command
 -------------------------
 
-This section is auto-generated from the help text for the parsec command
-``libraries``.
-
 **Usage**::
 
     parsec libraries create_folder [OPTIONS] LIBRARY_ID FOLDER_NAME
@@ -50,9 +48,6 @@ Create a folder in a library.
 ``create_library`` command
 --------------------------
 
-This section is auto-generated from the help text for the parsec command
-``libraries``.
-
 **Usage**::
 
     parsec libraries create_library [OPTIONS] NAME
@@ -72,9 +67,6 @@ Create a data library with the properties defined in the arguments.
 ``delete_library`` command
 --------------------------
 
-This section is auto-generated from the help text for the parsec command
-``libraries``.
-
 **Usage**::
 
     parsec libraries delete_library [OPTIONS] LIBRARY_ID
@@ -91,9 +83,6 @@ Delete a data library.
 
 ``delete_library_dataset`` command
 ----------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``libraries``.
 
 **Usage**::
 
@@ -112,9 +101,6 @@ Delete a library dataset in a data library.
 
 ``get_folders`` command
 -----------------------
-
-This section is auto-generated from the help text for the parsec command
-``libraries``.
 
 **Usage**::
 
@@ -137,9 +123,6 @@ Get all the folders or filter specific one(s) via the provided ``name`` or ``fol
 ``get_libraries`` command
 -------------------------
 
-This section is auto-generated from the help text for the parsec command
-``libraries``.
-
 **Usage**::
 
     parsec libraries get_libraries [OPTIONS]
@@ -161,9 +144,6 @@ Get all the libraries or filter for specific one(s) via the provided name or ID.
 ``get_library_permissions`` command
 -----------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``libraries``.
-
 **Usage**::
 
     parsec libraries get_library_permissions [OPTIONS] LIBRARY_ID
@@ -180,9 +160,6 @@ Get the permessions for a library.
 
 ``set_library_permissions`` command
 -----------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``libraries``.
 
 **Usage**::
 
@@ -205,9 +182,6 @@ Set the permissions for a library.  Note: it will override all security for this
 ``show_dataset`` command
 ------------------------
 
-This section is auto-generated from the help text for the parsec command
-``libraries``.
-
 **Usage**::
 
     parsec libraries show_dataset [OPTIONS] LIBRARY_ID DATASET_ID
@@ -225,9 +199,6 @@ Get details about a given library dataset. The required ``library_id`` can be ob
 ``show_folder`` command
 -----------------------
 
-This section is auto-generated from the help text for the parsec command
-``libraries``.
-
 **Usage**::
 
     parsec libraries show_folder [OPTIONS] LIBRARY_ID FOLDER_ID
@@ -244,9 +215,6 @@ Get details about a given folder. The required ``folder_id`` can be obtained fro
 
 ``show_library`` command
 ------------------------
-
-This section is auto-generated from the help text for the parsec command
-``libraries``.
 
 **Usage**::
 
@@ -266,9 +234,6 @@ Get information about a library.
 
 ``upload_file_contents`` command
 --------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``libraries``.
 
 **Usage**::
 
@@ -291,9 +256,6 @@ Upload pasted_content to a data library as a new file.
 ``upload_file_from_local_path`` command
 ---------------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``libraries``.
-
 **Usage**::
 
     parsec libraries upload_file_from_local_path [OPTIONS] LIBRARY_ID
@@ -314,9 +276,6 @@ Read local file contents from file_local_path and upload data to a library.
 
 ``upload_file_from_server`` command
 -----------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``libraries``.
 
 **Usage**::
 
@@ -343,9 +302,6 @@ Upload all files in the specified subdirectory of the Galaxy library import dire
 ``upload_file_from_url`` command
 --------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``libraries``.
-
 **Usage**::
 
     parsec libraries upload_file_from_url [OPTIONS] LIBRARY_ID FILE_URL
@@ -366,9 +322,6 @@ Upload a file to a library from a URL.
 
 ``upload_from_galaxy_filesystem`` command
 -----------------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``libraries``.
 
 **Usage**::
 

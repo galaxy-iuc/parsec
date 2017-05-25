@@ -1,11 +1,12 @@
 datatypes
 =========
 
+This section is auto-generated from the help text for the arrow command
+``datatypes``.
+
+
 ``get_datatypes`` command
 -------------------------
-
-This section is auto-generated from the help text for the parsec command
-``datatypes``.
 
 **Usage**::
 
@@ -25,9 +26,6 @@ Get the list of all installed datatypes.
 
 ``get_sniffers`` command
 ------------------------
-
-This section is auto-generated from the help text for the parsec command
-``datatypes``.
 
 **Usage**::
 

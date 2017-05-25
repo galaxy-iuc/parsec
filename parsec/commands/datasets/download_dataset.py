@@ -13,6 +13,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--use_default_filename",
     help="If this argument is True, the exported file will be saved as file_path/%s, where %s is the dataset name. If this argument is False, file_path is assumed to contain the full file path including the filename.",
+    default="True",
     is_flag=True
 )
 @click.option(
@@ -23,6 +24,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--maxwait",
     help="Time (in seconds) to wait for dataset to complete. If the dataset state is not complete within this time, a DatasetTimeoutException will be thrown.",
+    default="12000",
     type=float
 )
 

@@ -1,11 +1,12 @@
 forms
 =====
 
+This section is auto-generated from the help text for the arrow command
+``forms``.
+
+
 ``create_form`` command
 -----------------------
-
-This section is auto-generated from the help text for the parsec command
-``forms``.
 
 **Usage**::
 
@@ -24,9 +25,6 @@ Create a new form.
 ``get_forms`` command
 ---------------------
 
-This section is auto-generated from the help text for the parsec command
-``forms``.
-
 **Usage**::
 
     parsec forms get_forms [OPTIONS]
@@ -43,9 +41,6 @@ Get the list of all forms.
 
 ``show_form`` command
 ---------------------
-
-This section is auto-generated from the help text for the parsec command
-``forms``.
 
 **Usage**::
 

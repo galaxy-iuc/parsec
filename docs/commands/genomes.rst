@@ -1,11 +1,12 @@
 genomes
 =======
 
+This section is auto-generated from the help text for the arrow command
+``genomes``.
+
+
 ``get_genomes`` command
 -----------------------
-
-This section is auto-generated from the help text for the parsec command
-``genomes``.
 
 **Usage**::
 
@@ -23,9 +24,6 @@ Returns a list of installed genomes
 
 ``install_genome`` command
 --------------------------
-
-This section is auto-generated from the help text for the parsec command
-``genomes``.
 
 **Usage**::
 
@@ -57,9 +55,6 @@ Download and/or index a genome.
 
 ``show_genome`` command
 -----------------------
-
-This section is auto-generated from the help text for the parsec command
-``genomes``.
 
 **Usage**::
 

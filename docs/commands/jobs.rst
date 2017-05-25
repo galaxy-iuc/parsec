@@ -1,11 +1,12 @@
 jobs
 ====
 
+This section is auto-generated from the help text for the arrow command
+``jobs``.
+
+
 ``get_jobs`` command
 --------------------
-
-This section is auto-generated from the help text for the parsec command
-``jobs``.
 
 **Usage**::
 
@@ -24,9 +25,6 @@ Get the list of jobs of the current user.
 ``get_state`` command
 ---------------------
 
-This section is auto-generated from the help text for the parsec command
-``jobs``.
-
 **Usage**::
 
     parsec jobs get_state [OPTIONS] JOB_ID
@@ -44,9 +42,6 @@ Display the current state for a given job of the current user.
 ``search_jobs`` command
 -----------------------
 
-This section is auto-generated from the help text for the parsec command
-``jobs``.
-
 **Usage**::
 
     parsec jobs search_jobs [OPTIONS] JOB_INFO
@@ -63,9 +58,6 @@ Return jobs for the current user based payload content.
 
 ``show_job`` command
 --------------------
-
-This section is auto-generated from the help text for the parsec command
-``jobs``.
 
 **Usage**::
 

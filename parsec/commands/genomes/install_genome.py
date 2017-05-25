@@ -7,6 +7,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--func",
     help="Allowed values: 'download', Download and index; 'index', Index only",
+    default="download",
     type=str
 )
 @click.option(
@@ -44,7 +45,7 @@ from parsec.decorators import bioblend_exception, dict_output
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, func="", source="", dbkey="", ncbi_name="", ensembl_dbkey="", url_dbkey="", indexers=""):
+def cli(ctx, func="download", source="", dbkey="", ncbi_name="", ensembl_dbkey="", url_dbkey="", indexers=""):
     """Download and/or index a genome.
     """
     return ctx.gi.genomes.install_genome(func=func, source=source, dbkey=dbkey, ncbi_name=ncbi_name, ensembl_dbkey=ensembl_dbkey, url_dbkey=url_dbkey, indexers=indexers)

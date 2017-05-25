@@ -1,11 +1,12 @@
 datasets
 ========
 
+This section is auto-generated from the help text for the arrow command
+``datasets``.
+
+
 ``download_dataset`` command
 ----------------------------
-
-This section is auto-generated from the help text for the parsec command
-``datasets``.
 
 **Usage**::
 
@@ -41,9 +42,6 @@ Download a dataset to file or in memory.
 
 ``show_dataset`` command
 ------------------------
-
-This section is auto-generated from the help text for the parsec command
-``datasets``.
 
 **Usage**::
 

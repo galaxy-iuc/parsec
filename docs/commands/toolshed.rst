@@ -1,11 +1,12 @@
 toolshed
 ========
 
+This section is auto-generated from the help text for the arrow command
+``toolshed``.
+
+
 ``get_repositories`` command
 ----------------------------
-
-This section is auto-generated from the help text for the parsec command
-``toolshed``.
 
 **Usage**::
 
@@ -24,9 +25,6 @@ Get the list of all installed Tool Shed repositories on this Galaxy instance.
 ``install_repository_revision`` command
 ---------------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``toolshed``.
-
 **Usage**::
 
     parsec toolshed install_repository_revision [OPTIONS] TOOL_SHED_URL NAME
@@ -39,14 +37,13 @@ Install a specified repository revision from a specified Tool Shed into this Gal
 
 
       --install_tool_dependencies     Whether or not to automatically handle tool
-                                      dependencies (see
-                                      https://galaxyproject.org/toolshed/tool-
-                                      dependency-recipes/ for more details)
+                                      dependencies (see http://wiki.galaxyproject.or
+                                      g/AToolOrASuitePerRepository for more details)
       --install_repository_dependencies
                                       Whether or not to automatically handle
-                                      repository dependencies (see
-                                      https://galaxyproject.org/toolshed/defining-
-                                      repository-dependencies/ for more details)
+                                      repository dependencies (see http://wiki.galax
+                                      yproject.org/DefiningRepositoryDependencies
+                                      for more details)
       --install_resolver_dependencies
                                       Whether or not to automatically install
                                       resolver dependencies (e.g. conda). This
@@ -66,9 +63,6 @@ Install a specified repository revision from a specified Tool Shed into this Gal
 
 ``show_repository`` command
 ---------------------------
-
-This section is auto-generated from the help text for the parsec command
-``toolshed``.
 
 **Usage**::
 

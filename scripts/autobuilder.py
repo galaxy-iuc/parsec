@@ -4,6 +4,7 @@ import importlib
 import inspect
 import os
 import re
+import copy
 import glob
 import argparse
 import logging
@@ -197,10 +198,10 @@ class ScriptBuilder(object):
 
             sm = getattr(bg, module)
             print(module, sm)
-            # submodules = dir(sm)
-            # # Find the "...Client"
-            # wanted = [x for x in submodules if 'Client' in x and x != 'Client'][0]
-            # self.process_client(module, sm, wanted)
+            submodules = dir(sm)
+            # Find the "...Client"
+            wanted = [x for x in submodules if 'Client' in x and x != 'Client'][0]
+            self.process_client(module, sm, wanted)
 
     def process_client(self, module, sm, ssm_name):
         log.info("Processing bioblend.%s.%s", module, ssm_name)
@@ -262,7 +263,7 @@ class ScriptBuilder(object):
                 if m:
                     param_docs['__return__'] = {
                         'type': m.group('param_type'),
-                        'desc': m.group('desc'),
+                        'desc': argdoc[argdoc.index(':return:') + len(':return:'):],
                     }
 
         argspec = list(self.pair_arguments(func))
@@ -367,11 +368,17 @@ class ScriptBuilder(object):
         # TODO: rtype -> dict_output / list_output / text_output
         # __return__ must be in param_docs or it's a documentation BUG.
         if '__return__' not in param_docs:
-            raise Exception("%s is not documented with a return type" % candidate)
+            param_docs['__return__'] = {
+                'type': 'dict',
+                'desc': '',
+            }
+            print("WARNING: %s is not documented with a return type" % candidate)
+
         data['output_format'] = param_docs['__return__']['type']
         # We allow "list of dicts" and other such silliness.
         if ' ' in data['output_format']:
             data['output_format'] = data['output_format'][0:data['output_format'].index(' ')]
+        data['output_documentation'] = param_docs['__return__']['desc']
 
         # My function is more effective until can figure out docstring
         data['short_docstring'] = self.important_doc(argdoc)

@@ -1,11 +1,12 @@
 tools
 =====
 
+This section is auto-generated from the help text for the arrow command
+``tools``.
+
+
 ``get_tool_panel`` command
 --------------------------
-
-This section is auto-generated from the help text for the parsec command
-``tools``.
 
 **Usage**::
 
@@ -23,9 +24,6 @@ Get a list of available tool elements in Galaxy's configured toolbox.
 
 ``get_tools`` command
 ---------------------
-
-This section is auto-generated from the help text for the parsec command
-``tools``.
 
 **Usage**::
 
@@ -48,9 +46,6 @@ Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_
 ``install_dependencies`` command
 --------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``tools``.
-
 **Usage**::
 
     parsec tools install_dependencies [OPTIONS] TOOL_ID
@@ -67,9 +62,6 @@ Install dependencies for a given tool via a resolver. This works only for Conda 
 
 ``paste_content`` command
 -------------------------
-
-This section is auto-generated from the help text for the parsec command
-``tools``.
 
 **Usage**::
 
@@ -88,9 +80,6 @@ Upload a string to a new dataset in the history specified by ``history_id``.
 ``put_url`` command
 -------------------
 
-This section is auto-generated from the help text for the parsec command
-``tools``.
-
 **Usage**::
 
     parsec tools put_url [OPTIONS] CONTENT HISTORY_ID
@@ -108,9 +97,6 @@ Upload a string to a new dataset in the history specified by ``history_id``.
 ``run_tool`` command
 --------------------
 
-This section is auto-generated from the help text for the parsec command
-``tools``.
-
 **Usage**::
 
     parsec tools run_tool [OPTIONS] HISTORY_ID TOOL_ID TOOL_INPUTS
@@ -127,9 +113,6 @@ Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with i
 
 ``show_tool`` command
 ---------------------
-
-This section is auto-generated from the help text for the parsec command
-``tools``.
 
 **Usage**::
 
@@ -149,9 +132,6 @@ Get details of a given tool.
 
 ``upload_file`` command
 -----------------------
-
-This section is auto-generated from the help text for the parsec command
-``tools``.
 
 **Usage**::
 
@@ -177,9 +157,6 @@ Upload the file specified by ``path`` to the history specified by ``history_id``
 
 ``upload_from_ftp`` command
 ---------------------------
-
-This section is auto-generated from the help text for the parsec command
-``tools``.
 
 **Usage**::
 

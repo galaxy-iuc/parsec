@@ -13,13 +13,14 @@ from parsec.decorators import bioblend_exception, dict_output
 @click.option(
     "--hda_ldda",
     help="Whether to show a history dataset ('hda' - the default) or library dataset ('ldda').",
+    default="hda",
     type=str
 )
 
 @pass_context
 @bioblend_exception
 @dict_output
-def cli(ctx, dataset_id, deleted=False, hda_ldda=""):
+def cli(ctx, dataset_id, deleted=False, hda_ldda="hda"):
     """Get details about a given dataset. This can be a history or a library dataset.
     """
     return ctx.gi.datasets.show_dataset(dataset_id, deleted=deleted, hda_ldda=hda_ldda)

@@ -1,11 +1,12 @@
 histories
 =========
 
+This section is auto-generated from the help text for the arrow command
+``histories``.
+
+
 ``create_dataset_collection`` command
 -------------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -23,9 +24,6 @@ Create a new dataset collection
 
 ``create_history`` command
 --------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -45,9 +43,6 @@ Create a new history, optionally setting the ``name``.
 ``create_history_tag`` command
 ------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories create_history_tag [OPTIONS] HISTORY_ID TAG
@@ -65,9 +60,6 @@ Create history tag
 ``delete_dataset`` command
 --------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories delete_dataset [OPTIONS] HISTORY_ID DATASET_ID
@@ -79,15 +71,11 @@ Mark corresponding dataset as deleted.
 **Options**::
 
 
-      --purge     if ``True``, also purge (permanently delete) the dataset
       -h, --help  Show this message and exit.
     
 
 ``delete_dataset_collection`` command
 -------------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -105,9 +93,6 @@ Mark corresponding dataset collection as deleted.
 
 ``delete_history`` command
 --------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -127,16 +112,13 @@ Delete a history.
 ``download_dataset`` command
 ----------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories download_dataset [OPTIONS] HISTORY_ID DATASET_ID
 
 **Help**
 
-Deprecated method, use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_dataset` instead.
+Deprecated method, use ``bioblend.galaxy.dataset.DatasetClient.download_dataset()`` instead.
 
 **Options**::
 
@@ -147,9 +129,6 @@ Deprecated method, use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_d
 
 ``download_history`` command
 ----------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -168,9 +147,6 @@ Download a history export archive.  Use :meth:`export_history` to create an expo
 
 ``export_history`` command
 --------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -194,9 +170,6 @@ Start a job to create an export archive for the given history.
 ``get_current_history`` command
 -------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories get_current_history [OPTIONS]
@@ -213,9 +186,6 @@ Deprecated method.
 
 ``get_histories`` command
 -------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -237,9 +207,6 @@ Get all histories or filter the specific one(s) via the provided ``name`` or ``h
 ``get_most_recently_used_history`` command
 ------------------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories get_most_recently_used_history [OPTIONS]
@@ -256,9 +223,6 @@ Returns the current user's most recently used history (not deleted).
 
 ``get_status`` command
 ----------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -277,9 +241,6 @@ Returns the state of this history
 ``show_dataset`` command
 ------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories show_dataset [OPTIONS] HISTORY_ID DATASET_ID
@@ -297,9 +258,6 @@ Get details about a given history dataset.
 ``show_dataset_collection`` command
 -----------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories show_dataset_collection [OPTIONS] HISTORY_ID
@@ -316,9 +274,6 @@ Get details about a given history dataset collection.
 
 ``show_dataset_provenance`` command
 -----------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -338,9 +293,6 @@ Get details related to how dataset was created (``id``, ``job_id``, ``tool_id``,
 
 ``show_history`` command
 ------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -368,9 +320,6 @@ Get details of a given history. By default, just get the history meta informatio
 ``show_matching_datasets`` command
 ----------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories show_matching_datasets [OPTIONS] HISTORY_ID
@@ -392,9 +341,6 @@ Get dataset details for matching datasets within a history.
 ``undelete_history`` command
 ----------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories undelete_history [OPTIONS] HISTORY_ID
@@ -411,9 +357,6 @@ Undelete a history
 
 ``update_dataset`` command
 --------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 
@@ -437,9 +380,6 @@ Update history dataset metadata. Some of the attributes that can be modified are
 ``update_dataset_collection`` command
 -------------------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories update_dataset_collection [OPTIONS] HISTORY_ID
@@ -460,9 +400,6 @@ Update history dataset collection metadata. Some of the attributes that can be m
 ``update_history`` command
 --------------------------
 
-This section is auto-generated from the help text for the parsec command
-``histories``.
-
 **Usage**::
 
     parsec histories update_history [OPTIONS] HISTORY_ID
@@ -474,22 +411,17 @@ Update history metadata information. Some of the attributes that can be modified
 **Options**::
 
 
+      --name TEXT        Replace history name with the given string
       --annotation TEXT  Replace history annotation with given string
       --deleted          Mark or unmark history as deleted
       --importable       Mark or unmark history as importable
-      --name TEXT        Replace history name with the given string
       --published        Mark or unmark history as published
-      --purged           If True, mark history as purged (permanently deleted).
-                         Ignored on Galaxy release_15.01 and earlier
       --tags TEXT        Replace history tags with the given list
       -h, --help         Show this message and exit.
     
 
 ``upload_dataset_from_library`` command
 ---------------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``histories``.
 
 **Usage**::
 

@@ -1,11 +1,12 @@
 folders
 =======
 
+This section is auto-generated from the help text for the arrow command
+``folders``.
+
+
 ``create_folder`` command
 -------------------------
-
-This section is auto-generated from the help text for the parsec command
-``folders``.
 
 **Usage**::
 
@@ -24,9 +25,6 @@ Create a folder.
 
 ``delete_folder`` command
 -------------------------
-
-This section is auto-generated from the help text for the parsec command
-``folders``.
 
 **Usage**::
 
@@ -47,9 +45,6 @@ Marks the folder with the given ``id`` as `deleted` (or removes the `deleted` ma
 ``get_permissions`` command
 ---------------------------
 
-This section is auto-generated from the help text for the parsec command
-``folders``.
-
 **Usage**::
 
     parsec folders get_permissions [OPTIONS] FOLDER_ID SCOPE
@@ -66,9 +61,6 @@ Get the permissions of a folder.
 
 ``set_permissions`` command
 ---------------------------
-
-This section is auto-generated from the help text for the parsec command
-``folders``.
 
 **Usage**::
 
@@ -91,9 +83,6 @@ Set the permissions of a folder.
 ``show_folder`` command
 -----------------------
 
-This section is auto-generated from the help text for the parsec command
-``folders``.
-
 **Usage**::
 
     parsec folders show_folder [OPTIONS] FOLDER_ID
@@ -110,9 +99,6 @@ Display information about a folder.
 
 ``update_folder`` command
 -------------------------
-
-This section is auto-generated from the help text for the parsec command
-``folders``.
 
 **Usage**::
 

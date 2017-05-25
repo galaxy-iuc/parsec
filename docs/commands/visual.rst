@@ -1,11 +1,12 @@
 visual
 ======
 
+This section is auto-generated from the help text for the arrow command
+``visual``.
+
+
 ``get_visualizations`` command
 ------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``visual``.
 
 **Usage**::
 
@@ -23,9 +24,6 @@ Get the list of all visualizations.
 
 ``show_visualization`` command
 ------------------------------
-
-This section is auto-generated from the help text for the parsec command
-``visual``.
 
 **Usage**::
 
