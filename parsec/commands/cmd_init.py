@@ -33,12 +33,11 @@ def cli(ctx, url=None, api_key=None, admin=False, **kwds):
     # TODO: prompt for values someday.
     click.echo("""
 Welcome to
-   == == ====  _____         _____   ____  ______   ___
-    = =  ====  |    \   /\   |    | |      |       /
-    ===  ====  |----/  /  \  |----/ \____  |_____ |
-     =  = ===  |      /----\ |   \       \ |      |
-  == ==  ====  |     /      \|    \ _____/ |_____  \___/
-                  Access Galaxy at the Speed of Light
+      ____   ____ _   _____   _____  ___   _____
+     / __ \ / __ `/  / ___/  / ___/ / _ \ / ___/
+    / /_/ // /_/ /  / /     (__  ) /  __// /__
+   / .___/ \__,_/  /_/     /____/  \___/ \___/
+  /_/ Galaxy at the Speed of Light
 """)
     if os.path.exists(config.global_config_path()):
         info("Your parsec configuration already exists. Please edit it instead: %s" % config.global_config_path())
