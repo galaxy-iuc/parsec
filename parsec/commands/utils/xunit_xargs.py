@@ -74,7 +74,6 @@ def cli(ctx, _):
             built_command = piped_commands + [line.strip()]
         # TODO: detect spaces in args and warn that they should be quoted.
         # If they provide multiple strings, then pipe them together
-        ctx.vlog('Executing: %s', built_command)
 
         xunit_identifier = '.'.join([x.strip().replace(' ', '_') for x in piped_commands])
         xunit_identifier.replace(' ', '_')
@@ -85,6 +84,7 @@ def cli(ctx, _):
 
         output = ""
         with xunit(xunit_name, xunit_identifier) as test_case:
+            ctx.vlog('Executing: %s', ' '.join(built_command))
             output = check_output(' '.join(built_command), shell=True)
 
         # Set stdout
