@@ -401,7 +401,7 @@ things with the combination of parsec, jq, and xargs. Here are some examples to 
 
      $ parsec users get_users | \
         jq '.[] | \
-        select(.username | contains("elenimijalis")) | .id' | \
+        select(.username | contains("janedoe")) | .id' | \
         xargs -n 1 parsec users create_user_apikey
 
 - download all of the OK datasets in a set of histories
