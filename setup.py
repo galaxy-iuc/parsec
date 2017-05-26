@@ -8,7 +8,6 @@ except ImportError:
     from distutils.core import setup
 
 readme = open('README.rst').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 requirements = [
     'Click>=6.7',
@@ -31,7 +30,7 @@ setup(
     name='galaxy-parsec',
     version=version,
     description='Command-line utilities to assist in interacting with Galaxy servers (http://galaxyproject.org/).',
-    long_description=readme,  # TODO: + '\n\n' + history,
+    long_description=readme,
     author='Galaxy Project and Community',
     author_email='rasche.eric@gmail.com',
     url='https://github.com/galaxy-iuc/parsec',
