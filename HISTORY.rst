@@ -6,6 +6,14 @@ History
 .. to_doc
 
 ----------------------
+1.0.0 (2017-05-26)
+----------------------
+
+* New utilities for xunit xargs and waiting on a workflow to complete
+* Support for quota API, and other new bioblend operations.
+* Even more updated help
+
+----------------------
 1.0.0.rc1 (2017-05-03)
 ----------------------
 
