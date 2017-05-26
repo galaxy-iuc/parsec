@@ -1,9 +1,18 @@
 .. :changelog:
 
 History
--------
+=======
 
 .. to_doc
+
+----------------------
+1.0.0.rc1 (2017-05-03)
+----------------------
+
+* Updates to auto-builder
+* Updated help
+* New routes
+* Subcommands instead of top-level commands
 
 ----------------------
 0.9.rc2 (2015-03-05)

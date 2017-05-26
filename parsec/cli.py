@@ -2,14 +2,15 @@ from __future__ import absolute_import
 import os
 import sys
 import click
+import json
 
 from .io import error
-from .config import read_global_config  # noqa, ditto
+from .config import read_global_config, global_config_path  # noqa, ditto
 from .galaxy import get_galaxy_instance, get_toolshed_instance
 from parsec import __version__  # noqa, ditto
 
+CONTEXT_SETTINGS = dict(auto_envvar_prefix='PARSEC', help_option_names=['-h', '--help'])
 
-CONTEXT_SETTINGS = dict(auto_envvar_prefix='PARSEC')
 
 class Context(object):
 
@@ -35,6 +36,10 @@ class Context(object):
         if self.verbose:
             self.log(msg, *args)
 
+    def exit(self, exit_code):
+        self.vlog("Exiting parsec with exit code [%d]" % exit_code)
+        sys.exit(exit_code)
+
 
 pass_context = click.make_pass_decorator(Context, ensure=True)
 cmd_folder = os.path.abspath(os.path.join(os.path.dirname(__file__),
@@ -50,11 +55,28 @@ def list_cmds():
     rv.sort()
     return rv
 
-def name_to_command(name):
+
+def list_subcmds(parent):
+    rv = []
+    for filename in os.listdir(os.path.join(cmd_folder, parent)):
+        if filename.endswith('.py') and \
+           not filename.startswith('__'):
+            rv.append(filename[:-len(".py")])
+    rv.sort()
+    return rv
+
+
+def name_to_command(parent, name):
     try:
         if sys.version_info[0] == 2:
+            if parent:
+                parent = parent.encode('ascii', 'replace')
             name = name.encode('ascii', 'replace')
-        mod_name = 'parsec.commands.cmd_' + name
+
+        if parent:
+            mod_name = 'parsec.commands.%s.%s' % (parent, name)
+        else:
+            mod_name = 'parsec.commands.cmd_' + name
         mod = __import__(mod_name, None, None, ['cli'])
     except ImportError as e:
         error("Problem loading command %s, exception %s" % (name, e))
@@ -65,10 +87,17 @@ def name_to_command(name):
 class ParsecCLI(click.MultiCommand):
 
     def list_commands(self, ctx):
-        return list_cmds()
+        # We pre-calculate this so it works more nicely within packaged
+        # versions of parsec. Please feel free to fix this?
+
+        commands = ['config', 'datasets', 'datatypes', 'folders', 'forms',
+                    'ftpfiles', 'genomes', 'groups', 'histories', 'jobs',
+                    'libraries', 'quotas', 'roles', 'tool_data', 'tools',
+                    'toolshed', 'users', 'utils', 'visual', 'workflows']
+        return commands
 
     def get_command(self, ctx, name):
-        return name_to_command(name)
+        return name_to_command(None, name)
 
 
 @click.command(cls=ParsecCLI, context_settings=CONTEXT_SETTINGS)
@@ -76,18 +105,42 @@ class ParsecCLI(click.MultiCommand):
 @click.option('-v', '--verbose', is_flag=True,
               help='Enables verbose mode.')
 @click.option(
+    "-g",
     "--galaxy_instance",
-    help='name of galaxy instance from ~/.planemo.yml',
+    help='Name of galaxy instance in %s. This parameter can also be set via the environment variable PARSEC_GALAXY_INSTANCE' % global_config_path(),
     default='__default',
+    show_default=True,
     required=True
 )
 @pass_context
 def parsec(ctx, galaxy_instance, verbose):
-    """Utilities to assist with the development of Galaxy tools."""
+    """Command line wrappers around BioBlend functions. While this sounds
+    unexciting, with parsec and jq you can easily build powerful command line
+    scripts."""
     # We abuse this, knowing that calls to one will fail.
     try:
         ctx.gi = get_galaxy_instance(galaxy_instance)
+    except TypeError:
+        pass
+        # ctx.log("Could not access Galaxy instance configuration")
+
+    try:
         ctx.ti = get_toolshed_instance(galaxy_instance)
     except TypeError:
-        ctx.log("Could not access Toolshed/Galaxy instance configuration")
+        pass
+        # ctx.log("Could not access Toolshed instance configuration")
     ctx.verbose = verbose
+
+
+def json_loads(data):
+    """Load json data, allowing - to represent stdin."""
+    if data is None:
+        return ""
+
+    if data == "-":
+        return json.load(sys.stdin)
+    elif os.path.exists(data):
+        with open(data, 'r') as handle:
+            return json.load(handle)
+    else:
+        return json.loads(data)

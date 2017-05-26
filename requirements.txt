@@ -1,5 +1,9 @@
 Click
 pyyaml
-bioblend
+# pre-release version
+bioblend>=0.9.0
 docutils
 wrapt
+justbackoff
+xunit-wrapper
+future
