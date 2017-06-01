@@ -4,19 +4,21 @@ Parsec: Galaxy at the Speed of Light
 
 .. image:: https://readthedocs.org/projects/pip/badge/?version=latest
         :target: https://parsec.readthedocs.org.
+        :alt: Documentation
 
 .. image:: https://requires.io/github/galaxy-iuc/parsec/requirements.svg?branch=master
         :target: https://requires.io/github/galaxy-iuc/parsec/requirements/?branch=master
         :alt: Requirements Status
 
 .. image:: https://travis-ci.org/galaxy-iuc/parsec.svg?branch=master
-    :target: https://travis-ci.org/galaxy-iuc/parsec
+        :target: https://travis-ci.org/galaxy-iuc/parsec
+        :alt: Build Status
+
+.. image:: https://img.shields.io/github/license/galaxy-iuc/parsec.svg
+        :target: https://github.com/galaxy-iuc/parsec/blob/master/LICENSE
+        :alt: License
 
 Command-line utilities to assist in working with Galaxy_ servers.
-
-* Free software: Apache License v2
-* Documentation: https://parsec.readthedocs.org.
-* Code: https://github.com/galaxy-iuc/parsec
 
 Installation
 ------------
@@ -665,6 +667,23 @@ Or we can use one of the utility scripts to wait on that workflow to finish befo
    $ parsec utils wait_on_invocation 3daf5606d767a471 c7f60cfda02f0f46 && ...
 
 
+
+License
+-------
+
+Copyright 2016-2017 Galaxy IUC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 Support
 -------
