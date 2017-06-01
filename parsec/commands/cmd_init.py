@@ -36,8 +36,13 @@ SUCCESS_MESSAGE = (
     help="your Galaxy API Key",
     type=str
 )
+@click.option(
+    "--path",
+    help="config file path",
+    type=str
+)
 @pass_context
-def cli(ctx, url=None, api_key=None, admin=False, **kwds):
+def cli(ctx, url=None, api_key=None, admin=False, path=None, **kwds):
     """Help initialize global configuration (in home directory)
     """
     # TODO: prompt for values someday.
@@ -49,8 +54,12 @@ Welcome to
    / .___/ \__,_/  /_/     /____/  \___/ \___/
   /_/ Galaxy at the Speed of Light
 """)
-    if os.path.exists(config.global_config_path()):
-        info("Your parsec configuration already exists. Please edit it instead: %s" % config.global_config_path())
+    config_path = path
+    if path is None or len(path) == 0 :
+        config_path = config.global_config_path()
+
+    if os.path.exists(config_path):
+        info("Your parsec configuration already exists. Please edit it instead: %s" % config_path)
         return 0
 
     while True:
@@ -78,7 +87,6 @@ Welcome to
             if should_break in ('Y', 'y'):
                 break
 
-    config_path = config.global_config_path()
     if os.path.exists(config_path):
         warn("File %s already exists, refusing to overwrite." % config_path)
         return -1
