@@ -26,6 +26,16 @@ SUCCESS_MESSAGE = (
 
 
 @click.command("config_init")
+@click.option(
+    "--url",
+    help="your Galaxy's URL",
+    type=str
+)
+@click.option(
+    "--api_key",
+    help="your Galaxy API Key",
+    type=str
+)
 @pass_context
 def cli(ctx, url=None, api_key=None, admin=False, **kwds):
     """Help initialize global configuration (in home directory)
@@ -44,8 +54,12 @@ Welcome to
         return 0
 
     while True:
-        galaxy_url = click.prompt("Please entry your Galaxy's URL")
-        galaxy_key = click.prompt("Please entry your Galaxy API Key")
+        galaxy_url = url
+        if url is None or len(url) == 0 :
+            galaxy_url = click.prompt("Please entry your Galaxy's URL")
+        galaxy_key = api_key
+        if api_key is None or len(api_key) == 0 :
+            galaxy_key = click.prompt("Please entry your Galaxy API Key")
         info("Testing connection...")
         try:
             gi = galaxy.GalaxyInstance(galaxy_url, galaxy_key)
