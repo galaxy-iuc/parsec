@@ -37,7 +37,7 @@ SUCCESS_MESSAGE = (
     type=str
 )
 @click.option(
-    "--path",
+    "--path", "-f",
     help="config file path",
     type=str
 )
