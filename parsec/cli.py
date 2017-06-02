@@ -5,7 +5,7 @@ import click
 import json
 
 from .io import error
-from .config import read_global_config, global_config_path  # noqa, ditto
+from .config import read_global_config, global_config_path, set_global_config_path  # noqa, ditto
 from .galaxy import get_galaxy_instance, get_toolshed_instance
 from parsec import __version__  # noqa, ditto
 
@@ -112,11 +112,19 @@ class ParsecCLI(click.MultiCommand):
     show_default=True,
     required=True
 )
+@click.option(
+    "--path", "-f",
+    help="config file path",
+    type=str
+)
 @pass_context
-def parsec(ctx, galaxy_instance, verbose):
+def parsec(ctx, galaxy_instance, verbose, path=None):
     """Command line wrappers around BioBlend functions. While this sounds
     unexciting, with parsec and jq you can easily build powerful command line
     scripts."""
+    # set config_path if provided
+    if path is not None and len(path) > 0:
+        set_global_config_path(path)
     # We abuse this, knowing that calls to one will fail.
     try:
         ctx.gi = get_galaxy_instance(galaxy_instance)
