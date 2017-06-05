@@ -46,29 +46,19 @@ if you do not have it already.
 Connect to a Galaxy server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To connect to a running Galaxy server, you will need an account on that Galaxy instance and an API key for the account. Instructions on getting an API key can be found at http://wiki.galaxyproject.org/Learn/API .
+To connect to a running Galaxy server, you will need an account on that Galaxy
+instance and an API key for the account. Instructions on getting an API key can
+be found at http://wiki.galaxyproject.org/Learn/API .
 
-First initialize the parsec configuration file in ``~/.parsec.yml`` via the ``parsec`` command ``config_init``
+First initialize parsec:
 
 .. code-block:: shell
 
     $ parsec init
 
-This will look something like the following::
-
-    ## Parsec Global Configuration File.
-    # Each stanza should contian a single galaxy server to control.
-    #
-    # You can set the key __default to the name of a default instance
-    __default: local
-
-    local:
-        key: "..."
-        url: "https://..."
-
-Once those fields are filled out, parsec will be usable from the command line.
-
-An admin account is required for a few actions like creation of data libraries.
+Once initialized, parsec will be usable from the command line. Please note that
+an admin account is required for a few actions like creation of data libraries,
+or access to user API keys.
 
 .. _view-histories-and-datasets:
 
