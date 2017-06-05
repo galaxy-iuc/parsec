@@ -5,14 +5,20 @@ import yaml
 DEFAULT_CONFIG = {
 }
 
+_config_path = os.environ.get(
+    "PARSEC_GLOBAL_CONFIG_PATH",
+    "~/.parsec.yml"
+)
+_config_path = os.path.expanduser(_config_path)
+DEFAULT_CONFIG['config_path'] = _config_path
+
 
 def global_config_path():
-    config_path = os.environ.get(
-        "PARSEC_GLOBAL_CONFIG_PATH",
-        "~/.parsec.yml"
-    )
-    config_path = os.path.expanduser(config_path)
-    return config_path
+    return DEFAULT_CONFIG['config_path']
+
+
+def set_global_config_path(config_path):
+    DEFAULT_CONFIG['config_path'] = config_path
 
 
 def read_global_config():
