@@ -6,6 +6,13 @@ History
 .. to_doc
 
 ----------------------
+1.0.2 (2017-...)
+----------------------
+
+* Support configuration files from alternate locations (Thanks to @manabushii)
+* Support specifying galaxy url / api key on command line (Thanks to @manabushii)
+
+----------------------
 1.0.1 (2017-05-26)
 ----------------------
 
