@@ -383,7 +383,7 @@ things with the combination of parsec, jq, and xargs. Here are some examples to 
   .. code-block:: shell
 
      $ parsec histories get_histories | \
-        jq .[].id | \
+        jq .'[].id' | \
         xargs -n 1 parsec histories show_history | \
         jq '. | select(.published == false) | select(.importable == true) | [.published, .importable, .id, .username_and_slug] | @tsv' -r
 
