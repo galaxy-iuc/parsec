@@ -58,7 +58,9 @@ First initialize parsec:
 
 Once initialized, parsec will be usable from the command line. Please note that
 an admin account is required for a few actions like creation of data libraries,
-or access to user API keys.
+or access to user API keys.  Your configuration must allow access to /api without 
+need for a username or password. More infomration can be found at 
+https://galaxyproject.org/admin/config/performance/production-server/
 
 .. _view-histories-and-datasets:
 
