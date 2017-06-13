@@ -63,9 +63,10 @@ Welcome to
         if api_key is None or len(api_key) == 0 :
             galaxy_key = click.prompt("Please entry your Galaxy API Key")
         info("Testing connection...")
+        gi = galaxy.GalaxyInstance(galaxy_url, galaxy_key)
         try:
-            gi = galaxy.GalaxyInstance(galaxy_url, galaxy_key)
-            if 'version_major' in gi.config.get_config():
+            conf = gi.config.get_config()
+            if 'version_major' in conf:
                 # Ok, success
                 info("Ok! Everything looks good.")
                 break
@@ -75,7 +76,13 @@ Welcome to
                 if should_break in ('Y', 'y'):
                     break
         except Exception as e:
-            warn("Error, we could not access the configuration data for your instance.")
+            warn_msg = ("Error, we could not access the configuration data for your instance. "
+                        "The server responded with error code %s. If your galaxy uses remote_user "
+                        "authentication (i.e. as username + password is requested if you try to curl "
+                        "or wget %s.) If this is the case, you may need to add an exception for the "
+                        "Galaxy API. Please see https://galaxyproject.org/admin/config/apache-external-user-auth/ "
+                        "or https://galaxyproject.org/admin/config/nginx-external-user-auth/ for more information.)")
+            warn(warn_msg, e.status_code, galaxy_url)
             should_break = click.prompt("Continue despite inability to contact this Galaxy Instance? [y/n]")
             if should_break in ('Y', 'y'):
                 break
