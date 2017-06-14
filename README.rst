@@ -137,7 +137,7 @@ first element from the JSON array.
 
 .. code-block:: shell
 
-    $ parsec histories get_histories | jq .[0]
+    $ parsec histories get_histories | jq .'[0]'
 
 Parsec will respond with information about your first history
 
@@ -166,15 +166,15 @@ show_history 548c0777ac615645``, or we can do this in batch:
 
 .. code-block:: shell
 
-    $ parsec histories get_histories | jq .[0].id | xargs -n 1 parsec histories show_history
+    $ parsec histories get_histories | jq .'[0].id' | xargs -n 1 parsec histories show_history
 
 Which pulls out the first history, select the ``id`` attribute, before passing it to ``xargs``.
 If you have not used it before, ``xargs`` allows us to execute multiple
 commands for some input data. Here we execute the command ``parsec histories
 show_history`` for each line of input (i.e. each ID returned to us from the jq call).
 ``xargs -n 1`` ensures that we will only pass a single ID to a
-single call of ``show_history``. If you were to use ``jq .[].id`` instead of
-``jq .[0].id`` it would output the IDs for every history you own. You could
+single call of ``show_history``. If you were to use ``jq .'[].id'`` instead of
+``jq .'[0].id'`` it would output the IDs for every history you own. You could
 then pipe this to xargs and run ``show_history`` on all of your histories!
 
 .. code-block:: json
@@ -403,7 +403,7 @@ things with the combination of parsec, jq, and xargs. Here are some examples to 
   .. code-block:: shell
 
      $ parsec histories get_histories | \
-        jq .[].id | \ # Or other, more complex filtering?
+        jq .'[].id' | \ # Or other, more complex filtering?
         xargs -n 1 parsec histories show_history | \ # Get history details
         jq .state_ids.ok[] | \ # Find OK datasets
         xargs -n 1 parsec datasets download_dataset --file_path '.' --use_default_filename # Download
