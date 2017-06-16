@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<tool id="parsec.groups.update_group" name="groups" version="1.0">
+ <description>update_group</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec groups update_group
+--group_id "$group_id"
+
+#if $group_name
+  --group_name "$group_name"
+#end if
+#if $user_ids
+  --user_ids "$user_ids"
+#end if
+#if $role_ids
+  --role_ids "$role_ids"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="group_id" label="group_id" argument="group_id"  type="text" help="Encoded group ID"/>
+
+    <!-- options -->
+    <input name="group_name" argument="group_name" type="text" help="A new name for the group. If None, the group name is not changed."/>
+    <input name="user_ids" argument="user_ids" type="text" multiple="true" help="New list of encoded user IDs for the group. It will substitute the previous list of users (with [] if not specified)"/>
+    <input name="role_ids" argument="role_ids" type="text" multiple="true" help="New list of encoded role IDs for the group. It will substitute the previous list of roles (with [] if not specified)"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Update a group.
+  </help>
+</tool>

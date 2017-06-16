@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.tools.paste_content" name="tools" version="1.0">
+ <description>paste_content</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec tools paste_content
+--content "$content"
+--history_id "$history_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="content" label="content" argument="content"  type="text" help="content of the new dataset to upload or a list of URLs (one per line) to upload"/>
+    <input name="history_id" label="history_id" argument="history_id"  type="text" help="id of the history where to upload the content"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Upload a string to a new dataset in the history specified by ``history_id``.
+  </help>
+</tool>

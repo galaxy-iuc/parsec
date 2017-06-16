@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="parsec.histories.download_dataset" name="histories" version="1.0">
+ <description>download_dataset</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec histories download_dataset
+--history_id "$history_id"
+--dataset_id "$dataset_id"
+--file_path "$file_path"
+
+#if $use_default_filename
+  --use_default_filename "$use_default_filename"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="history_id" label="history_id" argument="history_id"  type="text"/>
+    <input name="dataset_id" label="dataset_id" argument="dataset_id"  type="text"/>
+    <input name="file_path" label="file_path" argument="file_path"  type="text"/>
+
+    <!-- options -->
+    <input name="use_default_filename" argument="use_default_filename" type="error" help=""/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+.. deprecated:: 0.8.0 Use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_dataset` instead.
+  </help>
+</tool>

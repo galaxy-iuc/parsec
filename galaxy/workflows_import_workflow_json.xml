@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.workflows.import_workflow_json" name="workflows" version="1.0">
+ <description>import_workflow_json</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec workflows import_workflow_json
+--workflow_json "$workflow_json"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="workflow_json" label="workflow_json" argument="workflow_json"  type="text"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+.. deprecated:: 0.9.0 Use :meth:`import_workflow_dict` instead.
+  </help>
+</tool>

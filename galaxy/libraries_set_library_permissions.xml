@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.set_library_permissions" name="libraries" version="1.0">
+ <description>set_library_permissions</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries set_library_permissions
+--library_id "$library_id"
+
+#if $access_in
+  --access_in "$access_in"
+#end if
+#if $modify_in
+  --modify_in "$modify_in"
+#end if
+#if $add_in
+  --add_in "$add_in"
+#end if
+#if $manage_in
+  --manage_in "$manage_in"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="library_id" label="library_id" argument="library_id"  type="text" help="id of the library"/>
+
+    <!-- options -->
+    <input name="access_in" argument="access_in" type="text" multiple="true" help="list of role ids"/>
+    <input name="modify_in" argument="modify_in" type="text" multiple="true" help="list of role ids"/>
+    <input name="add_in" argument="add_in" type="text" multiple="true" help="list of role ids"/>
+    <input name="manage_in" argument="manage_in" type="text" multiple="true" help="list of role ids"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Set the permissions for a library.  Note: it will override all security for this library even if you leave out a permission type.
+  </help>
+</tool>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.users.create_user_apikey" name="users" version="1.0">
+ <description>create_user_apikey</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec users create_user_apikey
+--user_id "$user_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="user_id" label="user_id" argument="user_id"  type="text" help="encoded user ID"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Create a new API key for a given user.
+  </help>
+</tool>

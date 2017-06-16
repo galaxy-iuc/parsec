@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.ftpfiles.get_ftp_files" name="ftpfiles" version="1.0">
+ <description>get_ftp_files</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec ftpfiles get_ftp_files
+
+#if $deleted
+  --deleted "$deleted"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+    <input name="deleted" argument="deleted" type="error" help=""/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get a list of local files.
+  </help>
+</tool>

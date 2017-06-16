@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<tool id="parsec.datasets.download_dataset" name="datasets" version="1.0">
+ <description>download_dataset</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec datasets download_dataset
+--dataset_id "$dataset_id"
+
+#if $file_path
+  --file_path "$file_path"
+#end if
+#if $use_default_filename
+  --use_default_filename "$use_default_filename"
+#end if
+#if $wait_for_completion
+  --wait_for_completion "$wait_for_completion"
+#end if
+#if $maxwait
+  --maxwait "$maxwait"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="Encoded dataset ID"/>
+
+    <!-- options -->
+    <input name="file_path" argument="file_path" type="text" help="If this argument is provided, the dataset will be streamed to disk at that path (should be a directory if use_default_filename=True). If the file_path argument is not provided, the dataset content is loaded into memory and returned by the method (Memory consumption may be heavy as the entire file will be in memory)."/>
+    <input name="use_default_filename" argument="use_default_filename" type="boolean" truevalue="" falsevalue="" help="If this argument is True, the exported file will be saved as file_path/%s, where %s is the dataset name. If this argument is False, file_path is assumed to contain the full file path including the filename."/>
+    <input name="wait_for_completion" argument="wait_for_completion" type="boolean" truevalue="" falsevalue="" help="If this argument is True, this method call will block until the dataset is ready. If the dataset state becomes invalid, a DatasetStateException will be thrown."/>
+    <input name="maxwait" argument="maxwait" type="float" value="0" help="Time (in seconds) to wait for dataset to complete. If the dataset state is not complete within this time, a DatasetTimeoutException will be thrown."/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Download a dataset to file or in memory.
+  </help>
+</tool>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.show_folder" name="libraries" version="1.0">
+ <description>show_folder</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries show_folder
+--library_id "$library_id"
+--folder_id "$folder_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="library_id" label="library_id" argument="library_id"  type="text" help="library id to inspect folders in"/>
+    <input name="folder_id" label="folder_id" argument="folder_id"  type="text" help="id of the folder to be inspected"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get details about a given folder. The required ``folder_id`` can be obtained from the folder's library content details.
+  </help>
+</tool>

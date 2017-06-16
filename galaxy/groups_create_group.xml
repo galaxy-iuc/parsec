@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="parsec.groups.create_group" name="groups" version="1.0">
+ <description>create_group</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec groups create_group
+--group_name "$group_name"
+
+#if $user_ids
+  --user_ids "$user_ids"
+#end if
+#if $role_ids
+  --role_ids "$role_ids"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="group_name" label="group_name" argument="group_name"  type="text" help="A name for the new group"/>
+
+    <!-- options -->
+    <input name="user_ids" argument="user_ids" type="text" multiple="true" help="A list of encoded user IDs to add to the new group"/>
+    <input name="role_ids" argument="role_ids" type="text" multiple="true" help="A list of encoded role IDs to add to the new group"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Create a new group.
+  </help>
+</tool>

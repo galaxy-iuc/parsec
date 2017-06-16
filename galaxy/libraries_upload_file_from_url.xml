@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.upload_file_from_url" name="libraries" version="1.0">
+ <description>upload_file_from_url</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries upload_file_from_url
+--library_id "$library_id"
+--file_url "$file_url"
+
+#if $folder_id
+  --folder_id "$folder_id"
+#end if
+#if $file_type
+  --file_type "$file_type"
+#end if
+#if $dbkey
+  --dbkey "$dbkey"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="library_id" label="library_id" argument="library_id"  type="text" help="id of the library where to place the uploaded file"/>
+    <input name="file_url" label="file_url" argument="file_url"  type="text" help="URL of the file to upload"/>
+
+    <!-- options -->
+    <input name="folder_id" argument="folder_id" type="text" help="id of the folder where to place the uploaded file. If not provided, the root folder will be used"/>
+    <input name="file_type" argument="file_type" type="text" help="Galaxy file format name"/>
+    <input name="dbkey" argument="dbkey" type="text" help="Dbkey"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Upload a file to a library from a URL.
+  </help>
+</tool>

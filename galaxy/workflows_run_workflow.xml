@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<tool id="parsec.workflows.run_workflow" name="workflows" version="1.0">
+ <description>run_workflow</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec workflows run_workflow
+--workflow_id "$workflow_id"
+
+#if $dataset_map
+  --dataset_map "$dataset_map"
+#end if
+#if $params
+  --params "$params"
+#end if
+#if $history_id
+  --history_id "$history_id"
+#end if
+#if $history_name
+  --history_name "$history_name"
+#end if
+#if $import_inputs_to_history
+  --import_inputs_to_history "$import_inputs_to_history"
+#end if
+#if $replacement_params
+  --replacement_params "$replacement_params"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
+
+    <!-- options -->
+    <input name="dataset_map" argument="dataset_map" type="text" help="A mapping of workflow inputs to datasets. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), or HistoryDatasetAssociation (``hda``). The map must be in the following format: ``{'<input>': {'id': <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}`` (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src': 'ld'}}``)"/>
+    <input name="params" argument="params" type="text" help="A mapping of non-datasets tool parameters (see below)"/>
+    <input name="history_id" argument="history_id" type="text" help="The encoded history ID where to store the workflow output. Alternatively, ``history_name`` may be specified to create a new history."/>
+    <input name="history_name" argument="history_name" type="text" help="Create a new history with the given name to store the workflow output. If both ``history_id`` and ``history_name`` are provided, ``history_name`` is ignored. If neither is specified, a new 'Unnamed history' is created."/>
+    <input name="import_inputs_to_history" argument="import_inputs_to_history" type="boolean" truevalue="" falsevalue="" help="If ``True``, used workflow inputs will be imported into the history. If ``False``, only workflow outputs will be visible in the given history."/>
+    <input name="replacement_params" argument="replacement_params" type="text" help="pattern-based replacements for post-job actions (see below)"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Run the workflow identified by ``workflow_id``.
+  </help>
+</tool>

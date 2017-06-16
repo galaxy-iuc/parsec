@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<tool id="parsec.histories.show_history" name="histories" version="1.0">
+ <description>show_history</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec histories show_history
+--history_id "$history_id"
+
+#if $contents
+  --contents "$contents"
+#end if
+#if $deleted
+  --deleted "$deleted"
+#end if
+#if $visible
+  --visible "$visible"
+#end if
+#if $details
+  --details "$details"
+#end if
+#if $types
+  --types "$types"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID to filter on"/>
+
+    <!-- options -->
+    <input name="contents" argument="contents" type="boolean" truevalue="" falsevalue="" help="When ``True``, the complete list of datasets in the given history."/>
+    <input name="deleted" argument="deleted" type="text" help="Used when contents=True, includes deleted datasets in history dataset list"/>
+    <input name="visible" argument="visible" type="text" help="Used when contents=True, includes only visible datasets in history dataset list"/>
+    <input name="details" argument="details" type="text" help="Used when contents=True, includes dataset details. Set to 'all' for the most information"/>
+    <input name="types" argument="types" type="text" help="???"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get details of a given history. By default, just get the history meta information.
+  </help>
+</tool>

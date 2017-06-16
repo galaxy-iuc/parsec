@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<tool id="parsec.genomes.install_genome" name="genomes" version="1.0">
+ <description>install_genome</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec genomes install_genome
+
+#if $func
+  --func "$func"
+#end if
+#if $source
+  --source "$source"
+#end if
+#if $dbkey
+  --dbkey "$dbkey"
+#end if
+#if $ncbi_name
+  --ncbi_name "$ncbi_name"
+#end if
+#if $ensembl_dbkey
+  --ensembl_dbkey "$ensembl_dbkey"
+#end if
+#if $url_dbkey
+  --url_dbkey "$url_dbkey"
+#end if
+#if $indexers
+  --indexers "$indexers"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+    <input name="func" argument="func" type="text" help="Allowed values: 'download', Download and index; 'index', Index only"/>
+    <input name="source" argument="source" type="text" help="Data source for this build. Can be: UCSC, Ensembl, NCBI, URL"/>
+    <input name="dbkey" argument="dbkey" type="text" help="DB key of the build to download, ignored unless 'UCSC' is specified as the source"/>
+    <input name="ncbi_name" argument="ncbi_name" type="text" help="NCBI's genome identifier, ignored unless NCBI is specified as the source"/>
+    <input name="ensembl_dbkey" argument="ensembl_dbkey" type="text" help="Ensembl's genome identifier, ignored unless Ensembl is specified as the source"/>
+    <input name="url_dbkey" argument="url_dbkey" type="text" help="DB key to use for this build, ignored unless URL is specified as the source"/>
+    <input name="indexers" argument="indexers" type="text" multiple="true" help="POST array of indexers to run after downloading (indexers[] = first, indexers[] = second, ...)"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Download and/or index a genome.
+  </help>
+</tool>

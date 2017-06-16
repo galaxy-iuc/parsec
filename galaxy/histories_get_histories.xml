@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool id="parsec.histories.get_histories" name="histories" version="1.0">
+ <description>get_histories</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec histories get_histories
+
+#if $history_id
+  --history_id "$history_id"
+#end if
+#if $name
+  --name "$name"
+#end if
+#if $deleted
+  --deleted "$deleted"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+    <input name="history_id" argument="history_id" type="text" help="Encoded history ID to filter on"/>
+    <input name="name" argument="name" type="text" help="Name of history to filter on"/>
+    <input name="deleted" argument="deleted" type="error" help=""/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get all histories or filter the specific one(s) via the provided ``name`` or ``history_id``. Provide only one argument, ``name`` or ``history_id``, but not both.
+  </help>
+</tool>

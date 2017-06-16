@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.groups.show_group" name="groups" version="1.0">
+ <description>show_group</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec groups show_group
+--group_id "$group_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="group_id" label="group_id" argument="group_id"  type="text" help="Encoded group ID"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get details of a given group.
+  </help>
+</tool>

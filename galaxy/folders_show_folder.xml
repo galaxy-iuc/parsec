@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.folders.show_folder" name="folders" version="1.0">
+ <description>show_folder</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec folders show_folder
+--folder_id "$folder_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Display information about a folder.
+  </help>
+</tool>

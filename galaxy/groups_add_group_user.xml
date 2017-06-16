@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.groups.add_group_user" name="groups" version="1.0">
+ <description>add_group_user</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec groups add_group_user
+--group_id "$group_id"
+--user_id "$user_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="group_id" label="group_id" argument="group_id"  type="text" help="Encoded group ID"/>
+    <input name="user_id" label="user_id" argument="user_id"  type="text" help="Encoded user ID to add to the group"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Add a user to the given group.
+  </help>
+</tool>

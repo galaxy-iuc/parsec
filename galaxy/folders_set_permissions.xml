@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<tool id="parsec.folders.set_permissions" name="folders" version="1.0">
+ <description>set_permissions</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec folders set_permissions
+--folder_id "$folder_id"
+
+#if $action
+  --action "$action"
+#end if
+#if $add_ids
+  --add_ids "$add_ids"
+#end if
+#if $manage_ids
+  --manage_ids "$manage_ids"
+#end if
+#if $modify_ids
+  --modify_ids "$modify_ids"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
+
+    <!-- options -->
+    <input name="action" argument="action" type="text" help="action to execute, only \"set_permissions\" is supported."/>
+    <input name="add_ids" argument="add_ids" type="text" multiple="true" help="list of role IDs which can add datasets to the folder"/>
+    <input name="manage_ids" argument="manage_ids" type="text" multiple="true" help="list of role IDs which can manage datasets in the folder"/>
+    <input name="modify_ids" argument="modify_ids" type="text" multiple="true" help="list of role IDs which can modify datasets in the folder"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Set the permissions of a folder.
+  </help>
+</tool>

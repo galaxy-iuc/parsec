@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.forms.show_form" name="forms" version="1.0">
+ <description>show_form</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec forms show_form
+--form_id "$form_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="form_id" label="form_id" argument="form_id"  type="text" help="Encoded form ID"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get details of a given form.
+  </help>
+</tool>

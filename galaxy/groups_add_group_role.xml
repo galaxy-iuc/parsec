@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.groups.add_group_role" name="groups" version="1.0">
+ <description>add_group_role</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec groups add_group_role
+--group_id "$group_id"
+--role_id "$role_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="group_id" label="group_id" argument="group_id"  type="text" help="Encoded group ID"/>
+    <input name="role_id" label="role_id" argument="role_id"  type="text" help="Encoded role ID to add to the group"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Add a role to the given group.
+  </help>
+</tool>

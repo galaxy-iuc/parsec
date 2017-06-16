@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool id="parsec.tools.get_tools" name="tools" version="1.0">
+ <description>get_tools</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec tools get_tools
+
+#if $tool_id
+  --tool_id "$tool_id"
+#end if
+#if $name
+  --name "$name"
+#end if
+#if $trackster
+  --trackster "$trackster"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+    <input name="tool_id" argument="tool_id" type="text" help="id of the requested tool"/>
+    <input name="name" argument="name" type="text" help="name of the requested tool(s)"/>
+    <input name="trackster" argument="trackster" type="boolean" truevalue="" falsevalue="" help="if True, only tools that are compatible with Trackster are returned"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_id``. Provide only one argument, ``name`` or ``tool_id``, but not both.
+  </help>
+</tool>

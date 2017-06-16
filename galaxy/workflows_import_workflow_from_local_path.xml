@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.workflows.import_workflow_from_local_path" name="workflows" version="1.0">
+ <description>import_workflow_from_local_path</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec workflows import_workflow_from_local_path
+--file_local_path "$file_local_path"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="file_local_path" label="file_local_path" argument="file_local_path"  type="text" help="File to upload to the server for new workflow"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Imports a new workflow given the path to a file containing a previously exported workflow.
+  </help>
+</tool>

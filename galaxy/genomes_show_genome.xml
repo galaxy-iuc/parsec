@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<tool id="parsec.genomes.show_genome" name="genomes" version="1.0">
+ <description>show_genome</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec genomes show_genome
+--id "$id"
+
+#if $num
+  --num "$num"
+#end if
+#if $chrom
+  --chrom "$chrom"
+#end if
+#if $low
+  --low "$low"
+#end if
+#if $high
+  --high "$high"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="id" label="id" argument="id"  type="text" help="Genome build ID to use"/>
+
+    <!-- options -->
+    <input name="num" argument="num" type="text" help="num"/>
+    <input name="chrom" argument="chrom" type="text" help="chrom"/>
+    <input name="low" argument="low" type="text" help="low"/>
+    <input name="high" argument="high" type="text" help="high"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Returns information about build <id>
+  </help>
+</tool>

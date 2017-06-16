@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="parsec.histories.download_history" name="histories" version="1.0">
+ <description>download_history</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec histories download_history
+--history_id "$history_id"
+--jeha_id "$jeha_id"
+--outf "$outf"
+
+#if $chunk_size
+  --chunk_size "$chunk_size"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="history_id" label="history_id" argument="history_id"  type="text" help="history ID"/>
+    <input name="jeha_id" label="jeha_id" argument="jeha_id"  type="text" help="jeha ID (this should be obtained via :meth:`export_history`)"/>
+    <input name="outf" label="outf" argument="outf"  type="text" help="output file object, open for writing in binary mode"/>
+
+    <!-- options -->
+    <input name="chunk_size" argument="chunk_size" type="integer" value="0" help="how many bytes at a time should be read into memory"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Download a history export archive.  Use :meth:`export_history` to create an export.
+  </help>
+</tool>

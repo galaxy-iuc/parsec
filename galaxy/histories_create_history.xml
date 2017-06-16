@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.histories.create_history" name="histories" version="1.0">
+ <description>create_history</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec histories create_history
+
+#if $name
+  --name "$name"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+    <input name="name" argument="name" type="text" help="Optional name for new history"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Create a new history, optionally setting the ``name``.
+  </help>
+</tool>

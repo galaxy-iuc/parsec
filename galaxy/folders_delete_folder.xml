@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<tool id="parsec.folders.delete_folder" name="folders" version="1.0">
+ <description>delete_folder</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec folders delete_folder
+--folder_id "$folder_id"
+
+#if $undelete
+  --undelete "$undelete"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
+
+    <!-- options -->
+    <input name="undelete" argument="undelete" type="boolean" truevalue="" falsevalue="" help="If set to True, the folder will be undeleted (i.e. the `deleted` mark will be removed)"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Marks the folder with the given ``id`` as `deleted` (or removes the `deleted` mark if the `undelete` param is True).
+  </help>
+</tool>

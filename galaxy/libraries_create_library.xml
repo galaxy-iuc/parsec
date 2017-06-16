@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.create_library" name="libraries" version="1.0">
+ <description>create_library</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries create_library
+--name "$name"
+
+#if $description
+  --description "$description"
+#end if
+#if $synopsis
+  --synopsis "$synopsis"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="name" label="name" argument="name"  type="text" help="Name of the new data library"/>
+
+    <!-- options -->
+    <input name="description" argument="description" type="text" help="Optional data library description"/>
+    <input name="synopsis" argument="synopsis" type="text" help="Optional data library synopsis"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Create a data library with the properties defined in the arguments.
+  </help>
+</tool>

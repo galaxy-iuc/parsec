@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.get_library_permissions" name="libraries" version="1.0">
+ <description>get_library_permissions</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries get_library_permissions
+--library_id "$library_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="library_id" label="library_id" argument="library_id"  type="text" help="id of the library"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get the permessions for a library.
+  </help>
+</tool>

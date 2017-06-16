@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool id="parsec.workflows.get_workflows" name="workflows" version="1.0">
+ <description>get_workflows</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec workflows get_workflows
+
+#if $workflow_id
+  --workflow_id "$workflow_id"
+#end if
+#if $name
+  --name "$name"
+#end if
+#if $published
+  --published "$published"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+    <input name="workflow_id" argument="workflow_id" type="text" help="Encoded workflow ID (incompatible with ``name``)"/>
+    <input name="name" argument="name" type="text" help="Filter by name of workflow (incompatible with ``workflow_id``). If multiple names match the given name, all the workflows matching the argument will be returned."/>
+    <input name="published" argument="published" type="boolean" truevalue="" falsevalue="" help="if ``True``, return also published workflows"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get all workflows or filter the specific one(s) via the provided ``name`` or ``workflow_id``. Provide only one argument, ``name`` or ``workflow_id``, but not both.
+  </help>
+</tool>

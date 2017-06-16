@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.delete_library" name="libraries" version="1.0">
+ <description>delete_library</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries delete_library
+--library_id "$library_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="library_id" label="library_id" argument="library_id"  type="text" help="Encoded data library ID identifying the library to be deleted"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Delete a data library.
+  </help>
+</tool>

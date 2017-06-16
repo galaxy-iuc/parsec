@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<tool id="parsec.jobs.show_job" name="jobs" version="1.0">
+ <description>show_job</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec jobs show_job
+--job_id "$job_id"
+
+#if $full_details
+  --full_details "$full_details"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="job_id" label="job_id" argument="job_id"  type="text" help="job ID"/>
+
+    <!-- options -->
+    <input name="full_details" argument="full_details" type="boolean" truevalue="" falsevalue="" help="when ``True``, the complete list of details for the given job."/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get details of a given job of the current user.
+  </help>
+</tool>

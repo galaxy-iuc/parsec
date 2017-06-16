@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.workflows.import_workflow_dict" name="workflows" version="1.0">
+ <description>import_workflow_dict</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec workflows import_workflow_dict
+--workflow_dict "$workflow_dict"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="workflow_dict" label="workflow_dict" argument="workflow_dict"  type="text" help="dictionary representing the workflow to be imported"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Imports a new workflow given a dictionary representing a previously exported workflow.
+  </help>
+</tool>

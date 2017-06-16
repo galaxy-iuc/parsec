@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<tool id="parsec.jobs.get_jobs" name="jobs" version="1.0">
+ <description>get_jobs</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec jobs get_jobs
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get the list of jobs of the current user.
+  </help>
+</tool>

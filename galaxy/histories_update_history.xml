@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<tool id="parsec.histories.update_history" name="histories" version="1.0">
+ <description>update_history</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec histories update_history
+--history_id "$history_id"
+
+#if $annotation
+  --annotation "$annotation"
+#end if
+#if $deleted
+  --deleted "$deleted"
+#end if
+#if $importable
+  --importable "$importable"
+#end if
+#if $name
+  --name "$name"
+#end if
+#if $published
+  --published "$published"
+#end if
+#if $purged
+  --purged "$purged"
+#end if
+#if $tags
+  --tags "$tags"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+
+    <!-- options -->
+    <input name="annotation" argument="annotation" type="text" help="Replace history annotation with given string"/>
+    <input name="deleted" argument="deleted" type="boolean" truevalue="" falsevalue="" help="Mark or unmark history as deleted"/>
+    <input name="importable" argument="importable" type="boolean" truevalue="" falsevalue="" help="Mark or unmark history as importable"/>
+    <input name="name" argument="name" type="text" help="Replace history name with the given string"/>
+    <input name="published" argument="published" type="boolean" truevalue="" falsevalue="" help="Mark or unmark history as published"/>
+    <input name="purged" argument="purged" type="boolean" truevalue="" falsevalue="" help="If True, mark history as purged (permanently deleted). Ignored on Galaxy release_15.01 and earlier"/>
+    <input name="tags" argument="tags" type="text" multiple="true" help="Replace history tags with the given list"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Update history metadata information. Some of the attributes that can be modified are documented below.
+  </help>
+</tool>

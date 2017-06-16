@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<tool id="parsec.config.get_config" name="config" version="1.0">
+ <description>get_config</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec config get_config
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get a list of attributes about the Galaxy instance. More attributes will be present if the user is an admin.
+  </help>
+</tool>

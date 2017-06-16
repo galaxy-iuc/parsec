@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.jobs.get_state" name="jobs" version="1.0">
+ <description>get_state</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec jobs get_state
+--job_id "$job_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="job_id" label="job_id" argument="job_id"  type="text" help="job ID"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Display the current state for a given job of the current user.
+  </help>
+</tool>

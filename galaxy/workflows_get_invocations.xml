@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.workflows.get_invocations" name="workflows" version="1.0">
+ <description>get_invocations</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec workflows get_invocations
+--workflow_id "$workflow_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get a list containing all the workflow invocations corresponding to the specified workflow.
+  </help>
+</tool>

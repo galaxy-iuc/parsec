@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.quotas.get_quotas" name="quotas" version="1.0">
+ <description>get_quotas</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec quotas get_quotas
+
+#if $deleted
+  --deleted "$deleted"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+    <input name="deleted" argument="deleted" type="boolean" truevalue="" falsevalue="" help="Only return quota(s) that have been deleted"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get a list of quotas
+  </help>
+</tool>

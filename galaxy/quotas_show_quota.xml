@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<tool id="parsec.quotas.show_quota" name="quotas" version="1.0">
+ <description>show_quota</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec quotas show_quota
+--quota_id "$quota_id"
+
+#if $deleted
+  --deleted "$deleted"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="quota_id" label="quota_id" argument="quota_id"  type="text" help="Encoded quota ID"/>
+
+    <!-- options -->
+    <input name="deleted" argument="deleted" type="boolean" truevalue="" falsevalue="" help="Search for quota in list of ones already marked as deleted"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Display information on a quota
+  </help>
+</tool>

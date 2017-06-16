@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.show_library" name="libraries" version="1.0">
+ <description>show_library</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries show_library
+--library_id "$library_id"
+
+#if $contents
+  --contents "$contents"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="library_id" label="library_id" argument="library_id"  type="text" help="filter for library by library id"/>
+
+    <!-- options -->
+    <input name="contents" argument="contents" type="boolean" truevalue="" falsevalue="" help="True if want to get contents of the library (rather than just the library details)"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get information about a library.
+  </help>
+</tool>

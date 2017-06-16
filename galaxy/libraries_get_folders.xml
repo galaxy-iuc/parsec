@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.get_folders" name="libraries" version="1.0">
+ <description>get_folders</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries get_folders
+--library_id "$library_id"
+
+#if $folder_id
+  --folder_id "$folder_id"
+#end if
+#if $name
+  --name "$name"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="library_id" label="library_id" argument="library_id"  type="text"/>
+
+    <!-- options -->
+    <input name="folder_id" argument="folder_id" type="text" help="filter for folder by folder id"/>
+    <input name="name" argument="name" type="text" help="filter for folder by name. For ``name`` specify the full path of the folder starting from the library's root folder, e.g. ``/subfolder/subsubfolder``."/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get all the folders or filter specific one(s) via the provided ``name`` or ``folder_id`` in data library with id ``library_id``. Provide only one argument: ``name`` or ``folder_id``, but not both.
+  </help>
+</tool>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.workflows.get_workflow_inputs" name="workflows" version="1.0">
+ <description>get_workflow_inputs</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec workflows get_workflow_inputs
+--workflow_id "$workflow_id"
+--label "$label"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
+    <input name="label" label="label" argument="label"  type="text" help="label to filter workflow inputs on"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get a list of workflow input IDs that match the given label. If no input matches the given label, an empty list is returned.
+  </help>
+</tool>

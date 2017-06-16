@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<tool id="parsec.tools.run_tool" name="tools" version="1.0">
+ <description>run_tool</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec tools run_tool
+--history_id "$history_id"
+--tool_id "$tool_id"
+--tool_inputs "$tool_inputs"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="history_id" label="history_id" argument="history_id"  type="text" help="encoded ID of the history in which to run the tool"/>
+    <input name="tool_id" label="tool_id" argument="tool_id"  type="text" help="ID of the tool to be run"/>
+    <input name="tool_inputs" label="tool_inputs" argument="tool_inputs"  type="text" help="dictionary of input datasets and parameters for the tool (see below)"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with inputs from ``dict`` ``tool_inputs``.
+  </help>
+</tool>

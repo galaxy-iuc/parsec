@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="parsec.users.get_user_apikey" name="users" version="1.0">
+ <description>get_user_apikey</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec users get_user_apikey
+--user_id "$user_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="user_id" label="user_id" argument="user_id"  type="text" help="encoded user ID"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get the current API key for a given user. This functionality is available since Galaxy ``release_17.01``.
+  </help>
+</tool>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<tool id="parsec.quotas.update_quota" name="quotas" version="1.0">
+ <description>update_quota</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec quotas update_quota
+--quota_id "$quota_id"
+
+#if $name
+  --name "$name"
+#end if
+#if $description
+  --description "$description"
+#end if
+#if $amount
+  --amount "$amount"
+#end if
+#if $operation
+  --operation "$operation"
+#end if
+#if $default
+  --default "$default"
+#end if
+#if $in_users
+  --in_users "$in_users"
+#end if
+#if $in_groups
+  --in_groups "$in_groups"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="quota_id" label="quota_id" argument="quota_id"  type="text" help="Encoded quota ID"/>
+
+    <!-- options -->
+    <input name="name" argument="name" type="text" help="Name for the new quota. This must be unique within a Galaxy instance."/>
+    <input name="description" argument="description" type="text" help="Quota description. If you supply this parameter, but not the name, an error will be thrown."/>
+    <input name="amount" argument="amount" type="text" help="Quota size (E.g. ``10000MB``, ``99 gb``, ``0.2T``, ``unlimited``)"/>
+    <input name="operation" argument="operation" type="text" help="One of (``+``, ``-``, ``=``). If you wish to change this value, you must also provide the ``amount``, otherwise it will not take effect."/>
+    <input name="default" argument="default" type="text" help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. Calling this method with ``default=\"no\"`` on a non-default quota will throw an error. Not passing this parameter is equivalent to passing ``no``."/>
+    <input name="in_users" argument="in_users" type="text" multiple="true" help="A list of user IDs or user emails."/>
+    <input name="in_groups" argument="in_groups" type="text" multiple="true" help="A list of group IDs or names."/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Update an existing quota
+  </help>
+</tool>

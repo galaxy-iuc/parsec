@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="parsec.tools.show_tool" name="tools" version="1.0">
+ <description>show_tool</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec tools show_tool
+--tool_id "$tool_id"
+
+#if $io_details
+  --io_details "$io_details"
+#end if
+#if $link_details
+  --link_details "$link_details"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="tool_id" label="tool_id" argument="tool_id"  type="text" help="id of the requested tool"/>
+
+    <!-- options -->
+    <input name="io_details" argument="io_details" type="boolean" truevalue="" falsevalue="" help="if True, get also input and output details"/>
+    <input name="link_details" argument="link_details" type="boolean" truevalue="" falsevalue="" help="if True, get also link details"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get details of a given tool.
+  </help>
+</tool>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.histories.show_dataset" name="histories" version="1.0">
+ <description>show_dataset</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec histories show_dataset
+--history_id "$history_id"
+--dataset_id "$dataset_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+    <input name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="Encoded dataset ID"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get details about a given history dataset.
+  </help>
+</tool>

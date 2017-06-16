@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<tool id="parsec.histories.export_history" name="histories" version="1.0">
+ <description>export_history</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec histories export_history
+--history_id "$history_id"
+
+#if $gzip
+  --gzip "$gzip"
+#end if
+#if $include_hidden
+  --include_hidden "$include_hidden"
+#end if
+#if $include_deleted
+  --include_deleted "$include_deleted"
+#end if
+#if $wait
+  --wait "$wait"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="history_id" label="history_id" argument="history_id"  type="text" help="history ID"/>
+
+    <!-- options -->
+    <input name="gzip" argument="gzip" type="boolean" truevalue="" falsevalue="" help="create .tar.gz archive if ``True``, else .tar"/>
+    <input name="include_hidden" argument="include_hidden" type="boolean" truevalue="" falsevalue="" help="whether to include hidden datasets in the export"/>
+    <input name="include_deleted" argument="include_deleted" type="boolean" truevalue="" falsevalue="" help="whether to include deleted datasets in the export"/>
+    <input name="wait" argument="wait" type="boolean" truevalue="" falsevalue="" help="if ``True``, block until the export is ready; else, return immediately"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Start a job to create an export archive for the given history.
+  </help>
+</tool>

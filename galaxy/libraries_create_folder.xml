@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.create_folder" name="libraries" version="1.0">
+ <description>create_folder</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries create_folder
+--library_id "$library_id"
+--folder_name "$folder_name"
+
+#if $description
+  --description "$description"
+#end if
+#if $base_folder_id
+  --base_folder_id "$base_folder_id"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="library_id" label="library_id" argument="library_id"  type="text" help="library id to use"/>
+    <input name="folder_name" label="folder_name" argument="folder_name"  type="text" help="name of the new folder in the data library"/>
+
+    <!-- options -->
+    <input name="description" argument="description" type="text" help="description of the new folder in the data library"/>
+    <input name="base_folder_id" argument="base_folder_id" type="text" help="id of the folder where to create the new folder. If not provided, the root folder will be used"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Create a folder in a library.
+  </help>
+</tool>

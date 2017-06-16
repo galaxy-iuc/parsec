@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.get_libraries" name="libraries" version="1.0">
+ <description>get_libraries</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries get_libraries
+
+#if $library_id
+  --library_id "$library_id"
+#end if
+#if $name
+  --name "$name"
+#end if
+#if $deleted
+  --deleted "$deleted"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+    <input name="library_id" argument="library_id" type="text" help="filter for library by library id"/>
+    <input name="name" argument="name" type="text" help="If ``name`` is set and multiple names match the given name, all the libraries matching the argument will be returned"/>
+    <input name="deleted" argument="deleted" type="boolean" truevalue="" falsevalue="" help="If set to ``True``, return libraries that have been deleted"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Get all the libraries or filter for specific one(s) via the provided name or ID. Provide only one argument: ``name`` or ``library_id``, but not both.
+  </help>
+</tool>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool id="parsec.libraries.copy_from_dataset" name="libraries" version="1.0">
+ <description>copy_from_dataset</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec libraries copy_from_dataset
+--library_id "$library_id"
+--dataset_id "$dataset_id"
+
+#if $folder_id
+  --folder_id "$folder_id"
+#end if
+#if $message
+  --message "$message"
+#end if
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="library_id" label="library_id" argument="library_id"  type="text" help="id of the library where to place the uploaded file"/>
+    <input name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="id of the dataset to copy from"/>
+
+    <!-- options -->
+    <input name="folder_id" argument="folder_id" type="text" help="id of the folder where to place the uploaded files. If not provided, the root folder will be used"/>
+    <input name="message" argument="message" type="text" help="message for copying action"/>
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Copy a Galaxy dataset into a library.
+  </help>
+</tool>

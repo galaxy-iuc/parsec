@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<tool id="parsec.roles.get_roles" name="roles" version="1.0">
+ <description>get_roles</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec roles get_roles
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Displays a collection (list) of roles.
+  </help>
+</tool>

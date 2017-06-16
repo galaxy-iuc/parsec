@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="parsec.workflows.cancel_invocation" name="workflows" version="1.0">
+ <description>cancel_invocation</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+parsec workflows cancel_invocation
+--workflow_id "$workflow_id"
+--invocation_id "$invocation_id"
+
+
+| jq -S . > $results
+</command>
+  <inputs>
+    <!-- arguments -->
+    <input name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
+    <input name="invocation_id" label="invocation_id" argument="invocation_id"  type="text" help="Encoded workflow invocation ID"/>
+
+    <!-- options -->
+
+  </inputs>
+  <outputs>
+    <data format="json" name="results"/>
+  </outputs>
+  <help>
+Cancel the scheduling of a workflow.
+  </help>
+</tool>
