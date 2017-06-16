@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-
 import importlib
 import inspect
 import os
-import re
 import copy
+import re
 import glob
 import argparse
 import logging
@@ -12,6 +11,7 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
 
+PROJECT_NAME = 'parsec'
 import bioblend.galaxy as bg
 IGNORE_LIST = [
     'histories.download_dataset',
@@ -63,6 +63,18 @@ PARAM_TRANSLATION = {
     'None': [],
 }
 
+PARAM_TRANSLATION_GALAXY = {
+    'str': 'type="text"',
+    'dict': 'type="text"',
+    'int': 'type="integer" value="0"',
+    'float': 'type="float" value="0"',
+    'bool': 'type="boolean" truevalue="" falsevalue=""',
+    'file': 'type="data" format="data"',
+    None: 'type="error"',
+    'list of str': 'type="text" multiple="true"',
+    'list': 'type="text" multiple="true"',
+}
+
 class ScriptBuilder(object):
 
     def __init__(self):
@@ -87,9 +99,19 @@ class ScriptBuilder(object):
         ]
         if default:
             args.append('default="%s"' % default)
+            args.append('show_default=True')
         if ptype is not None:
             args.extend(ptype)
         return '@click.option(\n%s\n)\n' % (',\n'.join(['    ' + x for x in args]))
+
+    @classmethod
+    def __galaxy_option(cls, name='arg', helpstr='TODO', ptype=None, default=None):
+        other = ""
+        if default:
+            other += ' default="%s"' % default
+        if ptype is not None:
+            other += ' ' + ptype
+        return '    <input name="%s" argument="%s" %s help="%s"/>\n' % (name, name, ptype, (helpstr.replace('"', '\\"') if helpstr else ""))
 
     @classmethod
     def __click_argument(cls, name='arg', ptype=None):
@@ -99,6 +121,18 @@ class ScriptBuilder(object):
         if ptype is not None:
             args.extend(ptype)
         return '@click.argument(%s)\n' % (', '.join(args), )
+
+    @classmethod
+    def __galaxy_argument(cls, name='arg', ptype=None, desc=None):
+        other = ''
+        if ptype:
+            other += ' type="text"'
+        else:
+            other += ptype
+        if desc:
+            other += ' help="%s"' % desc
+
+        return '    <input name="%s" label="%s" argument="%s" %s/>\n' % (name, name, name, other)
 
     @classmethod
     def load_module(cls, module_path):
@@ -197,7 +231,6 @@ class ScriptBuilder(object):
                 continue
 
             sm = getattr(bg, module)
-            print(module, sm)
             submodules = dir(sm)
             # Find the "...Client"
             wanted = [x for x in submodules if 'Client' in x and x != 'Client'][0]
@@ -213,13 +246,13 @@ class ScriptBuilder(object):
                 continue
             self.orig(module, sm, ssm, f)
         # Write module __init__
-        with open(os.path.join('parsec', 'commands', module, '__init__.py'), 'w') as handle:
+        with open(os.path.join(PROJECT_NAME, 'commands', module, '__init__.py'), 'w') as handle:
             pass
 
-        with open(os.path.join('parsec', 'commands', 'cmd_%s.py' % module), 'w') as handle:
+        with open(os.path.join(PROJECT_NAME, 'commands', 'cmd_%s.py' % module), 'w') as handle:
             handle.write('import click\n')
             # for function:
-            files = list(glob.glob("parsec/commands/%s/*.py" % module))
+            files = list(glob.glob(PROJECT_NAME + "/commands/%s/*.py" % module))
             files = sorted([f for f in files if "__init__.py" not in f])
             for idx, path in enumerate(files):
                 fn = path.replace('/', '.')[0:-3]
@@ -241,9 +274,15 @@ class ScriptBuilder(object):
         argdoc = func.__doc__
 
         data = {
+            'meta_module_name': module_name,
+            'meta_function_name': function_name,
             'command_name': function_name,
             'click_arguments': "",
             'click_options': "",
+            'galaxy_arguments': "    <!-- arguments -->\n",
+            'galaxy_options': "    <!-- options -->\n",
+            'galaxy_cli_arguments': "",
+            'galaxy_cli_options': "",
             'args_with_defaults': "ctx",
             'wrapped_method_args': "",
         }
@@ -312,14 +351,24 @@ class ScriptBuilder(object):
                         print("Error finding %s in %s" % (k, candidate))
                         descstr = None
                     data['click_options'] += self.__click_option(name=k, helpstr=descstr, ptype=param_type, default=orig_v)
+                    data['galaxy_options'] += self.__galaxy_option(name=k, helpstr=descstr, ptype=PARAM_TRANSLATION_GALAXY[real_type], default=orig_v)
+                    data['galaxy_cli_options'] += '#if ${0}\n  --{0} "${0}"\n#end if\n'.format(k)
                 else:
                     # Args, not kwargs
-                    tk = k
-                    method_signature_args.append(tk)
+                    method_signature_args.append(k)
                     if real_type == 'dict':
                         tk = 'json_loads(%s)' % k
+                    else:
+                        tk = k
                     method_exec_args.append(tk)
+                    try:
+                        descstr = param_docs[k]['desc']
+                    except KeyError:
+                        print("Error finding %s in %s" % (k, candidate))
+                        descstr = None
                     data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
+                    data['galaxy_arguments'] += self.__galaxy_argument(name=k, ptype=PARAM_TRANSLATION_GALAXY[real_type], desc=descstr)
+                    data['galaxy_cli_arguments'] += '--%s "$%s"\n' % (k, k)
 
 
             argspec_keys = [x[0] for x in argspec]
@@ -388,13 +437,22 @@ class ScriptBuilder(object):
         # Generate a command name, prefix everything with auto_ to identify the
         # automatically generated stuff
         cmd_name = '%s.py' % function_name
-        cmd_path = os.path.join('parsec', 'commands', module_name, cmd_name)
-
+        cmd_path = os.path.join(PROJECT_NAME, 'commands', module_name, cmd_name)
+        if not os.path.exists(os.path.join(PROJECT_NAME, 'commands', module_name)):
+            os.makedirs(os.path.join(PROJECT_NAME, 'commands', module_name))
         # Save file
         with open(cmd_path, 'w') as handle:
             handle.write(self.template('click', data))
 
+        tool_name = '%s_%s.xml' % (module_name, function_name)
+        if not os.path.exists('galaxy'):
+            os.makedirs('galaxy')
+        tool_path = os.path.join('galaxy', tool_name)
+        with open(tool_path, 'w') as handle:
+            handle.write(self.template('galaxy', data))
+
+
 if __name__ == '__main__':
     z = ScriptBuilder()
-    parser = argparse.ArgumentParser(description='process bioblend into CLI tools')
+    parser = argparse.ArgumentParser(description='process libraries into CLI tools')
     z.process()
