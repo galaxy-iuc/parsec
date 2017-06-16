@@ -1,32 +1,32 @@
 <?xml version="1.0"?>
 <tool id="parsec.users.delete_user" name="users" version="1.0">
  <description>delete_user</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec users delete_user
---user_id "$user_id"
+"$user_id"
 
-#if $purge
-  --purge "$purge"
+#if $purge:
+  $purge
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="user_id" label="user_id" argument="user_id"  type="text" help="encoded user ID"/>
+	<param name="user_id" label="user_id" argument="user_id" type="text" help="encoded user ID" />
 
     <!-- options -->
-    <param name="purge" label="purge" argument="purge"  type="booelan" truevalue="--purge" falsevalue="" help="if ``True``, also purge (permanently delete) the history"/>
+	<param name="purge" label="purge" argument="purge" type="booelan" truevalue="--purge" falsevalue="" help="if ``True``, also purge (permanently delete) the history" />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Delete a user.
-  </help>
+	</help>
 </tool>

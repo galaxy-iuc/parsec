@@ -1,42 +1,40 @@
 <?xml version="1.0"?>
 <tool id="parsec.users.get_users" name="users" version="1.0">
  <description>get_users</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec users get_users
 
-#if $deleted
-  --deleted "$deleted"
-#end if
-#if $f_email
+## UNKNOWN deleted
+#if $f_email:
   --f_email "$f_email"
 #end if
-#if $f_name
+#if $f_name:
   --f_name "$f_name"
 #end if
-#if $f_any
+#if $f_any:
   --f_any "$f_any"
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
 
     <!-- options -->
-    <error />
-    <param name="f_email" label="f_email" argument="f_email"  type="text" help="filter for user emails. The filter will be active for non-admin users only if the Galaxy instance has the ``expose_user_email`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored for non-admin users in Galaxy ``release_15.01`` and earlier."/>
-    <param name="f_name" label="f_name" argument="f_name"  type="text" help="filter for user names. The filter will be active for non-admin users only if the Galaxy instance has the ``expose_user_name`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored in Galaxy ``release_15.10`` and earlier."/>
-    <param name="f_any" label="f_any" argument="f_any"  type="text" help="filter for user email or name. Each filter will be active for non-admin users only if the Galaxy instance has the corresponding ``expose_user_*`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored in Galaxy ``release_15.10`` and earlier."/>
+	<error />
+	<param name="f_email" label="f_email" argument="f_email" type="text" help="filter for user emails. The filter will be active for non-admin users only if the Galaxy instance has the ``expose_user_email`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored for non-admin users in Galaxy ``release_15.01`` and earlier." />
+	<param name="f_name" label="f_name" argument="f_name" type="text" help="filter for user names. The filter will be active for non-admin users only if the Galaxy instance has the ``expose_user_name`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored in Galaxy ``release_15.10`` and earlier." />
+	<param name="f_any" label="f_any" argument="f_any" type="text" help="filter for user email or name. Each filter will be active for non-admin users only if the Galaxy instance has the corresponding ``expose_user_*`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored in Galaxy ``release_15.10`` and earlier." />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Get a list of all registered users. If ``deleted`` is set to ``True``, get a list of deleted users.
-  </help>
+	</help>
 </tool>

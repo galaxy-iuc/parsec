@@ -1,32 +1,32 @@
 <?xml version="1.0"?>
 <tool id="parsec.histories.delete_history" name="histories" version="1.0">
  <description>delete_history</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec histories delete_history
---history_id "$history_id"
+"$history_id"
 
-#if $purge
-  --purge "$purge"
+#if $purge:
+  $purge
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID" />
 
     <!-- options -->
-    <param name="purge" label="purge" argument="purge"  type="booelan" truevalue="--purge" falsevalue="" help="if ``True``, also purge (permanently delete) the history"/>
+	<param name="purge" label="purge" argument="purge" type="booelan" truevalue="--purge" falsevalue="" help="if ``True``, also purge (permanently delete) the history" />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Delete a history.
-  </help>
+	</help>
 </tool>

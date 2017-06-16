@@ -1,30 +1,30 @@
 <?xml version="1.0"?>
 <tool id="parsec.tools.upload_from_ftp" name="tools" version="1.0">
  <description>upload_from_ftp</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec tools upload_from_ftp
---path "$path"
---history_id "$history_id"
+"$path"
+"$history_id"
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="path" label="path" argument="path"  type="text" help="path of the file in the user's FTP directory"/>
-    <param name="history_id" label="history_id" argument="history_id"  type="text" help="id of the history where to upload the file"/>
+	<param name="path" label="path" argument="path" type="text" help="path of the file in the user's FTP directory" />
+	<param name="history_id" label="history_id" argument="history_id" type="text" help="id of the history where to upload the file" />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Upload the file specified by ``path`` from the user's FTP directory to the history specified by ``history_id``.
-  </help>
+	</help>
 </tool>

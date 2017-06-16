@@ -1,50 +1,50 @@
 <?xml version="1.0"?>
 <tool id="parsec.libraries.upload_file_from_server" name="libraries" version="1.0">
  <description>upload_file_from_server</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec libraries upload_file_from_server
---library_id "$library_id"
---server_dir "$server_dir"
+"$library_id"
+"$server_dir"
 
-#if $folder_id
+#if $folder_id:
   --folder_id "$folder_id"
 #end if
-#if $file_type
+#if $file_type:
   --file_type "$file_type"
 #end if
-#if $dbkey
+#if $dbkey:
   --dbkey "$dbkey"
 #end if
-#if $link_data_only
+#if $link_data_only:
   --link_data_only "$link_data_only"
 #end if
-#if $roles
+#if $roles:
   --roles "$roles"
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="library_id" label="library_id" argument="library_id"  type="text" help="id of the library where to place the uploaded file"/>
-    <param name="server_dir" label="server_dir" argument="server_dir"  type="text" help="relative path of the subdirectory of ``library_import_dir`` to upload. All and only the files (i.e. no subdirectories) contained in the specified directory will be uploaded"/>
+	<param name="library_id" label="library_id" argument="library_id" type="text" help="id of the library where to place the uploaded file" />
+	<param name="server_dir" label="server_dir" argument="server_dir" type="text" help="relative path of the subdirectory of ``library_import_dir`` to upload. All and only the files (i.e. no subdirectories) contained in the specified directory will be uploaded" />
 
     <!-- options -->
-    <param name="folder_id" label="folder_id" argument="folder_id"  type="text" help="id of the folder where to place the uploaded files. If not provided, the root folder will be used"/>
-    <param name="file_type" label="file_type" argument="file_type"  type="text" help="Galaxy file format name"/>
-    <param name="dbkey" label="dbkey" argument="dbkey"  type="text" help="Dbkey"/>
-    <param name="link_data_only" label="link_data_only" argument="link_data_only"  type="text" help="either 'copy_files' (default) or 'link_to_files'. Setting to 'link_to_files' symlinks instead of copying the files"/>
-    <param name="roles" label="roles" argument="roles"  type="text" help="???"/>
+	<param name="folder_id" label="folder_id" argument="folder_id" type="text" help="id of the folder where to place the uploaded files. If not provided, the root folder will be used" />
+	<param name="file_type" label="file_type" argument="file_type" type="text" help="Galaxy file format name" />
+	<param name="dbkey" label="dbkey" argument="dbkey" type="text" help="Dbkey" />
+	<param name="link_data_only" label="link_data_only" argument="link_data_only" type="text" help="either 'copy_files' (default) or 'link_to_files'. Setting to 'link_to_files' symlinks instead of copying the files" />
+	<param name="roles" label="roles" argument="roles" type="text" help="???" />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Upload all files in the specified subdirectory of the Galaxy library import directory to a library.
-  </help>
+	</help>
 </tool>

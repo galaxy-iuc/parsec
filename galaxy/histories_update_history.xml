@@ -1,56 +1,58 @@
 <?xml version="1.0"?>
 <tool id="parsec.histories.update_history" name="histories" version="1.0">
  <description>update_history</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec histories update_history
---history_id "$history_id"
+"$history_id"
 
-#if $annotation
+#if $annotation:
   --annotation "$annotation"
 #end if
-#if $deleted
-  --deleted "$deleted"
+#if $deleted:
+  $deleted
 #end if
-#if $importable
-  --importable "$importable"
+#if $importable:
+  $importable
 #end if
-#if $name
+#if $name:
   --name "$name"
 #end if
-#if $published
-  --published "$published"
+#if $published:
+  $published
 #end if
-#if $purged
-  --purged "$purged"
+#if $purged:
+  $purged
 #end if
-#if $tags
-  --tags "$tags"
-#end if
+#for $rep in $repeat_tags:
+  --tags "$rep.tags"
+#end for
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID" />
 
     <!-- options -->
-    <param name="annotation" label="annotation" argument="annotation"  type="text" help="Replace history annotation with given string"/>
-    <param name="deleted" label="deleted" argument="deleted"  type="booelan" truevalue="--deleted" falsevalue="" help="Mark or unmark history as deleted"/>
-    <param name="importable" label="importable" argument="importable"  type="booelan" truevalue="--importable" falsevalue="" help="Mark or unmark history as importable"/>
-    <param name="name" label="name" argument="name"  type="text" help="Replace history name with the given string"/>
-    <param name="published" label="published" argument="published"  type="booelan" truevalue="--published" falsevalue="" help="Mark or unmark history as published"/>
-    <param name="purged" label="purged" argument="purged"  type="booelan" truevalue="--purged" falsevalue="" help="If True, mark history as purged (permanently deleted). Ignored on Galaxy release_15.01 and earlier"/>
-    <repeat name="repeat_tags" title="tags"><param name="tags" label="tags" argument="tags" type="text" help="Replace history tags with the given list" /></repeat>
+	<param name="annotation" label="annotation" argument="annotation" type="text" help="Replace history annotation with given string" />
+	<param name="deleted" label="deleted" argument="deleted" type="booelan" truevalue="--deleted" falsevalue="" help="Mark or unmark history as deleted" />
+	<param name="importable" label="importable" argument="importable" type="booelan" truevalue="--importable" falsevalue="" help="Mark or unmark history as importable" />
+	<param name="name" label="name" argument="name" type="text" help="Replace history name with the given string" />
+	<param name="published" label="published" argument="published" type="booelan" truevalue="--published" falsevalue="" help="Mark or unmark history as published" />
+	<param name="purged" label="purged" argument="purged" type="booelan" truevalue="--purged" falsevalue="" help="If True, mark history as purged (permanently deleted). Ignored on Galaxy release_15.01 and earlier" />
+	<repeat name="repeat_tags" title="tags">
+		<param name="tags" label="tags" argument="tags" type="text" help="Replace history tags with the given list" />
+	</repeat>
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Update history metadata information. Some of the attributes that can be modified are documented below.
-  </help>
+	</help>
 </tool>

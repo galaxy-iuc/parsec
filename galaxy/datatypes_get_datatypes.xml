@@ -1,34 +1,30 @@
 <?xml version="1.0"?>
 <tool id="parsec.datatypes.get_datatypes" name="datatypes" version="1.0">
  <description>get_datatypes</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec datatypes get_datatypes
 
-#if $extension_only
-  --extension_only "$extension_only"
-#end if
-#if $upload_only
-  --upload_only "$upload_only"
-#end if
+## UNKNOWN extension_only
+## UNKNOWN upload_only
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
 
     <!-- options -->
-    <error />
-    <error />
+	<error />
+	<error />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Get the list of all installed datatypes.
-  </help>
+	</help>
 </tool>

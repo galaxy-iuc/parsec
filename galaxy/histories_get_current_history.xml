@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
 <tool id="parsec.histories.get_current_history" name="histories" version="1.0">
  <description>get_current_history</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec histories get_current_history
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 .. deprecated:: 0.5.2 Use :meth:`get_most_recently_used_history` instead.
-  </help>
+	</help>
 </tool>

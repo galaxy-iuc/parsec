@@ -1,30 +1,30 @@
 <?xml version="1.0"?>
 <tool id="parsec.folders.get_permissions" name="folders" version="1.0">
  <description>get_permissions</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec folders get_permissions
---folder_id "$folder_id"
---scope "$scope"
+"$folder_id"
+"$scope"
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
-    <param name="scope" label="scope" argument="scope"  type="text" help="scope of permissions, either 'current' or 'available'"/>
+	<param name="folder_id" label="folder_id" argument="folder_id" type="text" help="the folder's encoded id, prefixed by 'F'" />
+	<param name="scope" label="scope" argument="scope" type="text" help="scope of permissions, either 'current' or 'available'" />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Get the permissions of a folder.
-  </help>
+	</help>
 </tool>

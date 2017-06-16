@@ -1,56 +1,60 @@
 <?xml version="1.0"?>
 <tool id="parsec.quotas.update_quota" name="quotas" version="1.0">
  <description>update_quota</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec quotas update_quota
---quota_id "$quota_id"
+"$quota_id"
 
-#if $name
+#if $name:
   --name "$name"
 #end if
-#if $description
+#if $description:
   --description "$description"
 #end if
-#if $amount
+#if $amount:
   --amount "$amount"
 #end if
-#if $operation
+#if $operation:
   --operation "$operation"
 #end if
-#if $default
+#if $default:
   --default "$default"
 #end if
-#if $in_users
-  --in_users "$in_users"
-#end if
-#if $in_groups
-  --in_groups "$in_groups"
-#end if
+#for $rep in $repeat_in_users:
+  --in_users "$rep.in_users"
+#end for
+#for $rep in $repeat_in_groups:
+  --in_groups "$rep.in_groups"
+#end for
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="quota_id" label="quota_id" argument="quota_id"  type="text" help="Encoded quota ID"/>
+	<param name="quota_id" label="quota_id" argument="quota_id" type="text" help="Encoded quota ID" />
 
     <!-- options -->
-    <param name="name" label="name" argument="name"  type="text" help="Name for the new quota. This must be unique within a Galaxy instance."/>
-    <param name="description" label="description" argument="description"  type="text" help="Quota description. If you supply this parameter, but not the name, an error will be thrown."/>
-    <param name="amount" label="amount" argument="amount"  type="text" help="Quota size (E.g. ``10000MB``, ``99 gb``, ``0.2T``, ``unlimited``)"/>
-    <param name="operation" label="operation" argument="operation"  type="text" help="One of (``+``, ``-``, ``=``). If you wish to change this value, you must also provide the ``amount``, otherwise it will not take effect."/>
-    <param name="default" label="default" argument="default"  type="text" help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. Calling this method with ``default=\"no\"`` on a non-default quota will throw an error. Not passing this parameter is equivalent to passing ``no``."/>
-    <repeat name="repeat_in_users" title="in_users"><param name="in_users" label="in_users" argument="in_users" type="text" help="A list of user IDs or user emails." /></repeat>
-    <repeat name="repeat_in_groups" title="in_groups"><param name="in_groups" label="in_groups" argument="in_groups" type="text" help="A list of group IDs or names." /></repeat>
+	<param name="name" label="name" argument="name" type="text" help="Name for the new quota. This must be unique within a Galaxy instance." />
+	<param name="description" label="description" argument="description" type="text" help="Quota description. If you supply this parameter, but not the name, an error will be thrown." />
+	<param name="amount" label="amount" argument="amount" type="text" help="Quota size (E.g. ``10000MB``, ``99 gb``, ``0.2T``, ``unlimited``)" />
+	<param name="operation" label="operation" argument="operation" type="text" help="One of (``+``, ``-``, ``=``). If you wish to change this value, you must also provide the ``amount``, otherwise it will not take effect." />
+	<param name="default" label="default" argument="default" type="text" help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. Calling this method with ``default=\"no\"`` on a non-default quota will throw an error. Not passing this parameter is equivalent to passing ``no``." />
+	<repeat name="repeat_in_users" title="in_users">
+		<param name="in_users" label="in_users" argument="in_users" type="text" help="A list of user IDs or user emails." />
+	</repeat>
+	<repeat name="repeat_in_groups" title="in_groups">
+		<param name="in_groups" label="in_groups" argument="in_groups" type="text" help="A list of group IDs or names." />
+	</repeat>
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Update an existing quota
-  </help>
+	</help>
 </tool>

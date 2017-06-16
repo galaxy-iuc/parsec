@@ -1,42 +1,42 @@
 <?xml version="1.0"?>
 <tool id="parsec.histories.update_dataset_collection" name="histories" version="1.0">
  <description>update_dataset_collection</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec histories update_dataset_collection
---history_id "$history_id"
---dataset_collection_id "$dataset_collection_id"
+"$history_id"
+"$dataset_collection_id"
 
-#if $deleted
-  --deleted "$deleted"
+#if $deleted:
+  $deleted
 #end if
-#if $name
+#if $name:
   --name "$name"
 #end if
-#if $visible
-  --visible "$visible"
+#if $visible:
+  $visible
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
-    <param name="dataset_collection_id" label="dataset_collection_id" argument="dataset_collection_id"  type="text" help="Encoded dataset_collection ID"/>
+	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID" />
+	<param name="dataset_collection_id" label="dataset_collection_id" argument="dataset_collection_id" type="text" help="Encoded dataset_collection ID" />
 
     <!-- options -->
-    <param name="deleted" label="deleted" argument="deleted"  type="booelan" truevalue="--deleted" falsevalue="" help="Mark or unmark history dataset collection as deleted"/>
-    <param name="name" label="name" argument="name"  type="text" help="Replace history dataset collection name with the given string"/>
-    <param name="visible" label="visible" argument="visible"  type="booelan" truevalue="--visible" falsevalue="" help="Mark or unmark history dataset collection as visible"/>
+	<param name="deleted" label="deleted" argument="deleted" type="booelan" truevalue="--deleted" falsevalue="" help="Mark or unmark history dataset collection as deleted" />
+	<param name="name" label="name" argument="name" type="text" help="Replace history dataset collection name with the given string" />
+	<param name="visible" label="visible" argument="visible" type="booelan" truevalue="--visible" falsevalue="" help="Mark or unmark history dataset collection as visible" />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Update history dataset collection metadata. Some of the attributes that can be modified are documented below.
-  </help>
+	</help>
 </tool>

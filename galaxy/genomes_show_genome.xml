@@ -1,44 +1,44 @@
 <?xml version="1.0"?>
 <tool id="parsec.genomes.show_genome" name="genomes" version="1.0">
  <description>show_genome</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec genomes show_genome
---id "$id"
+"$id"
 
-#if $num
+#if $num:
   --num "$num"
 #end if
-#if $chrom
+#if $chrom:
   --chrom "$chrom"
 #end if
-#if $low
+#if $low:
   --low "$low"
 #end if
-#if $high
+#if $high:
   --high "$high"
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="id" label="id" argument="id"  type="text" help="Genome build ID to use"/>
+	<param name="id" label="id" argument="id" type="text" help="Genome build ID to use" />
 
     <!-- options -->
-    <param name="num" label="num" argument="num"  type="text" help="num"/>
-    <param name="chrom" label="chrom" argument="chrom"  type="text" help="chrom"/>
-    <param name="low" label="low" argument="low"  type="text" help="low"/>
-    <param name="high" label="high" argument="high"  type="text" help="high"/>
+	<param name="num" label="num" argument="num" type="text" help="num" />
+	<param name="chrom" label="chrom" argument="chrom" type="text" help="chrom" />
+	<param name="low" label="low" argument="low" type="text" help="low" />
+	<param name="high" label="high" argument="high" type="text" help="high" />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Returns information about build <id>
-  </help>
+	</help>
 </tool>

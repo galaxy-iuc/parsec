@@ -1,42 +1,42 @@
 <?xml version="1.0"?>
 <tool id="parsec.libraries.upload_file_from_local_path" name="libraries" version="1.0">
  <description>upload_file_from_local_path</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec libraries upload_file_from_local_path
---library_id "$library_id"
---file_local_path "$file_local_path"
+"$library_id"
+"$file_local_path"
 
-#if $folder_id
+#if $folder_id:
   --folder_id "$folder_id"
 #end if
-#if $file_type
+#if $file_type:
   --file_type "$file_type"
 #end if
-#if $dbkey
+#if $dbkey:
   --dbkey "$dbkey"
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="library_id" label="library_id" argument="library_id"  type="text" help="id of the library where to place the uploaded file"/>
-    <param name="file_local_path" label="file_local_path" argument="file_local_path"  type="text" help="path of local file to upload"/>
+	<param name="library_id" label="library_id" argument="library_id" type="text" help="id of the library where to place the uploaded file" />
+	<param name="file_local_path" label="file_local_path" argument="file_local_path" type="text" help="path of local file to upload" />
 
     <!-- options -->
-    <param name="folder_id" label="folder_id" argument="folder_id"  type="text" help="id of the folder where to place the uploaded file. If not provided, the root folder will be used"/>
-    <param name="file_type" label="file_type" argument="file_type"  type="text" help="Galaxy file format name"/>
-    <param name="dbkey" label="dbkey" argument="dbkey"  type="text" help="Dbkey"/>
+	<param name="folder_id" label="folder_id" argument="folder_id" type="text" help="id of the folder where to place the uploaded file. If not provided, the root folder will be used" />
+	<param name="file_type" label="file_type" argument="file_type" type="text" help="Galaxy file format name" />
+	<param name="dbkey" label="dbkey" argument="dbkey" type="text" help="Dbkey" />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Read local file contents from file_local_path and upload data to a library.
-  </help>
+	</help>
 </tool>

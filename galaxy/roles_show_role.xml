@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <tool id="parsec.roles.show_role" name="roles" version="1.0">
  <description>show_role</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec roles show_role
---role_id "$role_id"
+"$role_id"
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="role_id" label="role_id" argument="role_id"  type="text" help="Encoded role ID"/>
+	<param name="role_id" label="role_id" argument="role_id" type="text" help="Encoded role ID" />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Display information on a single role
-  </help>
+	</help>
 </tool>

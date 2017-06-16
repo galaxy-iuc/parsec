@@ -1,36 +1,40 @@
 <?xml version="1.0"?>
 <tool id="parsec.groups.create_group" name="groups" version="1.0">
  <description>create_group</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec groups create_group
---group_name "$group_name"
+"$group_name"
 
-#if $user_ids
-  --user_ids "$user_ids"
-#end if
-#if $role_ids
-  --role_ids "$role_ids"
-#end if
+#for $rep in $repeat_user_ids:
+  --user_ids "$rep.user_ids"
+#end for
+#for $rep in $repeat_role_ids:
+  --role_ids "$rep.role_ids"
+#end for
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="group_name" label="group_name" argument="group_name"  type="text" help="A name for the new group"/>
+	<param name="group_name" label="group_name" argument="group_name" type="text" help="A name for the new group" />
 
     <!-- options -->
-    <repeat name="repeat_user_ids" title="user_ids"><param name="user_ids" label="user_ids" argument="user_ids" type="text" help="A list of encoded user IDs to add to the new group" /></repeat>
-    <repeat name="repeat_role_ids" title="role_ids"><param name="role_ids" label="role_ids" argument="role_ids" type="text" help="A list of encoded role IDs to add to the new group" /></repeat>
+	<repeat name="repeat_user_ids" title="user_ids">
+		<param name="user_ids" label="user_ids" argument="user_ids" type="text" help="A list of encoded user IDs to add to the new group" />
+	</repeat>
+	<repeat name="repeat_role_ids" title="role_ids">
+		<param name="role_ids" label="role_ids" argument="role_ids" type="text" help="A list of encoded role IDs to add to the new group" />
+	</repeat>
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Create a new group.
-  </help>
+	</help>
 </tool>

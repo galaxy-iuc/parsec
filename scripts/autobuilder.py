@@ -71,8 +71,47 @@ PARAM_TRANSLATION_GALAXY = {
     'bool': '<param name="{name}" label="{label}" argument="{name}" type="booelan" truevalue="--{name}" falsevalue="" {help} />',
     'file': '<param name="{name}" label="{label}" argument="{name}" type="data" format="data" {help} />',
     None: '<error />',
-    'list of str': '<repeat name="repeat_{name}" title="{name}"><param name="{name}" label="{label}" argument="{name}" type="text" {help} /></repeat>',
-    'list': '<repeat name="repeat_{name}" title="{name}"><param name="{name}" label="{label}" argument="{name}" type="text" {help} /></repeat>',
+    'list of str': '<repeat name="repeat_{name}" title="{name}">\n\t\t<param name="{name}" label="{label}" argument="{name}" type="text" {help} />\n\t</repeat>',
+    'list': '<repeat name="repeat_{name}" title="{name}">\n\t\t<param name="{name}" label="{label}" argument="{name}" type="text" {help} />\n\t</repeat>',
+}
+
+PARAM_TRANSLATION_GALAXY_CLI = {
+    'str': {
+        'opt': '#if ${name}:\n  --{name} "${name}"\n#end if',
+        'arg': '"${name}"',
+    },
+    'dict':{
+        'opt': '#if ${name}:\n  --{name} "${name}"\n#end if',
+        'arg': '"${name}"',
+    },
+    'int':{
+        'opt': '#if ${name}:\n  --{name} "${name}"\n#end if',
+        'arg': '"${name}"',
+    },
+    'float':{
+        'opt': '#if ${name}:\n  --{name} "${name}"\n#end if',
+        'arg': '"${name}"',
+    },
+    'bool':{
+        'opt': '#if ${name}:\n  ${name}\n#end if',
+        'arg': '--${name}',
+    },
+    'file':{
+        'opt': '#if ${name}:\n  --{name} "${name}"\n#end if',
+        'arg': '"${name}"',
+    },
+    None:{
+        'opt': '## UNKNOWN {name}',
+        'arg': '## UNKNOWN {name}',
+    },
+    'list of str':{
+        'opt': '#for $rep in $repeat_{name}:\n  --{name} "$rep.{name}"\n#end for',
+        'arg': '#for $rep in $repeat_{name}:\n  --{name} "$rep.{name}"\n#end for',
+    },
+    'list':{
+        'opt': '#for $rep in $repeat_{name}:\n  --{name} "$rep.{name}"\n#end for',
+        'arg': '#for $rep in $repeat_{name}:\n  --{name} "$rep.{name}"\n#end for',
+    },
 }
 
 class ScriptBuilder(object):
@@ -106,7 +145,7 @@ class ScriptBuilder(object):
 
     @classmethod
     def __galaxy_option(cls, name='arg', helpstr='TODO', ptype=None, default=None):
-        return '    ' + PARAM_TRANSLATION_GALAXY[ptype].format(
+        return '\t' + PARAM_TRANSLATION_GALAXY[ptype].format(
             name=name,
             label=name,
             help=('help="%s"' % helpstr.replace('"', '\\"') if helpstr else ""),
@@ -124,7 +163,7 @@ class ScriptBuilder(object):
 
     @classmethod
     def __galaxy_argument(cls, name='arg', ptype=None, desc=None):
-        return '    ' + PARAM_TRANSLATION_GALAXY[ptype].format(
+        return '\t' + PARAM_TRANSLATION_GALAXY[ptype].format(
             name=name,
             label=name,
             help='help="%s"' % desc,
@@ -348,7 +387,7 @@ class ScriptBuilder(object):
                         descstr = None
                     data['click_options'] += self.__click_option(name=k, helpstr=descstr, ptype=param_type, default=orig_v)
                     data['galaxy_options'] += self.__galaxy_option(name=k, helpstr=descstr, ptype=real_type, default=orig_v)
-                    data['galaxy_cli_options'] += '#if ${0}\n  --{0} "${0}"\n#end if\n'.format(k)
+                    data['galaxy_cli_options'] += PARAM_TRANSLATION_GALAXY_CLI[real_type]['opt'].format(name=k) + '\n'
                 else:
                     # Args, not kwargs
                     method_signature_args.append(k)
@@ -364,7 +403,7 @@ class ScriptBuilder(object):
                         descstr = None
                     data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
                     data['galaxy_arguments'] += self.__galaxy_argument(name=k, ptype=real_type, desc=descstr)
-                    data['galaxy_cli_arguments'] += '--%s "$%s"\n' % (k, k)
+                    data['galaxy_cli_arguments'] += PARAM_TRANSLATION_GALAXY_CLI[real_type]['arg'].format(name=k) + '\n'
 
 
             argspec_keys = [x[0] for x in argspec]

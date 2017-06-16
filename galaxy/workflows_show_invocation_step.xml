@@ -1,32 +1,32 @@
 <?xml version="1.0"?>
 <tool id="parsec.workflows.show_invocation_step" name="workflows" version="1.0">
  <description>show_invocation_step</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec workflows show_invocation_step
---workflow_id "$workflow_id"
---invocation_id "$invocation_id"
---step_id "$step_id"
+"$workflow_id"
+"$invocation_id"
+"$step_id"
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
-    <param name="invocation_id" label="invocation_id" argument="invocation_id"  type="text" help="Encoded workflow invocation ID"/>
-    <param name="step_id" label="step_id" argument="step_id"  type="text" help="Encoded workflow invocation step ID"/>
+	<param name="workflow_id" label="workflow_id" argument="workflow_id" type="text" help="Encoded workflow ID" />
+	<param name="invocation_id" label="invocation_id" argument="invocation_id" type="text" help="Encoded workflow invocation ID" />
+	<param name="step_id" label="step_id" argument="step_id" type="text" help="Encoded workflow invocation step ID" />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 See the details of a particular workflow invocation step.
-  </help>
+	</help>
 </tool>

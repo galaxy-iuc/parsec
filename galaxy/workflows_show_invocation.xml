@@ -1,30 +1,30 @@
 <?xml version="1.0"?>
 <tool id="parsec.workflows.show_invocation" name="workflows" version="1.0">
  <description>show_invocation</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec workflows show_invocation
---workflow_id "$workflow_id"
---invocation_id "$invocation_id"
+"$workflow_id"
+"$invocation_id"
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
-    <param name="invocation_id" label="invocation_id" argument="invocation_id"  type="text" help="Encoded workflow invocation ID"/>
+	<param name="workflow_id" label="workflow_id" argument="workflow_id" type="text" help="Encoded workflow ID" />
+	<param name="invocation_id" label="invocation_id" argument="invocation_id" type="text" help="Encoded workflow invocation ID" />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Get a workflow invocation object representing the scheduling of a workflow. This object may be sparse at first (missing inputs and invocation steps) and will become more populated as the workflow is actually scheduled.
-  </help>
+	</help>
 </tool>

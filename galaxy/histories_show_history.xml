@@ -1,48 +1,48 @@
 <?xml version="1.0"?>
 <tool id="parsec.histories.show_history" name="histories" version="1.0">
  <description>show_history</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec histories show_history
---history_id "$history_id"
+"$history_id"
 
-#if $contents
-  --contents "$contents"
+#if $contents:
+  $contents
 #end if
-#if $deleted
+#if $deleted:
   --deleted "$deleted"
 #end if
-#if $visible
+#if $visible:
   --visible "$visible"
 #end if
-#if $details
+#if $details:
   --details "$details"
 #end if
-#if $types
+#if $types:
   --types "$types"
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID to filter on"/>
+	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID to filter on" />
 
     <!-- options -->
-    <param name="contents" label="contents" argument="contents"  type="booelan" truevalue="--contents" falsevalue="" help="When ``True``, the complete list of datasets in the given history."/>
-    <param name="deleted" label="deleted" argument="deleted"  type="text" help="Used when contents=True, includes deleted datasets in history dataset list"/>
-    <param name="visible" label="visible" argument="visible"  type="text" help="Used when contents=True, includes only visible datasets in history dataset list"/>
-    <param name="details" label="details" argument="details"  type="text" help="Used when contents=True, includes dataset details. Set to 'all' for the most information"/>
-    <param name="types" label="types" argument="types"  type="text" help="???"/>
+	<param name="contents" label="contents" argument="contents" type="booelan" truevalue="--contents" falsevalue="" help="When ``True``, the complete list of datasets in the given history." />
+	<param name="deleted" label="deleted" argument="deleted" type="text" help="Used when contents=True, includes deleted datasets in history dataset list" />
+	<param name="visible" label="visible" argument="visible" type="text" help="Used when contents=True, includes only visible datasets in history dataset list" />
+	<param name="details" label="details" argument="details" type="text" help="Used when contents=True, includes dataset details. Set to 'all' for the most information" />
+	<param name="types" label="types" argument="types" type="text" help="???" />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Get details of a given history. By default, just get the history meta information.
-  </help>
+	</help>
 </tool>

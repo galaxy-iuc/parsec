@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
 <tool id="parsec.tools.get_tool_panel" name="tools" version="1.0">
  <description>get_tool_panel</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec tools get_tool_panel
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Get a list of available tool elements in Galaxy's configured toolbox.
-  </help>
+	</help>
 </tool>

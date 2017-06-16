@@ -1,54 +1,54 @@
 <?xml version="1.0"?>
 <tool id="parsec.toolshed.install_repository_revision" name="toolshed" version="1.0">
  <description>install_repository_revision</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec toolshed install_repository_revision
---tool_shed_url "$tool_shed_url"
---name "$name"
---owner "$owner"
---changeset_revision "$changeset_revision"
+"$tool_shed_url"
+"$name"
+"$owner"
+"$changeset_revision"
 
-#if $install_tool_dependencies
-  --install_tool_dependencies "$install_tool_dependencies"
+#if $install_tool_dependencies:
+  $install_tool_dependencies
 #end if
-#if $install_repository_dependencies
-  --install_repository_dependencies "$install_repository_dependencies"
+#if $install_repository_dependencies:
+  $install_repository_dependencies
 #end if
-#if $install_resolver_dependencies
-  --install_resolver_dependencies "$install_resolver_dependencies"
+#if $install_resolver_dependencies:
+  $install_resolver_dependencies
 #end if
-#if $tool_panel_section_id
+#if $tool_panel_section_id:
   --tool_panel_section_id "$tool_panel_section_id"
 #end if
-#if $new_tool_panel_section_label
+#if $new_tool_panel_section_label:
   --new_tool_panel_section_label "$new_tool_panel_section_label"
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="tool_shed_url" label="tool_shed_url" argument="tool_shed_url"  type="text" help="URL of the Tool Shed from which the repository should be installed from (e.g., ``https://testtoolshed.g2.bx.psu.edu``)"/>
-    <param name="name" label="name" argument="name"  type="text" help="The name of the repository that should be installed"/>
-    <param name="owner" label="owner" argument="owner"  type="text" help="The name of the repository owner"/>
-    <param name="changeset_revision" label="changeset_revision" argument="changeset_revision"  type="text" help="The revision of the repository to be installed"/>
+	<param name="tool_shed_url" label="tool_shed_url" argument="tool_shed_url" type="text" help="URL of the Tool Shed from which the repository should be installed from (e.g., ``https://testtoolshed.g2.bx.psu.edu``)" />
+	<param name="name" label="name" argument="name" type="text" help="The name of the repository that should be installed" />
+	<param name="owner" label="owner" argument="owner" type="text" help="The name of the repository owner" />
+	<param name="changeset_revision" label="changeset_revision" argument="changeset_revision" type="text" help="The revision of the repository to be installed" />
 
     <!-- options -->
-    <param name="install_tool_dependencies" label="install_tool_dependencies" argument="install_tool_dependencies"  type="booelan" truevalue="--install_tool_dependencies" falsevalue="" help="Whether or not to automatically handle tool dependencies (see https://galaxyproject.org/toolshed/tool-dependency-recipes/ for more details)"/>
-    <param name="install_repository_dependencies" label="install_repository_dependencies" argument="install_repository_dependencies"  type="booelan" truevalue="--install_repository_dependencies" falsevalue="" help="Whether or not to automatically handle repository dependencies (see https://galaxyproject.org/toolshed/defining-repository-dependencies/ for more details)"/>
-    <param name="install_resolver_dependencies" label="install_resolver_dependencies" argument="install_resolver_dependencies"  type="booelan" truevalue="--install_resolver_dependencies" falsevalue="" help="Whether or not to automatically install resolver dependencies (e.g. conda). This parameter is silently ignored in Galaxy ``release_16.04`` and earlier."/>
-    <param name="tool_panel_section_id" label="tool_panel_section_id" argument="tool_panel_section_id"  type="text" help="The ID of the Galaxy tool panel section where the tool should be insterted under. Note that you should specify either this parameter or the ``new_tool_panel_section_label``. If both are specified, this one will take precedence."/>
-    <param name="new_tool_panel_section_label" label="new_tool_panel_section_label" argument="new_tool_panel_section_label"  type="text" help="The name of a Galaxy tool panel section that should be created and the repository installed into."/>
+	<param name="install_tool_dependencies" label="install_tool_dependencies" argument="install_tool_dependencies" type="booelan" truevalue="--install_tool_dependencies" falsevalue="" help="Whether or not to automatically handle tool dependencies (see https://galaxyproject.org/toolshed/tool-dependency-recipes/ for more details)" />
+	<param name="install_repository_dependencies" label="install_repository_dependencies" argument="install_repository_dependencies" type="booelan" truevalue="--install_repository_dependencies" falsevalue="" help="Whether or not to automatically handle repository dependencies (see https://galaxyproject.org/toolshed/defining-repository-dependencies/ for more details)" />
+	<param name="install_resolver_dependencies" label="install_resolver_dependencies" argument="install_resolver_dependencies" type="booelan" truevalue="--install_resolver_dependencies" falsevalue="" help="Whether or not to automatically install resolver dependencies (e.g. conda). This parameter is silently ignored in Galaxy ``release_16.04`` and earlier." />
+	<param name="tool_panel_section_id" label="tool_panel_section_id" argument="tool_panel_section_id" type="text" help="The ID of the Galaxy tool panel section where the tool should be insterted under. Note that you should specify either this parameter or the ``new_tool_panel_section_label``. If both are specified, this one will take precedence." />
+	<param name="new_tool_panel_section_label" label="new_tool_panel_section_label" argument="new_tool_panel_section_label" type="text" help="The name of a Galaxy tool panel section that should be created and the repository installed into." />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Install a specified repository revision from a specified Tool Shed into this Galaxy instance. This example demonstrates installation of a repository that contains valid tools, loading them into a section of the Galaxy tool panel or creating a new tool panel section. You can choose if tool dependencies or repository dependencies should be installed through the Tool Shed, (use ``install_tool_dependencies`` or ``install_repository_dependencies``) or through a resolver that supports installing dependencies (use ``install_resolver_dependencies``). Note that any combination of the three dependency resolving variables is valid.
-  </help>
+	</help>
 </tool>

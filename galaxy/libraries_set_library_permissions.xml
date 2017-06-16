@@ -1,44 +1,52 @@
 <?xml version="1.0"?>
 <tool id="parsec.libraries.set_library_permissions" name="libraries" version="1.0">
  <description>set_library_permissions</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec libraries set_library_permissions
---library_id "$library_id"
+"$library_id"
 
-#if $access_in
-  --access_in "$access_in"
-#end if
-#if $modify_in
-  --modify_in "$modify_in"
-#end if
-#if $add_in
-  --add_in "$add_in"
-#end if
-#if $manage_in
-  --manage_in "$manage_in"
-#end if
+#for $rep in $repeat_access_in:
+  --access_in "$rep.access_in"
+#end for
+#for $rep in $repeat_modify_in:
+  --modify_in "$rep.modify_in"
+#end for
+#for $rep in $repeat_add_in:
+  --add_in "$rep.add_in"
+#end for
+#for $rep in $repeat_manage_in:
+  --manage_in "$rep.manage_in"
+#end for
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="library_id" label="library_id" argument="library_id"  type="text" help="id of the library"/>
+	<param name="library_id" label="library_id" argument="library_id" type="text" help="id of the library" />
 
     <!-- options -->
-    <repeat name="repeat_access_in" title="access_in"><param name="access_in" label="access_in" argument="access_in" type="text" help="list of role ids" /></repeat>
-    <repeat name="repeat_modify_in" title="modify_in"><param name="modify_in" label="modify_in" argument="modify_in" type="text" help="list of role ids" /></repeat>
-    <repeat name="repeat_add_in" title="add_in"><param name="add_in" label="add_in" argument="add_in" type="text" help="list of role ids" /></repeat>
-    <repeat name="repeat_manage_in" title="manage_in"><param name="manage_in" label="manage_in" argument="manage_in" type="text" help="list of role ids" /></repeat>
+	<repeat name="repeat_access_in" title="access_in">
+		<param name="access_in" label="access_in" argument="access_in" type="text" help="list of role ids" />
+	</repeat>
+	<repeat name="repeat_modify_in" title="modify_in">
+		<param name="modify_in" label="modify_in" argument="modify_in" type="text" help="list of role ids" />
+	</repeat>
+	<repeat name="repeat_add_in" title="add_in">
+		<param name="add_in" label="add_in" argument="add_in" type="text" help="list of role ids" />
+	</repeat>
+	<repeat name="repeat_manage_in" title="manage_in">
+		<param name="manage_in" label="manage_in" argument="manage_in" type="text" help="list of role ids" />
+	</repeat>
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Set the permissions for a library.  Note: it will override all security for this library even if you leave out a permission type.
-  </help>
+	</help>
 </tool>

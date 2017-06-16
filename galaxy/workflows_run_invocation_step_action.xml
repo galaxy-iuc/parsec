@@ -1,34 +1,34 @@
 <?xml version="1.0"?>
 <tool id="parsec.workflows.run_invocation_step_action" name="workflows" version="1.0">
  <description>run_invocation_step_action</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec workflows run_invocation_step_action
---workflow_id "$workflow_id"
---invocation_id "$invocation_id"
---step_id "$step_id"
---action "$action"
+"$workflow_id"
+"$invocation_id"
+"$step_id"
+## UNKNOWN action
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
-    <param name="invocation_id" label="invocation_id" argument="invocation_id"  type="text" help="Encoded workflow invocation ID"/>
-    <param name="step_id" label="step_id" argument="step_id"  type="text" help="Encoded workflow invocation step ID"/>
-    <error />
+	<param name="workflow_id" label="workflow_id" argument="workflow_id" type="text" help="Encoded workflow ID" />
+	<param name="invocation_id" label="invocation_id" argument="invocation_id" type="text" help="Encoded workflow invocation ID" />
+	<param name="step_id" label="step_id" argument="step_id" type="text" help="Encoded workflow invocation step ID" />
+	<error />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 nature of this action and what is expected will vary based on the the type of workflow step (the only currently valid action is True/False for pause steps).
-  </help>
+	</help>
 </tool>

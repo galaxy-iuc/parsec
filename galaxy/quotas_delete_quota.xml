@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <tool id="parsec.quotas.delete_quota" name="quotas" version="1.0">
  <description>delete_quota</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec quotas delete_quota
---quota_id "$quota_id"
+"$quota_id"
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="quota_id" label="quota_id" argument="quota_id"  type="text" help="Encoded quota ID."/>
+	<param name="quota_id" label="quota_id" argument="quota_id" type="text" help="Encoded quota ID." />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Delete a quota
-  </help>
+	</help>
 </tool>

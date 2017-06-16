@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
 <tool id="parsec.config.get_version" name="config" version="1.0">
  <description>get_version</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec config get_version
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Get the current version of the Galaxy instance. This functionality is available since Galaxy ``release_15.03``.
-  </help>
+	</help>
 </tool>

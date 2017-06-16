@@ -1,50 +1,50 @@
 <?xml version="1.0"?>
 <tool id="parsec.histories.update_dataset" name="histories" version="1.0">
  <description>update_dataset</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec histories update_dataset
---history_id "$history_id"
---dataset_id "$dataset_id"
+"$history_id"
+"$dataset_id"
 
-#if $annotation
+#if $annotation:
   --annotation "$annotation"
 #end if
-#if $deleted
-  --deleted "$deleted"
+#if $deleted:
+  $deleted
 #end if
-#if $genome_build
+#if $genome_build:
   --genome_build "$genome_build"
 #end if
-#if $name
+#if $name:
   --name "$name"
 #end if
-#if $visible
-  --visible "$visible"
+#if $visible:
+  $visible
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
-    <param name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="Id of the dataset"/>
+	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID" />
+	<param name="dataset_id" label="dataset_id" argument="dataset_id" type="text" help="Id of the dataset" />
 
     <!-- options -->
-    <param name="annotation" label="annotation" argument="annotation"  type="text" help="Replace history dataset annotation with given string"/>
-    <param name="deleted" label="deleted" argument="deleted"  type="booelan" truevalue="--deleted" falsevalue="" help="Mark or unmark history dataset as deleted"/>
-    <param name="genome_build" label="genome_build" argument="genome_build"  type="text" help="Replace history dataset genome build (dbkey)"/>
-    <param name="name" label="name" argument="name"  type="text" help="Replace history dataset name with the given string"/>
-    <param name="visible" label="visible" argument="visible"  type="booelan" truevalue="--visible" falsevalue="" help="Mark or unmark history dataset as visible"/>
+	<param name="annotation" label="annotation" argument="annotation" type="text" help="Replace history dataset annotation with given string" />
+	<param name="deleted" label="deleted" argument="deleted" type="booelan" truevalue="--deleted" falsevalue="" help="Mark or unmark history dataset as deleted" />
+	<param name="genome_build" label="genome_build" argument="genome_build" type="text" help="Replace history dataset genome build (dbkey)" />
+	<param name="name" label="name" argument="name" type="text" help="Replace history dataset name with the given string" />
+	<param name="visible" label="visible" argument="visible" type="booelan" truevalue="--visible" falsevalue="" help="Mark or unmark history dataset as visible" />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Update history dataset metadata. Some of the attributes that can be modified are documented below.
-  </help>
+	</help>
 </tool>

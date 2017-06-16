@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <tool id="parsec.tool_data.show_data_table" name="tool_data" version="1.0">
  <description>show_data_table</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec tool_data show_data_table
---data_table_id "$data_table_id"
+"$data_table_id"
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="data_table_id" label="data_table_id" argument="data_table_id"  type="text" help="ID of the data table"/>
+	<param name="data_table_id" label="data_table_id" argument="data_table_id" type="text" help="ID of the data table" />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Get details of a given data table.
-  </help>
+	</help>
 </tool>

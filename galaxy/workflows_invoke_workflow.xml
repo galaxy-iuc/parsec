@@ -1,56 +1,56 @@
 <?xml version="1.0"?>
 <tool id="parsec.workflows.invoke_workflow" name="workflows" version="1.0">
  <description>invoke_workflow</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec workflows invoke_workflow
---workflow_id "$workflow_id"
+"$workflow_id"
 
-#if $inputs
+#if $inputs:
   --inputs "$inputs"
 #end if
-#if $params
+#if $params:
   --params "$params"
 #end if
-#if $history_id
+#if $history_id:
   --history_id "$history_id"
 #end if
-#if $history_name
+#if $history_name:
   --history_name "$history_name"
 #end if
-#if $import_inputs_to_history
-  --import_inputs_to_history "$import_inputs_to_history"
+#if $import_inputs_to_history:
+  $import_inputs_to_history
 #end if
-#if $replacement_params
+#if $replacement_params:
   --replacement_params "$replacement_params"
 #end if
-#if $allow_tool_state_corrections
-  --allow_tool_state_corrections "$allow_tool_state_corrections"
+#if $allow_tool_state_corrections:
+  $allow_tool_state_corrections
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
+	<param name="workflow_id" label="workflow_id" argument="workflow_id" type="text" help="Encoded workflow ID" />
 
     <!-- options -->
-    <param name="inputs" label="inputs" argument="inputs"  type="data" format="json" help="A mapping of workflow inputs to datasets and dataset collections. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), HistoryDatasetAssociation (``hda``), or HistoryDatasetCollectionAssociation (``hdca``)."/>
-    <param name="params" label="params" argument="params"  type="data" format="json" help="A mapping of non-datasets tool parameters (see below)"/>
-    <param name="history_id" label="history_id" argument="history_id"  type="text" help="The encoded history ID where to store the workflow output. Alternatively, ``history_name`` may be specified to create a new history."/>
-    <param name="history_name" label="history_name" argument="history_name"  type="text" help="Create a new history with the given name to store the workflow output. If both ``history_id`` and ``history_name`` are provided, ``history_name`` is ignored. If neither is specified, a new 'Unnamed history' is created."/>
-    <param name="import_inputs_to_history" label="import_inputs_to_history" argument="import_inputs_to_history"  type="booelan" truevalue="--import_inputs_to_history" falsevalue="" help="If ``True``, used workflow inputs will be imported into the history. If ``False``, only workflow outputs will be visible in the given history."/>
-    <param name="replacement_params" label="replacement_params" argument="replacement_params"  type="data" format="json" help="pattern-based replacements for post-job actions (see below)"/>
-    <param name="allow_tool_state_corrections" label="allow_tool_state_corrections" argument="allow_tool_state_corrections"  type="booelan" truevalue="--allow_tool_state_corrections" falsevalue="" help="If True, allow Galaxy to fill in missing tool state when running workflows. This may be useful for workflows using tools that have changed over time or for workflows built outside of Galaxy with only a subset of inputs defined."/>
+	<param name="inputs" label="inputs" argument="inputs" type="data" format="json" help="A mapping of workflow inputs to datasets and dataset collections. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), HistoryDatasetAssociation (``hda``), or HistoryDatasetCollectionAssociation (``hdca``)." />
+	<param name="params" label="params" argument="params" type="data" format="json" help="A mapping of non-datasets tool parameters (see below)" />
+	<param name="history_id" label="history_id" argument="history_id" type="text" help="The encoded history ID where to store the workflow output. Alternatively, ``history_name`` may be specified to create a new history." />
+	<param name="history_name" label="history_name" argument="history_name" type="text" help="Create a new history with the given name to store the workflow output. If both ``history_id`` and ``history_name`` are provided, ``history_name`` is ignored. If neither is specified, a new 'Unnamed history' is created." />
+	<param name="import_inputs_to_history" label="import_inputs_to_history" argument="import_inputs_to_history" type="booelan" truevalue="--import_inputs_to_history" falsevalue="" help="If ``True``, used workflow inputs will be imported into the history. If ``False``, only workflow outputs will be visible in the given history." />
+	<param name="replacement_params" label="replacement_params" argument="replacement_params" type="data" format="json" help="pattern-based replacements for post-job actions (see below)" />
+	<param name="allow_tool_state_corrections" label="allow_tool_state_corrections" argument="allow_tool_state_corrections" type="booelan" truevalue="--allow_tool_state_corrections" falsevalue="" help="If True, allow Galaxy to fill in missing tool state when running workflows. This may be useful for workflows using tools that have changed over time or for workflows built outside of Galaxy with only a subset of inputs defined." />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Invoke the workflow identified by ``workflow_id``. This will cause a workflow to be scheduled and return an object describing the workflow invocation.
-  </help>
+	</help>
 </tool>

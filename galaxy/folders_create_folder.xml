@@ -1,34 +1,34 @@
 <?xml version="1.0"?>
 <tool id="parsec.folders.create_folder" name="folders" version="1.0">
  <description>create_folder</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec folders create_folder
---parent_folder_id "$parent_folder_id"
---name "$name"
+"$parent_folder_id"
+"$name"
 
-#if $description
+#if $description:
   --description "$description"
 #end if
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="parent_folder_id" label="parent_folder_id" argument="parent_folder_id"  type="text" help="Folder's description"/>
-    <param name="name" label="name" argument="name"  type="text" help="name of the new folder"/>
+	<param name="parent_folder_id" label="parent_folder_id" argument="parent_folder_id" type="text" help="Folder's description" />
+	<param name="name" label="name" argument="name" type="text" help="name of the new folder" />
 
     <!-- options -->
-    <param name="description" label="description" argument="description"  type="text" help="folder's description"/>
+	<param name="description" label="description" argument="description" type="text" help="folder's description" />
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Create a folder.
-  </help>
+	</help>
 </tool>

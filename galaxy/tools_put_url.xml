@@ -1,30 +1,30 @@
 <?xml version="1.0"?>
 <tool id="parsec.tools.put_url" name="tools" version="1.0">
  <description>put_url</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec tools put_url
---content "$content"
---history_id "$history_id"
+"$content"
+"$history_id"
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="content" label="content" argument="content"  type="text" help="content of the new dataset to upload or a list of URLs (one per line) to upload"/>
-    <param name="history_id" label="history_id" argument="history_id"  type="text" help="id of the history where to upload the content"/>
+	<param name="content" label="content" argument="content" type="text" help="content of the new dataset to upload or a list of URLs (one per line) to upload" />
+	<param name="history_id" label="history_id" argument="history_id" type="text" help="id of the history where to upload the content" />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Upload a string to a new dataset in the history specified by ``history_id``.
-  </help>
+	</help>
 </tool>

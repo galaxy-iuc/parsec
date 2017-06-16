@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <tool id="parsec.toolshed.show_repository" name="toolshed" version="1.0">
  <description>show_repository</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 parsec toolshed show_repository
---toolShed_id "$toolShed_id"
+"$toolShed_id"
 
 
 | jq -S . > $results
 </command>
-  <inputs>
+	<inputs>
     <!-- arguments -->
-    <param name="toolShed_id" label="toolShed_id" argument="toolShed_id"  type="text" help="Encoded toolShed ID"/>
+	<param name="toolShed_id" label="toolShed_id" argument="toolShed_id" type="text" help="Encoded toolShed ID" />
 
     <!-- options -->
 
-  </inputs>
-  <outputs>
-    <data format="json" name="results"/>
-  </outputs>
-  <help>
+	</inputs>
+	<outputs>
+		<data format="json" name="results"/>
+	</outputs>
+	<help>
 Get details of a given Tool Shed repository as it is installed on this Galaxy instance.
-  </help>
+	</help>
 </tool>
