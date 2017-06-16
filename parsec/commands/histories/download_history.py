@@ -11,6 +11,7 @@ from parsec.decorators import bioblend_exception, dict_output
     "--chunk_size",
     help="how many bytes at a time should be read into memory",
     default="4096",
+    show_default=True,
     type=int
 )
 

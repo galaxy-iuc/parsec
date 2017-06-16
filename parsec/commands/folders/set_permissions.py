@@ -9,6 +9,7 @@ from parsec.decorators import bioblend_exception, dict_output
     "--action",
     help="action to execute, only \"set_permissions\" is supported.",
     default="set_permissions",
+    show_default=True,
     type=str
 )
 @click.option(

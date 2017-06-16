@@ -15,12 +15,14 @@ from parsec.decorators import bioblend_exception, dict_output
     "--file_type",
     help="Galaxy file format name",
     default="auto",
+    show_default=True,
     type=str
 )
 @click.option(
     "--dbkey",
     help="Dbkey",
     default="?",
+    show_default=True,
     type=str
 )
 @click.option(

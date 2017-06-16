@@ -14,6 +14,7 @@ from parsec.decorators import bioblend_exception, dict_output
     "--hda_ldda",
     help="Whether to show a history dataset ('hda' - the default) or library dataset ('ldda').",
     default="hda",
+    show_default=True,
     type=str
 )
 

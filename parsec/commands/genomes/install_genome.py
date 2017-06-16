@@ -8,6 +8,7 @@ from parsec.decorators import bioblend_exception, dict_output
     "--func",
     help="Allowed values: 'download', Download and index; 'index', Index only",
     default="download",
+    show_default=True,
     type=str
 )
 @click.option(

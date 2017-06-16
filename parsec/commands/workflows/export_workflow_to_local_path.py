@@ -10,6 +10,7 @@ from parsec.decorators import bioblend_exception, dict_output
     "--use_default_filename",
     help="If the use_default_name parameter is True, the exported file will be saved as file_local_path/Galaxy-Workflow-%s.ga, where %s is the workflow name. If use_default_name is False, file_local_path is assumed to contain the full file path including filename.",
     default="True",
+    show_default=True,
     is_flag=True
 )
 

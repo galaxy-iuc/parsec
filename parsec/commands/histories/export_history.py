@@ -9,6 +9,7 @@ from parsec.decorators import bioblend_exception, dict_output
     "--gzip",
     help="create .tar.gz archive if ``True``, else .tar",
     default="True",
+    show_default=True,
     is_flag=True
 )
 @click.option(

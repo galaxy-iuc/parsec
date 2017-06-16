@@ -12,6 +12,7 @@ from parsec.decorators import bioblend_exception, dict_output
     "--default",
     help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. None is equivalent to ``no``.",
     default="no",
+    show_default=True,
     type=str
 )
 @click.option(
