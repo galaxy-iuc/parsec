@@ -20,11 +20,11 @@ parsec tools show_tool
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="tool_id" label="tool_id" argument="tool_id"  type="text" help="id of the requested tool"/>
+    <param name="tool_id" label="tool_id" argument="tool_id"  type="text" help="id of the requested tool"/>
 
     <!-- options -->
-    <input name="io_details" argument="io_details" type="boolean" truevalue="" falsevalue="" help="if True, get also input and output details"/>
-    <input name="link_details" argument="link_details" type="boolean" truevalue="" falsevalue="" help="if True, get also link details"/>
+    <param name="io_details" label="io_details" argument="io_details"  type="booelan" truevalue="--io_details" falsevalue="" help="if True, get also input and output details"/>
+    <param name="link_details" label="link_details" argument="link_details"  type="booelan" truevalue="--link_details" falsevalue="" help="if True, get also link details"/>
 
   </inputs>
   <outputs>

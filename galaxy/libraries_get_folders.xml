@@ -20,11 +20,11 @@ parsec libraries get_folders
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="library_id" label="library_id" argument="library_id"  type="text"/>
+    <error />
 
     <!-- options -->
-    <input name="folder_id" argument="folder_id" type="text" help="filter for folder by folder id"/>
-    <input name="name" argument="name" type="text" help="filter for folder by name. For ``name`` specify the full path of the folder starting from the library's root folder, e.g. ``/subfolder/subsubfolder``."/>
+    <param name="folder_id" label="folder_id" argument="folder_id"  type="text" help="filter for folder by folder id"/>
+    <param name="name" label="name" argument="name"  type="text" help="filter for folder by name. For ``name`` specify the full path of the folder starting from the library's root folder, e.g. ``/subfolder/subsubfolder``."/>
 
   </inputs>
   <outputs>

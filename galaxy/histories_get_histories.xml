@@ -24,9 +24,9 @@ parsec histories get_histories
     <!-- arguments -->
 
     <!-- options -->
-    <input name="history_id" argument="history_id" type="text" help="Encoded history ID to filter on"/>
-    <input name="name" argument="name" type="text" help="Name of history to filter on"/>
-    <input name="deleted" argument="deleted" type="error" help=""/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID to filter on"/>
+    <param name="name" label="name" argument="name"  type="text" help="Name of history to filter on"/>
+    <error />
 
   </inputs>
   <outputs>

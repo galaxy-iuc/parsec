@@ -30,15 +30,15 @@ parsec histories update_dataset
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
-    <input name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="Id of the dataset"/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+    <param name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="Id of the dataset"/>
 
     <!-- options -->
-    <input name="annotation" argument="annotation" type="text" help="Replace history dataset annotation with given string"/>
-    <input name="deleted" argument="deleted" type="boolean" truevalue="" falsevalue="" help="Mark or unmark history dataset as deleted"/>
-    <input name="genome_build" argument="genome_build" type="text" help="Replace history dataset genome build (dbkey)"/>
-    <input name="name" argument="name" type="text" help="Replace history dataset name with the given string"/>
-    <input name="visible" argument="visible" type="boolean" truevalue="" falsevalue="" help="Mark or unmark history dataset as visible"/>
+    <param name="annotation" label="annotation" argument="annotation"  type="text" help="Replace history dataset annotation with given string"/>
+    <param name="deleted" label="deleted" argument="deleted"  type="booelan" truevalue="--deleted" falsevalue="" help="Mark or unmark history dataset as deleted"/>
+    <param name="genome_build" label="genome_build" argument="genome_build"  type="text" help="Replace history dataset genome build (dbkey)"/>
+    <param name="name" label="name" argument="name"  type="text" help="Replace history dataset name with the given string"/>
+    <param name="visible" label="visible" argument="visible"  type="booelan" truevalue="--visible" falsevalue="" help="Mark or unmark history dataset as visible"/>
 
   </inputs>
   <outputs>

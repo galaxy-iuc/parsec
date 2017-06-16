@@ -26,13 +26,13 @@ parsec genomes show_genome
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="id" label="id" argument="id"  type="text" help="Genome build ID to use"/>
+    <param name="id" label="id" argument="id"  type="text" help="Genome build ID to use"/>
 
     <!-- options -->
-    <input name="num" argument="num" type="text" help="num"/>
-    <input name="chrom" argument="chrom" type="text" help="chrom"/>
-    <input name="low" argument="low" type="text" help="low"/>
-    <input name="high" argument="high" type="text" help="high"/>
+    <param name="num" label="num" argument="num"  type="text" help="num"/>
+    <param name="chrom" label="chrom" argument="chrom"  type="text" help="chrom"/>
+    <param name="low" label="low" argument="low"  type="text" help="low"/>
+    <param name="high" label="high" argument="high"  type="text" help="high"/>
 
   </inputs>
   <outputs>

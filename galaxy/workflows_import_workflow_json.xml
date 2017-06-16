@@ -14,7 +14,7 @@ parsec workflows import_workflow_json
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="workflow_json" label="workflow_json" argument="workflow_json"  type="text"/>
+    <error />
 
     <!-- options -->
 

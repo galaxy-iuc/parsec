@@ -15,8 +15,8 @@ parsec workflows cancel_invocation
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
-    <input name="invocation_id" label="invocation_id" argument="invocation_id"  type="text" help="Encoded workflow invocation ID"/>
+    <param name="workflow_id" label="workflow_id" argument="workflow_id"  type="text" help="Encoded workflow ID"/>
+    <param name="invocation_id" label="invocation_id" argument="invocation_id"  type="text" help="Encoded workflow invocation ID"/>
 
     <!-- options -->
 

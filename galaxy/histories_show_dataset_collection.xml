@@ -15,8 +15,8 @@ parsec histories show_dataset_collection
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
-    <input name="dataset_collection_id" label="dataset_collection_id" argument="dataset_collection_id"  type="text" help="Encoded dataset collection ID"/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+    <param name="dataset_collection_id" label="dataset_collection_id" argument="dataset_collection_id"  type="text" help="Encoded dataset collection ID"/>
 
     <!-- options -->
 

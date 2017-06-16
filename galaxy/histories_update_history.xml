@@ -35,16 +35,16 @@ parsec histories update_history
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
 
     <!-- options -->
-    <input name="annotation" argument="annotation" type="text" help="Replace history annotation with given string"/>
-    <input name="deleted" argument="deleted" type="boolean" truevalue="" falsevalue="" help="Mark or unmark history as deleted"/>
-    <input name="importable" argument="importable" type="boolean" truevalue="" falsevalue="" help="Mark or unmark history as importable"/>
-    <input name="name" argument="name" type="text" help="Replace history name with the given string"/>
-    <input name="published" argument="published" type="boolean" truevalue="" falsevalue="" help="Mark or unmark history as published"/>
-    <input name="purged" argument="purged" type="boolean" truevalue="" falsevalue="" help="If True, mark history as purged (permanently deleted). Ignored on Galaxy release_15.01 and earlier"/>
-    <input name="tags" argument="tags" type="text" multiple="true" help="Replace history tags with the given list"/>
+    <param name="annotation" label="annotation" argument="annotation"  type="text" help="Replace history annotation with given string"/>
+    <param name="deleted" label="deleted" argument="deleted"  type="booelan" truevalue="--deleted" falsevalue="" help="Mark or unmark history as deleted"/>
+    <param name="importable" label="importable" argument="importable"  type="booelan" truevalue="--importable" falsevalue="" help="Mark or unmark history as importable"/>
+    <param name="name" label="name" argument="name"  type="text" help="Replace history name with the given string"/>
+    <param name="published" label="published" argument="published"  type="booelan" truevalue="--published" falsevalue="" help="Mark or unmark history as published"/>
+    <param name="purged" label="purged" argument="purged"  type="booelan" truevalue="--purged" falsevalue="" help="If True, mark history as purged (permanently deleted). Ignored on Galaxy release_15.01 and earlier"/>
+    <repeat name="repeat_tags" title="tags"><param name="tags" label="tags" argument="tags" type="text" help="Replace history tags with the given list" /></repeat>
 
   </inputs>
   <outputs>

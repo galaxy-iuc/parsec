@@ -14,7 +14,7 @@ parsec folders show_folder
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
+    <param name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
 
     <!-- options -->
 

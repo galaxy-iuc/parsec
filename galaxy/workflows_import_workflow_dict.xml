@@ -14,7 +14,7 @@ parsec workflows import_workflow_dict
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="workflow_dict" label="workflow_dict" argument="workflow_dict"  type="text" help="dictionary representing the workflow to be imported"/>
+    <param name="workflow_dict" label="workflow_dict" argument="workflow_dict"  type="data" format="json" help="dictionary representing the workflow to be imported"/>
 
     <!-- options -->
 

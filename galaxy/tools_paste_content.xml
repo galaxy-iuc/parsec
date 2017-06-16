@@ -15,8 +15,8 @@ parsec tools paste_content
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="content" label="content" argument="content"  type="text" help="content of the new dataset to upload or a list of URLs (one per line) to upload"/>
-    <input name="history_id" label="history_id" argument="history_id"  type="text" help="id of the history where to upload the content"/>
+    <param name="content" label="content" argument="content"  type="text" help="content of the new dataset to upload or a list of URLs (one per line) to upload"/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="id of the history where to upload the content"/>
 
     <!-- options -->
 

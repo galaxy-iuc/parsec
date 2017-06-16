@@ -17,10 +17,10 @@ parsec histories show_matching_datasets
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
 
     <!-- options -->
-    <input name="name_filter" argument="name_filter" type="text" help="Only datasets whose name matches the ``name_filter`` regular expression will be returned; use plain strings for exact matches and None to match all datasets in the history"/>
+    <param name="name_filter" label="name_filter" argument="name_filter"  type="text" help="Only datasets whose name matches the ``name_filter`` regular expression will be returned; use plain strings for exact matches and None to match all datasets in the history"/>
 
   </inputs>
   <outputs>

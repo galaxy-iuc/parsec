@@ -14,7 +14,7 @@ parsec histories undelete_history
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
 
     <!-- options -->
 

@@ -16,9 +16,9 @@ parsec users create_local_user
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="username" label="username" argument="username"  type="text" help="username of the user to be created"/>
-    <input name="user_email" label="user_email" argument="user_email"  type="text" help="email of the user to be created"/>
-    <input name="password" label="password" argument="password"  type="text" help="password of the user to be created"/>
+    <param name="username" label="username" argument="username"  type="text" help="username of the user to be created"/>
+    <param name="user_email" label="user_email" argument="user_email"  type="text" help="email of the user to be created"/>
+    <param name="password" label="password" argument="password"  type="text" help="password of the user to be created"/>
 
     <!-- options -->
 

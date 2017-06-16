@@ -17,10 +17,10 @@ parsec libraries show_library
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="library_id" label="library_id" argument="library_id"  type="text" help="filter for library by library id"/>
+    <param name="library_id" label="library_id" argument="library_id"  type="text" help="filter for library by library id"/>
 
     <!-- options -->
-    <input name="contents" argument="contents" type="boolean" truevalue="" falsevalue="" help="True if want to get contents of the library (rather than just the library details)"/>
+    <param name="contents" label="contents" argument="contents"  type="booelan" truevalue="--contents" falsevalue="" help="True if want to get contents of the library (rather than just the library details)"/>
 
   </inputs>
   <outputs>

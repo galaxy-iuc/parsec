@@ -15,8 +15,8 @@ parsec tools upload_from_ftp
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="path" label="path" argument="path"  type="text" help="path of the file in the user's FTP directory"/>
-    <input name="history_id" label="history_id" argument="history_id"  type="text" help="id of the history where to upload the file"/>
+    <param name="path" label="path" argument="path"  type="text" help="path of the file in the user's FTP directory"/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="id of the history where to upload the file"/>
 
     <!-- options -->
 

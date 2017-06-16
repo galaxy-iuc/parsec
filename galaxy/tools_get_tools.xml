@@ -24,9 +24,9 @@ parsec tools get_tools
     <!-- arguments -->
 
     <!-- options -->
-    <input name="tool_id" argument="tool_id" type="text" help="id of the requested tool"/>
-    <input name="name" argument="name" type="text" help="name of the requested tool(s)"/>
-    <input name="trackster" argument="trackster" type="boolean" truevalue="" falsevalue="" help="if True, only tools that are compatible with Trackster are returned"/>
+    <param name="tool_id" label="tool_id" argument="tool_id"  type="text" help="id of the requested tool"/>
+    <param name="name" label="name" argument="name"  type="text" help="name of the requested tool(s)"/>
+    <param name="trackster" label="trackster" argument="trackster"  type="booelan" truevalue="--trackster" falsevalue="" help="if True, only tools that are compatible with Trackster are returned"/>
 
   </inputs>
   <outputs>

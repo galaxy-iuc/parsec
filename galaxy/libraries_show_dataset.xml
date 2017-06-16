@@ -15,8 +15,8 @@ parsec libraries show_dataset
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="library_id" label="library_id" argument="library_id"  type="text" help="library id where dataset is found in"/>
-    <input name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="id of the dataset to be inspected"/>
+    <param name="library_id" label="library_id" argument="library_id"  type="text" help="library id where dataset is found in"/>
+    <param name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="id of the dataset to be inspected"/>
 
     <!-- options -->
 

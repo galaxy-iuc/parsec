@@ -14,7 +14,7 @@ parsec tools install_dependencies
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="tool_id" label="tool_id" argument="tool_id"  type="text" help="id of the requested tool"/>
+    <param name="tool_id" label="tool_id" argument="tool_id"  type="text" help="id of the requested tool"/>
 
     <!-- options -->
 

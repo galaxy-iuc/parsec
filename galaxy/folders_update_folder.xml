@@ -18,11 +18,11 @@ parsec folders update_folder
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
-    <input name="name" label="name" argument="name"  type="text" help="name of the new folder"/>
+    <param name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
+    <param name="name" label="name" argument="name"  type="text" help="name of the new folder"/>
 
     <!-- options -->
-    <input name="description" argument="description" type="text" help="folder's description"/>
+    <param name="description" label="description" argument="description"  type="text" help="folder's description"/>
 
   </inputs>
   <outputs>

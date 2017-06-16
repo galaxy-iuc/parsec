@@ -17,10 +17,10 @@ parsec users show_user
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="user_id" label="user_id" argument="user_id"  type="text" help="encoded user ID"/>
+    <param name="user_id" label="user_id" argument="user_id"  type="text" help="encoded user ID"/>
 
     <!-- options -->
-    <input name="deleted" argument="deleted" type="boolean" truevalue="" falsevalue="" help="whether to return results for a deleted user"/>
+    <param name="deleted" label="deleted" argument="deleted"  type="booelan" truevalue="--deleted" falsevalue="" help="whether to return results for a deleted user"/>
 
   </inputs>
   <outputs>

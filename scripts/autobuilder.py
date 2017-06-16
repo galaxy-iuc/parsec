@@ -64,15 +64,15 @@ PARAM_TRANSLATION = {
 }
 
 PARAM_TRANSLATION_GALAXY = {
-    'str': 'type="text"',
-    'dict': 'type="text"',
-    'int': 'type="integer" value="0"',
-    'float': 'type="float" value="0"',
-    'bool': 'type="boolean" truevalue="" falsevalue=""',
-    'file': 'type="data" format="data"',
-    None: 'type="error"',
-    'list of str': 'type="text" multiple="true"',
-    'list': 'type="text" multiple="true"',
+    'str': '<param name="{name}" label="{label}" argument="{name}" type="text" {help} />',
+    'dict': '<param name="{name}" label="{label}" argument="{name}" type="data" format="json" {help} />',
+    'int': '<param name="{name}" label="{label}" argument="{name}" type="integer" value="{default}" {help} />',
+    'float': '<param name="{name}" label="{label}" argument="{name}" type="float" value="{default}" {help} />',
+    'bool': '<param name="{name}" label="{label}" argument="{name}" type="booelan" truevalue="--{name}" falsevalue="" {help} />',
+    'file': '<param name="{name}" label="{label}" argument="{name}" type="data" format="data" {help} />',
+    None: '<error />',
+    'list of str': '<repeat name="repeat_{name}" title="{name}"><param name="{name}" label="{label}" argument="{name}" type="text" {help} /></repeat>',
+    'list': '<repeat name="repeat_{name}" title="{name}"><param name="{name}" label="{label}" argument="{name}" type="text" {help} /></repeat>',
 }
 
 class ScriptBuilder(object):
@@ -106,12 +106,12 @@ class ScriptBuilder(object):
 
     @classmethod
     def __galaxy_option(cls, name='arg', helpstr='TODO', ptype=None, default=None):
-        other = ""
-        if default:
-            other += ' default="%s"' % default
-        if ptype is not None:
-            other += ' ' + ptype
-        return '    <input name="%s" argument="%s" %s help="%s"/>\n' % (name, name, ptype, (helpstr.replace('"', '\\"') if helpstr else ""))
+        return '    ' + PARAM_TRANSLATION_GALAXY[ptype].format(
+            name=name,
+            label=name,
+            help=('help="%s"' % helpstr.replace('"', '\\"') if helpstr else ""),
+            default=default
+        ) + '\n'
 
     @classmethod
     def __click_argument(cls, name='arg', ptype=None):
@@ -124,15 +124,11 @@ class ScriptBuilder(object):
 
     @classmethod
     def __galaxy_argument(cls, name='arg', ptype=None, desc=None):
-        other = ''
-        if ptype:
-            other += ' type="text"'
-        else:
-            other += ptype
-        if desc:
-            other += ' help="%s"' % desc
-
-        return '    <input name="%s" label="%s" argument="%s" %s/>\n' % (name, name, name, other)
+        return '    ' + PARAM_TRANSLATION_GALAXY[ptype].format(
+            name=name,
+            label=name,
+            help='help="%s"' % desc,
+        ) + '\n'
 
     @classmethod
     def load_module(cls, module_path):
@@ -351,7 +347,7 @@ class ScriptBuilder(object):
                         print("Error finding %s in %s" % (k, candidate))
                         descstr = None
                     data['click_options'] += self.__click_option(name=k, helpstr=descstr, ptype=param_type, default=orig_v)
-                    data['galaxy_options'] += self.__galaxy_option(name=k, helpstr=descstr, ptype=PARAM_TRANSLATION_GALAXY[real_type], default=orig_v)
+                    data['galaxy_options'] += self.__galaxy_option(name=k, helpstr=descstr, ptype=real_type, default=orig_v)
                     data['galaxy_cli_options'] += '#if ${0}\n  --{0} "${0}"\n#end if\n'.format(k)
                 else:
                     # Args, not kwargs
@@ -367,7 +363,7 @@ class ScriptBuilder(object):
                         print("Error finding %s in %s" % (k, candidate))
                         descstr = None
                     data['click_arguments'] += self.__click_argument(name=k, ptype=param_type)
-                    data['galaxy_arguments'] += self.__galaxy_argument(name=k, ptype=PARAM_TRANSLATION_GALAXY[real_type], desc=descstr)
+                    data['galaxy_arguments'] += self.__galaxy_argument(name=k, ptype=real_type, desc=descstr)
                     data['galaxy_cli_arguments'] += '--%s "$%s"\n' % (k, k)
 
 

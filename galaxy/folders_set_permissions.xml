@@ -26,13 +26,13 @@ parsec folders set_permissions
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
+    <param name="folder_id" label="folder_id" argument="folder_id"  type="text" help="the folder's encoded id, prefixed by 'F'"/>
 
     <!-- options -->
-    <input name="action" argument="action" type="text" help="action to execute, only \"set_permissions\" is supported."/>
-    <input name="add_ids" argument="add_ids" type="text" multiple="true" help="list of role IDs which can add datasets to the folder"/>
-    <input name="manage_ids" argument="manage_ids" type="text" multiple="true" help="list of role IDs which can manage datasets in the folder"/>
-    <input name="modify_ids" argument="modify_ids" type="text" multiple="true" help="list of role IDs which can modify datasets in the folder"/>
+    <param name="action" label="action" argument="action"  type="text" help="action to execute, only \"set_permissions\" is supported."/>
+    <repeat name="repeat_add_ids" title="add_ids"><param name="add_ids" label="add_ids" argument="add_ids" type="text" help="list of role IDs which can add datasets to the folder" /></repeat>
+    <repeat name="repeat_manage_ids" title="manage_ids"><param name="manage_ids" label="manage_ids" argument="manage_ids" type="text" help="list of role IDs which can manage datasets in the folder" /></repeat>
+    <repeat name="repeat_modify_ids" title="modify_ids"><param name="modify_ids" label="modify_ids" argument="modify_ids" type="text" help="list of role IDs which can modify datasets in the folder" /></repeat>
 
   </inputs>
   <outputs>

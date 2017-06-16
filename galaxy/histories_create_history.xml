@@ -18,7 +18,7 @@ parsec histories create_history
     <!-- arguments -->
 
     <!-- options -->
-    <input name="name" argument="name" type="text" help="Optional name for new history"/>
+    <param name="name" label="name" argument="name"  type="text" help="Optional name for new history"/>
 
   </inputs>
   <outputs>

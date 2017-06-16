@@ -18,11 +18,11 @@ parsec libraries delete_library_dataset
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="library_id" label="library_id" argument="library_id"  type="text" help="library id where dataset is found in"/>
-    <input name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="id of the dataset to be deleted"/>
+    <param name="library_id" label="library_id" argument="library_id"  type="text" help="library id where dataset is found in"/>
+    <param name="dataset_id" label="dataset_id" argument="dataset_id"  type="text" help="id of the dataset to be deleted"/>
 
     <!-- options -->
-    <input name="purged" argument="purged" type="boolean" truevalue="" falsevalue="" help="Indicate that the dataset should be purged (permanently deleted)"/>
+    <param name="purged" label="purged" argument="purged"  type="booelan" truevalue="--purged" falsevalue="" help="Indicate that the dataset should be purged (permanently deleted)"/>
 
   </inputs>
   <outputs>

@@ -14,7 +14,7 @@ parsec jobs get_state
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="job_id" label="job_id" argument="job_id"  type="text" help="job ID"/>
+    <param name="job_id" label="job_id" argument="job_id"  type="text" help="job ID"/>
 
     <!-- options -->
 

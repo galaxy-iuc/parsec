@@ -17,10 +17,10 @@ parsec quotas show_quota
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="quota_id" label="quota_id" argument="quota_id"  type="text" help="Encoded quota ID"/>
+    <param name="quota_id" label="quota_id" argument="quota_id"  type="text" help="Encoded quota ID"/>
 
     <!-- options -->
-    <input name="deleted" argument="deleted" type="boolean" truevalue="" falsevalue="" help="Search for quota in list of ones already marked as deleted"/>
+    <param name="deleted" label="deleted" argument="deleted"  type="booelan" truevalue="--deleted" falsevalue="" help="Search for quota in list of ones already marked as deleted"/>
 
   </inputs>
   <outputs>

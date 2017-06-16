@@ -19,12 +19,12 @@ parsec histories download_dataset
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="history_id" label="history_id" argument="history_id"  type="text"/>
-    <input name="dataset_id" label="dataset_id" argument="dataset_id"  type="text"/>
-    <input name="file_path" label="file_path" argument="file_path"  type="text"/>
+    <error />
+    <error />
+    <error />
 
     <!-- options -->
-    <input name="use_default_filename" argument="use_default_filename" type="error" help=""/>
+    <error />
 
   </inputs>
   <outputs>

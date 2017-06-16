@@ -24,13 +24,13 @@ parsec libraries upload_file_from_url
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="library_id" label="library_id" argument="library_id"  type="text" help="id of the library where to place the uploaded file"/>
-    <input name="file_url" label="file_url" argument="file_url"  type="text" help="URL of the file to upload"/>
+    <param name="library_id" label="library_id" argument="library_id"  type="text" help="id of the library where to place the uploaded file"/>
+    <param name="file_url" label="file_url" argument="file_url"  type="text" help="URL of the file to upload"/>
 
     <!-- options -->
-    <input name="folder_id" argument="folder_id" type="text" help="id of the folder where to place the uploaded file. If not provided, the root folder will be used"/>
-    <input name="file_type" argument="file_type" type="text" help="Galaxy file format name"/>
-    <input name="dbkey" argument="dbkey" type="text" help="Dbkey"/>
+    <param name="folder_id" label="folder_id" argument="folder_id"  type="text" help="id of the folder where to place the uploaded file. If not provided, the root folder will be used"/>
+    <param name="file_type" label="file_type" argument="file_type"  type="text" help="Galaxy file format name"/>
+    <param name="dbkey" label="dbkey" argument="dbkey"  type="text" help="Dbkey"/>
 
   </inputs>
   <outputs>

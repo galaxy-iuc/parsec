@@ -18,7 +18,7 @@ parsec ftpfiles get_ftp_files
     <!-- arguments -->
 
     <!-- options -->
-    <input name="deleted" argument="deleted" type="error" help=""/>
+    <error />
 
   </inputs>
   <outputs>

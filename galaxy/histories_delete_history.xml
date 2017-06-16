@@ -17,10 +17,10 @@ parsec histories delete_history
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="Encoded history ID"/>
 
     <!-- options -->
-    <input name="purge" argument="purge" type="boolean" truevalue="" falsevalue="" help="if ``True``, also purge (permanently delete) the history"/>
+    <param name="purge" label="purge" argument="purge"  type="booelan" truevalue="--purge" falsevalue="" help="if ``True``, also purge (permanently delete) the history"/>
 
   </inputs>
   <outputs>

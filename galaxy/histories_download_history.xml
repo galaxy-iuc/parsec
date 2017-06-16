@@ -19,12 +19,12 @@ parsec histories download_history
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="history_id" label="history_id" argument="history_id"  type="text" help="history ID"/>
-    <input name="jeha_id" label="jeha_id" argument="jeha_id"  type="text" help="jeha ID (this should be obtained via :meth:`export_history`)"/>
-    <input name="outf" label="outf" argument="outf"  type="text" help="output file object, open for writing in binary mode"/>
+    <param name="history_id" label="history_id" argument="history_id"  type="text" help="history ID"/>
+    <param name="jeha_id" label="jeha_id" argument="jeha_id"  type="text" help="jeha ID (this should be obtained via :meth:`export_history`)"/>
+    <param name="outf" label="outf" argument="outf"  type="data" format="data" help="output file object, open for writing in binary mode"/>
 
     <!-- options -->
-    <input name="chunk_size" argument="chunk_size" type="integer" value="0" help="how many bytes at a time should be read into memory"/>
+    <param name="chunk_size" label="chunk_size" argument="chunk_size"  type="integer" value="4096" help="how many bytes at a time should be read into memory"/>
 
   </inputs>
   <outputs>

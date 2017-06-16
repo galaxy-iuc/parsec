@@ -14,7 +14,7 @@ parsec toolshed show_repository
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="toolShed_id" label="toolShed_id" argument="toolShed_id"  type="text" help="Encoded toolShed ID"/>
+    <param name="toolShed_id" label="toolShed_id" argument="toolShed_id"  type="text" help="Encoded toolShed ID"/>
 
     <!-- options -->
 

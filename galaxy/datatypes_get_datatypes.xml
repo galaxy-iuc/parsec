@@ -21,8 +21,8 @@ parsec datatypes get_datatypes
     <!-- arguments -->
 
     <!-- options -->
-    <input name="extension_only" argument="extension_only" type="error" help=""/>
-    <input name="upload_only" argument="upload_only" type="error" help=""/>
+    <error />
+    <error />
 
   </inputs>
   <outputs>

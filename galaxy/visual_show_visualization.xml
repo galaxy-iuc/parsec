@@ -14,7 +14,7 @@ parsec visual show_visualization
 </command>
   <inputs>
     <!-- arguments -->
-    <input name="visual_id" label="visual_id" argument="visual_id"  type="text" help="Encoded visualization ID"/>
+    <param name="visual_id" label="visual_id" argument="visual_id"  type="text" help="Encoded visualization ID"/>
 
     <!-- options -->
 
