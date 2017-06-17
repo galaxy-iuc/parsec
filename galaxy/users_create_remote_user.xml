@@ -14,7 +14,7 @@ parsec users create_remote_user
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="user_email" label="user_email" argument="user_email" type="text" help="email of the user to be created" />
+	<param name="user_email" label="User Email" argument="user_email" type="text" help="email of the user to be created" />
 
     <!-- options -->
 

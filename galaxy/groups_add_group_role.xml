@@ -15,8 +15,8 @@ parsec groups add_group_role
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="group_id" label="group_id" argument="group_id" type="text" help="Encoded group ID" />
-	<param name="role_id" label="role_id" argument="role_id" type="text" help="Encoded role ID to add to the group" />
+	<param name="group_id" label="Group Id" argument="group_id" type="text" help="Encoded group ID" />
+	<param name="role_id" label="Role Id" argument="role_id" type="text" help="Encoded role ID to add to the group" />
 
     <!-- options -->
 

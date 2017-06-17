@@ -18,11 +18,11 @@ parsec histories delete_dataset
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID" />
-	<param name="dataset_id" label="dataset_id" argument="dataset_id" type="text" help="Encoded dataset ID" />
+	<param name="history_id" label="History Id" argument="history_id" type="text" help="Encoded history ID" />
+	<param name="dataset_id" label="Dataset Id" argument="dataset_id" type="text" help="Encoded dataset ID" />
 
     <!-- options -->
-	<param name="purge" label="purge" argument="purge" type="booelan" truevalue="--purge" falsevalue="" help="if ``True``, also purge (permanently delete) the dataset" />
+	<param name="purge" label="Purge" argument="purge" type="booelan" truevalue="--purge" falsevalue="" help="if ``True``, also purge (permanently delete) the dataset" />
 
 	</inputs>
 	<outputs>

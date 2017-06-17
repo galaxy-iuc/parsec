@@ -17,10 +17,10 @@ parsec folders delete_folder
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="folder_id" label="folder_id" argument="folder_id" type="text" help="the folder's encoded id, prefixed by 'F'" />
+	<param name="folder_id" label="Folder Id" argument="folder_id" type="text" help="the folder's encoded id, prefixed by 'F'" />
 
     <!-- options -->
-	<param name="undelete" label="undelete" argument="undelete" type="booelan" truevalue="--undelete" falsevalue="" help="If set to True, the folder will be undeleted (i.e. the `deleted` mark will be removed)" />
+	<param name="undelete" label="Undelete" argument="undelete" type="booelan" truevalue="--undelete" falsevalue="" help="If set to True, the folder will be undeleted (i.e. the `deleted` mark will be removed)" />
 
 	</inputs>
 	<outputs>

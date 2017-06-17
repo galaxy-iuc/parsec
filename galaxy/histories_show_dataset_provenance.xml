@@ -18,11 +18,11 @@ parsec histories show_dataset_provenance
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID" />
-	<param name="dataset_id" label="dataset_id" argument="dataset_id" type="text" help="Encoded dataset ID" />
+	<param name="history_id" label="History Id" argument="history_id" type="text" help="Encoded history ID" />
+	<param name="dataset_id" label="Dataset Id" argument="dataset_id" type="text" help="Encoded dataset ID" />
 
     <!-- options -->
-	<param name="follow" label="follow" argument="follow" type="booelan" truevalue="--follow" falsevalue="" help="If ``follow`` is ``True``, recursively fetch dataset provenance information for all inputs and their inputs, etc..." />
+	<param name="follow" label="Follow" argument="follow" type="booelan" truevalue="--follow" falsevalue="" help="If ``follow`` is ``True``, recursively fetch dataset provenance information for all inputs and their inputs, etc..." />
 
 	</inputs>
 	<outputs>

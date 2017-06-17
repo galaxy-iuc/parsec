@@ -17,10 +17,10 @@ parsec jobs show_job
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="job_id" label="job_id" argument="job_id" type="text" help="job ID" />
+	<param name="job_id" label="Job Id" argument="job_id" type="text" help="job ID" />
 
     <!-- options -->
-	<param name="full_details" label="full_details" argument="full_details" type="booelan" truevalue="--full_details" falsevalue="" help="when ``True``, the complete list of details for the given job." />
+	<param name="full_details" label="Full Details" argument="full_details" type="booelan" truevalue="--full_details" falsevalue="" help="when ``True``, the complete list of details for the given job." />
 
 	</inputs>
 	<outputs>

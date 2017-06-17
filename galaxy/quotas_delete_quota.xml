@@ -14,7 +14,7 @@ parsec quotas delete_quota
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="quota_id" label="quota_id" argument="quota_id" type="text" help="Encoded quota ID." />
+	<param name="quota_id" label="Quota Id" argument="quota_id" type="text" help="Encoded quota ID." />
 
     <!-- options -->
 

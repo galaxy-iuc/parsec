@@ -24,9 +24,9 @@ parsec libraries get_libraries
     <!-- arguments -->
 
     <!-- options -->
-	<param name="library_id" label="library_id" argument="library_id" type="text" help="filter for library by library id" />
-	<param name="name" label="name" argument="name" type="text" help="If ``name`` is set and multiple names match the given name, all the libraries matching the argument will be returned" />
-	<param name="deleted" label="deleted" argument="deleted" type="booelan" truevalue="--deleted" falsevalue="" help="If set to ``True``, return libraries that have been deleted" />
+	<param name="library_id" label="Library Id" argument="library_id" type="text" help="filter for library by library id" />
+	<param name="name" label="Name" argument="name" type="text" help="If ``name`` is set and multiple names match the given name, all the libraries matching the argument will be returned" />
+	<param name="deleted" label="Deleted" argument="deleted" type="booelan" truevalue="--deleted" falsevalue="" help="If set to ``True``, return libraries that have been deleted" />
 
 	</inputs>
 	<outputs>

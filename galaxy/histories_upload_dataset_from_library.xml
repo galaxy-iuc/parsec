@@ -15,8 +15,8 @@ parsec histories upload_dataset_from_library
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID" />
-	<param name="lib_dataset_id" label="lib_dataset_id" argument="lib_dataset_id" type="text" help="Encoded library dataset ID" />
+	<param name="history_id" label="History Id" argument="history_id" type="text" help="Encoded history ID" />
+	<param name="lib_dataset_id" label="Lib Dataset Id" argument="lib_dataset_id" type="text" help="Encoded library dataset ID" />
 
     <!-- options -->
 

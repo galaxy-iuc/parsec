@@ -21,12 +21,12 @@ parsec libraries create_folder
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="library_id" label="library_id" argument="library_id" type="text" help="library id to use" />
-	<param name="folder_name" label="folder_name" argument="folder_name" type="text" help="name of the new folder in the data library" />
+	<param name="library_id" label="Library Id" argument="library_id" type="text" help="library id to use" />
+	<param name="folder_name" label="Folder Name" argument="folder_name" type="text" help="name of the new folder in the data library" />
 
     <!-- options -->
-	<param name="description" label="description" argument="description" type="text" help="description of the new folder in the data library" />
-	<param name="base_folder_id" label="base_folder_id" argument="base_folder_id" type="text" help="id of the folder where to create the new folder. If not provided, the root folder will be used" />
+	<param name="description" label="Description" argument="description" type="text" help="description of the new folder in the data library" />
+	<param name="base_folder_id" label="Base Folder Id" argument="base_folder_id" type="text" help="id of the folder where to create the new folder. If not provided, the root folder will be used" />
 
 	</inputs>
 	<outputs>

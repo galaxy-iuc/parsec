@@ -18,7 +18,7 @@ parsec quotas get_quotas
     <!-- arguments -->
 
     <!-- options -->
-	<param name="deleted" label="deleted" argument="deleted" type="booelan" truevalue="--deleted" falsevalue="" help="Only return quota(s) that have been deleted" />
+	<param name="deleted" label="Deleted" argument="deleted" type="booelan" truevalue="--deleted" falsevalue="" help="Only return quota(s) that have been deleted" />
 
 	</inputs>
 	<outputs>

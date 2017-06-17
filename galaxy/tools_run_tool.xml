@@ -16,9 +16,9 @@ parsec tools run_tool
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="history_id" label="history_id" argument="history_id" type="text" help="encoded ID of the history in which to run the tool" />
-	<param name="tool_id" label="tool_id" argument="tool_id" type="text" help="ID of the tool to be run" />
-	<param name="tool_inputs" label="tool_inputs" argument="tool_inputs" type="data" format="json" help="dictionary of input datasets and parameters for the tool (see below)" />
+	<param name="history_id" label="History Id" argument="history_id" type="text" help="encoded ID of the history in which to run the tool" />
+	<param name="tool_id" label="Tool Id" argument="tool_id" type="text" help="ID of the tool to be run" />
+	<param name="tool_inputs" label="Tool Inputs" argument="tool_inputs" type="data" format="json" help="dictionary of input datasets and parameters for the tool (see below)" />
 
     <!-- options -->
 

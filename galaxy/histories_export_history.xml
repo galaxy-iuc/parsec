@@ -26,13 +26,13 @@ parsec histories export_history
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="history_id" label="history_id" argument="history_id" type="text" help="history ID" />
+	<param name="history_id" label="History Id" argument="history_id" type="text" help="history ID" />
 
     <!-- options -->
-	<param name="gzip" label="gzip" argument="gzip" type="booelan" truevalue="--gzip" falsevalue="" help="create .tar.gz archive if ``True``, else .tar" />
-	<param name="include_hidden" label="include_hidden" argument="include_hidden" type="booelan" truevalue="--include_hidden" falsevalue="" help="whether to include hidden datasets in the export" />
-	<param name="include_deleted" label="include_deleted" argument="include_deleted" type="booelan" truevalue="--include_deleted" falsevalue="" help="whether to include deleted datasets in the export" />
-	<param name="wait" label="wait" argument="wait" type="booelan" truevalue="--wait" falsevalue="" help="if ``True``, block until the export is ready; else, return immediately" />
+	<param name="gzip" label="Gzip" argument="gzip" type="booelan" truevalue="--gzip" falsevalue="" help="create .tar.gz archive if ``True``, else .tar" />
+	<param name="include_hidden" label="Include Hidden" argument="include_hidden" type="booelan" truevalue="--include_hidden" falsevalue="" help="whether to include hidden datasets in the export" />
+	<param name="include_deleted" label="Include Deleted" argument="include_deleted" type="booelan" truevalue="--include_deleted" falsevalue="" help="whether to include deleted datasets in the export" />
+	<param name="wait" label="Wait" argument="wait" type="booelan" truevalue="--wait" falsevalue="" help="if ``True``, block until the export is ready; else, return immediately" />
 
 	</inputs>
 	<outputs>

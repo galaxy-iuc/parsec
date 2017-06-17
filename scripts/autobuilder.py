@@ -31,6 +31,13 @@ IGNORE_LIST = [
 ]
 
 
+def nice_name(label):
+    tmp = label.replace('_', ' ')
+    tmp = tmp[0].upper() + tmp[1:]
+    callback = lambda pat: ' ' + pat.group(1).upper()
+    tmp = re.sub(r' ([a-z])', callback, tmp)
+    return tmp
+
 
 PARAM_TRANSLATION = {
     'str': [
@@ -147,9 +154,9 @@ class ScriptBuilder(object):
     def __galaxy_option(cls, name='arg', helpstr='TODO', ptype=None, default=None):
         return '\t' + PARAM_TRANSLATION_GALAXY[ptype].format(
             name=name,
-            label=name,
+            label=nice_name(name),
             help=('help="%s"' % helpstr.replace('"', '\\"') if helpstr else ""),
-            default=default
+            default=default if default else 0
         ) + '\n'
 
     @classmethod
@@ -165,8 +172,9 @@ class ScriptBuilder(object):
     def __galaxy_argument(cls, name='arg', ptype=None, desc=None):
         return '\t' + PARAM_TRANSLATION_GALAXY[ptype].format(
             name=name,
-            label=name,
+            label=nice_name(name),
             help='help="%s"' % desc,
+            default=0,
         ) + '\n'
 
     @classmethod

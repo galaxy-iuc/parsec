@@ -15,8 +15,8 @@ parsec histories create_history_tag
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID" />
-	<param name="tag" label="tag" argument="tag" type="text" help="Add tag to history" />
+	<param name="history_id" label="History Id" argument="history_id" type="text" help="Encoded history ID" />
+	<param name="tag" label="Tag" argument="tag" type="text" help="Add tag to history" />
 
     <!-- options -->
 

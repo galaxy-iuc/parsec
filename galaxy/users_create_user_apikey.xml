@@ -14,7 +14,7 @@ parsec users create_user_apikey
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="user_id" label="user_id" argument="user_id" type="text" help="encoded user ID" />
+	<param name="user_id" label="User Id" argument="user_id" type="text" help="encoded user ID" />
 
     <!-- options -->
 

@@ -14,7 +14,7 @@ parsec forms create_form
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="form_xml_text" label="form_xml_text" argument="form_xml_text" type="text" help="Form xml to create a form on galaxy instance" />
+	<param name="form_xml_text" label="Form Xml Text" argument="form_xml_text" type="text" help="Form xml to create a form on galaxy instance" />
 
     <!-- options -->
 

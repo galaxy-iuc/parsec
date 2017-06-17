@@ -20,11 +20,11 @@ parsec libraries create_library
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="name" label="name" argument="name" type="text" help="Name of the new data library" />
+	<param name="name" label="Name" argument="name" type="text" help="Name of the new data library" />
 
     <!-- options -->
-	<param name="description" label="description" argument="description" type="text" help="Optional data library description" />
-	<param name="synopsis" label="synopsis" argument="synopsis" type="text" help="Optional data library synopsis" />
+	<param name="description" label="Description" argument="description" type="text" help="Optional data library description" />
+	<param name="synopsis" label="Synopsis" argument="synopsis" type="text" help="Optional data library synopsis" />
 
 	</inputs>
 	<outputs>

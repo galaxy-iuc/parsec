@@ -14,7 +14,7 @@ parsec forms show_form
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="form_id" label="form_id" argument="form_id" type="text" help="Encoded form ID" />
+	<param name="form_id" label="Form Id" argument="form_id" type="text" help="Encoded form ID" />
 
     <!-- options -->
 

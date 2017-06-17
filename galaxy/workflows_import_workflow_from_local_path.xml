@@ -14,7 +14,7 @@ parsec workflows import_workflow_from_local_path
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="file_local_path" label="file_local_path" argument="file_local_path" type="text" help="File to upload to the server for new workflow" />
+	<param name="file_local_path" label="File Local Path" argument="file_local_path" type="text" help="File to upload to the server for new workflow" />
 
     <!-- options -->
 

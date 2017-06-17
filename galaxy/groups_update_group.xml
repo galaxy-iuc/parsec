@@ -23,15 +23,15 @@ parsec groups update_group
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="group_id" label="group_id" argument="group_id" type="text" help="Encoded group ID" />
+	<param name="group_id" label="Group Id" argument="group_id" type="text" help="Encoded group ID" />
 
     <!-- options -->
-	<param name="group_name" label="group_name" argument="group_name" type="text" help="A new name for the group. If None, the group name is not changed." />
+	<param name="group_name" label="Group Name" argument="group_name" type="text" help="A new name for the group. If None, the group name is not changed." />
 	<repeat name="repeat_user_ids" title="user_ids">
-		<param name="user_ids" label="user_ids" argument="user_ids" type="text" help="New list of encoded user IDs for the group. It will substitute the previous list of users (with [] if not specified)" />
+		<param name="user_ids" label="User Ids" argument="user_ids" type="text" help="New list of encoded user IDs for the group. It will substitute the previous list of users (with [] if not specified)" />
 	</repeat>
 	<repeat name="repeat_role_ids" title="role_ids">
-		<param name="role_ids" label="role_ids" argument="role_ids" type="text" help="New list of encoded role IDs for the group. It will substitute the previous list of roles (with [] if not specified)" />
+		<param name="role_ids" label="Role Ids" argument="role_ids" type="text" help="New list of encoded role IDs for the group. It will substitute the previous list of roles (with [] if not specified)" />
 	</repeat>
 
 	</inputs>

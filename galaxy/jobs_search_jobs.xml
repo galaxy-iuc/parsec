@@ -14,7 +14,7 @@ parsec jobs search_jobs
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="job_info" label="job_info" argument="job_info" type="data" format="json" help="dictionary containing description of the requested job. This is in the same format as a request to POST /api/tools would take to initiate a job" />
+	<param name="job_info" label="Job Info" argument="job_info" type="data" format="json" help="dictionary containing description of the requested job. This is in the same format as a request to POST /api/tools would take to initiate a job" />
 
     <!-- options -->
 

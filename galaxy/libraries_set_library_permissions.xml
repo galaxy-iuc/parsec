@@ -26,20 +26,20 @@ parsec libraries set_library_permissions
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="library_id" label="library_id" argument="library_id" type="text" help="id of the library" />
+	<param name="library_id" label="Library Id" argument="library_id" type="text" help="id of the library" />
 
     <!-- options -->
 	<repeat name="repeat_access_in" title="access_in">
-		<param name="access_in" label="access_in" argument="access_in" type="text" help="list of role ids" />
+		<param name="access_in" label="Access In" argument="access_in" type="text" help="list of role ids" />
 	</repeat>
 	<repeat name="repeat_modify_in" title="modify_in">
-		<param name="modify_in" label="modify_in" argument="modify_in" type="text" help="list of role ids" />
+		<param name="modify_in" label="Modify In" argument="modify_in" type="text" help="list of role ids" />
 	</repeat>
 	<repeat name="repeat_add_in" title="add_in">
-		<param name="add_in" label="add_in" argument="add_in" type="text" help="list of role ids" />
+		<param name="add_in" label="Add In" argument="add_in" type="text" help="list of role ids" />
 	</repeat>
 	<repeat name="repeat_manage_in" title="manage_in">
-		<param name="manage_in" label="manage_in" argument="manage_in" type="text" help="list of role ids" />
+		<param name="manage_in" label="Manage In" argument="manage_in" type="text" help="list of role ids" />
 	</repeat>
 
 	</inputs>

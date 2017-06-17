@@ -26,13 +26,13 @@ parsec datasets download_dataset
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="dataset_id" label="dataset_id" argument="dataset_id" type="text" help="Encoded dataset ID" />
+	<param name="dataset_id" label="Dataset Id" argument="dataset_id" type="text" help="Encoded dataset ID" />
 
     <!-- options -->
-	<param name="file_path" label="file_path" argument="file_path" type="text" help="If this argument is provided, the dataset will be streamed to disk at that path (should be a directory if use_default_filename=True). If the file_path argument is not provided, the dataset content is loaded into memory and returned by the method (Memory consumption may be heavy as the entire file will be in memory)." />
-	<param name="use_default_filename" label="use_default_filename" argument="use_default_filename" type="booelan" truevalue="--use_default_filename" falsevalue="" help="If this argument is True, the exported file will be saved as file_path/%s, where %s is the dataset name. If this argument is False, file_path is assumed to contain the full file path including the filename." />
-	<param name="wait_for_completion" label="wait_for_completion" argument="wait_for_completion" type="booelan" truevalue="--wait_for_completion" falsevalue="" help="If this argument is True, this method call will block until the dataset is ready. If the dataset state becomes invalid, a DatasetStateException will be thrown." />
-	<param name="maxwait" label="maxwait" argument="maxwait" type="float" value="12000" help="Time (in seconds) to wait for dataset to complete. If the dataset state is not complete within this time, a DatasetTimeoutException will be thrown." />
+	<param name="file_path" label="File Path" argument="file_path" type="text" help="If this argument is provided, the dataset will be streamed to disk at that path (should be a directory if use_default_filename=True). If the file_path argument is not provided, the dataset content is loaded into memory and returned by the method (Memory consumption may be heavy as the entire file will be in memory)." />
+	<param name="use_default_filename" label="Use Default Filename" argument="use_default_filename" type="booelan" truevalue="--use_default_filename" falsevalue="" help="If this argument is True, the exported file will be saved as file_path/%s, where %s is the dataset name. If this argument is False, file_path is assumed to contain the full file path including the filename." />
+	<param name="wait_for_completion" label="Wait For Completion" argument="wait_for_completion" type="booelan" truevalue="--wait_for_completion" falsevalue="" help="If this argument is True, this method call will block until the dataset is ready. If the dataset state becomes invalid, a DatasetStateException will be thrown." />
+	<param name="maxwait" label="Maxwait" argument="maxwait" type="float" value="12000" help="Time (in seconds) to wait for dataset to complete. If the dataset state is not complete within this time, a DatasetTimeoutException will be thrown." />
 
 	</inputs>
 	<outputs>

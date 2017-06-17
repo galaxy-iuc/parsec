@@ -15,8 +15,8 @@ parsec tool_data delete_data_table
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="data_table_id" label="data_table_id" argument="data_table_id" type="text" help="ID of the data table" />
-	<param name="values" label="values" argument="values" type="text" help="a "|" separated list of column contents, there must be a value for all the columns of the data table" />
+	<param name="data_table_id" label="Data Table Id" argument="data_table_id" type="text" help="ID of the data table" />
+	<param name="values" label="Values" argument="values" type="text" help="a "|" separated list of column contents, there must be a value for all the columns of the data table" />
 
     <!-- options -->
 

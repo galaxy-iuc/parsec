@@ -36,14 +36,14 @@ parsec genomes install_genome
     <!-- arguments -->
 
     <!-- options -->
-	<param name="func" label="func" argument="func" type="text" help="Allowed values: 'download', Download and index; 'index', Index only" />
-	<param name="source" label="source" argument="source" type="text" help="Data source for this build. Can be: UCSC, Ensembl, NCBI, URL" />
-	<param name="dbkey" label="dbkey" argument="dbkey" type="text" help="DB key of the build to download, ignored unless 'UCSC' is specified as the source" />
-	<param name="ncbi_name" label="ncbi_name" argument="ncbi_name" type="text" help="NCBI's genome identifier, ignored unless NCBI is specified as the source" />
-	<param name="ensembl_dbkey" label="ensembl_dbkey" argument="ensembl_dbkey" type="text" help="Ensembl's genome identifier, ignored unless Ensembl is specified as the source" />
-	<param name="url_dbkey" label="url_dbkey" argument="url_dbkey" type="text" help="DB key to use for this build, ignored unless URL is specified as the source" />
+	<param name="func" label="Func" argument="func" type="text" help="Allowed values: 'download', Download and index; 'index', Index only" />
+	<param name="source" label="Source" argument="source" type="text" help="Data source for this build. Can be: UCSC, Ensembl, NCBI, URL" />
+	<param name="dbkey" label="Dbkey" argument="dbkey" type="text" help="DB key of the build to download, ignored unless 'UCSC' is specified as the source" />
+	<param name="ncbi_name" label="Ncbi Name" argument="ncbi_name" type="text" help="NCBI's genome identifier, ignored unless NCBI is specified as the source" />
+	<param name="ensembl_dbkey" label="Ensembl Dbkey" argument="ensembl_dbkey" type="text" help="Ensembl's genome identifier, ignored unless Ensembl is specified as the source" />
+	<param name="url_dbkey" label="Url Dbkey" argument="url_dbkey" type="text" help="DB key to use for this build, ignored unless URL is specified as the source" />
 	<repeat name="repeat_indexers" title="indexers">
-		<param name="indexers" label="indexers" argument="indexers" type="text" help="POST array of indexers to run after downloading (indexers[] = first, indexers[] = second, ...)" />
+		<param name="indexers" label="Indexers" argument="indexers" type="text" help="POST array of indexers to run after downloading (indexers[] = first, indexers[] = second, ...)" />
 	</repeat>
 
 	</inputs>

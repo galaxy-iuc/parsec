@@ -29,14 +29,14 @@ parsec histories show_history
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="history_id" label="history_id" argument="history_id" type="text" help="Encoded history ID to filter on" />
+	<param name="history_id" label="History Id" argument="history_id" type="text" help="Encoded history ID to filter on" />
 
     <!-- options -->
-	<param name="contents" label="contents" argument="contents" type="booelan" truevalue="--contents" falsevalue="" help="When ``True``, the complete list of datasets in the given history." />
-	<param name="deleted" label="deleted" argument="deleted" type="text" help="Used when contents=True, includes deleted datasets in history dataset list" />
-	<param name="visible" label="visible" argument="visible" type="text" help="Used when contents=True, includes only visible datasets in history dataset list" />
-	<param name="details" label="details" argument="details" type="text" help="Used when contents=True, includes dataset details. Set to 'all' for the most information" />
-	<param name="types" label="types" argument="types" type="text" help="???" />
+	<param name="contents" label="Contents" argument="contents" type="booelan" truevalue="--contents" falsevalue="" help="When ``True``, the complete list of datasets in the given history." />
+	<param name="deleted" label="Deleted" argument="deleted" type="text" help="Used when contents=True, includes deleted datasets in history dataset list" />
+	<param name="visible" label="Visible" argument="visible" type="text" help="Used when contents=True, includes only visible datasets in history dataset list" />
+	<param name="details" label="Details" argument="details" type="text" help="Used when contents=True, includes dataset details. Set to 'all' for the most information" />
+	<param name="types" label="Types" argument="types" type="text" help="???" />
 
 	</inputs>
 	<outputs>

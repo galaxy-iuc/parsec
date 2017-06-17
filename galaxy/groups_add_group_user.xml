@@ -15,8 +15,8 @@ parsec groups add_group_user
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="group_id" label="group_id" argument="group_id" type="text" help="Encoded group ID" />
-	<param name="user_id" label="user_id" argument="user_id" type="text" help="Encoded user ID to add to the group" />
+	<param name="group_id" label="Group Id" argument="group_id" type="text" help="Encoded group ID" />
+	<param name="user_id" label="User Id" argument="user_id" type="text" help="Encoded user ID to add to the group" />
 
     <!-- options -->
 

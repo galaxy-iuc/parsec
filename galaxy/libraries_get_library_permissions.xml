@@ -14,7 +14,7 @@ parsec libraries get_library_permissions
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="library_id" label="library_id" argument="library_id" type="text" help="id of the library" />
+	<param name="library_id" label="Library Id" argument="library_id" type="text" help="id of the library" />
 
     <!-- options -->
 

@@ -14,7 +14,7 @@ parsec tool_data show_data_table
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="data_table_id" label="data_table_id" argument="data_table_id" type="text" help="ID of the data table" />
+	<param name="data_table_id" label="Data Table Id" argument="data_table_id" type="text" help="ID of the data table" />
 
     <!-- options -->
 

@@ -16,9 +16,9 @@ parsec workflows show_invocation_step
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="workflow_id" label="workflow_id" argument="workflow_id" type="text" help="Encoded workflow ID" />
-	<param name="invocation_id" label="invocation_id" argument="invocation_id" type="text" help="Encoded workflow invocation ID" />
-	<param name="step_id" label="step_id" argument="step_id" type="text" help="Encoded workflow invocation step ID" />
+	<param name="workflow_id" label="Workflow Id" argument="workflow_id" type="text" help="Encoded workflow ID" />
+	<param name="invocation_id" label="Invocation Id" argument="invocation_id" type="text" help="Encoded workflow invocation ID" />
+	<param name="step_id" label="Step Id" argument="step_id" type="text" help="Encoded workflow invocation step ID" />
 
     <!-- options -->
 

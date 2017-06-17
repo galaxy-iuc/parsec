@@ -14,7 +14,7 @@ parsec libraries delete_library
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="library_id" label="library_id" argument="library_id" type="text" help="Encoded data library ID identifying the library to be deleted" />
+	<param name="library_id" label="Library Id" argument="library_id" type="text" help="Encoded data library ID identifying the library to be deleted" />
 
     <!-- options -->
 

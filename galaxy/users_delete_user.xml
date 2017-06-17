@@ -17,10 +17,10 @@ parsec users delete_user
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="user_id" label="user_id" argument="user_id" type="text" help="encoded user ID" />
+	<param name="user_id" label="User Id" argument="user_id" type="text" help="encoded user ID" />
 
     <!-- options -->
-	<param name="purge" label="purge" argument="purge" type="booelan" truevalue="--purge" falsevalue="" help="if ``True``, also purge (permanently delete) the history" />
+	<param name="purge" label="Purge" argument="purge" type="booelan" truevalue="--purge" falsevalue="" help="if ``True``, also purge (permanently delete) the history" />
 
 	</inputs>
 	<outputs>

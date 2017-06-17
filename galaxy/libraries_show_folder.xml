@@ -15,8 +15,8 @@ parsec libraries show_folder
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="library_id" label="library_id" argument="library_id" type="text" help="library id to inspect folders in" />
-	<param name="folder_id" label="folder_id" argument="folder_id" type="text" help="id of the folder to be inspected" />
+	<param name="library_id" label="Library Id" argument="library_id" type="text" help="library id to inspect folders in" />
+	<param name="folder_id" label="Folder Id" argument="folder_id" type="text" help="id of the folder to be inspected" />
 
     <!-- options -->
 

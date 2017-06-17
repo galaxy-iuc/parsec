@@ -20,14 +20,14 @@ parsec groups create_group
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="group_name" label="group_name" argument="group_name" type="text" help="A name for the new group" />
+	<param name="group_name" label="Group Name" argument="group_name" type="text" help="A name for the new group" />
 
     <!-- options -->
 	<repeat name="repeat_user_ids" title="user_ids">
-		<param name="user_ids" label="user_ids" argument="user_ids" type="text" help="A list of encoded user IDs to add to the new group" />
+		<param name="user_ids" label="User Ids" argument="user_ids" type="text" help="A list of encoded user IDs to add to the new group" />
 	</repeat>
 	<repeat name="repeat_role_ids" title="role_ids">
-		<param name="role_ids" label="role_ids" argument="role_ids" type="text" help="A list of encoded role IDs to add to the new group" />
+		<param name="role_ids" label="Role Ids" argument="role_ids" type="text" help="A list of encoded role IDs to add to the new group" />
 	</repeat>
 
 	</inputs>

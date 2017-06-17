@@ -15,8 +15,8 @@ parsec folders get_permissions
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="folder_id" label="folder_id" argument="folder_id" type="text" help="the folder's encoded id, prefixed by 'F'" />
-	<param name="scope" label="scope" argument="scope" type="text" help="scope of permissions, either 'current' or 'available'" />
+	<param name="folder_id" label="Folder Id" argument="folder_id" type="text" help="the folder's encoded id, prefixed by 'F'" />
+	<param name="scope" label="Scope" argument="scope" type="text" help="scope of permissions, either 'current' or 'available'" />
 
     <!-- options -->
 

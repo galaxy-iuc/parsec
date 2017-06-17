@@ -24,9 +24,9 @@ parsec workflows get_workflows
     <!-- arguments -->
 
     <!-- options -->
-	<param name="workflow_id" label="workflow_id" argument="workflow_id" type="text" help="Encoded workflow ID (incompatible with ``name``)" />
-	<param name="name" label="name" argument="name" type="text" help="Filter by name of workflow (incompatible with ``workflow_id``). If multiple names match the given name, all the workflows matching the argument will be returned." />
-	<param name="published" label="published" argument="published" type="booelan" truevalue="--published" falsevalue="" help="if ``True``, return also published workflows" />
+	<param name="workflow_id" label="Workflow Id" argument="workflow_id" type="text" help="Encoded workflow ID (incompatible with ``name``)" />
+	<param name="name" label="Name" argument="name" type="text" help="Filter by name of workflow (incompatible with ``workflow_id``). If multiple names match the given name, all the workflows matching the argument will be returned." />
+	<param name="published" label="Published" argument="published" type="booelan" truevalue="--published" falsevalue="" help="if ``True``, return also published workflows" />
 
 	</inputs>
 	<outputs>

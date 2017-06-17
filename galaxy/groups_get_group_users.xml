@@ -14,7 +14,7 @@ parsec groups get_group_users
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="group_id" label="group_id" argument="group_id" type="text" help="Encoded group ID" />
+	<param name="group_id" label="Group Id" argument="group_id" type="text" help="Encoded group ID" />
 
     <!-- options -->
 

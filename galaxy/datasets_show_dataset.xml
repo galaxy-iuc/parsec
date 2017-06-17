@@ -20,11 +20,11 @@ parsec datasets show_dataset
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="dataset_id" label="dataset_id" argument="dataset_id" type="text" help="Encoded dataset ID" />
+	<param name="dataset_id" label="Dataset Id" argument="dataset_id" type="text" help="Encoded dataset ID" />
 
     <!-- options -->
-	<param name="deleted" label="deleted" argument="deleted" type="booelan" truevalue="--deleted" falsevalue="" help="Whether to return results for a deleted dataset" />
-	<param name="hda_ldda" label="hda_ldda" argument="hda_ldda" type="text" help="Whether to show a history dataset ('hda' - the default) or library dataset ('ldda')." />
+	<param name="deleted" label="Deleted" argument="deleted" type="booelan" truevalue="--deleted" falsevalue="" help="Whether to return results for a deleted dataset" />
+	<param name="hda_ldda" label="Hda Ldda" argument="hda_ldda" type="text" help="Whether to show a history dataset ('hda' - the default) or library dataset ('ldda')." />
 
 	</inputs>
 	<outputs>

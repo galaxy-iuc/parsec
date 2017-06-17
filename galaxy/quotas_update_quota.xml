@@ -35,19 +35,19 @@ parsec quotas update_quota
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="quota_id" label="quota_id" argument="quota_id" type="text" help="Encoded quota ID" />
+	<param name="quota_id" label="Quota Id" argument="quota_id" type="text" help="Encoded quota ID" />
 
     <!-- options -->
-	<param name="name" label="name" argument="name" type="text" help="Name for the new quota. This must be unique within a Galaxy instance." />
-	<param name="description" label="description" argument="description" type="text" help="Quota description. If you supply this parameter, but not the name, an error will be thrown." />
-	<param name="amount" label="amount" argument="amount" type="text" help="Quota size (E.g. ``10000MB``, ``99 gb``, ``0.2T``, ``unlimited``)" />
-	<param name="operation" label="operation" argument="operation" type="text" help="One of (``+``, ``-``, ``=``). If you wish to change this value, you must also provide the ``amount``, otherwise it will not take effect." />
-	<param name="default" label="default" argument="default" type="text" help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. Calling this method with ``default=\"no\"`` on a non-default quota will throw an error. Not passing this parameter is equivalent to passing ``no``." />
+	<param name="name" label="Name" argument="name" type="text" help="Name for the new quota. This must be unique within a Galaxy instance." />
+	<param name="description" label="Description" argument="description" type="text" help="Quota description. If you supply this parameter, but not the name, an error will be thrown." />
+	<param name="amount" label="Amount" argument="amount" type="text" help="Quota size (E.g. ``10000MB``, ``99 gb``, ``0.2T``, ``unlimited``)" />
+	<param name="operation" label="Operation" argument="operation" type="text" help="One of (``+``, ``-``, ``=``). If you wish to change this value, you must also provide the ``amount``, otherwise it will not take effect." />
+	<param name="default" label="Default" argument="default" type="text" help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. Calling this method with ``default=\"no\"`` on a non-default quota will throw an error. Not passing this parameter is equivalent to passing ``no``." />
 	<repeat name="repeat_in_users" title="in_users">
-		<param name="in_users" label="in_users" argument="in_users" type="text" help="A list of user IDs or user emails." />
+		<param name="in_users" label="In Users" argument="in_users" type="text" help="A list of user IDs or user emails." />
 	</repeat>
 	<repeat name="repeat_in_groups" title="in_groups">
-		<param name="in_groups" label="in_groups" argument="in_groups" type="text" help="A list of group IDs or names." />
+		<param name="in_groups" label="In Groups" argument="in_groups" type="text" help="A list of group IDs or names." />
 	</repeat>
 
 	</inputs>

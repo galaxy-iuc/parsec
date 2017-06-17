@@ -14,7 +14,7 @@ parsec roles show_role
 </command>
 	<inputs>
     <!-- arguments -->
-	<param name="role_id" label="role_id" argument="role_id" type="text" help="Encoded role ID" />
+	<param name="role_id" label="Role Id" argument="role_id" type="text" help="Encoded role ID" />
 
     <!-- options -->
 
