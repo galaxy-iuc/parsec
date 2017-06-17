@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool id="jq" name="JQ" version="1.0">
+ <description>process JSON</description>
+	<command detect_errors="aggressive">
+cat "$input" | jq -S '$filter $tsv' $raw > "$output"
+</command>
+	<inputs>
+		<param name="input" label="JSON Input" type="data" format="json" />
+		<param name="filter" label="jq filter" type="text">
+			<sanitizer>
+				<valid>
+					<add value='"'/>
+					<add value="'"/>
+					<add value="["/>
+					<add value="]"/>
+					<add value="@"/>
+					<add value="|"/>
+				</valid>
+			</sanitizer>
+		</param>
+		<param name="raw" label="Raw output" type="boolean" truevalue="-r" falsevalue="" />
+		<param name="tsv" label="Convert output to tabular" type="boolean" truevalue="| @tsv" falsevalue="" help="@tsv can be used normally, but this will automatically mark the output as tabular"/>
+	</inputs>
+	<outputs>
+		<data format="json" name="output">
+			<change_format>
+				<when input="tsv" value="| @tsv" format="tabular" />
+			</change_format>
+		</data>
+
+	</outputs>
+	<help><![CDATA[
+JQ
+==
+
+See `the manual <https://stedolan.github.io/jq/manual/>`__ for more information.
+]]></help>
+</tool>
