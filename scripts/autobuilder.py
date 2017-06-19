@@ -1,16 +1,17 @@
 #!/usr/bin/env python
-
 import importlib
 import inspect
 import os
-import re
 import copy
+import re
 import glob
 import argparse
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
+
+PROJECT_NAME = 'parsec'
 
 import bioblend.galaxy as bg
 IGNORE_LIST = [
@@ -87,6 +88,7 @@ class ScriptBuilder(object):
         ]
         if default:
             args.append('default="%s"' % default)
+            args.append('show_default=True')
         if ptype is not None:
             args.extend(ptype)
         return '@click.option(\n%s\n)\n' % (',\n'.join(['    ' + x for x in args]))
@@ -197,7 +199,6 @@ class ScriptBuilder(object):
                 continue
 
             sm = getattr(bg, module)
-            print(module, sm)
             submodules = dir(sm)
             # Find the "...Client"
             wanted = [x for x in submodules if 'Client' in x and x != 'Client'][0]
@@ -213,13 +214,13 @@ class ScriptBuilder(object):
                 continue
             self.orig(module, sm, ssm, f)
         # Write module __init__
-        with open(os.path.join('parsec', 'commands', module, '__init__.py'), 'w') as handle:
+        with open(os.path.join(PROJECT_NAME, 'commands', module, '__init__.py'), 'w') as handle:
             pass
 
-        with open(os.path.join('parsec', 'commands', 'cmd_%s.py' % module), 'w') as handle:
+        with open(os.path.join(PROJECT_NAME, 'commands', 'cmd_%s.py' % module), 'w') as handle:
             handle.write('import click\n')
             # for function:
-            files = list(glob.glob("parsec/commands/%s/*.py" % module))
+            files = list(glob.glob(PROJECT_NAME + "/commands/%s/*.py" % module))
             files = sorted([f for f in files if "__init__.py" not in f])
             for idx, path in enumerate(files):
                 fn = path.replace('/', '.')[0:-3]
@@ -227,7 +228,7 @@ class ScriptBuilder(object):
 
             handle.write('\n@click.group()\n')
             handle.write('def cli():\n')
-            handle.write('\tpass\n\n')
+            handle.write('    pass\n\n')
             for i in range(len(files)):
                 handle.write('cli.add_command(func%d)\n' % i)
 
@@ -388,7 +389,9 @@ class ScriptBuilder(object):
         # Generate a command name, prefix everything with auto_ to identify the
         # automatically generated stuff
         cmd_name = '%s.py' % function_name
-        cmd_path = os.path.join('parsec', 'commands', module_name, cmd_name)
+        cmd_path = os.path.join(PROJECT_NAME, 'commands', module_name, cmd_name)
+        if not os.path.exists(os.path.join(PROJECT_NAME, 'commands', module_name)):
+            os.makedirs(os.path.join(PROJECT_NAME, 'commands', module_name))
 
         # Save file
         with open(cmd_path, 'w') as handle:
@@ -396,5 +399,5 @@ class ScriptBuilder(object):
 
 if __name__ == '__main__':
     z = ScriptBuilder()
-    parser = argparse.ArgumentParser(description='process bioblend into CLI tools')
+    parser = argparse.ArgumentParser(description='process into CLI tools')
     z.process()
