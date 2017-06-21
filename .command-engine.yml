@@ -1,0 +1,34 @@
+project_name: parsec
+strict: false
+module:
+    base_module: bioblend.galaxy
+    instance_cls: "<class 'bioblend.galaxy.GalaxyInstance'>"
+    instance_func: GalaxyInstance
+    instance_args:
+        - "http://localhost:8080"
+        - "API_KEY"
+
+    ignore:
+        top_attrs:
+            - client
+        funcs:
+            - histories.download_dataset
+            - histories.get_current_history
+            - make_delete_request
+            - make_get_request
+            - make_post_request
+            - make_put_request
+            - set_max_get_retries
+            - get_max_get_retries
+            - set_get_retry_delay
+            - get_retry_delay
+            - set_retry_delay
+            - max_get_retries
+            - show_stderr
+            - show_stdout
+
+documentation: |
+    parsec is a set of wrappers for BioBlend's API. It builds a set of small,
+    useful utilities for talking to Galaxy servers. Each utility is implemented as
+    a subcommand of ``parsec``. This section of the documentation
+    describes these commands.
