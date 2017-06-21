@@ -118,7 +118,7 @@ class ParsecCLI(click.MultiCommand):
     type=str
 )
 @pass_context
-def parsec(ctx, instance, verbose, path=None):
+def parsec(ctx, galaxy_instance, verbose, path=None):
     """Command line wrappers around BioBlend functions. While this sounds
     unexciting, with parsec and jq you can easily build powerful command line
     scripts."""
@@ -127,7 +127,7 @@ def parsec(ctx, instance, verbose, path=None):
         set_global_config_path(path)
     # We abuse this, knowing that calls to one will fail.
     try:
-        ctx.gi = get_galaxy_instance(instance)
+        ctx.gi = get_galaxy_instance(galaxy_instance)
     except TypeError:
         pass
         # ctx.log("Could not access Galaxy instance configuration")
