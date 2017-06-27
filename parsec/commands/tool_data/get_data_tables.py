@@ -1,14 +1,23 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, list_output, _arg_split
 
 @click.command('get_data_tables')
 
 
 @pass_context
-@bioblend_exception
-@dict_output
+@custom_exception
+@list_output
 def cli(ctx):
     """Get the list of all data tables.
+
+Output:
+
+     A list of dicts with details on individual data tables.
+          For example::
+
+            [{"model_class": "TabularToolDataTable", "name": "fasta_indexes"},
+             {"model_class": "TabularToolDataTable", "name": "bwa_indexes"}]
+        
     """
     return ctx.gi.tool_data.get_data_tables()

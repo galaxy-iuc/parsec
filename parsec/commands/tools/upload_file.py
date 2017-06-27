@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('upload_file')
 @click.argument("path", type=str)
@@ -33,10 +33,14 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, path, history_id, dbkey=None, file_name=None, file_type=None, space_to_tab=None, to_posix_lines=None):
     """Upload the file specified by ``path`` to the history specified by ``history_id``.
+
+Output:
+
+    
     """
     kwargs = {}
     if dbkey and len(dbkey) > 0:

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('show_library')
 @click.argument("library_id", type=str)
@@ -12,9 +12,14 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, library_id, contents=False):
     """Get information about a library.
+
+Output:
+
+     details of the given library
+        
     """
     return ctx.gi.libraries.show_library(library_id, contents=contents)

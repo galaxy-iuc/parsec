@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('create_folder')
 @click.argument("parent_folder_id", type=str)
@@ -13,9 +13,14 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, parent_folder_id, name, description=""):
     """Create a folder.
+
+Output:
+
+     details of the updated folder
+        
     """
     return ctx.gi.folders.create_folder(parent_folder_id, name, description=description)

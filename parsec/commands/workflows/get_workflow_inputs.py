@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, list_output, _arg_split
 
 @click.command('get_workflow_inputs')
 @click.argument("workflow_id", type=str)
@@ -8,9 +8,14 @@ from parsec.decorators import bioblend_exception, dict_output
 
 
 @pass_context
-@bioblend_exception
-@dict_output
+@custom_exception
+@list_output
 def cli(ctx, workflow_id, label):
     """Get a list of workflow input IDs that match the given label. If no input matches the given label, an empty list is returned.
+
+Output:
+
+     list of workflow inputs matching the label query
+        
     """
     return ctx.gi.workflows.get_workflow_inputs(workflow_id, label)

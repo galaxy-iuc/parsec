@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('show_history')
 @click.argument("history_id", type=str)
@@ -32,9 +32,14 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, history_id, contents=False, deleted="", visible="", details="", types=""):
     """Get details of a given history. By default, just get the history meta information.
+
+Output:
+
+     details of the given history
+        
     """
     return ctx.gi.histories.show_history(history_id, contents=contents, deleted=deleted, visible=visible, details=details, types=types)

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('show_genome')
 @click.argument("id", type=str)
@@ -27,9 +27,13 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, id, num="", chrom="", low="", high=""):
     """Returns information about build <id>
+
+Output:
+
+    
     """
     return ctx.gi.genomes.show_genome(id, num=num, chrom=chrom, low=low, high=high)

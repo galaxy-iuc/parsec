@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('show_dataset')
 @click.argument("dataset_id", type=str)
@@ -19,9 +19,13 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, dataset_id, deleted=False, hda_ldda="hda"):
     """Get details about a given dataset. This can be a history or a library dataset.
+
+Output:
+
+    
     """
     return ctx.gi.datasets.show_dataset(dataset_id, deleted=deleted, hda_ldda=hda_ldda)

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('create_local_user')
 @click.argument("username", type=str)
@@ -9,9 +9,14 @@ from parsec.decorators import bioblend_exception, dict_output
 
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, username, user_email, password):
     """Create a new Galaxy local user.
+
+Output:
+
+     a dictionary containing information about the created user
+        
     """
     return ctx.gi.users.create_local_user(username, user_email, password)

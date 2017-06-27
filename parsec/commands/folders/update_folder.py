@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('update_folder')
 @click.argument("folder_id", type=str)
@@ -13,9 +13,14 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, folder_id, name, description=""):
     """Update folder information.
+
+Output:
+
+     details of the updated folder
+        
     """
     return ctx.gi.folders.update_folder(folder_id, name, description=description)

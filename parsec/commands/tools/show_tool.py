@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('show_tool')
 @click.argument("tool_id", type=str)
@@ -17,9 +17,13 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, tool_id, io_details=False, link_details=False):
     """Get details of a given tool.
+
+Output:
+
+    
     """
     return ctx.gi.tools.show_tool(tool_id, io_details=io_details, link_details=link_details)

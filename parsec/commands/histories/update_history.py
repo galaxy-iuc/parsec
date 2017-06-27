@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('update_history')
 @click.argument("history_id", type=str)
@@ -43,10 +43,20 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, history_id, annotation=None, deleted=None, importable=None, name=None, published=None, purged=None, tags=None):
     """Update history metadata information. Some of the attributes that can be modified are documented below.
+
+Output:
+
+     details of the updated history (for Galaxy release_15.01 and
+            earlier only the updated attributes)
+
+        .. warning::
+            The return value was changed in BioBlend v0.8.0, previously it was
+            the status code (type int).
+        
     """
     kwargs = {}
     if annotation and len(annotation) > 0:

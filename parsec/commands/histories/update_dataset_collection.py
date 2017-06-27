@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('update_dataset_collection')
 @click.argument("history_id", type=str)
@@ -23,10 +23,19 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, history_id, dataset_collection_id, deleted=None, name=None, visible=None):
     """Update history dataset collection metadata. Some of the attributes that can be modified are documented below.
+
+Output:
+
+     the updated dataset collection attributes
+
+        .. warning::
+            The return value was changed in BioBlend v0.8.0, previously it was
+            the status code (type int).
+        
     """
     kwargs = {}
     if deleted is not None:

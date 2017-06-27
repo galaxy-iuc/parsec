@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('delete_user')
 @click.argument("user_id", type=str)
@@ -12,9 +12,14 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, user_id, purge=False):
     """Delete a user.
+
+Output:
+
+     a dictionary containing information about the deleted user
+        
     """
     return ctx.gi.users.delete_user(user_id, purge=purge)

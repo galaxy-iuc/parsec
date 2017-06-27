@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, list_output, _arg_split
 
 @click.command('get_workflows')
 
@@ -21,9 +21,20 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
-@dict_output
+@custom_exception
+@list_output
 def cli(ctx, workflow_id="", name="", published=False):
     """Get all workflows or filter the specific one(s) via the provided ``name`` or ``workflow_id``. Provide only one argument, ``name`` or ``workflow_id``, but not both.
+
+Output:
+
+     A list of workflow dicts.
+                 For example::
+
+                   [{u'id': u'92c56938c2f9b315',
+                     u'name': u'Simple',
+                     u'url': u'/api/workflows/92c56938c2f9b315'}]
+
+        
     """
     return ctx.gi.workflows.get_workflows(workflow_id=workflow_id, name=name, published=published)

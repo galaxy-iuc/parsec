@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('upload_from_ftp')
 @click.argument("path", type=str)
@@ -8,9 +8,13 @@ from parsec.decorators import bioblend_exception, dict_output
 
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, path, history_id):
     """Upload the file specified by ``path`` from the user's FTP directory to the history specified by ``history_id``.
+
+Output:
+
+    
     """
     return ctx.gi.tools.upload_from_ftp(path, history_id)

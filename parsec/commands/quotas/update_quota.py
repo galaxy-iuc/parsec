@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, str_output, _arg_split
 
 @click.command('update_quota')
 @click.argument("quota_id", type=str)
@@ -46,9 +46,17 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
-@dict_output
+@custom_exception
+@str_output
 def cli(ctx, quota_id, name="", description="", amount="", operation="", default="no", in_users=None, in_groups=None):
     """Update an existing quota
+
+Output:
+
+     A semicolon separated list of changes to the quota.
+          For example::
+
+            "Quota 'Testing-A' has been renamed to 'Testing-B'; Quota 'Testing-e' is now '-100.0 GB'; Quota 'Testing-B' is now the default for unregistered users"
+        
     """
     return ctx.gi.quotas.update_quota(quota_id, name=name, description=description, amount=amount, operation=operation, default=default, in_users=in_users, in_groups=in_groups)

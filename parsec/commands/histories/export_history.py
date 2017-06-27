@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, str_output, _arg_split
 
 @click.command('export_history')
 @click.argument("history_id", type=str)
@@ -29,9 +29,15 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
-@dict_output
+@custom_exception
+@str_output
 def cli(ctx, history_id, gzip=True, include_hidden=False, include_deleted=False, wait=False):
     """Start a job to create an export archive for the given history.
+
+Output:
+
+     ``jeha_id`` of the export, or empty if ``wait`` is ``False``
+          and the export is not ready.
+        
     """
     return ctx.gi.histories.export_history(history_id, gzip=gzip, include_hidden=include_hidden, include_deleted=include_deleted, wait=wait)

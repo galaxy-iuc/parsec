@@ -6,7 +6,7 @@ from .io import error
 
 
 @wrapt.decorator
-def bioblend_exception(wrapped, instance, args, kwargs):
+def custom_exception(wrapped, instance, args, kwargs):
     try:
         return wrapped(*args, **kwargs)
     except Exception as e:

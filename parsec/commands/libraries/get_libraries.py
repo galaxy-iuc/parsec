@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, list_output, _arg_split
 
 @click.command('get_libraries')
 
@@ -21,9 +21,14 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
-@dict_output
+@custom_exception
+@list_output
 def cli(ctx, library_id="", name="", deleted=False):
     """Get all the libraries or filter for specific one(s) via the provided name or ID. Provide only one argument: ``name`` or ``library_id``, but not both.
+
+Output:
+
+     list of dicts each containing basic information about a library
+        
     """
     return ctx.gi.libraries.get_libraries(library_id=library_id, name=name, deleted=deleted)

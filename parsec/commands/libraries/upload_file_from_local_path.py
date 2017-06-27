@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('upload_file_from_local_path')
 @click.argument("library_id", type=str)
@@ -27,9 +27,13 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, library_id, file_local_path, folder_id="", file_type="auto", dbkey="?"):
     """Read local file contents from file_local_path and upload data to a library.
+
+Output:
+
+    
     """
     return ctx.gi.libraries.upload_file_from_local_path(library_id, file_local_path, folder_id=folder_id, file_type=file_type, dbkey=dbkey)

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('download_history')
 @click.argument("history_id", type=str)
@@ -16,9 +16,13 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, history_id, jeha_id, outf, chunk_size=4096):
     """Download a history export archive.  Use :meth:`export_history` to create an export.
+
+Output:
+
+    
     """
     return ctx.gi.histories.download_history(history_id, jeha_id, outf, chunk_size=chunk_size)

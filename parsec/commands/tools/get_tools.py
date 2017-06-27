@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, list_output, _arg_split
 
 @click.command('get_tools')
 
@@ -21,9 +21,16 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
-@dict_output
+@custom_exception
+@list_output
 def cli(ctx, tool_id="", name="", trackster=""):
     """Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_id``. Provide only one argument, ``name`` or ``tool_id``, but not both.
+
+Output:
+
+     List of tool descriptions.
+
+        .. seealso:: bioblend.galaxy.toolshed.get_repositories()
+        
     """
     return ctx.gi.tools.get_tools(tool_id=tool_id, name=name, trackster=trackster)

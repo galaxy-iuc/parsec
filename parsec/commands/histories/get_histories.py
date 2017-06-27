@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, list_output, _arg_split
 
 @click.command('get_histories')
 
@@ -20,9 +20,16 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
-@dict_output
+@custom_exception
+@list_output
 def cli(ctx, history_id="", name="", deleted=False):
     """Get all histories or filter the specific one(s) via the provided ``name`` or ``history_id``. Provide only one argument, ``name`` or ``history_id``, but not both.
+
+Output:
+
+     Return a list of history element dicts. If more than one
+                 history matches the given ``name``, return the list of all the
+                 histories with the given name
+        
     """
     return ctx.gi.histories.get_histories(history_id=history_id, name=name, deleted=deleted)

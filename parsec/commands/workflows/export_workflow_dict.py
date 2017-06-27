@@ -1,15 +1,20 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('export_workflow_dict')
 @click.argument("workflow_id", type=str)
 
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, workflow_id):
     """Exports a workflow.
+
+Output:
+
+     Dictionary representing the requested workflow
+        
     """
     return ctx.gi.workflows.export_workflow_dict(workflow_id)

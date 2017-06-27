@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('show_folder')
 @click.argument("library_id", type=str)
@@ -8,9 +8,13 @@ from parsec.decorators import bioblend_exception, dict_output
 
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, library_id, folder_id):
     """Get details about a given folder. The required ``folder_id`` can be obtained from the folder's library content details.
+
+Output:
+
+    
     """
     return ctx.gi.libraries.show_folder(library_id, folder_id)

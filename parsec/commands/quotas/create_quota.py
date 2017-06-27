@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('create_quota')
 @click.argument("name", type=str)
@@ -29,9 +29,21 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, name, description, amount, operation, default="no", in_users=None, in_groups=None):
     """Create a new quota
+
+Output:
+
+     A description of quota.
+          For example::
+
+            {u'url': '/galaxy/api/quotas/386f14984287a0f7',
+             u'model_class': 'Quota',
+             u'message': "Quota 'Testing' has been created with 1 associated users and 0 associated groups.",
+             u'id': '386f14984287a0f7',
+             u'name': 'Testing'}
+        
     """
     return ctx.gi.quotas.create_quota(name, description, amount, operation, default=default, in_users=in_users, in_groups=in_groups)

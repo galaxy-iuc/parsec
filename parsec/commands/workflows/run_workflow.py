@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('run_workflow')
 @click.argument("workflow_id", type=str)
@@ -37,9 +37,64 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, workflow_id, dataset_map="", params="", history_id="", history_name="", import_inputs_to_history=False, replacement_params=""):
     """Run the workflow identified by ``workflow_id``.
+
+Output:
+
+     A dict containing the history ID where the outputs are placed
+          as well as output dataset IDs. For example::
+
+            {u'history': u'64177123325c9cfd',
+             u'outputs': [u'aa4d3084af404259']}
+
+        The ``params`` dict should be specified as follows::
+
+          {STEP_ID: PARAM_DICT, ...}
+
+        where PARAM_DICT is::
+
+          {PARAM_NAME: VALUE, ...}
+
+        For backwards compatibility, the following (deprecated) format is
+        also supported for ``params``::
+
+          {TOOL_ID: PARAM_DICT, ...}
+
+        in which case PARAM_DICT affects all steps with the given tool id.
+        If both by-tool-id and by-step-id specifications are used, the
+        latter takes precedence.
+
+        Finally (again, for backwards compatibility), PARAM_DICT can also
+        be specified as::
+
+          {'param': PARAM_NAME, 'value': VALUE}
+
+        Note that this format allows only one parameter to be set per step.
+
+        The ``replacement_params`` dict should map parameter names in
+        post-job actions (PJAs) to their runtime values. For
+        instance, if the final step has a PJA like the following::
+
+          {u'RenameDatasetActionout_file1': {u'action_arguments': {u'newname': u'${output}'},
+            u'action_type': u'RenameDatasetAction',
+            u'output_name': u'out_file1'}}
+
+        then the following renames the output dataset to 'foo'::
+
+          replacement_params = {'output': 'foo'}
+
+        see also `this email thread
+        <http://lists.bx.psu.edu/pipermail/galaxy-dev/2011-September/006875.html>`_.
+
+        .. warning::
+            This method waits for the whole workflow to be scheduled before
+            returning and does not scale to large workflows as a result. This
+            method has therefore been deprecated in favor of
+            :meth:`invoke_workflow`, which also features improved default
+            behavior for dataset input handling.
+        
     """
     return ctx.gi.workflows.run_workflow(workflow_id, dataset_map=dataset_map, params=params, history_id=history_id, history_name=history_name, import_inputs_to_history=import_inputs_to_history, replacement_params=replacement_params)

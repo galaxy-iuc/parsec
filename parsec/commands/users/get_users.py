@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, list_output, _arg_split
 
 @click.command('get_users')
 
@@ -25,9 +25,20 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
-@dict_output
+@custom_exception
+@list_output
 def cli(ctx, deleted=False, f_email="", f_name="", f_any=""):
     """Get a list of all registered users. If ``deleted`` is set to ``True``, get a list of deleted users.
+
+Output:
+
+     a list of dicts with user details.
+                 For example::
+
+                   [{u'email': u'a_user@example.com',
+                     u'id': u'dda47097d9189f15',
+                     u'url': u'/api/users/dda47097d9189f15'}]
+
+        
     """
     return ctx.gi.users.get_users(deleted=deleted, f_email=f_email, f_name=f_name, f_any=f_any)

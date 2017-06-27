@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output, _arg_split
 
 @click.command('delete_history')
 @click.argument("history_id", type=str)
@@ -12,9 +12,13 @@ from parsec.decorators import bioblend_exception, dict_output
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, history_id, purge=False):
     """Delete a history.
+
+Output:
+
+    
     """
     return ctx.gi.histories.delete_history(history_id, purge=purge)

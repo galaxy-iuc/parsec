@@ -11,21 +11,49 @@ module:
     ignore:
         top_attrs:
             - client
-        funcs:
-            - histories.download_dataset
-            - histories.get_current_history
+            - base_url
+            - default_params
+            - get_retry_delay
+            - set_retry_delay
+            - json_headers
+            - key
             - make_delete_request
             - make_get_request
             - make_post_request
             - make_put_request
+            - max_get_retries
+            - max_get_attempts
+            - toolShed
+            - url
+            - verify
+        funcs:
+            - histories.download_dataset
+            - histories.get_current_history
             - set_max_get_retries
             - get_max_get_retries
             - set_get_retry_delay
-            - get_retry_delay
-            - set_retry_delay
-            - max_get_retries
             - show_stderr
             - show_stdout
+            - client
+            - base_url
+            - default_params
+            - get_retry_delay
+            - set_retry_delay
+            - json_headers
+            - key
+            - set_get_retry_delay
+            - set_max_get_retries
+            - get_retry_delay
+            - max_get_retries
+            - make_delete_request
+            - make_get_request
+            - make_post_request
+            - make_put_request
+            - max_get_retries
+            - max_get_attempts
+            - toolShed
+            - url
+            - verify
 
 documentation: |
     parsec is a set of wrappers for BioBlend's API. It builds a set of small,
