@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, List_output, _arg_split
+from parsec.decorators import custom_exception, list_output, _arg_split
 
 @click.command('get_repository_revision_install_info')
 @click.argument("name", type=str)
