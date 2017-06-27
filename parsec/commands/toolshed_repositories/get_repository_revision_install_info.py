@@ -10,7 +10,7 @@ from parsec.decorators import custom_exception, list_output, _arg_split
 
 @pass_context
 @custom_exception
-@List_output
+@list_output
 def cli(ctx, name, owner, changeset_revision):
     """Return a list of dictionaries of metadata about a certain changeset revision for a single tool.
 
