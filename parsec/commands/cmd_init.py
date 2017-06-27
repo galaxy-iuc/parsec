@@ -16,8 +16,6 @@ __default: local
 local:
     key: "%(key)s"
     url: "%(url)s"
-    # email: ""
-    # password: ""
 """
 
 SUCCESS_MESSAGE = (
