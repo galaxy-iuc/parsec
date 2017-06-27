@@ -93,7 +93,9 @@ class ParsecCLI(click.MultiCommand):
         commands = ['config', 'datasets', 'datatypes', 'folders', 'forms',
                     'ftpfiles', 'genomes', 'groups', 'histories', 'jobs',
                     'libraries', 'quotas', 'roles', 'tool_data', 'tools',
-                    'toolshed', 'users', 'utils', 'visual', 'workflows']
+                    'toolshed', 'users', 'utils', 'visual', 'workflows',
+                    'toolshed_categories', 'toolshed_repositories',
+                    'toolshed_tools']
         return commands
 
     def get_command(self, ctx, name):
