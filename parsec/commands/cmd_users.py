@@ -11,7 +11,7 @@ from parsec.commands.users.show_user import cli as func8
 
 @click.group()
 def cli():
-	pass
+    pass
 
 cli.add_command(func0)
 cli.add_command(func1)

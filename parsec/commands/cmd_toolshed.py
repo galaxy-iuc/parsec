@@ -5,7 +5,7 @@ from parsec.commands.toolshed.show_repository import cli as func2
 
 @click.group()
 def cli():
-	pass
+    pass
 
 cli.add_command(func0)
 cli.add_command(func1)

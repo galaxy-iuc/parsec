@@ -3,6 +3,6 @@ from parsec.commands.ftpfiles.get_ftp_files import cli as func0
 
 @click.group()
 def cli():
-	pass
+    pass
 
 cli.add_command(func0)

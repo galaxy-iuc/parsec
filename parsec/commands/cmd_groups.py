@@ -12,7 +12,7 @@ from parsec.commands.groups.update_group import cli as func9
 
 @click.group()
 def cli():
-	pass
+    pass
 
 cli.add_command(func0)
 cli.add_command(func1)

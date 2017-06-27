@@ -19,7 +19,7 @@ from parsec.commands.libraries.upload_from_galaxy_filesystem import cli as func1
 
 @click.group()
 def cli():
-	pass
+    pass
 
 cli.add_command(func0)
 cli.add_command(func1)

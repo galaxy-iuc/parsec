@@ -6,7 +6,7 @@ from parsec.commands.jobs.show_job import cli as func3
 
 @click.group()
 def cli():
-	pass
+    pass
 
 cli.add_command(func0)
 cli.add_command(func1)

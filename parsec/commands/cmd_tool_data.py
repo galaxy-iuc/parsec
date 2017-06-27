@@ -6,7 +6,7 @@ from parsec.commands.tool_data.show_data_table import cli as func3
 
 @click.group()
 def cli():
-	pass
+    pass
 
 cli.add_command(func0)
 cli.add_command(func1)
