@@ -23,7 +23,7 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
-version = '1.0.3-rc1'
+version = '1.0.4'
 subpackages = [x.replace('/', '.') for x in glob.glob('parsec/commands/*') if not x.endswith('.py')]
 
 setup(
@@ -32,7 +32,7 @@ setup(
     description='Command-line utilities to assist in interacting with Galaxy servers (http://galaxyproject.org/).',
     long_description=readme,
     author='Galaxy Project and Community',
-    author_email='rasche.eric@gmail.com',
+    author_email='parsec@hx42.org',
     url='https://github.com/galaxy-iuc/parsec',
     packages=[
         'parsec',
