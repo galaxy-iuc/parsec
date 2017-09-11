@@ -6,7 +6,14 @@ History
 .. to_doc
 
 ----------------------
-1.0.3 (2017-06-27)
+1.0.4 (2017-09-11)
+----------------------
+
+* Correct documentation quoting for ZSH (Thanks `@manabuishii <https://github.com/manabuishii>`__)
+* New and improved error handling (Thanks `@abretaud <https://github.com/abretaud>`__)
+
+----------------------
+1.0.3-rc1 (2017-06-27)
 ----------------------
 
 * Add toolshed support to parsec
@@ -15,8 +22,8 @@ History
 1.0.2 (2017-06-12)
 ----------------------
 
-* Support configuration files from alternate locations (Thanks to [@manabuishii](https://github.com/manabuishii))
-* Support specifying galaxy url / api key on command line (Thanks to [@manabuishii](https://github.com/manabuishii))
+* Support configuration files from alternate locations (Thanks `@manabuishii <https://github.com/manabuishii>`__)
+* Support specifying galaxy url / api key on command line (Thanks `@manabuishii <https://github.com/manabuishii>`__)
 
 ----------------------
 1.0.1 (2017-05-26)
