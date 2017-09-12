@@ -1,7 +1,7 @@
 tools
 =====
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``tools``.
 
 
@@ -16,6 +16,16 @@ This section is auto-generated from the help text for the arrow command
 
 Get a list of available tool elements in Galaxy's configured toolbox.
 
+
+**Output**
+
+
+List containing tools (if not in sections) or tool sections
+            with nested tool descriptions.
+
+   .. seealso:: bioblend.galaxy.toolshed.get_repositories()
+   
+    
 **Options**::
 
 
@@ -33,6 +43,15 @@ Get a list of available tool elements in Galaxy's configured toolbox.
 
 Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_id``. Provide only one argument, ``name`` or ``tool_id``, but not both.
 
+
+**Output**
+
+
+List of tool descriptions.
+
+   .. seealso:: bioblend.galaxy.toolshed.get_repositories()
+   
+    
 **Options**::
 
 
@@ -54,6 +73,12 @@ Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_
 
 Install dependencies for a given tool via a resolver. This works only for Conda currently. This functionality is available since Galaxy release_16.10 and is available only to Galaxy admins.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -71,6 +96,12 @@ Install dependencies for a given tool via a resolver. This works only for Conda 
 
 Upload a string to a new dataset in the history specified by ``history_id``.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -88,6 +119,12 @@ Upload a string to a new dataset in the history specified by ``history_id``.
 
 Upload a string to a new dataset in the history specified by ``history_id``.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -105,6 +142,12 @@ Upload a string to a new dataset in the history specified by ``history_id``.
 
 Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with inputs from ``dict`` ``tool_inputs``.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -122,6 +165,12 @@ Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with i
 
 Get details of a given tool.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -141,6 +190,12 @@ Get details of a given tool.
 
 Upload the file specified by ``path`` to the history specified by ``history_id``.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -166,6 +221,12 @@ Upload the file specified by ``path`` to the history specified by ``history_id``
 
 Upload the file specified by ``path`` from the user's FTP directory to the history specified by ``history_id``.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 

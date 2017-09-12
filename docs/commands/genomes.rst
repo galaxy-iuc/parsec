@@ -1,7 +1,7 @@
 genomes
 =======
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``genomes``.
 
 
@@ -16,6 +16,12 @@ This section is auto-generated from the help text for the arrow command
 
 Returns a list of installed genomes
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -33,11 +39,20 @@ Returns a list of installed genomes
 
 Download and/or index a genome.
 
+
+**Output**
+
+
+dict( status: 'ok', job: <job ID> )
+            If error:
+            dict( status: 'error', error: <error message> )
+   
+    
 **Options**::
 
 
       --func TEXT           Allowed values: 'download', Download and index; 'index',
-                            Index only
+                            Index only  [default: download]
       --source TEXT         Data source for this build. Can be: UCSC, Ensembl, NCBI,
                             URL
       --dbkey TEXT          DB key of the build to download, ignored unless 'UCSC'
@@ -64,6 +79,12 @@ Download and/or index a genome.
 
 Returns information about build <id>
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 

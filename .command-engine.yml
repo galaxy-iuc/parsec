@@ -10,6 +10,7 @@ module:
 
     ignore:
         top_attrs:
+            - timeout
             - client
             - base_url
             - default_params

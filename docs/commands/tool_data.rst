@@ -1,7 +1,7 @@
 tool_data
 =========
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``tool_data``.
 
 
@@ -16,6 +16,12 @@ This section is auto-generated from the help text for the arrow command
 
 Delete an item from a data table.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -33,6 +39,17 @@ Delete an item from a data table.
 
 Get the list of all data tables.
 
+
+**Output**
+
+
+A list of dicts with details on individual data tables.
+     For example::
+
+       [{"model_class": "TabularToolDataTable", "name": "fasta_indexes"},
+        {"model_class": "TabularToolDataTable", "name": "bwa_indexes"}]
+   
+    
 **Options**::
 
 
@@ -50,6 +67,22 @@ Get the list of all data tables.
 
 Reload a data table.
 
+
+**Output**
+
+
+A description of the given data table and its content.
+     For example::
+
+       {"columns": ["value", "dbkey", "name", "path"],
+        "fields": [["test id",
+          "test",
+          "test name",
+          "/opt/galaxy-dist/tool-data/test/seq/test id.fa"]],
+        "model_class": "TabularToolDataTable",
+        "name": "all_fasta"}
+   
+    
 **Options**::
 
 
@@ -67,6 +100,22 @@ Reload a data table.
 
 Get details of a given data table.
 
+
+**Output**
+
+
+A description of the given data table and its content.
+     For example::
+
+       {"columns": ["value", "dbkey", "name", "path"],
+        "fields": [["test id",
+          "test",
+          "test name",
+          "/opt/galaxy-dist/tool-data/test/seq/test id.fa"]],
+        "model_class": "TabularToolDataTable",
+        "name": "all_fasta"}
+   
+    
 **Options**::
 
 

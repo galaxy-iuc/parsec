@@ -1,7 +1,7 @@
 ftpfiles
 ========
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``ftpfiles``.
 
 
@@ -16,6 +16,13 @@ This section is auto-generated from the help text for the arrow command
 
 Get a list of local files.
 
+
+**Output**
+
+
+A list of dicts with details on individual files on FTP
+   
+    
 **Options**::
 
 

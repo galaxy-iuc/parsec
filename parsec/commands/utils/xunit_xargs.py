@@ -9,7 +9,7 @@ except:
     import io
 
 from parsec.cli import pass_context
-from parsec.decorators import bioblend_exception
+from parsec.decorators import custom_exception
 from justbackoff import Backoff
 from subprocess import CalledProcessError, check_output
 from xunit_wrapper import xunit, xunit_suite, xunit_dump
@@ -37,7 +37,7 @@ def unicodify(value):
 @click.argument("_")
 
 @pass_context
-@bioblend_exception
+@custom_exception
 def cli(ctx, _):
     """xargs look-alike that wraps output calls as XUnit XML
 

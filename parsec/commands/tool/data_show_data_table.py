@@ -1,13 +1,13 @@
 import click
 
 from parsec.cli import pass_context
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output
 
 
 @click.command('tool_data_show_data_table')
 @click.argument("data_table_id", type=str)
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx, data_table_id):
     """Display information on a single data_table

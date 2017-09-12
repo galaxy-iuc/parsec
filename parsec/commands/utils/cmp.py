@@ -3,7 +3,7 @@ import time
 import click
 import json
 from parsec.cli import pass_context
-from parsec.decorators import bioblend_exception
+from parsec.decorators import custom_exception
 from justbackoff import Backoff
 from subprocess import CalledProcessError, check_output
 from xunit_wrapper import xunit, xunit_suite, xunit_dump
@@ -15,7 +15,7 @@ from six import binary_type, string_types, text_type
 @click.argument("cmp_with", type=str, required=True)
 
 @pass_context
-@bioblend_exception
+@custom_exception
 def cli(ctx, method, cmp_with):
     """comparison tool. Exits if the value read from stdin does not pass the comparison test with the specified value.
 

@@ -1,7 +1,7 @@
 groups
 ======
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``groups``.
 
 
@@ -16,6 +16,13 @@ This section is auto-generated from the help text for the arrow command
 
 Add a role to the given group.
 
+
+**Output**
+
+
+Added group role's info
+   
+    
 **Options**::
 
 
@@ -33,6 +40,13 @@ Add a role to the given group.
 
 Add a user to the given group.
 
+
+**Output**
+
+
+Added group user's info
+   
+    
 **Options**::
 
 
@@ -50,6 +64,19 @@ Add a user to the given group.
 
 Create a new group.
 
+
+**Output**
+
+
+A (size 1) list with newly created group
+     details, like::
+
+       [{u'id': u'7c9636938c3e83bf',
+         u'model_class': u'Group',
+         u'name': u'My Group Name',
+         u'url': u'/api/groups/7c9636938c3e83bf'}]
+   
+    
 **Options**::
 
 
@@ -69,6 +96,12 @@ Create a new group.
 
 Remove a role from the given group.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -86,6 +119,12 @@ Remove a role from the given group.
 
 Remove a user from the given group.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -103,6 +142,13 @@ Remove a user from the given group.
 
 Get the list of roles associated to the given group.
 
+
+**Output**
+
+
+List of group roles' info
+   
+    
 **Options**::
 
 
@@ -120,6 +166,13 @@ Get the list of roles associated to the given group.
 
 Get the list of users associated to the given group.
 
+
+**Output**
+
+
+List of group users' info
+   
+    
 **Options**::
 
 
@@ -137,6 +190,23 @@ Get the list of users associated to the given group.
 
 Get all (not deleted) groups.
 
+
+**Output**
+
+
+A list of dicts with details on individual groups.
+     For example::
+
+       [{'id': '33abac023ff186c2',
+         'model_class': 'Group',
+         'name': 'Listeria',
+         'url': '/api/groups/33abac023ff186c2'},
+        {'id': '73187219cd372cf8',
+         'model_class': 'Group',
+         'name': 'LPN',
+         'url': '/api/groups/73187219cd372cf8'}]
+   
+    
 **Options**::
 
 
@@ -154,6 +224,21 @@ Get all (not deleted) groups.
 
 Get details of a given group.
 
+
+**Output**
+
+
+A description of group
+     For example::
+
+       {'id': '33abac023ff186c2',
+        'model_class': 'Group',
+        'name': 'Listeria',
+        'roles_url': '/api/groups/33abac023ff186c2/roles',
+        'url': '/api/groups/33abac023ff186c2',
+        'users_url': '/api/groups/33abac023ff186c2/users'}
+   
+    
 **Options**::
 
 
@@ -171,6 +256,12 @@ Get details of a given group.
 
 Update a group.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 

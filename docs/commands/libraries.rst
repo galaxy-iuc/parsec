@@ -1,7 +1,7 @@
 libraries
 =========
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``libraries``.
 
 
@@ -16,6 +16,12 @@ This section is auto-generated from the help text for the arrow command
 
 Copy a Galaxy dataset into a library.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -36,6 +42,12 @@ Copy a Galaxy dataset into a library.
 
 Create a folder in a library.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -56,6 +68,18 @@ Create a folder in a library.
 
 Create a data library with the properties defined in the arguments.
 
+
+**Output**
+
+
+Details of the created library.
+     For example::
+
+       {'id': 'f740ab636b360a70',
+        'name': 'Library from bioblend',
+        'url': '/api/libraries/f740ab636b360a70'}
+   
+    
 **Options**::
 
 
@@ -75,6 +99,12 @@ Create a data library with the properties defined in the arguments.
 
 Delete a data library.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -92,6 +122,18 @@ Delete a data library.
 
 Delete a library dataset in a data library.
 
+
+**Output**
+
+
+A dictionary containing the dataset id and whether the dataset
+     has been deleted.
+     For example::
+
+       {u'deleted': True,
+        u'id': u'60e680a037f41974'}
+   
+    
 **Options**::
 
 
@@ -110,6 +152,13 @@ Delete a library dataset in a data library.
 
 Get all the folders or filter specific one(s) via the provided ``name`` or ``folder_id`` in data library with id ``library_id``. Provide only one argument: ``name`` or ``folder_id``, but not both.
 
+
+**Output**
+
+
+list of dicts each containing basic information about a folder
+   
+    
 **Options**::
 
 
@@ -131,6 +180,13 @@ Get all the folders or filter specific one(s) via the provided ``name`` or ``fol
 
 Get all the libraries or filter for specific one(s) via the provided name or ID. Provide only one argument: ``name`` or ``library_id``, but not both.
 
+
+**Output**
+
+
+list of dicts each containing basic information about a library
+   
+    
 **Options**::
 
 
@@ -152,6 +208,13 @@ Get all the libraries or filter for specific one(s) via the provided name or ID.
 
 Get the permessions for a library.
 
+
+**Output**
+
+
+dictionary with all applicable permissions' values
+   
+    
 **Options**::
 
 
@@ -169,6 +232,12 @@ Get the permessions for a library.
 
 Set the permissions for a library.  Note: it will override all security for this library even if you leave out a permission type.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -190,6 +259,14 @@ Set the permissions for a library.  Note: it will override all security for this
 
 Get details about a given library dataset. The required ``library_id`` can be obtained from the datasets's library content details.
 
+
+**Output**
+
+
+A dictionary containing information about the dataset in the
+     library
+   
+    
 **Options**::
 
 
@@ -207,6 +284,12 @@ Get details about a given library dataset. The required ``library_id`` can be ob
 
 Get details about a given folder. The required ``folder_id`` can be obtained from the folder's library content details.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -224,6 +307,13 @@ Get details about a given folder. The required ``folder_id`` can be obtained fro
 
 Get information about a library.
 
+
+**Output**
+
+
+details of the given library
+   
+    
 **Options**::
 
 
@@ -243,13 +333,19 @@ Get information about a library.
 
 Upload pasted_content to a data library as a new file.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
       --folder_id TEXT  id of the folder where to place the uploaded file. If not
                         provided, the root folder will be used
-      --file_type TEXT  Galaxy file format name
-      --dbkey TEXT      Dbkey
+      --file_type TEXT  Galaxy file format name  [default: auto]
+      --dbkey TEXT      Dbkey  [default: ?]
       -h, --help        Show this message and exit.
     
 
@@ -264,13 +360,19 @@ Upload pasted_content to a data library as a new file.
 
 Read local file contents from file_local_path and upload data to a library.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
       --folder_id TEXT  id of the folder where to place the uploaded file. If not
                         provided, the root folder will be used
-      --file_type TEXT  Galaxy file format name
-      --dbkey TEXT      Dbkey
+      --file_type TEXT  Galaxy file format name  [default: auto]
+      --dbkey TEXT      Dbkey  [default: ?]
       -h, --help        Show this message and exit.
     
 
@@ -285,13 +387,19 @@ Read local file contents from file_local_path and upload data to a library.
 
 Upload all files in the specified subdirectory of the Galaxy library import directory to a library.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
       --folder_id TEXT       id of the folder where to place the uploaded files. If
                              not provided, the root folder will be used
-      --file_type TEXT       Galaxy file format name
-      --dbkey TEXT           Dbkey
+      --file_type TEXT       Galaxy file format name  [default: auto]
+      --dbkey TEXT           Dbkey  [default: ?]
       --link_data_only TEXT  either 'copy_files' (default) or 'link_to_files'.
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
@@ -310,13 +418,19 @@ Upload all files in the specified subdirectory of the Galaxy library import dire
 
 Upload a file to a library from a URL.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
       --folder_id TEXT  id of the folder where to place the uploaded file. If not
                         provided, the root folder will be used
-      --file_type TEXT  Galaxy file format name
-      --dbkey TEXT      Dbkey
+      --file_type TEXT  Galaxy file format name  [default: auto]
+      --dbkey TEXT      Dbkey  [default: ?]
       -h, --help        Show this message and exit.
     
 
@@ -331,13 +445,19 @@ Upload a file to a library from a URL.
 
 Upload a set of files already present on the filesystem of the Galaxy server to a library.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
       --folder_id TEXT       id of the folder where to place the uploaded files. If
                              not provided, the root folder will be used
-      --file_type TEXT       Galaxy file format name
-      --dbkey TEXT           Dbkey
+      --file_type TEXT       Galaxy file format name  [default: auto]
+      --dbkey TEXT           Dbkey  [default: ?]
       --link_data_only TEXT  either 'copy_files' (default) or 'link_to_files'.
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
