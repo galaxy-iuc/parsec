@@ -28,6 +28,18 @@ Installation
    $ pip install galaxy-parsec
    $ parsec init
 
+Developer Quickstart
+--------------------
+
+.. code-block:: shell
+
+   $ git clone https://github.com/galaxy-iuc/parsec/
+   $ cd parsec
+   $ virtualenv .venv
+   $ . .venv/bin/activate
+   $ pip install -r requirements.txt
+   $ python setup.py develop
+
 Questions?
 ----------
 
