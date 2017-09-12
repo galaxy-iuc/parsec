@@ -1,7 +1,7 @@
 Click
 pyyaml
 # pre-release version
-bioblend>=0.9.0
+https://github.com/galaxyproject/bioblend/archive/master.tar.gz
 docutils
 wrapt
 justbackoff
