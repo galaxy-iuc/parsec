@@ -15,7 +15,7 @@ requirements = [
     'wrapt',
     'pyyaml',
     'justbackoff',
-    'xunit-wrapper',
+    'xunit-wrapper>=0.12',
     'future',
 ]
 
