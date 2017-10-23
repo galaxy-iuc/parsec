@@ -1,17 +1,10 @@
 import sys
-import time
 import click
 import tempfile
-import json
-try:
-    import StringIO as io
-except:
-    import io
 
 from parsec.cli import pass_context
 from parsec.decorators import bioblend_exception
-from justbackoff import Backoff
-from subprocess import CalledProcessError, check_output
+from subprocess import check_output
 from xunit_wrapper import xunit, xunit_suite, xunit_dump
 from six import binary_type, string_types, text_type
 
@@ -35,7 +28,6 @@ def unicodify(value):
     allow_extra_args=True
 ))
 @click.argument("_")
-
 @pass_context
 @bioblend_exception
 def cli(ctx, _):
