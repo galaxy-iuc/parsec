@@ -3,7 +3,7 @@ import click
 import tempfile
 
 from parsec.cli import pass_context
-from parsec.decorators import bioblend_exception
+from parsec.decorators import custom_exception
 from subprocess import check_output
 from xunit_wrapper import xunit, xunit_suite, xunit_dump
 from six import binary_type, string_types, text_type
@@ -29,7 +29,7 @@ def unicodify(value):
 ))
 @click.argument("_")
 @pass_context
-@bioblend_exception
+@custom_exception
 def cli(ctx, _):
     """xargs look-alike that wraps output calls as XUnit XML
 

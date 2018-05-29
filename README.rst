@@ -269,7 +269,7 @@ then pipe this to xargs and run ``show_history`` on all of your histories!
      "update_time": "2017-05-02T16:49:07.941097",
      "url": "/galaxy/api/histories/548c0777ac615645",
      "user_id": "f570ade6e7840ba0",
-     "username_and_slug": "u/eric-rasche/h/buildidmanual-20170502t1613-wfpap2017comparativev10bootstrapped-orgccs-sourcejenkins"
+     "username_and_slug": "u/helena-rasche/h/buildidmanual-20170502t1613-wfpap2017comparativev10bootstrapped-orgccs-sourcejenkins"
    }
 
 So much metadata to play with and filter on! Note that many of these commands
@@ -454,7 +454,7 @@ the output for brevity.
      "url": "/galaxy/api/workflows/ded67e5aa1371841",
      "deleted": false,
      "tags": [],
-     "owner": "eric-rasche",
+     "owner": "helena-rasche",
      "name": "PAP 2017 Functional (v8.15)",
      "inputs": {
        "0": {

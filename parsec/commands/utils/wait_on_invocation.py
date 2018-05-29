@@ -2,7 +2,7 @@ import time
 import click
 import json
 from parsec.cli import pass_context
-from parsec.decorators import bioblend_exception
+from parsec.decorators import custom_exception
 from justbackoff import Backoff
 
 
@@ -28,7 +28,7 @@ from justbackoff import Backoff
 )
 
 @pass_context
-@bioblend_exception
+@custom_exception
 def cli(ctx, workflow_id, invocation_id, exit_early=False, backoff_min=1, backoff_max=60):
     """Given a workflow and invocation id, wait until that invocation is
     complete (or one or more steps have errored)

@@ -1,14 +1,14 @@
 import sys
 import click
 from parsec.cli import pass_context
-from parsec.decorators import bioblend_exception
+from parsec.decorators import custom_exception
 
 
 @click.command('cmp')
 @click.argument("method", type=str, required=True)
 @click.argument("cmp_with", type=str, required=True)
 @pass_context
-@bioblend_exception
+@custom_exception
 def cli(ctx, method, cmp_with):
     """comparison tool. Exits if the value read from stdin does not pass the comparison test with the specified value.
 

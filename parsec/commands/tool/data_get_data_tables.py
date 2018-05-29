@@ -1,12 +1,12 @@
 import click
 
 from parsec.cli import pass_context
-from parsec.decorators import bioblend_exception, dict_output
+from parsec.decorators import custom_exception, dict_output
 
 
 @click.command('tool_data_get_data_tables')
 @pass_context
-@bioblend_exception
+@custom_exception
 @dict_output
 def cli(ctx):
     """Displays a collection (list) of data tables.
