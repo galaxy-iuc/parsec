@@ -7,3 +7,4 @@ wrapt
 justbackoff
 xunit-wrapper>=0.12
 future
+xdg

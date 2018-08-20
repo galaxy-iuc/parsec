@@ -11,12 +11,13 @@ readme = open('README.rst').read()
 
 requirements = [
     'Click>=6.7',
-    'bioblend',
-    'wrapt',
     'pyyaml',
+    'bioblend>=0.9.0',
+    'wrapt',
     'justbackoff',
     'xunit-wrapper>=0.12',
     'future',
+    'xdg',
 ]
 
 test_requirements = [
