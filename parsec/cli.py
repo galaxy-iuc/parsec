@@ -5,7 +5,7 @@ import click
 import json
 
 from .io import error
-from .config import read_global_config, global_config_path, set_global_config_path  # noqa, ditto
+from .config import read_global_config, global_config_path  # noqa, ditto
 from .galaxy import get_galaxy_instance, get_toolshed_instance
 from parsec import __version__  # noqa, ditto
 

@@ -5,11 +5,10 @@ from .config import read_global_config, global_config_path
 
 
 def get_instance(instance_name=None):
-    # I don't like reading the config twice.
     conf = read_global_config()
-    if not os.path.exists(global_config_path()):
+    if len(conf.keys()) == 0:
         # Probably creating the file for the first time.
-        return None
+        raise Exception("No galaxy instances defined")
 
     if instance_name is None or instance_name == '__default':
         try:
@@ -18,7 +17,7 @@ def get_instance(instance_name=None):
             raise Exception("Unknown Galaxy instance and no __default provided")
 
     if instance_name not in conf:
-        raise Exception("Unknown Galaxy instance; check spelling or add to ~/.planemo.yml")
+        raise Exception("Unknown Galaxy instance; check spelling or add to %s" % global_config_path())
 
     return conf[instance_name]
 
