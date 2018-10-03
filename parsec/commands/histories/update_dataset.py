@@ -1,11 +1,11 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('update_dataset')
 @click.argument("history_id", type=str)
 @click.argument("dataset_id", type=str)
-
 @click.option(
     "--annotation",
     help="Replace history dataset annotation with given string",
@@ -31,7 +31,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     help="Mark or unmark history dataset as visible",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @dict_output
@@ -40,13 +39,12 @@ def cli(ctx, history_id, dataset_id, annotation=None, deleted=None, genome_build
 
 Output:
 
-     details of the updated dataset (for Galaxy release_15.01 and
+    details of the updated dataset (for Galaxy release_15.01 and
             earlier only the updated attributes)
 
         .. warning::
             The return value was changed in BioBlend v0.8.0, previously it was
             the status code (type int).
-        
     """
     kwargs = {}
     if annotation and len(annotation) > 0:

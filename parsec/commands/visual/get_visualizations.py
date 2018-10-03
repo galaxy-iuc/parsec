@@ -1,10 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_visualizations')
-
-
 @pass_context
 @custom_exception
 @list_output
@@ -13,7 +12,7 @@ def cli(ctx):
 
 Output:
 
-     A list of dicts with details on individual visualizations.
+    A list of dicts with details on individual visualizations.
           For example::
 
             [{u'dbkey': u'eschColi_K12',
@@ -26,6 +25,5 @@ Output:
               u'title': u'Bam to Bigwig',
               u'type': u'trackster',
               u'url': u'/api/visualizations/a669f50f8bf55b02'}]
-        
     """
     return ctx.gi.visual.get_visualizations()

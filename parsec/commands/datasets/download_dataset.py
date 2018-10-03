@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('download_dataset')
 @click.argument("dataset_id", type=str)
-
 @click.option(
     "--file_path",
     help="If this argument is provided, the dataset will be streamed to disk at that path (should be a directory if use_default_filename=True). If the file_path argument is not provided, the dataset content is loaded into memory and returned by the method (Memory consumption may be heavy as the entire file will be in memory).",
@@ -19,27 +19,27 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
 )
 @click.option(
     "--wait_for_completion",
-    help="If this argument is True, this method call will block until the dataset is ready. If the dataset state becomes invalid, a DatasetStateException will be thrown.",
+    help="This parameter is deprecated and ignored, it will be removed in BioBlend 0.12.",
+    default="True",
+    show_default=True,
     is_flag=True
 )
 @click.option(
     "--maxwait",
-    help="Time (in seconds) to wait for dataset to complete. If the dataset state is not complete within this time, a DatasetTimeoutException will be thrown.",
+    help="Total time (in seconds) to wait for the dataset state to become terminal. If the dataset state is not terminal within this time, a ``DatasetTimeoutException`` will be thrown.",
     default="12000",
     show_default=True,
     type=float
 )
-
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, dataset_id, file_path="", use_default_filename=True, wait_for_completion=False, maxwait=12000):
-    """Download a dataset to file or in memory.
+def cli(ctx, dataset_id, file_path="", use_default_filename=True, wait_for_completion=True, maxwait=12000):
+    """Download a dataset to file or in memory. If the dataset state is not 'ok', a ``DatasetStateException`` will be thrown.
 
 Output:
 
-     If a file_path argument is not provided, returns a dict containing the file_content.
+    If a file_path argument is not provided, returns a dict containing the file_content.
                  Otherwise returns nothing.
-        
     """
     return ctx.gi.datasets.download_dataset(dataset_id, file_path=file_path, use_default_filename=use_default_filename, wait_for_completion=wait_for_completion, maxwait=maxwait)

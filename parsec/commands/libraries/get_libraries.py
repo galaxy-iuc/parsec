@@ -1,9 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_libraries')
-
 @click.option(
     "--library_id",
     help="filter for library by library id",
@@ -19,7 +19,6 @@ from parsec.decorators import custom_exception, list_output, _arg_split
     help="If set to ``True``, return libraries that have been deleted",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @list_output
@@ -28,7 +27,6 @@ def cli(ctx, library_id="", name="", deleted=False):
 
 Output:
 
-     list of dicts each containing basic information about a library
-        
+    list of dicts each containing basic information about a library
     """
     return ctx.gi.libraries.get_libraries(library_id=library_id, name=name, deleted=deleted)

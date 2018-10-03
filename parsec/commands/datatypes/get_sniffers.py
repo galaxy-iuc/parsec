@@ -1,10 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_sniffers')
-
-
 @pass_context
 @custom_exception
 @list_output
@@ -13,7 +12,7 @@ def cli(ctx):
 
 Output:
 
-     A list of sniffer names.
+    A list of sniffer names.
           For example::
 
             [u'galaxy.datatypes.tabular:Vcf',
@@ -25,6 +24,5 @@ Output:
              u'galaxy.datatypes.sequence:Maf',
              u'galaxy.datatypes.sequence:Lav',
              u'galaxy.datatypes.sequence:csFasta']
-        
     """
     return ctx.gi.datatypes.get_sniffers()

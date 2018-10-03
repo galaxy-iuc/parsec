@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, str_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, str_output
+
 
 @click.command('update_quota')
 @click.argument("quota_id", type=str)
-
 @click.option(
     "--name",
     help="Name for the new quota. This must be unique within a Galaxy instance.",
@@ -44,7 +44,6 @@ from parsec.decorators import custom_exception, str_output, _arg_split
     type=str,
     multiple=True
 )
-
 @pass_context
 @custom_exception
 @str_output
@@ -53,10 +52,9 @@ def cli(ctx, quota_id, name="", description="", amount="", operation="", default
 
 Output:
 
-     A semicolon separated list of changes to the quota.
+    A semicolon separated list of changes to the quota.
           For example::
 
             "Quota 'Testing-A' has been renamed to 'Testing-B'; Quota 'Testing-e' is now '-100.0 GB'; Quota 'Testing-B' is now the default for unregistered users"
-        
     """
     return ctx.gi.quotas.update_quota(quota_id, name=name, description=description, amount=amount, operation=operation, default=default, in_users=in_users, in_groups=in_groups)

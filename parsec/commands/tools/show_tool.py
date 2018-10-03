@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('show_tool')
 @click.argument("tool_id", type=str)
-
 @click.option(
     "--io_details",
     help="if True, get also input and output details",
@@ -15,7 +15,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     help="if True, get also link details",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @dict_output

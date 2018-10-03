@@ -1,13 +1,12 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('run_tool')
 @click.argument("history_id", type=str)
 @click.argument("tool_id", type=str)
 @click.argument("tool_inputs", type=str)
-
-
 @pass_context
 @custom_exception
 @dict_output

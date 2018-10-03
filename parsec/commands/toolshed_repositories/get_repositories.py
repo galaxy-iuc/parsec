@@ -1,10 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_repositories')
-
-
 @pass_context
 @custom_exception
 @list_output
@@ -13,7 +12,7 @@ def cli(ctx):
 
 Output:
 
-     Returns a list of dictionaries containing information about
+    Returns a list of dictionaries containing information about
           repositories present in the Tool Shed.
           For example::
 
@@ -35,6 +34,5 @@ Output:
         .. versionchanged:: 0.4.1
           Changed method name from ``get_tools`` to ``get_repositories`` to
           better align with the Tool Shed concepts.
-
     """
-    return ctx.ti.repositories.get_repositories()
+    return ctx.gi.repositories.get_repositories()

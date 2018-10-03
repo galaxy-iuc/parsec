@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('set_permissions')
 @click.argument("folder_id", type=str)
-
 @click.option(
     "--action",
     help="action to execute, only \"set_permissions\" is supported.",
@@ -30,7 +30,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     type=str,
     multiple=True
 )
-
 @pass_context
 @custom_exception
 @dict_output
@@ -39,7 +38,6 @@ def cli(ctx, folder_id, action="set_permissions", add_ids="", manage_ids="", mod
 
 Output:
 
-     dictionary including details of the folder
-        
+    dictionary including details of the folder
     """
     return ctx.gi.folders.set_permissions(folder_id, action=action, add_ids=add_ids, manage_ids=manage_ids, modify_ids=modify_ids)

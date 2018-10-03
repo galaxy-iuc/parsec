@@ -1,20 +1,19 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('show_repository')
-@click.argument("toolshed_id", type=str)
-
-
+@click.argument("toolShed_id", type=str)
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, toolshed_id):
+def cli(ctx, toolShed_id):
     """Display information of a repository from Tool Shed
 
 Output:
 
-     Information about the tool.
+    Information about the tool.
           For example::
 
             {u'category_ids': [u'c1df3132f6334b0e', u'f6d7b0037d901d9b'],
@@ -36,6 +35,5 @@ Output:
         .. versionchanged:: 0.4.1
           Changed method name from ``show_tool`` to ``show_repository`` to
           better align with the Tool Shed concepts.
-
     """
-    return ctx.ti.repositories.show_repository(toolshed_id)
+    return ctx.gi.repositories.show_repository(toolShed_id)

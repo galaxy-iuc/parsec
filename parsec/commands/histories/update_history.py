@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('update_history')
 @click.argument("history_id", type=str)
-
 @click.option(
     "--annotation",
     help="Replace history annotation with given string",
@@ -41,7 +41,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     type=str,
     multiple=True
 )
-
 @pass_context
 @custom_exception
 @dict_output
@@ -50,13 +49,12 @@ def cli(ctx, history_id, annotation=None, deleted=None, importable=None, name=No
 
 Output:
 
-     details of the updated history (for Galaxy release_15.01 and
+    details of the updated history (for Galaxy release_15.01 and
             earlier only the updated attributes)
 
         .. warning::
             The return value was changed in BioBlend v0.8.0, previously it was
             the status code (type int).
-        
     """
     kwargs = {}
     if annotation and len(annotation) > 0:

@@ -1,9 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_users')
-
 @click.option(
     "--deleted",
     help=""
@@ -23,7 +23,6 @@ from parsec.decorators import custom_exception, list_output, _arg_split
     help="filter for user email or name. Each filter will be active for non-admin users only if the Galaxy instance has the corresponding ``expose_user_*`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored in Galaxy ``release_15.10`` and earlier.",
     type=str
 )
-
 @pass_context
 @custom_exception
 @list_output
@@ -32,13 +31,11 @@ def cli(ctx, deleted=False, f_email="", f_name="", f_any=""):
 
 Output:
 
-     a list of dicts with user details.
+    a list of dicts with user details.
                  For example::
 
                    [{u'email': u'a_user@example.com',
                      u'id': u'dda47097d9189f15',
                      u'url': u'/api/users/dda47097d9189f15'}]
-
-        
     """
     return ctx.gi.users.get_users(deleted=deleted, f_email=f_email, f_name=f_name, f_any=f_any)

@@ -1,11 +1,11 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('update_dataset_collection')
 @click.argument("history_id", type=str)
 @click.argument("dataset_collection_id", type=str)
-
 @click.option(
     "--deleted",
     help="Mark or unmark history dataset collection as deleted",
@@ -21,7 +21,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     help="Mark or unmark history dataset collection as visible",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @dict_output
@@ -30,12 +29,11 @@ def cli(ctx, history_id, dataset_collection_id, deleted=None, name=None, visible
 
 Output:
 
-     the updated dataset collection attributes
+    the updated dataset collection attributes
 
         .. warning::
             The return value was changed in BioBlend v0.8.0, previously it was
             the status code (type int).
-        
     """
     kwargs = {}
     if deleted is not None:

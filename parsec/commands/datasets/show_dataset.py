@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('show_dataset')
 @click.argument("dataset_id", type=str)
-
 @click.option(
     "--deleted",
     help="Whether to return results for a deleted dataset",
@@ -17,7 +17,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     show_default=True,
     type=str
 )
-
 @pass_context
 @custom_exception
 @dict_output

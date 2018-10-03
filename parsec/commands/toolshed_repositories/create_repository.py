@@ -1,11 +1,11 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('create_repository')
 @click.argument("name", type=str)
 @click.argument("synopsis", type=str)
-
 @click.option(
     "--description",
     help="Optional description of the repository",
@@ -34,7 +34,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     type=str,
     multiple=True
 )
-
 @pass_context
 @custom_exception
 @dict_output
@@ -43,7 +42,7 @@ def cli(ctx, name, synopsis, description="", type="unrestricted", remote_reposit
 
 Output:
 
-     a dictionary containing information about the new repository.
+    a dictionary containing information about the new repository.
           For example::
 
             {"deleted": false,
@@ -60,6 +59,5 @@ Output:
              "times_downloaded": 0,
              "type": "unrestricted",
              "user_id": "adb5f5c93f827949"}
-
     """
-    return ctx.ti.repositories.create_repository(name, synopsis, description=description, type=type, remote_repository_url=remote_repository_url, homepage_url=homepage_url, category_ids=category_ids)
+    return ctx.gi.repositories.create_repository(name, synopsis, description=description, type=type, remote_repository_url=remote_repository_url, homepage_url=homepage_url, category_ids=category_ids)

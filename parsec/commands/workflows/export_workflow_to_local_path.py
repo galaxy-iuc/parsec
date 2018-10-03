@@ -1,11 +1,11 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('export_workflow_to_local_path')
 @click.argument("workflow_id", type=str)
 @click.argument("file_local_path", type=str)
-
 @click.option(
     "--use_default_filename",
     help="If the use_default_name parameter is True, the exported file will be saved as file_local_path/Galaxy-Workflow-%s.ga, where %s is the workflow name. If use_default_name is False, file_local_path is assumed to contain the full file path including filename.",
@@ -13,7 +13,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     show_default=True,
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @dict_output

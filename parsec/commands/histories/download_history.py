@@ -1,12 +1,12 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('download_history')
 @click.argument("history_id", type=str)
 @click.argument("jeha_id", type=str)
 @click.argument("outf", type=click.File('rb+'))
-
 @click.option(
     "--chunk_size",
     help="how many bytes at a time should be read into memory",
@@ -14,7 +14,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     show_default=True,
     type=int
 )
-
 @pass_context
 @custom_exception
 @dict_output

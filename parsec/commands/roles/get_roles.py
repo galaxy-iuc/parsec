@@ -1,10 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_roles')
-
-
 @pass_context
 @custom_exception
 @list_output
@@ -13,7 +12,7 @@ def cli(ctx):
 
 Output:
 
-     A list of dicts with details on individual roles.
+    A list of dicts with details on individual roles.
           For example::
 
             [{"id": "f2db41e1fa331b3e",
@@ -24,6 +23,5 @@ Output:
               "model_class": "Role",
               "name": "Bar",
               "url": "/api/roles/f597429621d6eb2b"}]
-        
     """
     return ctx.gi.roles.get_roles()

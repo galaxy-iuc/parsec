@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, str_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, str_output
+
 
 @click.command('export_history')
 @click.argument("history_id", type=str)
-
 @click.option(
     "--gzip",
     help="create .tar.gz archive if ``True``, else .tar",
@@ -27,7 +27,6 @@ from parsec.decorators import custom_exception, str_output, _arg_split
     help="if ``True``, block until the export is ready; else, return immediately",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @str_output
@@ -36,8 +35,7 @@ def cli(ctx, history_id, gzip=True, include_hidden=False, include_deleted=False,
 
 Output:
 
-     ``jeha_id`` of the export, or empty if ``wait`` is ``False``
+    ``jeha_id`` of the export, or empty if ``wait`` is ``False``
           and the export is not ready.
-        
     """
     return ctx.gi.histories.export_history(history_id, gzip=gzip, include_hidden=include_hidden, include_deleted=include_deleted, wait=wait)

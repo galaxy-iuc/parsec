@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('search_repositories')
 @click.argument("q", type=str)
-
 @click.option(
     "--page",
     help="page requested",
@@ -19,7 +19,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     show_default=True,
     type=int
 )
-
 @pass_context
 @custom_exception
 @dict_output
@@ -28,7 +27,7 @@ def cli(ctx, q, page=1, page_size=10):
 
 Output:
 
-     dictionary containing search hits as well as metadata for the
+    dictionary containing search hits as well as metadata for the
           search.
           For example::
 
@@ -62,6 +61,5 @@ Output:
              u'page': u'1',
              u'page_size': u'2',
              u'total_results': u'64'}
-
     """
-    return ctx.ti.repositories.search_repositories(q, page=page, page_size=page_size)
+    return ctx.gi.repositories.search_repositories(q, page=page, page_size=page_size)

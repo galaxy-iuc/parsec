@@ -1,17 +1,16 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('show_dataset_provenance')
 @click.argument("history_id", type=str)
 @click.argument("dataset_id", type=str)
-
 @click.option(
     "--follow",
     help="If ``follow`` is ``True``, recursively fetch dataset provenance information for all inputs and their inputs, etc...",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @dict_output

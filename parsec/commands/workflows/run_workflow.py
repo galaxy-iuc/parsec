@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('run_workflow')
 @click.argument("workflow_id", type=str)
-
 @click.option(
     "--dataset_map",
     help="A mapping of workflow inputs to datasets. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), or HistoryDatasetAssociation (``hda``). The map must be in the following format: ``{'<input>': {'id': <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}`` (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src': 'ld'}}``)",
@@ -35,7 +35,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     help="pattern-based replacements for post-job actions (see below)",
     type=str
 )
-
 @pass_context
 @custom_exception
 @dict_output
@@ -44,7 +43,7 @@ def cli(ctx, workflow_id, dataset_map="", params="", history_id="", history_name
 
 Output:
 
-     A dict containing the history ID where the outputs are placed
+    A dict containing the history ID where the outputs are placed
           as well as output dataset IDs. For example::
 
             {u'history': u'64177123325c9cfd',
@@ -95,6 +94,5 @@ Output:
             method has therefore been deprecated in favor of
             :meth:`invoke_workflow`, which also features improved default
             behavior for dataset input handling.
-        
     """
     return ctx.gi.workflows.run_workflow(workflow_id, dataset_map=dataset_map, params=params, history_id=history_id, history_name=history_name, import_inputs_to_history=import_inputs_to_history, replacement_params=replacement_params)

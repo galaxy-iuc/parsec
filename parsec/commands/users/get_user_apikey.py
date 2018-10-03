@@ -1,11 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, str_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, str_output
+
 
 @click.command('get_user_apikey')
 @click.argument("user_id", type=str)
-
-
 @pass_context
 @custom_exception
 @str_output
@@ -14,7 +13,6 @@ def cli(ctx, user_id):
 
 Output:
 
-     the API key for the user
-        
+    the API key for the user
     """
     return ctx.gi.users.get_user_apikey(user_id)

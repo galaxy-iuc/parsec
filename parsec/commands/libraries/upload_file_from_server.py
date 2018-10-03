@@ -1,11 +1,11 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('upload_file_from_server')
 @click.argument("library_id", type=str)
 @click.argument("server_dir", type=str)
-
 @click.option(
     "--folder_id",
     help="id of the folder where to place the uploaded files. If not provided, the root folder will be used",
@@ -35,7 +35,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     help="???",
     type=str
 )
-
 @pass_context
 @custom_exception
 @dict_output

@@ -1,11 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('get_library_permissions')
 @click.argument("library_id", type=str)
-
-
 @pass_context
 @custom_exception
 @dict_output
@@ -14,7 +13,6 @@ def cli(ctx, library_id):
 
 Output:
 
-     dictionary with all applicable permissions' values
-        
+    dictionary with all applicable permissions' values
     """
     return ctx.gi.libraries.get_library_permissions(library_id)

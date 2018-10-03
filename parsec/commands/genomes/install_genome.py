@@ -1,9 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('install_genome')
-
 @click.option(
     "--func",
     help="Allowed values: 'download', Download and index; 'index', Index only",
@@ -42,7 +42,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     type=str,
     multiple=True
 )
-
 @pass_context
 @custom_exception
 @dict_output
@@ -51,9 +50,8 @@ def cli(ctx, func="download", source="", dbkey="", ncbi_name="", ensembl_dbkey="
 
 Output:
 
-     dict( status: 'ok', job: <job ID> )
+    dict( status: 'ok', job: <job ID> )
                  If error:
                  dict( status: 'error', error: <error message> )
-        
     """
     return ctx.gi.genomes.install_genome(func=func, source=source, dbkey=dbkey, ncbi_name=ncbi_name, ensembl_dbkey=ensembl_dbkey, url_dbkey=url_dbkey, indexers=indexers)

@@ -1,13 +1,12 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('show_invocation_step')
 @click.argument("workflow_id", type=str)
 @click.argument("invocation_id", type=str)
 @click.argument("step_id", type=str)
-
-
 @pass_context
 @custom_exception
 @dict_output
@@ -16,7 +15,7 @@ def cli(ctx, workflow_id, invocation_id, step_id):
 
 Output:
 
-     The workflow invocation step.
+    The workflow invocation step.
           For example::
 
             {u'action': None,
@@ -29,6 +28,5 @@ Output:
              u'workflow_step_id': u'52e496b945151ee8',
              u'workflow_step_label': None,
              u'workflow_step_uuid': u'4060554c-1dd5-4287-9040-8b4f281cf9dc'}
-        
     """
     return ctx.gi.workflows.show_invocation_step(workflow_id, invocation_id, step_id)

@@ -1,16 +1,15 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('show_matching_datasets')
 @click.argument("history_id", type=str)
-
 @click.option(
     "--name_filter",
     help="Only datasets whose name matches the ``name_filter`` regular expression will be returned; use plain strings for exact matches and None to match all datasets in the history",
     type=str
 )
-
 @pass_context
 @custom_exception
 @dict_output

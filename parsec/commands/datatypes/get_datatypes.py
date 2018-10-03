@@ -1,9 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_datatypes')
-
 @click.option(
     "--extension_only",
     help=""
@@ -12,7 +12,6 @@ from parsec.decorators import custom_exception, list_output, _arg_split
     "--upload_only",
     help=""
 )
-
 @pass_context
 @custom_exception
 @list_output
@@ -21,7 +20,7 @@ def cli(ctx, extension_only=False, upload_only=False):
 
 Output:
 
-     A list of datatype names.
+    A list of datatype names.
           For example::
 
             [u'snpmatrix',
@@ -34,6 +33,5 @@ Output:
              u'wig',
              u'xgmml',
              u'xml']
-        
     """
     return ctx.gi.datatypes.get_datatypes(extension_only=extension_only, upload_only=upload_only)

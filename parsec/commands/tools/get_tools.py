@@ -1,9 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_tools')
-
 @click.option(
     "--tool_id",
     help="id of the requested tool",
@@ -19,7 +19,6 @@ from parsec.decorators import custom_exception, list_output, _arg_split
     help="if True, only tools that are compatible with Trackster are returned",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @list_output
@@ -28,9 +27,8 @@ def cli(ctx, tool_id="", name="", trackster=""):
 
 Output:
 
-     List of tool descriptions.
+    List of tool descriptions.
 
         .. seealso:: bioblend.galaxy.toolshed.get_repositories()
-        
     """
     return ctx.gi.tools.get_tools(tool_id=tool_id, name=name, trackster=trackster)

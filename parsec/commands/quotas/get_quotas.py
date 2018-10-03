@@ -1,15 +1,14 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_quotas')
-
 @click.option(
     "--deleted",
     help="Only return quota(s) that have been deleted",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @list_output
@@ -18,7 +17,7 @@ def cli(ctx, deleted=False):
 
 Output:
 
-     A list of dicts with details on individual quotas.
+    A list of dicts with details on individual quotas.
           For example::
 
             [{u'id': u'0604c8a56abe9a50',
@@ -29,6 +28,5 @@ Output:
               u'model_class': u'Quota',
               u'name': u'workshop',
               u'url': u'/api/quotas/1ee267091d0190af'}]
-        
     """
     return ctx.gi.quotas.get_quotas(deleted=deleted)

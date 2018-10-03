@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('set_library_permissions')
 @click.argument("library_id", type=str)
-
 @click.option(
     "--access_in",
     help="list of role ids",
@@ -29,7 +29,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     type=str,
     multiple=True
 )
-
 @pass_context
 @custom_exception
 @dict_output

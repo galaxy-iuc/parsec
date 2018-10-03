@@ -1,9 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_workflows')
-
 @click.option(
     "--workflow_id",
     help="Encoded workflow ID (incompatible with ``name``)",
@@ -19,7 +19,6 @@ from parsec.decorators import custom_exception, list_output, _arg_split
     help="if ``True``, return also published workflows",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @list_output
@@ -28,13 +27,11 @@ def cli(ctx, workflow_id="", name="", published=False):
 
 Output:
 
-     A list of workflow dicts.
+    A list of workflow dicts.
                  For example::
 
                    [{u'id': u'92c56938c2f9b315',
                      u'name': u'Simple',
                      u'url': u'/api/workflows/92c56938c2f9b315'}]
-
-        
     """
     return ctx.gi.workflows.get_workflows(workflow_id=workflow_id, name=name, published=published)

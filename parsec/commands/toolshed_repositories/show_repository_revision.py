@@ -1,11 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('show_repository_revision')
 @click.argument("metadata_id", type=str)
-
-
 @pass_context
 @custom_exception
 @dict_output
@@ -14,7 +13,7 @@ def cli(ctx, metadata_id):
 
 Output:
 
-     Returns a dictionary that includes information about a
+    Returns a dictionary that includes information about a
           specified repository revision.
           For example::
 
@@ -36,6 +35,5 @@ Output:
              u'tool_test_results': {u'missing_test_components': []},
              u'tools_functionally_correct': False,
              u'url': u'/api/repository_revisions/504be8aaa652c154'}
-
     """
-    return ctx.ti.repositories.show_repository_revision(metadata_id)
+    return ctx.gi.repositories.show_repository_revision(metadata_id)

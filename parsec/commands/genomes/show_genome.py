@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('show_genome')
 @click.argument("id", type=str)
-
 @click.option(
     "--num",
     help="num",
@@ -25,7 +25,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     help="high",
     type=str
 )
-
 @pass_context
 @custom_exception
 @dict_output

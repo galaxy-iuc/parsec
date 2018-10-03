@@ -1,10 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_config')
-
-
 @pass_context
 @custom_exception
 @list_output
@@ -13,7 +12,7 @@ def cli(ctx):
 
 Output:
 
-     A list of attributes.
+    A list of attributes.
           For example::
 
             {u'allow_library_path_paste': False,
@@ -29,6 +28,5 @@ Output:
              u'terms_url': None,
              u'user_library_import_dir': None,
              u'wiki_url': u'https://galaxyproject.org/'}
-        
     """
     return ctx.gi.config.get_config()

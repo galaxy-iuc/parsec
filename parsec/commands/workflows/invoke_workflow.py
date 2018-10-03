@@ -1,10 +1,10 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, dict_output
+
 
 @click.command('invoke_workflow')
 @click.argument("workflow_id", type=str)
-
 @click.option(
     "--inputs",
     help="A mapping of workflow inputs to datasets and dataset collections. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), HistoryDatasetAssociation (``hda``), or HistoryDatasetCollectionAssociation (``hdca``).",
@@ -40,7 +40,6 @@ from parsec.decorators import custom_exception, dict_output, _arg_split
     help="If True, allow Galaxy to fill in missing tool state when running workflows. This may be useful for workflows using tools that have changed over time or for workflows built outside of Galaxy with only a subset of inputs defined.",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @dict_output
@@ -49,7 +48,7 @@ def cli(ctx, workflow_id, inputs="", params="", history_id="", history_name="", 
 
 Output:
 
-     A dict containing the workflow invocation describing the
+    A dict containing the workflow invocation describing the
           scheduling of the workflow. For example::
 
             {u'history_id': u'2f94e8ae9edff68a',
@@ -129,6 +128,5 @@ Output:
           property is instead indexed by either the ``order_index`` property
           (which is stable across workflow imports) or the step UUID which is
           also stable.
-        
     """
     return ctx.gi.workflows.invoke_workflow(workflow_id, inputs=inputs, params=params, history_id=history_id, history_name=history_name, import_inputs_to_history=import_inputs_to_history, replacement_params=replacement_params, allow_tool_state_corrections=allow_tool_state_corrections)

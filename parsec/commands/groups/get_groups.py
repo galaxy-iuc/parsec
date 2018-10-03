@@ -1,10 +1,9 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_groups')
-
-
 @pass_context
 @custom_exception
 @list_output
@@ -13,7 +12,7 @@ def cli(ctx):
 
 Output:
 
-     A list of dicts with details on individual groups.
+    A list of dicts with details on individual groups.
           For example::
 
             [{'id': '33abac023ff186c2',
@@ -24,6 +23,5 @@ Output:
               'model_class': 'Group',
               'name': 'LPN',
               'url': '/api/groups/73187219cd372cf8'}]
-        
     """
     return ctx.gi.groups.get_groups()

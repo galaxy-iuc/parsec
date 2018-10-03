@@ -1,15 +1,14 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, list_output
+
 
 @click.command('get_categories')
-
 @click.option(
     "--deleted",
     help="whether to show deleted categories",
     is_flag=True
 )
-
 @pass_context
 @custom_exception
 @list_output
@@ -18,7 +17,7 @@ def cli(ctx, deleted=False):
 
 Output:
 
-     A list of dictionaries containing information about
+    A list of dictionaries containing information about
           repository categories present in the Tool Shed.
           For example::
 
@@ -30,6 +29,5 @@ Output:
               u'url': u'/api/categories/175812cd7caaf439'}]
 
         .. versionadded:: 0.5.2
-
     """
-    return ctx.ti.categories.get_categories(deleted=deleted)
+    return ctx.gi.categories.get_categories(deleted=deleted)

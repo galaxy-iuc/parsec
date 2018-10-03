@@ -1,22 +1,21 @@
 import click
-from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output, _arg_split
+from parsec.cli import pass_context
+from parsec.decorators import custom_exception, List_output
+
 
 @click.command('get_repository_revision_install_info')
 @click.argument("name", type=str)
 @click.argument("owner", type=str)
 @click.argument("changeset_revision", type=str)
-
-
 @pass_context
 @custom_exception
-@list_output
+@List_output
 def cli(ctx, name, owner, changeset_revision):
     """Return a list of dictionaries of metadata about a certain changeset revision for a single tool.
 
 Output:
 
-     Returns a list of the following dictionaries:
+    Returns a list of the following dictionaries:
 
           #. a dictionary defining the repository
           #. a dictionary defining the repository revision (RepositoryMetadata)
@@ -70,6 +69,5 @@ Output:
                           u'repository_owner': u'devteam',
                           u'type': u'package',
                           u'version': u'0.1.18'}}]}]
-
     """
-    return ctx.ti.repositories.get_repository_revision_install_info(name, owner, changeset_revision)
+    return ctx.gi.repositories.get_repository_revision_install_info(name, owner, changeset_revision)
