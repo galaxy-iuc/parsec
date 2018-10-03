@@ -9,9 +9,11 @@ from parsec.commands.tools.show_tool import cli as func6
 from parsec.commands.tools.upload_file import cli as func7
 from parsec.commands.tools.upload_from_ftp import cli as func8
 
+
 @click.group()
 def cli():
     pass
+
 
 cli.add_command(func0)
 cli.add_command(func1)

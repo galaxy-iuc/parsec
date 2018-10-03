@@ -1,7 +1,7 @@
 folders
 =======
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``folders``.
 
 
@@ -16,6 +16,12 @@ This section is auto-generated from the help text for the arrow command
 
 Create a folder.
 
+
+**Output**
+
+
+    details of the updated folder
+    
 **Options**::
 
 
@@ -34,6 +40,12 @@ Create a folder.
 
 Marks the folder with the given ``id`` as `deleted` (or removes the `deleted` mark if the `undelete` param is True).
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -53,6 +65,12 @@ Marks the folder with the given ``id`` as `deleted` (or removes the `deleted` ma
 
 Get the permissions of a folder.
 
+
+**Output**
+
+
+    dictionary including details of the folder
+    
 **Options**::
 
 
@@ -70,10 +88,17 @@ Get the permissions of a folder.
 
 Set the permissions of a folder.
 
+
+**Output**
+
+
+    dictionary including details of the folder
+    
 **Options**::
 
 
       --action TEXT      action to execute, only "set_permissions" is supported.
+                         [default: set_permissions]
       --add_ids TEXT     list of role IDs which can add datasets to the folder
       --manage_ids TEXT  list of role IDs which can manage datasets in the folder
       --modify_ids TEXT  list of role IDs which can modify datasets in the folder
@@ -91,9 +116,17 @@ Set the permissions of a folder.
 
 Display information about a folder.
 
+
+**Output**
+
+
+    dictionary including details of the folder
+    
 **Options**::
 
 
+      --contents  True to get the contents of the folder, rather than just the
+                  folder details.
       -h, --help  Show this message and exit.
     
 
@@ -108,6 +141,12 @@ Display information about a folder.
 
 Update folder information.
 
+
+**Output**
+
+
+    details of the updated folder
+    
 **Options**::
 
 

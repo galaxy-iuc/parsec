@@ -1,7 +1,7 @@
 users
 =====
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``users``.
 
 
@@ -16,6 +16,12 @@ This section is auto-generated from the help text for the arrow command
 
 Create a new Galaxy local user.
 
+
+**Output**
+
+
+    a dictionary containing information about the created user
+    
 **Options**::
 
 
@@ -33,6 +39,12 @@ Create a new Galaxy local user.
 
 Create a new Galaxy remote user.
 
+
+**Output**
+
+
+    a dictionary containing information about the created user
+    
 **Options**::
 
 
@@ -62,6 +74,12 @@ Deprecated method.
 
 Create a new API key for a given user.
 
+
+**Output**
+
+
+    the API key for the user
+    
 **Options**::
 
 
@@ -79,6 +97,12 @@ Create a new API key for a given user.
 
 Delete a user.
 
+
+**Output**
+
+
+    a dictionary containing information about the deleted user
+    
 **Options**::
 
 
@@ -97,6 +121,12 @@ Delete a user.
 
 Display information about the user associated with this Galaxy connection.
 
+
+**Output**
+
+
+    a dictionary containing information about the current user
+    
 **Options**::
 
 
@@ -114,6 +144,12 @@ Display information about the user associated with this Galaxy connection.
 
 Get the current API key for a given user. This functionality is available since Galaxy ``release_17.01``.
 
+
+**Output**
+
+
+    the API key for the user
+    
 **Options**::
 
 
@@ -131,6 +167,17 @@ Get the current API key for a given user. This functionality is available since 
 
 Get a list of all registered users. If ``deleted`` is set to ``True``, get a list of deleted users.
 
+
+**Output**
+
+
+    a list of dicts with user details.
+            For example::
+
+              [{u'email': u'a_user@example.com',
+                u'id': u'dda47097d9189f15',
+                u'url': u'/api/users/dda47097d9189f15'}]
+    
 **Options**::
 
 
@@ -165,6 +212,12 @@ Get a list of all registered users. If ``deleted`` is set to ``True``, get a lis
 
 Display information about a user.
 
+
+**Output**
+
+
+    a dictionary containing information about the user
+    
 **Options**::
 
 

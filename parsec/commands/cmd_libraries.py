@@ -16,10 +16,13 @@ from parsec.commands.libraries.upload_file_from_local_path import cli as func13
 from parsec.commands.libraries.upload_file_from_server import cli as func14
 from parsec.commands.libraries.upload_file_from_url import cli as func15
 from parsec.commands.libraries.upload_from_galaxy_filesystem import cli as func16
+from parsec.commands.libraries.wait_for_dataset import cli as func17
+
 
 @click.group()
 def cli():
     pass
+
 
 cli.add_command(func0)
 cli.add_command(func1)
@@ -38,3 +41,4 @@ cli.add_command(func13)
 cli.add_command(func14)
 cli.add_command(func15)
 cli.add_command(func16)
+cli.add_command(func17)

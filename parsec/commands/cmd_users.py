@@ -9,9 +9,11 @@ from parsec.commands.users.get_user_apikey import cli as func6
 from parsec.commands.users.get_users import cli as func7
 from parsec.commands.users.show_user import cli as func8
 
+
 @click.group()
 def cli():
     pass
+
 
 cli.add_command(func0)
 cli.add_command(func1)

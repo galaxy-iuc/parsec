@@ -1,7 +1,7 @@
 datasets
 ========
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``datasets``.
 
 
@@ -14,8 +14,15 @@ This section is auto-generated from the help text for the arrow command
 
 **Help**
 
-Download a dataset to file or in memory.
+Download a dataset to file or in memory. If the dataset state is not 'ok', a ``DatasetStateException`` will be thrown.
 
+
+**Output**
+
+
+    If a file_path argument is not provided, returns a dict containing the file_content.
+            Otherwise returns nothing.
+    
 **Options**::
 
 
@@ -30,13 +37,14 @@ Download a dataset to file or in memory.
                               saved as file_path/%s, where %s is the dataset name.
                               If this argument is False, file_path is assumed to
                               contain the full file path including the filename.
-      --wait_for_completion   If this argument is True, this method call will block
-                              until the dataset is ready. If the dataset state
-                              becomes invalid, a DatasetStateException will be
-                              thrown.
-      --maxwait FLOAT         Time (in seconds) to wait for dataset to complete. If
-                              the dataset state is not complete within this time, a
-                              DatasetTimeoutException will be thrown.
+                              [default: True]
+      --wait_for_completion   This parameter is deprecated and ignored, it will be
+                              removed in BioBlend 0.12.  [default: True]
+      --maxwait FLOAT         Total time (in seconds) to wait for the dataset state
+                              to become terminal. If the dataset state is not
+                              terminal within this time, a
+                              ``DatasetTimeoutException`` will be thrown.  [default:
+                              12000]
       -h, --help              Show this message and exit.
     
 
@@ -51,11 +59,17 @@ Download a dataset to file or in memory.
 
 Get details about a given dataset. This can be a history or a library dataset.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
       --deleted        Whether to return results for a deleted dataset
       --hda_ldda TEXT  Whether to show a history dataset ('hda' - the default) or
-                       library dataset ('ldda').
+                       library dataset ('ldda').  [default: hda]
       -h, --help       Show this message and exit.
     

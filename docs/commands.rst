@@ -7,6 +7,7 @@ useful utilities for talking to Galaxy servers. Each utility is implemented as
 a subcommand of ``parsec``. This section of the documentation
 describes these commands.
 
+
 .. toctree::
    :maxdepth: 0
 
@@ -26,6 +27,9 @@ describes these commands.
    commands/tool_data.rst
    commands/tools.rst
    commands/toolshed.rst
+   commands/toolshed_categories.rst
+   commands/toolshed_repositories.rst
+   commands/toolshed_tools.rst
    commands/users.rst
    commands/utils.rst
    commands/visual.rst

@@ -10,9 +10,11 @@ from parsec.commands.groups.get_groups import cli as func7
 from parsec.commands.groups.show_group import cli as func8
 from parsec.commands.groups.update_group import cli as func9
 
+
 @click.group()
 def cli():
     pass
+
 
 cli.add_command(func0)
 cli.add_command(func1)

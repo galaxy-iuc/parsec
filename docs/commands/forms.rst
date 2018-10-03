@@ -1,7 +1,7 @@
 forms
 =====
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``forms``.
 
 
@@ -16,6 +16,12 @@ This section is auto-generated from the help text for the arrow command
 
 Create a new form.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -33,6 +39,12 @@ Create a new form.
 
 Get the list of all forms.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -50,6 +62,22 @@ Get the list of all forms.
 
 Get details of a given form.
 
+
+**Output**
+
+
+    A description of the given form.
+     For example::
+
+       {u'desc': u'here it is ',
+        u'fields': [],
+        u'form_definition_current_id': u'f2db41e1fa331b3e',
+        u'id': u'f2db41e1fa331b3e',
+        u'layout': [],
+        u'model_class': u'FormDefinition',
+        u'name': u'First form',
+        u'url': u'/api/forms/f2db41e1fa331b3e'}
+    
 **Options**::
 
 

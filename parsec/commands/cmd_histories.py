@@ -23,9 +23,11 @@ from parsec.commands.histories.update_dataset_collection import cli as func20
 from parsec.commands.histories.update_history import cli as func21
 from parsec.commands.histories.upload_dataset_from_library import cli as func22
 
+
 @click.group()
 def cli():
     pass
+
 
 cli.add_command(func0)
 cli.add_command(func1)

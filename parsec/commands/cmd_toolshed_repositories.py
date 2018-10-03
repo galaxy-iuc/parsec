@@ -9,9 +9,11 @@ from parsec.commands.toolshed_repositories.show_repository import cli as func6
 from parsec.commands.toolshed_repositories.show_repository_revision import cli as func7
 from parsec.commands.toolshed_repositories.update_repository import cli as func8
 
+
 @click.group()
 def cli():
     pass
+
 
 cli.add_command(func0)
 cli.add_command(func1)

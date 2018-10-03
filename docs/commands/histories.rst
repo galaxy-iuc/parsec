@@ -1,7 +1,7 @@
 histories
 =========
 
-This section is auto-generated from the help text for the arrow command
+This section is auto-generated from the help text for the parsec command
 ``histories``.
 
 
@@ -16,6 +16,12 @@ This section is auto-generated from the help text for the arrow command
 
 Create a new dataset collection
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -33,6 +39,12 @@ Create a new dataset collection
 
 Create a new history, optionally setting the ``name``.
 
+
+**Output**
+
+
+    Dictionary containing information about newly created history
+    
 **Options**::
 
 
@@ -51,6 +63,18 @@ Create a new history, optionally setting the ``name``.
 
 Create history tag
 
+
+**Output**
+
+
+    A dictionary with information regarding the tag.
+     For example::
+
+       {'id': 'f792763bee8d277a',
+        'model_class': 'HistoryTagAssociation',
+        'user_tname': 'NGS_PE_RUN',
+        'user_value': None}
+    
 **Options**::
 
 
@@ -68,6 +92,12 @@ Create history tag
 
 Mark corresponding dataset as deleted.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -86,6 +116,12 @@ Mark corresponding dataset as deleted.
 
 Mark corresponding dataset collection as deleted.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -103,6 +139,12 @@ Mark corresponding dataset collection as deleted.
 
 Delete a history.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -121,10 +163,16 @@ Delete a history.
 
 .. deprecated:: 0.8.0 Use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_dataset` instead.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
-      --use_default_filename TEXT
+      --use_default_filename TEXT  [default: True]
       -h, --help                   Show this message and exit.
     
 
@@ -139,10 +187,17 @@ Delete a history.
 
 Download a history export archive.  Use :meth:`export_history` to create an export.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
       --chunk_size INTEGER  how many bytes at a time should be read into memory
+                            [default: 4096]
       -h, --help            Show this message and exit.
     
 
@@ -157,10 +212,18 @@ Download a history export archive.  Use :meth:`export_history` to create an expo
 
 Start a job to create an export archive for the given history.
 
+
+**Output**
+
+
+    ``jeha_id`` of the export, or empty if ``wait`` is ``False``
+     and the export is not ready.
+    
 **Options**::
 
 
-      --gzip             create .tar.gz archive if ``True``, else .tar
+      --gzip             create .tar.gz archive if ``True``, else .tar  [default:
+                         True]
       --include_hidden   whether to include hidden datasets in the export
       --include_deleted  whether to include deleted datasets in the export
       --wait             if ``True``, block until the export is ready; else, return
@@ -179,6 +242,12 @@ Start a job to create an export archive for the given history.
 
 .. deprecated:: 0.5.2 Use :meth:`get_most_recently_used_history` instead.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -196,6 +265,14 @@ Start a job to create an export archive for the given history.
 
 Get all histories or filter the specific one(s) via the provided ``name`` or ``history_id``. Provide only one argument, ``name`` or ``history_id``, but not both.
 
+
+**Output**
+
+
+    Return a list of history element dicts. If more than one
+            history matches the given ``name``, return the list of all the
+            histories with the given name
+    
 **Options**::
 
 
@@ -216,6 +293,12 @@ Get all histories or filter the specific one(s) via the provided ``name`` or ``h
 
 Returns the current user's most recently used history (not deleted).
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -233,6 +316,15 @@ Returns the current user's most recently used history (not deleted).
 
 Returns the state of this history
 
+
+**Output**
+
+
+    A dict documenting the current state of the history. Has the following keys:
+       'state' = This is the current state of the history, such as ok, error, new etc.
+       'state_details' = Contains individual statistics for various dataset states.
+       'percent_complete' = The overall number of datasets processed to completion.
+    
 **Options**::
 
 
@@ -250,6 +342,12 @@ Returns the state of this history
 
 Get details about a given history dataset.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -267,6 +365,12 @@ Get details about a given history dataset.
 
 Get details about a given history dataset collection.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -284,6 +388,12 @@ Get details about a given history dataset collection.
 
 Get details related to how dataset was created (``id``, ``job_id``, ``tool_id``, ``stdout``, ``stderr``, ``parameters``, ``inputs``, etc...).
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -303,6 +413,12 @@ Get details related to how dataset was created (``id``, ``job_id``, ``tool_id``,
 
 Get details of a given history. By default, just get the history meta information.
 
+
+**Output**
+
+
+    details of the given history
+    
 **Options**::
 
 
@@ -329,6 +445,12 @@ Get details of a given history. By default, just get the history meta informatio
 
 Get dataset details for matching datasets within a history.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -350,6 +472,12 @@ Get dataset details for matching datasets within a history.
 
 Undelete a history
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 
@@ -367,6 +495,17 @@ Undelete a history
 
 Update history dataset metadata. Some of the attributes that can be modified are documented below.
 
+
+**Output**
+
+
+    details of the updated dataset (for Galaxy release_15.01 and
+       earlier only the updated attributes)
+
+   .. warning::
+       The return value was changed in BioBlend v0.8.0, previously it was
+       the status code (type int).
+    
 **Options**::
 
 
@@ -389,6 +528,16 @@ Update history dataset metadata. Some of the attributes that can be modified are
 
 Update history dataset collection metadata. Some of the attributes that can be modified are documented below.
 
+
+**Output**
+
+
+    the updated dataset collection attributes
+
+   .. warning::
+       The return value was changed in BioBlend v0.8.0, previously it was
+       the status code (type int).
+    
 **Options**::
 
 
@@ -409,6 +558,17 @@ Update history dataset collection metadata. Some of the attributes that can be m
 
 Update history metadata information. Some of the attributes that can be modified are documented below.
 
+
+**Output**
+
+
+    details of the updated history (for Galaxy release_15.01 and
+       earlier only the updated attributes)
+
+   .. warning::
+       The return value was changed in BioBlend v0.8.0, previously it was
+       the status code (type int).
+    
 **Options**::
 
 
@@ -434,6 +594,12 @@ Update history metadata information. Some of the attributes that can be modified
 
 Upload a dataset into the history from a library. Requires the library dataset ID, which can be obtained from the library contents.
 
+
+**Output**
+
+
+    
+    
 **Options**::
 
 

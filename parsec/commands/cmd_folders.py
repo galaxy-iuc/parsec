@@ -6,9 +6,11 @@ from parsec.commands.folders.set_permissions import cli as func3
 from parsec.commands.folders.show_folder import cli as func4
 from parsec.commands.folders.update_folder import cli as func5
 
+
 @click.group()
 def cli():
     pass
+
 
 cli.add_command(func0)
 cli.add_command(func1)
