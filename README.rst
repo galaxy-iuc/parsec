@@ -3,7 +3,7 @@ Parsec: Galaxy at the Speed of Light
 ====================================
 
 .. image:: https://readthedocs.org/projects/pip/badge/?version=latest
-        :target: https://parsec.readthedocs.org.
+        :target: https://parsec.readthedocs.org
         :alt: Documentation
 
 .. image:: https://requires.io/github/galaxy-iuc/parsec/requirements.svg?branch=master
