@@ -6,6 +6,13 @@ History
 .. to_doc
 
 ----------------------
+1.0.5 (2018-10-03)
+----------------------
+
+* Update to latest bioblend fixing ``download_dataset``
+* Rebuild documentation for new bioblend
+
+----------------------
 1.0.4 (2017-09-11)
 ----------------------
 
