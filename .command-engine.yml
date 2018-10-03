@@ -26,6 +26,7 @@ module:
             - toolShed
             - url
             - verify
+            - timeout
         funcs:
             - histories.download_dataset
             - histories.get_current_history
