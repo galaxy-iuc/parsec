@@ -6,6 +6,13 @@ History
 .. to_doc
 
 ----------------------
+1.0.6 (2018-12-13)
+----------------------
+
+* Fix a bug in json_loading (Thanks `@abretaud <https://github.com/abretaud>`__)
+* Miscellaneous other command-engine bug
+
+----------------------
 1.0.5 (2018-10-03)
 ----------------------
 
