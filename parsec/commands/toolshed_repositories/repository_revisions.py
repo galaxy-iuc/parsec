@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context
-from parsec.decorators import custom_exception, List_output
+from parsec.decorators import custom_exception, list_output
 
 
 @click.command('repository_revisions')
@@ -39,7 +39,7 @@ from parsec.decorators import custom_exception, List_output
 )
 @pass_context
 @custom_exception
-@List_output
+@list_output
 def cli(ctx, downloadable="", malicious="", tools_functionally_correct="", missing_test_components="", do_not_test="", includes_tools="", test_install_error="", skip_tool_test=""):
     """Returns a (possibly filtered) list of dictionaries that include information about all repository revisions. The following parameters can be used to filter the list.
 
