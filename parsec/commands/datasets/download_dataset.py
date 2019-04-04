@@ -20,7 +20,7 @@ from parsec.decorators import custom_exception, dict_output
 @click.option(
     "--wait_for_completion",
     help="This parameter is deprecated and ignored, it will be removed in BioBlend 0.12.",
-    default="True",
+    default="False",
     show_default=True,
     is_flag=True
 )
@@ -42,4 +42,4 @@ Output:
     If a file_path argument is not provided, returns a dict containing the file_content.
                  Otherwise returns nothing.
     """
-    return ctx.gi.datasets.download_dataset(dataset_id, file_path=file_path, use_default_filename=use_default_filename, wait_for_completion=wait_for_completion, maxwait=maxwait)
+    return ctx.gi.datasets.download_dataset(dataset_id, file_path=file_path, use_default_filename=use_default_filename, maxwait=maxwait)
