@@ -2,6 +2,10 @@
 Parsec: Galaxy at the Speed of Light
 ====================================
 
+.. image:: https://img.shields.io/pypi/v/galaxy-parsec.svg
+        :target: https://pypi.org/project/galaxy-parsec/
+        :alt: PyPi
+
 .. image:: https://readthedocs.org/projects/pip/badge/?version=latest
         :target: https://parsec.readthedocs.org
         :alt: Documentation
@@ -17,6 +21,8 @@ Parsec: Galaxy at the Speed of Light
 .. image:: https://img.shields.io/github/license/galaxy-iuc/parsec.svg
         :target: https://github.com/galaxy-iuc/parsec/blob/master/LICENSE
         :alt: License
+
+
 
 Command-line utilities to assist in working with Galaxy_ servers.
 
@@ -58,8 +64,8 @@ First initialize parsec:
 
 Once initialized, parsec will be usable from the command line. Please note that
 an admin account is required for a few actions like creation of data libraries,
-or access to user API keys.  Your configuration must allow access to /api without 
-need for a username or password. More infomration can be found at 
+or access to user API keys.  Your configuration must allow access to /api without
+need for a username or password. More infomration can be found at
 https://galaxyproject.org/admin/config/performance/production-server/
 
 .. _view-histories-and-datasets:
@@ -82,18 +88,18 @@ After installation, running ``parsec`` will present you with a list of sub-comma
 
    $ parsec
    Usage: parsec [OPTIONS] COMMAND [ARGS]...
-   
+
      Command line wrappers around BioBlend functions. While this sounds
      unexciting, with parsec and jq you can easily build powerful command line
      scripts.
-   
+
    Options:
      --version               Show the version and exit.
      -v, --verbose           Enables verbose mode.
      --galaxy_instance TEXT  name of galaxy instance from ~/.planemo.yml
                              [required]
      --help                  Show this message and exit.
-   
+
    Commands:
      config
      datasets
@@ -108,10 +114,10 @@ Each of these commands has more commands under it:
 
    $ parsec histories
    Usage: parsec histories [OPTIONS] COMMAND [ARGS]...
-   
+
    Options:
      --help  Show this message and exit.
-   
+
    Commands:
      create_dataset_collection       Create a new dataset collection
      create_history                  Create a new history, optionally setting
@@ -280,10 +286,10 @@ will tell us that we can also pass the --contents option to retrieve a list of d
 
    $ parsec histories show_history --help
    Usage: parsec histories show_history [OPTIONS] HISTORY_ID
-   
+
      Get details of a given history. By default, just get the history meta
      information.
-   
+
    Options:
      --contents      When ``True``, the complete list of datasets in the given
                      history.
