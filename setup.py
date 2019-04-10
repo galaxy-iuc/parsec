@@ -11,7 +11,7 @@ readme = open('README.rst').read()
 
 requirements = [
     'Click>=6.7',
-    'bioblend',
+    'bioblend==0.12.0',
     'wrapt',
     'pyyaml',
     'justbackoff',
