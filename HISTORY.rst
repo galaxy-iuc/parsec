@@ -6,6 +6,13 @@ History
 .. to_doc
 
 ----------------------
+1.12.0 (2019-04-10)
+----------------------
+
+* Update to bioblend 0.12.0, and pin to prevent version issues with hardcoded parsec calls
+* Remove ``wait_for_completion`` (Thanks `@andreyto <https://github.com/andreyto>`__, `#24 <https://github.com/galaxy-iuc/parsec/pull/24>`__)
+
+----------------------
 1.0.6 (2018-12-13)
 ----------------------
 
