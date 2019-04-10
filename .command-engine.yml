@@ -10,23 +10,24 @@ module:
 
     ignore:
         top_attrs:
-            - client
             - base_url
+            - client
             - default_params
             - get_retry_delay
-            - set_retry_delay
             - json_headers
             - key
             - make_delete_request
             - make_get_request
+            - make_patch_request
             - make_post_request
             - make_put_request
-            - max_get_retries
             - max_get_attempts
+            - max_get_retries
+            - set_retry_delay
+            - timeout
             - toolShed
             - url
             - verify
-            - timeout
         funcs:
             - histories.download_dataset
             - histories.get_current_history
