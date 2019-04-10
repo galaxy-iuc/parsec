@@ -18,13 +18,6 @@ from parsec.decorators import custom_exception, dict_output
     is_flag=True
 )
 @click.option(
-    "--wait_for_completion",
-    help="This parameter is deprecated and ignored, it will be removed in BioBlend 0.12.",
-    default="False",
-    show_default=True,
-    is_flag=True
-)
-@click.option(
     "--maxwait",
     help="Total time (in seconds) to wait for the dataset state to become terminal. If the dataset state is not terminal within this time, a ``DatasetTimeoutException`` will be thrown.",
     default="12000",
@@ -34,7 +27,7 @@ from parsec.decorators import custom_exception, dict_output
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, dataset_id, file_path="", use_default_filename=True, wait_for_completion=True, maxwait=12000):
+def cli(ctx, dataset_id, file_path="", use_default_filename=True, maxwait=12000):
     """Download a dataset to file or in memory. If the dataset state is not 'ok', a ``DatasetStateException`` will be thrown.
 
 Output:

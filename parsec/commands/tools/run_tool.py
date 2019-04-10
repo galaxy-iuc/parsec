@@ -1,5 +1,5 @@
 import click
-from parsec.cli import pass_context, json_loads
+from parsec.cli import pass_context
 from parsec.decorators import custom_exception, dict_output
 
 
@@ -15,6 +15,6 @@ def cli(ctx, history_id, tool_id, tool_inputs):
 
 Output:
 
-
+    
     """
     return ctx.gi.tools.run_tool(history_id, tool_id, json_loads(tool_inputs))

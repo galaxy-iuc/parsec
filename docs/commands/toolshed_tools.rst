@@ -20,7 +20,7 @@ Search for tools in a Galaxy Tool Shed.
 **Output**
 
 
-dictionary containing search hits as well as metadata for the
+    dictionary containing search hits as well as metadata for the
      search. For example::
 
        {u'hits': [{u'matched_terms': [],
@@ -41,7 +41,6 @@ dictionary containing search hits as well as metadata for the
         u'page': u'1',
         u'page_size': u'2',
         u'total_results': u'118'}
-
     
 **Options**::
 

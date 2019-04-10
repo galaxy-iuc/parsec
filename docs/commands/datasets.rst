@@ -38,8 +38,6 @@ Download a dataset to file or in memory. If the dataset state is not 'ok', a ``D
                               If this argument is False, file_path is assumed to
                               contain the full file path including the filename.
                               [default: True]
-      --wait_for_completion   This parameter is deprecated and ignored, it will be
-                              removed in BioBlend 0.12.  [default: True]
       --maxwait FLOAT         Total time (in seconds) to wait for the dataset state
                               to become terminal. If the dataset state is not
                               terminal within this time, a
