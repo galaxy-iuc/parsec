@@ -27,4 +27,4 @@ def read_global_config():
         return DEFAULT_CONFIG
 
     with open(config_path) as f:
-        return yaml.load(f)
+        return yaml.safe_load(f)
