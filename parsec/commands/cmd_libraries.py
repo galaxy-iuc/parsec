@@ -11,13 +11,11 @@ from parsec.commands.libraries.set_library_permissions import cli as func8
 from parsec.commands.libraries.show_dataset import cli as func9
 from parsec.commands.libraries.show_folder import cli as func10
 from parsec.commands.libraries.show_library import cli as func11
-from parsec.commands.libraries.update_library_dataset import cli as func12
-from parsec.commands.libraries.upload_file_contents import cli as func13
-from parsec.commands.libraries.upload_file_from_local_path import cli as func14
-from parsec.commands.libraries.upload_file_from_server import cli as func15
-from parsec.commands.libraries.upload_file_from_url import cli as func16
-from parsec.commands.libraries.upload_from_galaxy_filesystem import cli as func17
-from parsec.commands.libraries.wait_for_dataset import cli as func18
+from parsec.commands.libraries.upload_file_contents import cli as func12
+from parsec.commands.libraries.upload_file_from_local_path import cli as func13
+from parsec.commands.libraries.upload_file_from_server import cli as func14
+from parsec.commands.libraries.upload_file_from_url import cli as func15
+from parsec.commands.libraries.upload_from_galaxy_filesystem import cli as func16
 
 
 @click.group()
@@ -42,5 +40,3 @@ cli.add_command(func13)
 cli.add_command(func14)
 cli.add_command(func15)
 cli.add_command(func16)
-cli.add_command(func17)
-cli.add_command(func18)

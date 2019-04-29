@@ -51,18 +51,6 @@ Create a new Galaxy remote user.
       -h, --help  Show this message and exit.
     
 
-``create_user`` command
------------------------
-
-**Usage**::
-
-    parsec users [OPTIONS] COMMAND [ARGS]...
-
-**Help**
-
-Deprecated method.
-
-
 ``create_user_apikey`` command
 ------------------------------
 
