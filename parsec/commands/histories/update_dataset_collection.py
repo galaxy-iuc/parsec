@@ -1,5 +1,5 @@
 import click
-from parsec.cli import pass_context
+from parsec.cli import pass_context, json_loads
 from parsec.decorators import custom_exception, dict_output
 
 

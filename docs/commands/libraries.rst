@@ -425,10 +425,6 @@ Upload all files in the specified subdirectory of the Galaxy library import dire
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
       --roles TEXT           ???
-      --preserve_dirs        Indicate whether to preserve the directory structure
-                             when importing dir
-      --tag_using_filenames  Indicate whether to generate dataset tags from
-                             filenames  [default: True]
       -h, --help             Show this message and exit.
     
 
@@ -487,10 +483,6 @@ Upload a set of files already present on the filesystem of the Galaxy server to 
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
       --roles TEXT           ???
-      --preserve_dirs        Indicate whether to preserve the directory structure
-                             when importing dir
-      --tag_using_filenames  Indicate whether to generate dataset tags from
-                             filenames  [default: True]
       -h, --help             Show this message and exit.
     
 

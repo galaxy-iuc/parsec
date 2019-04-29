@@ -1,5 +1,5 @@
 import click
-from parsec.cli import pass_context
+from parsec.cli import pass_context, json_loads
 from parsec.decorators import custom_exception, dict_output
 
 
@@ -35,26 +35,14 @@ from parsec.decorators import custom_exception, dict_output
     help="???",
     type=str
 )
-@click.option(
-    "--preserve_dirs",
-    help="Indicate whether to preserve the directory structure when importing dir",
-    is_flag=True
-)
-@click.option(
-    "--tag_using_filenames",
-    help="Indicate whether to generate dataset tags from filenames",
-    default="True",
-    show_default=True,
-    is_flag=True
-)
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, library_id, server_dir, folder_id="", file_type="auto", dbkey="?", link_data_only="", roles="", preserve_dirs=False, tag_using_filenames=True):
+def cli(ctx, library_id, server_dir, folder_id="", file_type="auto", dbkey="?", link_data_only="", roles=""):
     """Upload all files in the specified subdirectory of the Galaxy library import directory to a library.
 
 Output:
 
     
     """
-    return ctx.gi.libraries.upload_file_from_server(library_id, server_dir, folder_id=folder_id, file_type=file_type, dbkey=dbkey, link_data_only=link_data_only, roles=roles, preserve_dirs=preserve_dirs, tag_using_filenames=tag_using_filenames)
+    return ctx.gi.libraries.upload_file_from_server(library_id, server_dir, folder_id=folder_id, file_type=file_type, dbkey=dbkey, link_data_only=link_data_only, roles=roles)

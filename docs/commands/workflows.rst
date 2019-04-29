@@ -265,8 +265,6 @@ Imports a new workflow given a dictionary representing a previously exported wor
 **Options**::
 
 
-      --publish   if ``True`` the uploaded workflow will be published; otherwise it
-                  will be visible only by the user which uploads it (default)
       -h, --help  Show this message and exit.
     
 
@@ -290,8 +288,6 @@ Imports a new workflow given the path to a file containing a previously exported
 **Options**::
 
 
-      --publish   if ``True`` the uploaded workflow will be published; otherwise it
-                  will be visible only by the user which uploads it (default)
       -h, --help  Show this message and exit.
     
 

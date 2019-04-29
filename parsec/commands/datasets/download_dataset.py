@@ -1,5 +1,5 @@
 import click
-from parsec.cli import pass_context
+from parsec.cli import pass_context, json_loads
 from parsec.decorators import custom_exception, dict_output
 
 
@@ -18,8 +18,13 @@ from parsec.decorators import custom_exception, dict_output
     is_flag=True
 )
 @click.option(
+    "--wait_for_completion",
+    help="If this argument is True, this method call will block until the dataset is ready. If the dataset state becomes invalid, a DatasetStateException will be thrown.",
+    is_flag=True
+)
+@click.option(
     "--maxwait",
-    help="Total time (in seconds) to wait for the dataset state to become terminal. If the dataset state is not terminal within this time, a ``DatasetTimeoutException`` will be thrown.",
+    help="Time (in seconds) to wait for dataset to complete. If the dataset state is not complete within this time, a DatasetTimeoutException will be thrown.",
     default="12000",
     show_default=True,
     type=float
@@ -27,12 +32,12 @@ from parsec.decorators import custom_exception, dict_output
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, dataset_id, file_path="", use_default_filename=True, maxwait=12000):
-    """Download a dataset to file or in memory. If the dataset state is not 'ok', a ``DatasetStateException`` will be thrown.
+def cli(ctx, dataset_id, file_path="", use_default_filename=True, wait_for_completion=False, maxwait=12000):
+    """Download a dataset to file or in memory.
 
 Output:
 
     If a file_path argument is not provided, returns a dict containing the file_content.
                  Otherwise returns nothing.
     """
-    return ctx.gi.datasets.download_dataset(dataset_id, file_path=file_path, use_default_filename=use_default_filename, maxwait=maxwait)
+    return ctx.gi.datasets.download_dataset(dataset_id, file_path=file_path, use_default_filename=use_default_filename, wait_for_completion=wait_for_completion, maxwait=maxwait)
