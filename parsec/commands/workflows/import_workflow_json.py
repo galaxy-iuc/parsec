@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, dict_output
 
 
 @click.command('import_workflow_json')
-@click.argument("workflow_json")
+@click.argument("workflow_json", type=str)
 @pass_context
 @custom_exception
 @dict_output
@@ -15,4 +15,4 @@ Output:
 
     
     """
-    return ctx.gi.workflows.import_workflow_json(workflow_json)
+    return ctx.gi.workflows.import_workflow_json(json_loads(workflow_json))

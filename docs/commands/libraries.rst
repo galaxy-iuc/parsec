@@ -315,6 +315,34 @@ Get information about a library.
       -h, --help  Show this message and exit.
     
 
+``update_library_dataset`` command
+----------------------------------
+
+**Usage**::
+
+    parsec libraries update_library_dataset [OPTIONS] DATASET_ID
+
+**Help**
+
+Update library dataset metadata. Some of the attributes that can be modified are documented below.
+
+
+**Output**
+
+
+    details of the updated dataset
+    
+**Options**::
+
+
+      --file_ext TEXT      Replace library dataset extension (must exist in the
+                           Galaxy registry)
+      --genome_build TEXT  Replace library dataset genome build (dbkey)
+      --misc_info TEXT     Replace library dataset misc_info with given string
+      --name TEXT          Replace library dataset name with the given string
+      -h, --help           Show this message and exit.
+    
+
 ``upload_file_contents`` command
 --------------------------------
 
@@ -397,6 +425,10 @@ Upload all files in the specified subdirectory of the Galaxy library import dire
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
       --roles TEXT           ???
+      --preserve_dirs        Indicate whether to preserve the directory structure
+                             when importing dir
+      --tag_using_filenames  Indicate whether to generate dataset tags from
+                             filenames  [default: True]
       -h, --help             Show this message and exit.
     
 
@@ -455,5 +487,39 @@ Upload a set of files already present on the filesystem of the Galaxy server to 
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
       --roles TEXT           ???
+      --preserve_dirs        Indicate whether to preserve the directory structure
+                             when importing dir
+      --tag_using_filenames  Indicate whether to generate dataset tags from
+                             filenames  [default: True]
       -h, --help             Show this message and exit.
+    
+
+``wait_for_dataset`` command
+----------------------------
+
+**Usage**::
+
+    parsec libraries wait_for_dataset [OPTIONS] LIBRARY_ID DATASET_ID
+
+**Help**
+
+Wait until the library dataset state is terminal ('ok', 'empty', 'error', 'discarded' or 'failed_metadata').
+
+
+**Output**
+
+
+    A dictionary containing information about the dataset in the
+     library
+    
+**Options**::
+
+
+      --maxwait FLOAT   Total time (in seconds) to wait for the dataset state to
+                        become terminal. If the dataset state is not terminal within
+                        this time, a ``DatasetTimeoutException`` will be thrown.
+                        [default: 12000]
+      --interval FLOAT  Time (in seconds) to wait between 2 consecutive checks.
+                        [default: 3]
+      -h, --help        Show this message and exit.
     

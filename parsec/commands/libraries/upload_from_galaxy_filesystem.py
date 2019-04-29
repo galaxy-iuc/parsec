@@ -35,14 +35,26 @@ from parsec.decorators import custom_exception, dict_output
     help="???",
     type=str
 )
+@click.option(
+    "--preserve_dirs",
+    help="Indicate whether to preserve the directory structure when importing dir",
+    is_flag=True
+)
+@click.option(
+    "--tag_using_filenames",
+    help="Indicate whether to generate dataset tags from filenames",
+    default="True",
+    show_default=True,
+    is_flag=True
+)
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, library_id, filesystem_paths, folder_id="", file_type="auto", dbkey="?", link_data_only="", roles=""):
+def cli(ctx, library_id, filesystem_paths, folder_id="", file_type="auto", dbkey="?", link_data_only="", roles="", preserve_dirs=False, tag_using_filenames=True):
     """Upload a set of files already present on the filesystem of the Galaxy server to a library.
 
 Output:
 
     
     """
-    return ctx.gi.libraries.upload_from_galaxy_filesystem(library_id, filesystem_paths, folder_id=folder_id, file_type=file_type, dbkey=dbkey, link_data_only=link_data_only, roles=roles)
+    return ctx.gi.libraries.upload_from_galaxy_filesystem(library_id, filesystem_paths, folder_id=folder_id, file_type=file_type, dbkey=dbkey, link_data_only=link_data_only, roles=roles, preserve_dirs=preserve_dirs, tag_using_filenames=tag_using_filenames)

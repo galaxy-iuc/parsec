@@ -125,6 +125,8 @@ Display information about a folder.
 **Options**::
 
 
+      --contents  True to get the contents of the folder, rather than just the
+                  folder details.
       -h, --help  Show this message and exit.
     
 
