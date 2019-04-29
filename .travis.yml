@@ -24,6 +24,7 @@ deploy:
     all_branches: true
     distributions: sdist bdist_wheel
     repo: galaxy-iuc/parsec
+    python: '2.7'
 
 notifications:
   webhooks:
