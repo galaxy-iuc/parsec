@@ -44,7 +44,7 @@ def str_output(wrapped, instance, args, kwargs):
 
 
 @wrapt.decorator
-def None_output(wrapped, instance, args, kwargs):
+def none_output(wrapped, instance, args, kwargs):
     print(wrapped(*args, **kwargs))
 
 

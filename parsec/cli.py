@@ -93,7 +93,7 @@ class ParsecCLI(click.MultiCommand):
         commands = ['config', 'datasets', 'datatypes', 'folders', 'forms',
                     'ftpfiles', 'genomes', 'groups', 'histories', 'jobs',
                     'libraries', 'quotas', 'roles', 'tool_data', 'tools',
-                    'toolshed', 'users', 'utils', 'visual', 'workflows',
+                    'users', 'utils', 'visual', 'workflows',
                     'toolshed_categories', 'toolshed_repositories',
                     'toolshed_tools']
         return commands
