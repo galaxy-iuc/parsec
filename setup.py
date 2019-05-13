@@ -23,7 +23,14 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
-version = '1.12.1'
+# Update it in parsec/__init__.py
+version = None
+with open('parsec/__init__.py', 'r') as handle:
+    versline = [x for x in handle.readlines() if 'version' in x][0].strip()
+    _, vers = versline.split(' = ')
+    version = vers.strip("'")
+
+
 subpackages = [x.replace('/', '.') for x in glob.glob('parsec/commands/*') if not x.endswith('.py')]
 
 setup(
