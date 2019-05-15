@@ -7,7 +7,7 @@ from parsec.decorators import custom_exception, dict_output
 @click.argument("library_id", type=str)
 @click.option(
     "--contents",
-    help="True if want to get contents of the library (rather than just the library details)",
+    help="whether to get contents of the library (rather than just the library details)",
     is_flag=True
 )
 @pass_context

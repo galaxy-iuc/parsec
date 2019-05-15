@@ -27,10 +27,15 @@ from parsec.decorators import custom_exception, str_output
     help="if ``True``, block until the export is ready; else, return immediately",
     is_flag=True
 )
+@click.option(
+    "--maxwait",
+    help="Total time (in seconds) to wait for the export to become ready. When set, implies that ``wait`` is ``True``.",
+    type=float
+)
 @pass_context
 @custom_exception
 @str_output
-def cli(ctx, history_id, gzip=True, include_hidden=False, include_deleted=False, wait=False):
+def cli(ctx, history_id, gzip=True, include_hidden=False, include_deleted=False, wait=False, maxwait=""):
     """Start a job to create an export archive for the given history.
 
 Output:
@@ -38,4 +43,4 @@ Output:
     ``jeha_id`` of the export, or empty if ``wait`` is ``False``
           and the export is not ready.
     """
-    return ctx.gi.histories.export_history(history_id, gzip=gzip, include_hidden=include_hidden, include_deleted=include_deleted, wait=wait)
+    return ctx.gi.histories.export_history(history_id, gzip=gzip, include_hidden=include_hidden, include_deleted=include_deleted, wait=wait, maxwait=maxwait)

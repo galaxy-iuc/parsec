@@ -25,7 +25,6 @@ module:
             - max_get_retries
             - set_retry_delay
             - timeout
-            - toolShed
             - url
             - verify
         funcs:

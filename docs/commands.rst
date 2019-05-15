@@ -24,9 +24,9 @@ describes these commands.
    commands/libraries.rst
    commands/quotas.rst
    commands/roles.rst
+   commands/toolShed.rst
    commands/tool_data.rst
    commands/tools.rst
-   commands/toolshed.rst
    commands/toolshed_categories.rst
    commands/toolshed_repositories.rst
    commands/toolshed_tools.rst

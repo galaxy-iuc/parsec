@@ -7,12 +7,12 @@ from parsec.decorators import custom_exception, dict_output
 @click.argument("tool_id", type=str)
 @click.option(
     "--io_details",
-    help="if True, get also input and output details",
+    help="whether to get also input and output details",
     is_flag=True
 )
 @click.option(
     "--link_details",
-    help="if True, get also link details",
+    help="whether to get also link details",
     is_flag=True
 )
 @pass_context

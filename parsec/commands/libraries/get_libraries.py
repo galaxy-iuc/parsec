@@ -16,7 +16,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--deleted",
-    help="If set to ``True``, return libraries that have been deleted",
+    help="If ``False`` (the default), return only non-deleted libraries. If ``True``, return only deleted libraries. If ``None`, return both deleted and non-deleted libraries.",
     is_flag=True
 )
 @pass_context

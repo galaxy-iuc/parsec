@@ -74,29 +74,6 @@ Exports a workflow.
       -h, --help  Show this message and exit.
     
 
-``export_workflow_json`` command
---------------------------------
-
-**Usage**::
-
-    parsec workflows export_workflow_json [OPTIONS] WORKFLOW_ID
-
-**Help**
-
-.. deprecated:: 0.9.0 Use :meth:`export_workflow_dict` instead.
-
-
-**Output**
-
-
-    
-    
-**Options**::
-
-
-      -h, --help  Show this message and exit.
-    
-
 ``export_workflow_to_local_path`` command
 -----------------------------------------
 
@@ -265,6 +242,8 @@ Imports a new workflow given a dictionary representing a previously exported wor
 **Options**::
 
 
+      --publish   if ``True`` the uploaded workflow will be published; otherwise it
+                  will be visible only by the user which uploads it (default)
       -h, --help  Show this message and exit.
     
 
@@ -288,29 +267,8 @@ Imports a new workflow given the path to a file containing a previously exported
 **Options**::
 
 
-      -h, --help  Show this message and exit.
-    
-
-``import_workflow_json`` command
---------------------------------
-
-**Usage**::
-
-    parsec workflows import_workflow_json [OPTIONS] WORKFLOW_JSON
-
-**Help**
-
-.. deprecated:: 0.9.0 Use :meth:`import_workflow_dict` instead.
-
-
-**Output**
-
-
-    
-    
-**Options**::
-
-
+      --publish   if ``True`` the uploaded workflow will be published; otherwise it
+                  will be visible only by the user which uploads it (default)
       -h, --help  Show this message and exit.
     
 

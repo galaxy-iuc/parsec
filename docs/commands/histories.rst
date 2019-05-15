@@ -152,30 +152,6 @@ Delete a history.
       -h, --help  Show this message and exit.
     
 
-``download_dataset`` command
-----------------------------
-
-**Usage**::
-
-    parsec histories download_dataset [OPTIONS] HISTORY_ID DATASET_ID
-
-**Help**
-
-.. deprecated:: 0.8.0 Use :meth:`~bioblend.galaxy.datasets.DatasetClient.download_dataset` instead.
-
-
-**Output**
-
-
-    
-    
-**Options**::
-
-
-      --use_default_filename TEXT  [default: True]
-      -h, --help                   Show this message and exit.
-    
-
 ``download_history`` command
 ----------------------------
 
@@ -228,30 +204,9 @@ Start a job to create an export archive for the given history.
       --include_deleted  whether to include deleted datasets in the export
       --wait             if ``True``, block until the export is ready; else, return
                          immediately
+      --maxwait FLOAT    Total time (in seconds) to wait for the export to become
+                         ready. When set, implies that ``wait`` is ``True``.
       -h, --help         Show this message and exit.
-    
-
-``get_current_history`` command
--------------------------------
-
-**Usage**::
-
-    parsec histories get_current_history [OPTIONS]
-
-**Help**
-
-.. deprecated:: 0.5.2 Use :meth:`get_most_recently_used_history` instead.
-
-
-**Output**
-
-
-    
-    
-**Options**::
-
-
-      -h, --help  Show this message and exit.
     
 
 ``get_histories`` command

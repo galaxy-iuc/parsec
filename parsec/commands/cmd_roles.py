@@ -1,7 +1,7 @@
 import click
-from parsec.commands.roles.create_role import cli as func0
-from parsec.commands.roles.get_roles import cli as func1
-from parsec.commands.roles.show_role import cli as func2
+from parsec.commands.roles.create_role import cli as create_role
+from parsec.commands.roles.get_roles import cli as get_roles
+from parsec.commands.roles.show_role import cli as show_role
 
 
 @click.group()
@@ -9,6 +9,6 @@ def cli():
     pass
 
 
-cli.add_command(func0)
-cli.add_command(func1)
-cli.add_command(func2)
+cli.add_command(create_role)
+cli.add_command(get_roles)
+cli.add_command(show_role)

@@ -55,8 +55,8 @@ Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_
 
       --tool_id TEXT  id of the requested tool
       --name TEXT     name of the requested tool(s)
-      --trackster     if True, only tools that are compatible with Trackster are
-                      returned
+      --trackster     whether to return only tools that are compatible with
+                      Trackster
       -h, --help      Show this message and exit.
     
 
@@ -172,8 +172,8 @@ Get details of a given tool.
 **Options**::
 
 
-      --io_details    if True, get also input and output details
-      --link_details  if True, get also link details
+      --io_details    whether to get also input and output details
+      --link_details  whether to get also link details
       -h, --help      Show this message and exit.
     
 
@@ -200,10 +200,10 @@ Upload the file specified by ``path`` to the history specified by ``history_id``
       --dbkey TEXT      (optional) genome dbkey
       --file_name TEXT  (optional) name of the new history dataset
       --file_type TEXT  Galaxy datatype for the new dataset, default is auto
-      --space_to_tab    whether to convert spaces to tabs. Default is False.
-                        Applicable only if to_posix_lines is True
-      --to_posix_lines  if True, convert universal line endings to POSIX line
-                        endings. Default is True. Set to False if you upload a gzip,
+      --space_to_tab    whether to convert spaces to tabs. Default is ``False``.
+                        Applicable only if to_posix_lines is ``True``
+      --to_posix_lines  if ``True`` (the default), convert universal line endings to
+                        POSIX line endings. Set to ``False`` when uploading a gzip,
                         bz2 or zip archive containing a binary file
       -h, --help        Show this message and exit.
     

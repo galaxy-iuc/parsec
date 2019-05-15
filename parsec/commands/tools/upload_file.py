@@ -23,12 +23,12 @@ from parsec.decorators import custom_exception, dict_output
 )
 @click.option(
     "--space_to_tab",
-    help="whether to convert spaces to tabs. Default is False. Applicable only if to_posix_lines is True",
+    help="whether to convert spaces to tabs. Default is ``False``. Applicable only if to_posix_lines is ``True``",
     is_flag=True
 )
 @click.option(
     "--to_posix_lines",
-    help="if True, convert universal line endings to POSIX line endings. Default is True. Set to False if you upload a gzip, bz2 or zip archive containing a binary file",
+    help="if ``True`` (the default), convert universal line endings to POSIX line endings. Set to ``False`` when uploading a gzip, bz2 or zip archive containing a binary file",
     is_flag=True
 )
 @pass_context

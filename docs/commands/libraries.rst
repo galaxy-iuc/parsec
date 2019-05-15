@@ -189,7 +189,9 @@ Get all the libraries or filter for specific one(s) via the provided name or ID.
       --library_id TEXT  filter for library by library id
       --name TEXT        If ``name`` is set and multiple names match the given name,
                          all the libraries matching the argument will be returned
-      --deleted          If set to ``True``, return libraries that have been deleted
+      --deleted          If ``False`` (the default), return only non-deleted
+                         libraries. If ``True``, return only deleted libraries. If
+                         ``None`, return both deleted and non-deleted libraries.
       -h, --help         Show this message and exit.
     
 
@@ -310,7 +312,7 @@ Get information about a library.
 **Options**::
 
 
-      --contents  True if want to get contents of the library (rather than just the
+      --contents  whether to get contents of the library (rather than just the
                   library details)
       -h, --help  Show this message and exit.
     

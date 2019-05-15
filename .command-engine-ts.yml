@@ -26,7 +26,6 @@ module:
             - max_get_retries
             - set_retry_delay
             - timeout
-            - toolShed
             - url
             - verify
         funcs:
@@ -54,7 +53,6 @@ module:
             - make_put_request
             - max_get_retries
             - max_get_attempts
-            - toolShed
             - url
             - verify
 
