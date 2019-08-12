@@ -23,6 +23,6 @@ def cli(ctx, tool_id, io_details=False, link_details=False):
 
 Output:
 
-    
+    Information about the tool's interface
     """
     return ctx.gi.tools.show_tool(tool_id, io_details=io_details, link_details=link_details)

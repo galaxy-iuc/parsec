@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, list_output
 
 
 @click.command('show_matching_datasets')
@@ -12,12 +12,12 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@list_output
 def cli(ctx, history_id, name_filter=""):
     """Get dataset details for matching datasets within a history.
 
 Output:
 
-    
+    List of dictionaries
     """
     return ctx.gi.histories.show_matching_datasets(history_id, name_filter=name_filter)

@@ -13,6 +13,10 @@ def cli(ctx, library_id):
 
 Output:
 
-    
+    Information about the deleted library
+
+        .. warning::
+          Deleting a data library is irreversible - all of the data from the
+          library will be permanently deleted.
     """
     return ctx.gi.libraries.delete_library(library_id)

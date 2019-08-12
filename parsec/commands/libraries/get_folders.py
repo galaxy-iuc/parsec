@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, list_output
 
 
 @click.command('get_folders')
-@click.argument("library_id")
+@click.argument("library_id", type=str)
 @click.option(
     "--folder_id",
     help="filter for folder by folder id",

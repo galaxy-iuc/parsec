@@ -14,6 +14,6 @@ def cli(ctx, history_id, lib_dataset_id):
 
 Output:
 
-    
+    Information about the newly created HDA
     """
     return ctx.gi.histories.upload_dataset_from_library(history_id, lib_dataset_id)

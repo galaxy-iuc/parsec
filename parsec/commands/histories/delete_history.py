@@ -18,6 +18,14 @@ def cli(ctx, history_id, purge=False):
 
 Output:
 
-    
+    An error object if an error occurred or a dictionary
+                 containing: ``id`` (the encoded id of the history), ``deleted`` (if the
+                 history was marked as deleted), ``purged`` (if the history was
+                 purged).
+
+        .. note::
+          For the purge option to work, the Galaxy instance must have the
+          ``allow_user_dataset_purge`` option set to ``true`` in the
+          ``config/galaxy.yml`` configuration file.
     """
     return ctx.gi.histories.delete_history(history_id, purge=purge)

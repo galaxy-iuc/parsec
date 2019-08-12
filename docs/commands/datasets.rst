@@ -61,7 +61,7 @@ Get details about a given dataset. This can be a history or a library dataset.
 **Output**
 
 
-    
+    Information about the HDA or LDDA
     
 **Options**::
 

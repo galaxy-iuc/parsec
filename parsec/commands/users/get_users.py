@@ -6,21 +6,22 @@ from parsec.decorators import custom_exception, list_output
 @click.command('get_users')
 @click.option(
     "--deleted",
-    help=""
+    help="Whether to include deleted users",
+    is_flag=True
 )
 @click.option(
     "--f_email",
-    help="filter for user emails. The filter will be active for non-admin users only if the Galaxy instance has the ``expose_user_email`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored for non-admin users in Galaxy ``release_15.01`` and earlier.",
+    help="filter for user emails. The filter will be active for non-admin users only if the Galaxy instance has the ``expose_user_email`` option set to ``true`` in the ``config/galaxy.yml`` configuration file. This parameter is silently ignored for non-admin users in Galaxy ``release_15.01`` and earlier.",
     type=str
 )
 @click.option(
     "--f_name",
-    help="filter for user names. The filter will be active for non-admin users only if the Galaxy instance has the ``expose_user_name`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored in Galaxy ``release_15.10`` and earlier.",
+    help="filter for user names. The filter will be active for non-admin users only if the Galaxy instance has the ``expose_user_name`` option set to ``true`` in the ``config/galaxy.yml`` configuration file. This parameter is silently ignored in Galaxy ``release_15.10`` and earlier.",
     type=str
 )
 @click.option(
     "--f_any",
-    help="filter for user email or name. Each filter will be active for non-admin users only if the Galaxy instance has the corresponding ``expose_user_*`` option set to ``True`` in the ``config/galaxy.ini`` configuration file. This parameter is silently ignored in Galaxy ``release_15.10`` and earlier.",
+    help="filter for user email or name. Each filter will be active for non-admin users only if the Galaxy instance has the corresponding ``expose_user_*`` option set to ``true`` in the ``config/galaxy.yml`` configuration file. This parameter is silently ignored in Galaxy ``release_15.10`` and earlier.",
     type=str
 )
 @pass_context

@@ -27,6 +27,7 @@ describes these commands.
    commands/toolShed.rst
    commands/tool_data.rst
    commands/tools.rst
+   commands/toolshed.rst
    commands/toolshed_categories.rst
    commands/toolshed_repositories.rst
    commands/toolshed_tools.rst

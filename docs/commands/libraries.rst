@@ -20,7 +20,7 @@ Copy a Galaxy dataset into a library.
 **Output**
 
 
-    
+    LDDA information
     
 **Options**::
 
@@ -46,7 +46,7 @@ Create a folder in a library.
 **Output**
 
 
-    
+    List with a single dictionary containing information about the new folder
     
 **Options**::
 
@@ -102,7 +102,11 @@ Delete a data library.
 **Output**
 
 
-    
+    Information about the deleted library
+
+   .. warning::
+     Deleting a data library is irreversible - all of the data from the
+     library will be permanently deleted.
     
 **Options**::
 
@@ -233,7 +237,7 @@ Set the permissions for a library.  Note: it will override all security for this
 **Output**
 
 
-    
+    General information about the library
     
 **Options**::
 
@@ -284,7 +288,7 @@ Get details about a given folder. The required ``folder_id`` can be obtained fro
 **Output**
 
 
-    
+    Information about the folder
     
 **Options**::
 
@@ -360,7 +364,7 @@ Upload pasted_content to a data library as a new file.
 **Output**
 
 
-    
+    List with a single dictionary containing information about the LDDA
     
 **Options**::
 
@@ -387,7 +391,7 @@ Read local file contents from file_local_path and upload data to a library.
 **Output**
 
 
-    
+    List with a single dictionary containing information about the LDDA
     
 **Options**::
 
@@ -414,7 +418,7 @@ Upload all files in the specified subdirectory of the Galaxy library import dire
 **Output**
 
 
-    
+    List with a single dictionary containing information about the LDDA
     
 **Options**::
 
@@ -449,7 +453,7 @@ Upload a file to a library from a URL.
 **Output**
 
 
-    
+    List with a single dictionary containing information about the LDDA
     
 **Options**::
 
@@ -476,7 +480,7 @@ Upload a set of files already present on the filesystem of the Galaxy server to 
 **Output**
 
 
-    
+    List with a single dictionary containing information about the LDDA
     
 **Options**::
 

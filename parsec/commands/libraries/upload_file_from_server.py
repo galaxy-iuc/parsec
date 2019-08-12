@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, list_output
 
 
 @click.command('upload_file_from_server')
@@ -49,12 +49,12 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@list_output
 def cli(ctx, library_id, server_dir, folder_id="", file_type="auto", dbkey="?", link_data_only="", roles="", preserve_dirs=False, tag_using_filenames=True):
     """Upload all files in the specified subdirectory of the Galaxy library import directory to a library.
 
 Output:
 
-    
+    List with a single dictionary containing information about the LDDA
     """
     return ctx.gi.libraries.upload_file_from_server(library_id, server_dir, folder_id=folder_id, file_type=file_type, dbkey=dbkey, link_data_only=link_data_only, roles=roles, preserve_dirs=preserve_dirs, tag_using_filenames=tag_using_filenames)

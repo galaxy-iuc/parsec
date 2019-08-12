@@ -20,7 +20,7 @@ Delete an item from a data table.
 **Output**
 
 
-    
+    Remaining contents of the given data table
     
 **Options**::
 

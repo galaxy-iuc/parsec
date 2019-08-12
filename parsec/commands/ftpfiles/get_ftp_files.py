@@ -6,7 +6,8 @@ from parsec.decorators import custom_exception, list_output
 @click.command('get_ftp_files')
 @click.option(
     "--deleted",
-    help=""
+    help="Whether to include deleted files",
+    is_flag=True
 )
 @pass_context
 @custom_exception

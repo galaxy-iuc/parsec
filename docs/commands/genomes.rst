@@ -20,7 +20,7 @@ Returns a list of installed genomes
 **Output**
 
 
-    
+    List of installed genomes
     
 **Options**::
 
@@ -82,7 +82,7 @@ Returns information about build <id>
 **Output**
 
 
-    
+    Information about the genome build
     
 **Options**::
 

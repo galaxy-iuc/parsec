@@ -20,7 +20,7 @@ Create a new form.
 **Output**
 
 
-    Unique url of newly created form with encoded id
+    Unique URL of newly created form with encoded id
     
 **Options**::
 

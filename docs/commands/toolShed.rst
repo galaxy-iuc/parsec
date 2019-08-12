@@ -144,6 +144,7 @@ Uninstalls a specified repository revision from this Galaxy instance.
 **Options**::
 
 
-      --remove_from_disk TEXT  [default: True]
-      -h, --help               Show this message and exit.
+      --remove_from_disk  whether to also remove the repository from disk (the
+                          default) or only deactivate it  [default: True]
+      -h, --help          Show this message and exit.
     

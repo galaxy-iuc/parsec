@@ -14,6 +14,6 @@ def cli(ctx, path, history_id):
 
 Output:
 
-    
+    Information about the created upload job
     """
     return ctx.gi.tools.upload_from_ftp(path, history_id)

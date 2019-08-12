@@ -14,6 +14,6 @@ def cli(ctx, workflow_id, invocation_id):
 
 Output:
 
-    
+    The workflow invocation being cancelled
     """
     return ctx.gi.workflows.cancel_invocation(workflow_id, invocation_id)

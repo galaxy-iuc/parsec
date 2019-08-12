@@ -25,4 +25,4 @@ Output:
 
     If successful, a dictionary with a message noting the removal
     """
-    return ctx.gi.toolShed.uninstall_repository_revision(name, owner, changeset_revision, tool_shed_url, remove_from_disk=remove_from_disk)
+    return ctx.gi.toolshed.uninstall_repository_revision(name, owner, changeset_revision, tool_shed_url, remove_from_disk=remove_from_disk)

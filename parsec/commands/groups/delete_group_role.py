@@ -14,6 +14,6 @@ def cli(ctx, group_id, role_id):
 
 Output:
 
-    
+    The role which was removed
     """
     return ctx.gi.groups.delete_group_role(group_id, role_id)

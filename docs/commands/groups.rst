@@ -97,7 +97,7 @@ Remove a role from the given group.
 **Output**
 
 
-    
+    The role which was removed
     
 **Options**::
 
@@ -120,7 +120,7 @@ Remove a user from the given group.
 **Output**
 
 
-    
+    The user which was removed
     
 **Options**::
 
@@ -253,7 +253,7 @@ Update a group.
 **Output**
 
 
-    
+    None
     
 **Options**::
 

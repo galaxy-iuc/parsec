@@ -18,7 +18,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @click.option(
     "--file_type",
-    help="Galaxy datatype for the new dataset, default is auto",
+    help="(optional) Galaxy datatype for the new dataset, default is auto",
     type=str
 )
 @click.option(
@@ -39,7 +39,7 @@ def cli(ctx, path, history_id, dbkey=None, file_name=None, file_type=None, space
 
 Output:
 
-    
+    Information about the created upload job
     """
     kwargs = {}
     if dbkey and len(dbkey) > 0:

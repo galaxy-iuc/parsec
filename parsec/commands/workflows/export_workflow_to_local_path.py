@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, none_output
 
 
 @click.command('export_workflow_to_local_path')
@@ -15,12 +15,12 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@none_output
 def cli(ctx, workflow_id, file_local_path, use_default_filename=True):
     """Exports a workflow in JSON format to a given local path.
 
 Output:
 
-    
+    None
     """
     return ctx.gi.workflows.export_workflow_to_local_path(workflow_id, file_local_path, use_default_filename=use_default_filename)

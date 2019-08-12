@@ -13,6 +13,6 @@ def cli(ctx, form_xml_text):
 
 Output:
 
-    Unique url of newly created form with encoded id
+    Unique URL of newly created form with encoded id
     """
     return ctx.gi.forms.create_form(form_xml_text)

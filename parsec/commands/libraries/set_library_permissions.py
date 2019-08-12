@@ -37,6 +37,6 @@ def cli(ctx, library_id, access_in="", modify_in="", add_in="", manage_in=""):
 
 Output:
 
-    
+    General information about the library
     """
     return ctx.gi.libraries.set_library_permissions(library_id, access_in=access_in, modify_in=modify_in, add_in=add_in, manage_in=manage_in)

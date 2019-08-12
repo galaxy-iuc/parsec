@@ -24,6 +24,6 @@ def cli(ctx, library_id, dataset_id, folder_id="", message=""):
 
 Output:
 
-    
+    LDDA information
     """
     return ctx.gi.libraries.copy_from_dataset(library_id, dataset_id, folder_id=folder_id, message=message)

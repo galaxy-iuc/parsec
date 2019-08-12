@@ -20,7 +20,7 @@ Cancel the scheduling of a workflow.
 **Output**
 
 
-    
+    The workflow invocation being cancelled
     
 **Options**::
 
@@ -43,7 +43,11 @@ Delete a workflow identified by `workflow_id`.
 **Output**
 
 
-    
+    A message about the deletion
+
+   .. warning::
+       Deleting a workflow is irreversible - all workflow data
+       will be permanently deleted.
     
 **Options**::
 
@@ -89,7 +93,7 @@ Exports a workflow in JSON format to a given local path.
 **Output**
 
 
-    
+    None
     
 **Options**::
 
@@ -237,7 +241,19 @@ Imports a new workflow given a dictionary representing a previously exported wor
 **Output**
 
 
-    
+    Information about the imported workflow.
+     For example::
+
+       {u'name': 'Training: 16S rRNA sequencing with mothur: main tutorial',
+        u'tags': [],
+        u'deleted': false,
+        u'latest_workflow_uuid': '368c6165-ccbe-4945-8a3c-d27982206d66',
+        u'url': '/api/workflows/94bac0a90086bdcf',
+        u'number_of_steps': 44,
+        u'published': false,
+        u'owner': 'jane-doe',
+        u'model_class': 'StoredWorkflow',
+        u'id': '94bac0a90086bdcf'}
     
 **Options**::
 
@@ -262,7 +278,19 @@ Imports a new workflow given the path to a file containing a previously exported
 **Output**
 
 
-    
+    Information about the imported workflow.
+     For example::
+
+       {u'name': 'Training: 16S rRNA sequencing with mothur: main tutorial',
+        u'tags': [],
+        u'deleted': false,
+        u'latest_workflow_uuid': '368c6165-ccbe-4945-8a3c-d27982206d66',
+        u'url': '/api/workflows/94bac0a90086bdcf',
+        u'number_of_steps': 44,
+        u'published': false,
+        u'owner': 'jane-doe',
+        u'model_class': 'StoredWorkflow',
+        u'id': '94bac0a90086bdcf'}
     
 **Options**::
 
@@ -345,6 +373,34 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
 
    Note that this format allows only one parameter to be set per step.
 
+   For a ``repeat`` parameter, the names of the contained parameters needs
+   to be specified as ``<repeat name>_<repeat index>|<param name>``, with
+   the repeat index starting at 0. For example, if the tool XML contains::
+
+     <repeat name="cutoff" title="Parameters used to filter cells" min="1">
+       <param name="name" type="text" value="n_genes" label="Name of param...">
+         <option value="n_genes">n_genes</option>
+         <option value="n_counts">n_counts</option>
+       </param>
+       <param name="min" type="float" value="0" min="0" label="Min value"/>
+     </repeat>
+
+   then the PARAM_DICT should be something like::
+
+     {
+       ...
+       "cutoff_0|name": "n_genes",
+       "cutoff_0|min": "2",
+       "cutoff_1|name": "n_counts",
+       "cutoff_1|min": "4",
+       ...
+     }
+
+   At the time of this writing, it is not possible to change the number of
+   times the contained parameters are repeated. Therefore, the parameter
+   indexes can go from 0 to n-1, where n is the number of times the
+   repeated element was added when the workflow was saved in the Galaxy UI.
+
    The ``replacement_params`` dict should map parameter names in
    post-job actions (PJAs) to their runtime values. For
    instance, if the final step has a PJA like the following::
@@ -420,7 +476,7 @@ nature of this action and what is expected will vary based on the the type of wo
 **Output**
 
 
-    
+    Representation of the workflow invocation step
     
 **Options**::
 

@@ -20,7 +20,7 @@ Create a new dataset collection
 **Output**
 
 
-    
+    Information about the new HDCA
     
 **Options**::
 
@@ -96,7 +96,17 @@ Mark corresponding dataset as deleted.
 **Output**
 
 
-    
+    None
+   .. note::
+       For the purge option to work, the Galaxy instance must have the
+       ``allow_user_dataset_purge`` option set to ``true`` in the
+       ``config/galaxy.yml`` configuration file.
+
+   .. warning::
+       If you purge a dataset which has not been previously deleted,
+       Galaxy from release_15.03 to release_17.01 does not set the
+       ``deleted`` attribute of the dataset to ``True``, see
+       https://github.com/galaxyproject/galaxy/issues/3548
     
 **Options**::
 
@@ -120,7 +130,7 @@ Mark corresponding dataset collection as deleted.
 **Output**
 
 
-    
+    None
     
 **Options**::
 
@@ -143,7 +153,15 @@ Delete a history.
 **Output**
 
 
-    
+    An error object if an error occurred or a dictionary
+            containing: ``id`` (the encoded id of the history), ``deleted`` (if the
+            history was marked as deleted), ``purged`` (if the history was
+            purged).
+
+   .. note::
+     For the purge option to work, the Galaxy instance must have the
+     ``allow_user_dataset_purge`` option set to ``true`` in the
+     ``config/galaxy.yml`` configuration file.
     
 **Options**::
 
@@ -167,7 +185,7 @@ Download a history export archive.  Use :meth:`export_history` to create an expo
 **Output**
 
 
-    
+    None
     
 **Options**::
 
@@ -233,7 +251,8 @@ Get all histories or filter the specific one(s) via the provided ``name`` or ``h
 
       --history_id TEXT  Encoded history ID to filter on
       --name TEXT        Name of history to filter on
-      --deleted TEXT
+      --deleted          whether to filter for the deleted histories (``True``) or
+                         for the non-deleted ones (``False``)
       -h, --help         Show this message and exit.
     
 
@@ -252,7 +271,7 @@ Returns the current user's most recently used history (not deleted).
 **Output**
 
 
-    
+    History representation
     
 **Options**::
 
@@ -301,7 +320,7 @@ Get details about a given history dataset.
 **Output**
 
 
-    
+    Information about the dataset
     
 **Options**::
 
@@ -324,7 +343,7 @@ Get details about a given history dataset collection.
 **Output**
 
 
-    
+    Information about the dataset collection
     
 **Options**::
 
@@ -347,13 +366,38 @@ Get details related to how dataset was created (``id``, ``job_id``, ``tool_id``,
 **Output**
 
 
-    
+    Dataset provenance information
+     For example::
+
+       {
+           "tool_id": "toolshed.g2.bx.psu.edu/repos/ziru-zhou/macs2/modencode_peakcalling_macs2/2.0.10.2",
+           "job_id": "5471ba76f274f929",
+           "parameters": {
+               "input_chipseq_file1": {
+                   "id": "6f0a311a444290f2",
+                   "uuid": null
+               },
+               "dbkey": ""mm9"",
+               "experiment_name": ""H3K4me3_TAC_MACS2"",
+               "input_control_file1": {
+                   "id": "c21816a91f5dc24e",
+                   "uuid": null
+               },
+               "major_command": "{"gsize": "2716965481.0", "bdg": "False", "__current_case__": 0, "advanced_options": {"advanced_options_selector": "off", "__current_case__": 1}, "input_chipseq_file1": 104715, "xls_to_interval": "False", "major_command_selector": "callpeak", "input_control_file1": 104721, "pq_options":
+       {"pq_options_selector": "qvalue", "qvalue": "0.05", "__current_case__": 1}, "bw": "300", "nomodel_type": {"nomodel_type_selector": "create_model", "__current_case__": 1}}",
+               "chromInfo": ""/usr/local/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/mm9.len""
+           },
+           "stdout": "",
+           "stderr": "",
+           "id": "6fbd9b2274c62ebe",
+           "uuid": null
+       }
     
 **Options**::
 
 
-      --follow    If ``follow`` is ``True``, recursively fetch dataset provenance
-                  information for all inputs and their inputs, etc...
+      --follow    If ``True``, recursively fetch dataset provenance information for
+                  all inputs and their inputs, etc.
       -h, --help  Show this message and exit.
     
 
@@ -377,15 +421,20 @@ Get details of a given history. By default, just get the history meta informatio
 **Options**::
 
 
-      --contents      When ``True``, the complete list of datasets in the given
-                      history.
-      --deleted TEXT  Used when contents=True, includes deleted datasets in history
-                      dataset list
-      --visible TEXT  Used when contents=True, includes only visible datasets in
-                      history dataset list
-      --details TEXT  Used when contents=True, includes dataset details. Set to
-                      'all' for the most information
-      --types TEXT    ???
+      --contents      When ``True``, instead of the history details, return the list
+                      of datasets in the given history.
+      --deleted TEXT  When ``contents=True``, whether to filter for the deleted
+                      datasets (``True``) or for the non-deleted ones (``False``).
+                      If not set, no filtering is applied.
+      --visible TEXT  When ``contents=True``, whether to filter for the visible
+                      datasets (``True``) or for the hidden ones (``False``). If not
+                      set, no filtering is applied.
+      --details TEXT  When ``contents=True``, include dataset details. Set to 'all'
+                      for the most information.
+      --types TEXT    When ``contents=True``, filter for history content types. If
+                      set to ``['dataset']``, return only datasets. If set to
+                      ``['dataset_collection']``, return only dataset collections.
+                      If not set, no filtering is applied.
       -h, --help      Show this message and exit.
     
 
@@ -404,7 +453,7 @@ Get dataset details for matching datasets within a history.
 **Output**
 
 
-    
+    List of dictionaries
     
 **Options**::
 
@@ -431,7 +480,7 @@ Undelete a history
 **Output**
 
 
-    
+    'OK' if it was deleted
     
 **Options**::
 
@@ -532,7 +581,7 @@ Update history metadata information. Some of the attributes that can be modified
       --importable       Mark or unmark history as importable
       --name TEXT        Replace history name with the given string
       --published        Mark or unmark history as published
-      --purged           If True, mark history as purged (permanently deleted).
+      --purged           If ``True``, mark history as purged (permanently deleted).
                          Ignored on Galaxy release_15.01 and earlier
       --tags TEXT        Replace history tags with the given list
       -h, --help         Show this message and exit.
@@ -553,7 +602,7 @@ Upload a dataset into the history from a library. Requires the library dataset I
 **Output**
 
 
-    
+    Information about the newly created HDA
     
 **Options**::
 

@@ -16,7 +16,8 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--deleted",
-    help=""
+    help="whether to filter for the deleted histories (``True``) or for the non-deleted ones (``False``)",
+    is_flag=True
 )
 @pass_context
 @custom_exception
