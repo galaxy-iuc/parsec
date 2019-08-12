@@ -25,6 +25,6 @@ def cli(ctx, dataset_id, deleted=False, hda_ldda="hda"):
 
 Output:
 
-    
+    Information about the HDA or LDDA
     """
     return ctx.gi.datasets.show_dataset(dataset_id, deleted=deleted, hda_ldda=hda_ldda)

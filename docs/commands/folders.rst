@@ -44,7 +44,8 @@ Marks the folder with the given ``id`` as `deleted` (or removes the `deleted` ma
 **Output**
 
 
-    
+    detailed folder information
+   :rtype: dict
     
 **Options**::
 

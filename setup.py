@@ -11,7 +11,7 @@ readme = open('README.rst').read()
 
 requirements = [
     'Click>=6.7',
-    'bioblend==0.12.0',
+    'bioblend==0.13.0',
     'wrapt',
     'pyyaml',
     'justbackoff',
@@ -23,7 +23,14 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
-version = '1.12.1'
+# Update it in parsec/__init__.py
+version = None
+with open('parsec/__init__.py', 'r') as handle:
+    versline = [x for x in handle.readlines() if 'version' in x][0].strip()
+    _, vers = versline.split(' = ')
+    version = vers.strip("'")
+
+
 subpackages = [x.replace('/', '.') for x in glob.glob('parsec/commands/*') if not x.endswith('.py')]
 
 setup(
@@ -53,9 +60,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: POSIX',
         'Natural Language :: English',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
     test_suite='tests',
     tests_require=test_requirements

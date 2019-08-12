@@ -18,6 +18,7 @@ def cli(ctx, folder_id, undelete=False):
 
 Output:
 
-    
+    detailed folder information
+        :rtype: dict
     """
     return ctx.gi.folders.delete_folder(folder_id, undelete=undelete)

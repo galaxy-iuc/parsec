@@ -169,22 +169,22 @@ Get a list of all registered users. If ``deleted`` is set to ``True``, get a lis
 **Options**::
 
 
-      --deleted TEXT
+      --deleted       Whether to include deleted users
       --f_email TEXT  filter for user emails. The filter will be active for non-
                       admin users only if the Galaxy instance has the
-                      ``expose_user_email`` option set to ``True`` in the
-                      ``config/galaxy.ini`` configuration file. This parameter is
+                      ``expose_user_email`` option set to ``true`` in the
+                      ``config/galaxy.yml`` configuration file. This parameter is
                       silently ignored for non-admin users in Galaxy
                       ``release_15.01`` and earlier.
       --f_name TEXT   filter for user names. The filter will be active for non-admin
                       users only if the Galaxy instance has the ``expose_user_name``
-                      option set to ``True`` in the ``config/galaxy.ini``
+                      option set to ``true`` in the ``config/galaxy.yml``
                       configuration file. This parameter is silently ignored in
                       Galaxy ``release_15.10`` and earlier.
       --f_any TEXT    filter for user email or name. Each filter will be active for
                       non-admin users only if the Galaxy instance has the
-                      corresponding ``expose_user_*`` option set to ``True`` in the
-                      ``config/galaxy.ini`` configuration file. This parameter is
+                      corresponding ``expose_user_*`` option set to ``true`` in the
+                      ``config/galaxy.yml`` configuration file. This parameter is
                       silently ignored in Galaxy ``release_15.10`` and earlier.
       -h, --help      Show this message and exit.
     

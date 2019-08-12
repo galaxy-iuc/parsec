@@ -13,6 +13,6 @@ def cli(ctx, tool_id):
 
 Output:
 
-    
+    Tool requirement status
     """
     return ctx.gi.tools.install_dependencies(tool_id)

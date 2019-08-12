@@ -20,7 +20,23 @@ Get the list of jobs of the current user.
 **Output**
 
 
-    
+    list of dictionaries containing summary job information.
+     For example::
+
+       [{u'create_time': u'2014-03-01T16:16:48.640550',
+         u'exit_code': 0,
+         u'id': u'ebfb8f50c6abde6d',
+         u'model_class': u'Job',
+         u'state': u'ok',
+         u'tool_id': u'fasta2tab',
+         u'update_time': u'2014-03-01T16:16:50.657399'},
+        {u'create_time': u'2014-03-01T16:05:34.851246',
+         u'exit_code': 0,
+         u'id': u'1cd8e2f6b131e891',
+         u'model_class': u'Job',
+         u'state': u'ok',
+         u'tool_id': u'upload1',
+         u'update_time': u'2014-03-01T16:05:39.558458'}]
     
 **Options**::
 
@@ -70,7 +86,13 @@ Return jobs for the current user based payload content.
 **Output**
 
 
-    
+    list of dictionaries containing summary job information of
+     the jobs that match the requested job run
+
+   This method is designed to scan the list of previously run jobs and find
+   records of jobs that had the exact some input parameters and datasets.
+   This can be used to minimize the amount of repeated work, and simply
+   recycle the old results.
     
 **Options**::
 

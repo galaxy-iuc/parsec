@@ -6,6 +6,11 @@ from .io import error
 import sys
 import traceback
 
+if sys.version_info[0] < 3:
+    jde = ValueError
+else:
+    jde = json.decoder.JSONDecodeError
+
 
 @wrapt.decorator
 def custom_exception(wrapped, instance, args, kwargs):
@@ -15,15 +20,15 @@ def custom_exception(wrapped, instance, args, kwargs):
         if hasattr(e, 'body'):
             try:
                 error(json.loads(e.body)['err_msg'])
-            except json.decoder.JSONDecodeError:
+            except jde:
                 error(str(e))
         else:
             exc_type, exc_value, exc_traceback = sys.exc_info()
             lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
             error(''.join(lines))
             error(str(e))
-            ctx = args[0]
-            ctx.exit(1)
+        ctx = args[0]
+        ctx.exit(1)
 
 
 @wrapt.decorator

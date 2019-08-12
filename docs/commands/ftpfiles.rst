@@ -25,6 +25,6 @@ Get a list of local files.
 **Options**::
 
 
-      --deleted TEXT
-      -h, --help      Show this message and exit.
+      --deleted   Whether to include deleted files
+      -h, --help  Show this message and exit.
     

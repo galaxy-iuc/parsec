@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, list_output
 
 
 @click.command('create_folder')
@@ -18,12 +18,12 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@list_output
 def cli(ctx, library_id, folder_name, description="", base_folder_id=""):
     """Create a folder in a library.
 
 Output:
 
-    
+    List with a single dictionary containing information about the new folder
     """
     return ctx.gi.libraries.create_folder(library_id, folder_name, description=description, base_folder_id=base_folder_id)

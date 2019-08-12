@@ -14,6 +14,6 @@ def cli(ctx, history_id, dataset_id):
 
 Output:
 
-    
+    Information about the dataset
     """
     return ctx.gi.histories.show_dataset(history_id, dataset_id)

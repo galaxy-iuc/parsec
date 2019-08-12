@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, none_output
 
 
 @click.command('update_group')
@@ -24,12 +24,12 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@none_output
 def cli(ctx, group_id, group_name="", user_ids=None, role_ids=None):
     """Update a group.
 
 Output:
 
-    
+    None
     """
     return ctx.gi.groups.update_group(group_id, group_name=group_name, user_ids=user_ids, role_ids=role_ids)

@@ -18,6 +18,18 @@ def cli(ctx, workflow_dict, publish=False):
 
 Output:
 
-    
+    Information about the imported workflow.
+          For example::
+
+            {u'name': 'Training: 16S rRNA sequencing with mothur: main tutorial',
+             u'tags': [],
+             u'deleted': false,
+             u'latest_workflow_uuid': '368c6165-ccbe-4945-8a3c-d27982206d66',
+             u'url': '/api/workflows/94bac0a90086bdcf',
+             u'number_of_steps': 44,
+             u'published': false,
+             u'owner': 'jane-doe',
+             u'model_class': 'StoredWorkflow',
+             u'id': '94bac0a90086bdcf'}
     """
     return ctx.gi.workflows.import_workflow_dict(json_loads(workflow_dict), publish=publish)

@@ -33,6 +33,6 @@ def cli(ctx, id, num="", chrom="", low="", high=""):
 
 Output:
 
-    
+    Information about the genome build
     """
     return ctx.gi.genomes.show_genome(id, num=num, chrom=chrom, low=low, high=high)

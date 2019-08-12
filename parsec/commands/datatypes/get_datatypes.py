@@ -6,11 +6,13 @@ from parsec.decorators import custom_exception, list_output
 @click.command('get_datatypes')
 @click.option(
     "--extension_only",
-    help=""
+    help="Return only the extension rather than the datatype name",
+    is_flag=True
 )
 @click.option(
     "--upload_only",
-    help=""
+    help="Whether to return only datatypes which can be uploaded",
+    is_flag=True
 )
 @pass_context
 @custom_exception

@@ -1,10 +1,10 @@
 import click
-from parsec.commands.quotas.create_quota import cli as func0
-from parsec.commands.quotas.delete_quota import cli as func1
-from parsec.commands.quotas.get_quotas import cli as func2
-from parsec.commands.quotas.show_quota import cli as func3
-from parsec.commands.quotas.undelete_quota import cli as func4
-from parsec.commands.quotas.update_quota import cli as func5
+from parsec.commands.quotas.create_quota import cli as create_quota
+from parsec.commands.quotas.delete_quota import cli as delete_quota
+from parsec.commands.quotas.get_quotas import cli as get_quotas
+from parsec.commands.quotas.show_quota import cli as show_quota
+from parsec.commands.quotas.undelete_quota import cli as undelete_quota
+from parsec.commands.quotas.update_quota import cli as update_quota
 
 
 @click.group()
@@ -12,9 +12,9 @@ def cli():
     pass
 
 
-cli.add_command(func0)
-cli.add_command(func1)
-cli.add_command(func2)
-cli.add_command(func3)
-cli.add_command(func4)
-cli.add_command(func5)
+cli.add_command(create_quota)
+cli.add_command(delete_quota)
+cli.add_command(get_quotas)
+cli.add_command(show_quota)
+cli.add_command(undelete_quota)
+cli.add_command(update_quota)

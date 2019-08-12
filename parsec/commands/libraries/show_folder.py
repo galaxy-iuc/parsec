@@ -14,6 +14,6 @@ def cli(ctx, library_id, folder_id):
 
 Output:
 
-    
+    Information about the folder
     """
     return ctx.gi.libraries.show_folder(library_id, folder_id)

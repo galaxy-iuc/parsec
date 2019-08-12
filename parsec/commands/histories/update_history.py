@@ -32,7 +32,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @click.option(
     "--purged",
-    help="If True, mark history as purged (permanently deleted). Ignored on Galaxy release_15.01 and earlier",
+    help="If ``True``, mark history as purged (permanently deleted). Ignored on Galaxy release_15.01 and earlier",
     is_flag=True
 )
 @click.option(

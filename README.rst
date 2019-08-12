@@ -34,6 +34,8 @@ Installation
    $ pip install galaxy-parsec
    $ parsec init
 
+Python 3.6+ is supported
+
 Questions?
 ----------
 

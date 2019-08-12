@@ -14,6 +14,6 @@ def cli(ctx, history_id, collection_description):
 
 Output:
 
-    
+    Information about the new HDCA
     """
     return ctx.gi.histories.create_dataset_collection(history_id, collection_description)

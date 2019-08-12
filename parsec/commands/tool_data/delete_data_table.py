@@ -14,6 +14,6 @@ def cli(ctx, data_table_id, values):
 
 Output:
 
-    
+    Remaining contents of the given data table
     """
     return ctx.gi.tool_data.delete_data_table(data_table_id, values)

@@ -12,6 +12,6 @@ def cli(ctx):
 
 Output:
 
-    
+    History representation
     """
     return ctx.gi.histories.get_most_recently_used_history()

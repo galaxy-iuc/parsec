@@ -14,6 +14,8 @@ def cli(ctx, content, history_id):
 
 Output:
 
-    
+    Information about the created upload job
+
+        See :meth:`upload_file` for the optional parameters.
     """
     return ctx.gi.tools.paste_content(content, history_id)

@@ -14,6 +14,6 @@ def cli(ctx, group_id, user_id):
 
 Output:
 
-    
+    The user which was removed
     """
     return ctx.gi.groups.delete_group_user(group_id, user_id)

@@ -37,9 +37,9 @@ Get the list of all installed datatypes.
 **Options**::
 
 
-      --extension_only TEXT
-      --upload_only TEXT
-      -h, --help             Show this message and exit.
+      --extension_only  Return only the extension rather than the datatype name
+      --upload_only     Whether to return only datatypes which can be uploaded
+      -h, --help        Show this message and exit.
     
 
 ``get_sniffers`` command

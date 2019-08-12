@@ -16,7 +16,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--trackster",
-    help="if True, only tools that are compatible with Trackster are returned",
+    help="whether to return only tools that are compatible with Trackster",
     is_flag=True
 )
 @pass_context

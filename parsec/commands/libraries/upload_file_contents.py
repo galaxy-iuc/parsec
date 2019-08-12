@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, list_output
 
 
 @click.command('upload_file_contents')
@@ -27,12 +27,12 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@list_output
 def cli(ctx, library_id, pasted_content, folder_id="", file_type="auto", dbkey="?"):
     """Upload pasted_content to a data library as a new file.
 
 Output:
 
-    
+    List with a single dictionary containing information about the LDDA
     """
     return ctx.gi.libraries.upload_file_contents(library_id, pasted_content, folder_id=folder_id, file_type=file_type, dbkey=dbkey)

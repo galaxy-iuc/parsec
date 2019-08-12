@@ -16,6 +16,6 @@ def cli(ctx, workflow_id, invocation_id, step_id, action):
 
 Output:
 
-    
+    Representation of the workflow invocation step
     """
     return ctx.gi.workflows.run_invocation_step_action(workflow_id, invocation_id, step_id, action)

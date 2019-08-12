@@ -18,17 +18,17 @@ from parsec.decorators import custom_exception, dict_output
 )
 @click.option(
     "--file_type",
-    help="Galaxy datatype for the new dataset, default is auto",
+    help="(optional) Galaxy datatype for the new dataset, default is auto",
     type=str
 )
 @click.option(
     "--space_to_tab",
-    help="whether to convert spaces to tabs. Default is False. Applicable only if to_posix_lines is True",
+    help="whether to convert spaces to tabs. Default is ``False``. Applicable only if to_posix_lines is ``True``",
     is_flag=True
 )
 @click.option(
     "--to_posix_lines",
-    help="if True, convert universal line endings to POSIX line endings. Default is True. Set to False if you upload a gzip, bz2 or zip archive containing a binary file",
+    help="if ``True`` (the default), convert universal line endings to POSIX line endings. Set to ``False`` when uploading a gzip, bz2 or zip archive containing a binary file",
     is_flag=True
 )
 @pass_context
@@ -39,7 +39,7 @@ def cli(ctx, path, history_id, dbkey=None, file_name=None, file_type=None, space
 
 Output:
 
-    
+    Information about the created upload job
     """
     kwargs = {}
     if dbkey and len(dbkey) > 0:

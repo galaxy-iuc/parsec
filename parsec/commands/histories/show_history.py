@@ -7,28 +7,27 @@ from parsec.decorators import custom_exception, dict_output
 @click.argument("history_id", type=str)
 @click.option(
     "--contents",
-    help="When ``True``, the complete list of datasets in the given history.",
+    help="When ``True``, instead of the history details, return the list of datasets in the given history.",
     is_flag=True
 )
 @click.option(
     "--deleted",
-    help="Used when contents=True, includes deleted datasets in history dataset list",
-    type=str
+    help="When ``contents=True``, whether to filter for the deleted datasets (``True``) or for the non-deleted ones (``False``). If not set, no filtering is applied."
 )
 @click.option(
     "--visible",
-    help="Used when contents=True, includes only visible datasets in history dataset list",
-    type=str
+    help="When ``contents=True``, whether to filter for the visible datasets (``True``) or for the hidden ones (``False``). If not set, no filtering is applied."
 )
 @click.option(
     "--details",
-    help="Used when contents=True, includes dataset details. Set to 'all' for the most information",
+    help="When ``contents=True``, include dataset details. Set to 'all' for the most information.",
     type=str
 )
 @click.option(
     "--types",
-    help="???",
-    type=str
+    help="When ``contents=True``, filter for history content types. If set to ``['dataset']``, return only datasets. If set to ``['dataset_collection']``, return only dataset collections. If not set, no filtering is applied.",
+    type=str,
+    multiple=True
 )
 @pass_context
 @custom_exception
