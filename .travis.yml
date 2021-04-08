@@ -1,8 +1,7 @@
 language: python
 
 python:
-- '2.7'
-- '3.5'
+- '3.8'
 
 install: pip install -r requirements.txt
 
@@ -24,7 +23,7 @@ deploy:
     all_branches: true
     distributions: sdist bdist_wheel
     repo: galaxy-iuc/parsec
-    python: '2.7'
+    python: '3.8'
 
 notifications:
   webhooks:
