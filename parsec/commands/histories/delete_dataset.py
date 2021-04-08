@@ -20,15 +20,10 @@ def cli(ctx, history_id, dataset_id, purge=False):
 Output:
 
     None
+
         .. note::
             For the purge option to work, the Galaxy instance must have the
             ``allow_user_dataset_purge`` option set to ``true`` in the
             ``config/galaxy.yml`` configuration file.
-
-        .. warning::
-            If you purge a dataset which has not been previously deleted,
-            Galaxy from release_15.03 to release_17.01 does not set the
-            ``deleted`` attribute of the dataset to ``True``, see
-            https://github.com/galaxyproject/galaxy/issues/3548
     """
     return ctx.gi.histories.delete_dataset(history_id, dataset_id, purge=purge)

@@ -25,7 +25,7 @@ from parsec.decorators import custom_exception, none_output
 @pass_context
 @custom_exception
 @none_output
-def cli(ctx, group_id, group_name="", user_ids=None, role_ids=None):
+def cli(ctx, group_id, group_name="", user_ids="", role_ids=""):
     """Update a group.
 
 Output:

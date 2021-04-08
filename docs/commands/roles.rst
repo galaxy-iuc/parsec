@@ -20,15 +20,18 @@ Create a new role.
 **Output**
 
 
-    A (size 1) list with newly created role
-     details, like::
+    Details of the newly created role.
+     For example::
 
-       [{u'description': u'desc',
-         u'url': u'/api/roles/ebfb8f50c6abde6d',
-         u'model_class': u'Role',
-         u'type': u'admin',
-         u'id': u'ebfb8f50c6abde6d',
-         u'name': u'Foo'}]
+       {'description': 'desc',
+        'url': '/api/roles/ebfb8f50c6abde6d',
+        'model_class': 'Role',
+        'type': 'admin',
+        'id': 'ebfb8f50c6abde6d',
+        'name': 'Foo'}
+
+   .. versionchanged:: 0.15.0
+       Changed the return value from a 1-element list to a dict.
     
 **Options**::
 
@@ -86,7 +89,7 @@ Display information on a single role
 **Output**
 
 
-    A description of role
+    Details of the given role.
      For example::
 
        {"description": "Private Role for Foo",

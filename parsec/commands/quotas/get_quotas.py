@@ -20,13 +20,13 @@ Output:
     A list of dicts with details on individual quotas.
           For example::
 
-            [{u'id': u'0604c8a56abe9a50',
-              u'model_class': u'Quota',
-              u'name': u'test ',
-              u'url': u'/api/quotas/0604c8a56abe9a50'},
-             {u'id': u'1ee267091d0190af',
-              u'model_class': u'Quota',
-              u'name': u'workshop',
-              u'url': u'/api/quotas/1ee267091d0190af'}]
+            [{'id': '0604c8a56abe9a50',
+              'model_class': 'Quota',
+              'name': 'test ',
+              'url': '/api/quotas/0604c8a56abe9a50'},
+             {'id': '1ee267091d0190af',
+              'model_class': 'Quota',
+              'name': 'workshop',
+              'url': '/api/quotas/1ee267091d0190af'}]
     """
     return ctx.gi.quotas.get_quotas(deleted=deleted)

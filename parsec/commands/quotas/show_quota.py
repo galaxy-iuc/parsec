@@ -21,15 +21,15 @@ Output:
     A description of quota.
           For example::
 
-            {u'bytes': 107374182400,
-             u'default': [],
-             u'description': u'just testing',
-             u'display_amount': u'100.0 GB',
-             u'groups': [],
-             u'id': u'0604c8a56abe9a50',
-             u'model_class': u'Quota',
-             u'name': u'test ',
-             u'operation': u'=',
-             u'users': []}
+            {'bytes': 107374182400,
+             'default': [],
+             'description': 'just testing',
+             'display_amount': '100.0 GB',
+             'groups': [],
+             'id': '0604c8a56abe9a50',
+             'model_class': 'Quota',
+             'name': 'test ',
+             'operation': '=',
+             'users': []}
     """
     return ctx.gi.quotas.show_quota(quota_id, deleted=deleted)

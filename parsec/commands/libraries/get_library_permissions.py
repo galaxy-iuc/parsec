@@ -9,7 +9,7 @@ from parsec.decorators import custom_exception, dict_output
 @custom_exception
 @dict_output
 def cli(ctx, library_id):
-    """Get the permessions for a library.
+    """Get the permissions for a library.
 
 Output:
 

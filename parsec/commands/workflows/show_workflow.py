@@ -5,10 +5,15 @@ from parsec.decorators import custom_exception, dict_output
 
 @click.command('show_workflow')
 @click.argument("workflow_id", type=str)
+@click.option(
+    "--version",
+    help="Workflow version to show",
+    type=int
+)
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, workflow_id):
+def cli(ctx, workflow_id, version=""):
     """Display information needed to run a workflow.
 
 Output:
@@ -16,9 +21,9 @@ Output:
     A description of the workflow and its inputs.
           For example::
 
-            {u'id': u'92c56938c2f9b315',
-             u'inputs': {u'23': {u'label': u'Input Dataset', u'value': u''}},
-             u'name': u'Simple',
-             u'url': u'/api/workflows/92c56938c2f9b315'}
+            {'id': '92c56938c2f9b315',
+             'inputs': {'23': {'label': 'Input Dataset', 'value': ''}},
+             'name': 'Simple',
+             'url': '/api/workflows/92c56938c2f9b315'}
     """
-    return ctx.gi.workflows.show_workflow(workflow_id)
+    return ctx.gi.workflows.show_workflow(workflow_id, version=version)

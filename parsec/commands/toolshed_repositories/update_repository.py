@@ -24,8 +24,8 @@ Output:
           will be raised generally if there are problems.
           For example a successful upload will look like::
 
-            {u'content_alert': u'',
-             u'message': u''}
+            {'content_alert': '',
+             'message': ''}
 
         .. versionadded:: 0.5.2
     """

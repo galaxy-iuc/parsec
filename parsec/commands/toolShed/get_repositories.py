@@ -16,13 +16,13 @@ Output:
           repositories present in the Tool Shed.
           For example::
 
-            [{u'changeset_revision': u'4afe13ac23b6',
-              u'deleted': False,
-              u'dist_to_shed': False,
-              u'error_message': u'',
-              u'name': u'velvet_toolsuite',
-              u'owner': u'edward-kirton',
-              u'status': u'Installed'}]
+            [{'changeset_revision': '4afe13ac23b6',
+              'deleted': False,
+              'dist_to_shed': False,
+              'error_message': '',
+              'name': 'velvet_toolsuite',
+              'owner': 'edward-kirton',
+              'status': 'Installed'}]
 
         .. versionchanged:: 0.4.1
             Changed method name from ``get_tools`` to ``get_repositories`` to

@@ -12,6 +12,11 @@ from parsec.decorators import custom_exception, dict_output
     type=str
 )
 @click.option(
+    "--datatype",
+    help="Replace the datatype of the history dataset with the given string. The string must be a valid Galaxy datatype, both the current and the target datatypes must allow datatype changes, and the dataset must not be in use as input or output of a running job (including uploads), otherwise an error will be raised.",
+    type=str
+)
+@click.option(
     "--deleted",
     help="Mark or unmark history dataset as deleted",
     is_flag=True
@@ -34,21 +39,21 @@ from parsec.decorators import custom_exception, dict_output
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, history_id, dataset_id, annotation=None, deleted=None, genome_build=None, name=None, visible=None):
+def cli(ctx, history_id, dataset_id, annotation=None, datatype=None, deleted=None, genome_build=None, name=None, visible=None):
     """Update history dataset metadata. Some of the attributes that can be modified are documented below.
 
 Output:
 
-    details of the updated dataset (for Galaxy release_15.01 and
-            earlier only the updated attributes)
+    details of the updated dataset
 
-        .. warning::
-            The return value was changed in BioBlend v0.8.0, previously it was
-            the status code (type int).
+        .. versionchanged:: 0.8.0
+            Changed the return value from the status code (type int) to a dict.
     """
     kwargs = {}
     if annotation and len(annotation) > 0:
         kwargs['annotation'] = annotation
+    if datatype and len(datatype) > 0:
+        kwargs['datatype'] = datatype
     if deleted is not None:
         kwargs['deleted'] = deleted
     if genome_build and len(genome_build) > 0:

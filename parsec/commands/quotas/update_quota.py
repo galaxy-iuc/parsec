@@ -47,7 +47,7 @@ from parsec.decorators import custom_exception, str_output
 @pass_context
 @custom_exception
 @str_output
-def cli(ctx, quota_id, name="", description="", amount="", operation="", default="no", in_users=None, in_groups=None):
+def cli(ctx, quota_id, name="", description="", amount="", operation="", default="no", in_users="", in_groups=""):
     """Update an existing quota
 
 Output:

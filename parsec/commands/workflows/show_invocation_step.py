@@ -18,15 +18,15 @@ Output:
     The workflow invocation step.
           For example::
 
-            {u'action': None,
-             u'id': u'63cd3858d057a6d1',
-             u'job_id': None,
-             u'model_class': u'WorkflowInvocationStep',
-             u'order_index': 2,
-             u'state': None,
-             u'update_time': u'2015-10-31T22:11:14',
-             u'workflow_step_id': u'52e496b945151ee8',
-             u'workflow_step_label': None,
-             u'workflow_step_uuid': u'4060554c-1dd5-4287-9040-8b4f281cf9dc'}
+            {'action': None,
+             'id': '63cd3858d057a6d1',
+             'job_id': None,
+             'model_class': 'WorkflowInvocationStep',
+             'order_index': 2,
+             'state': None,
+             'update_time': '2015-10-31T22:11:14',
+             'workflow_step_id': '52e496b945151ee8',
+             'workflow_step_label': None,
+             'workflow_step_uuid': '4060554c-1dd5-4287-9040-8b4f281cf9dc'}
     """
     return ctx.gi.workflows.show_invocation_step(workflow_id, invocation_id, step_id)

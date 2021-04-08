@@ -16,16 +16,16 @@ Output:
     A description of the given visualization.
           For example::
 
-            {u'annotation': None,
-             u'dbkey': u'mm9',
-             u'id': u'18df9134ea75e49c',
-             u'latest_revision': {  ... },
-             u'model_class': u'Visualization',
-             u'revisions': [u'aa90649bb3ec7dcb', u'20622bc6249c0c71'],
-             u'slug': u'visualization-for-grant-1',
-             u'title': u'Visualization For Grant',
-             u'type': u'trackster',
-             u'url': u'/u/azaron/v/visualization-for-grant-1',
-             u'user_id': u'21e4aed91386ca8b'}
+            {'annotation': None,
+             'dbkey': 'mm9',
+             'id': '18df9134ea75e49c',
+             'latest_revision': {  ... },
+             'model_class': 'Visualization',
+             'revisions': ['aa90649bb3ec7dcb', '20622bc6249c0c71'],
+             'slug': 'visualization-for-grant-1',
+             'title': 'Visualization For Grant',
+             'type': 'trackster',
+             'url': '/u/azaron/v/visualization-for-grant-1',
+             'user_id': '21e4aed91386ca8b'}
     """
     return ctx.gi.visual.show_visualization(visual_id)

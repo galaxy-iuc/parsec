@@ -84,6 +84,7 @@ This will exit with the following error codes:
 
       --exit_early         Exit immediately after checking status rather than
                            sleeping indefinitely
+    
       --backoff_min FLOAT  Minimum time to sleep between checks, in seconds.
       --backoff_max FLOAT  Maximum time to sleep between checks, in seconds
       -h, --help           Show this message and exit.

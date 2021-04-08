@@ -9,7 +9,7 @@ from parsec.decorators import custom_exception, str_output
 @custom_exception
 @str_output
 def cli(ctx, user_id):
-    """Get the current API key for a given user. This functionality is available since Galaxy ``release_17.01``.
+    """Get the current API key for a given user.
 
 Output:
 

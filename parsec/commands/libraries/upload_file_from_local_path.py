@@ -25,14 +25,20 @@ from parsec.decorators import custom_exception, list_output
     show_default=True,
     type=str
 )
+@click.option(
+    "--tags",
+    help="A list of tags to add to the datasets",
+    type=str,
+    multiple=True
+)
 @pass_context
 @custom_exception
 @list_output
-def cli(ctx, library_id, file_local_path, folder_id="", file_type="auto", dbkey="?"):
+def cli(ctx, library_id, file_local_path, folder_id="", file_type="auto", dbkey="?", tags=""):
     """Read local file contents from file_local_path and upload data to a library.
 
 Output:
 
     List with a single dictionary containing information about the LDDA
     """
-    return ctx.gi.libraries.upload_file_from_local_path(library_id, file_local_path, folder_id=folder_id, file_type=file_type, dbkey=dbkey)
+    return ctx.gi.libraries.upload_file_from_local_path(library_id, file_local_path, folder_id=folder_id, file_type=file_type, dbkey=dbkey, tags=tags)

@@ -69,10 +69,10 @@ Create a new group.
     A (size 1) list with newly created group
      details, like::
 
-       [{u'id': u'7c9636938c3e83bf',
-         u'model_class': u'Group',
-         u'name': u'My Group Name',
-         u'url': u'/api/groups/7c9636938c3e83bf'}]
+       [{'id': '7c9636938c3e83bf',
+         'model_class': 'Group',
+         'name': 'My Group Name',
+         'url': '/api/groups/7c9636938c3e83bf'}]
     
 **Options**::
 
@@ -260,11 +260,14 @@ Update a group.
 
       --group_name TEXT  A new name for the group. If None, the group name is not
                          changed.
+    
       --user_ids TEXT    New list of encoded user IDs for the group. It will
                          substitute the previous list of users (with [] if not
                          specified)
+    
       --role_ids TEXT    New list of encoded role IDs for the group. It will
                          substitute the previous list of roles (with [] if not
                          specified)
+    
       -h, --help         Show this message and exit.
     

@@ -20,7 +20,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @click.option(
     "--install_resolver_dependencies",
-    help="Whether or not to automatically install resolver dependencies (e.g. conda). This parameter is silently ignored in Galaxy ``release_16.04`` and earlier.",
+    help="Whether or not to automatically install resolver dependencies (e.g. conda).",
     is_flag=True
 )
 @click.option(

@@ -20,7 +20,7 @@ from parsec.decorators import custom_exception, list_output
 @pass_context
 @custom_exception
 @list_output
-def cli(ctx, group_name, user_ids=None, role_ids=None):
+def cli(ctx, group_name, user_ids="", role_ids=""):
     """Create a new group.
 
 Output:
@@ -28,9 +28,9 @@ Output:
     A (size 1) list with newly created group
           details, like::
 
-            [{u'id': u'7c9636938c3e83bf',
-              u'model_class': u'Group',
-              u'name': u'My Group Name',
-              u'url': u'/api/groups/7c9636938c3e83bf'}]
+            [{'id': '7c9636938c3e83bf',
+              'model_class': 'Group',
+              'name': 'My Group Name',
+              'url': '/api/groups/7c9636938c3e83bf'}]
     """
     return ctx.gi.groups.create_group(group_name, user_ids=user_ids, role_ids=role_ids)

@@ -130,7 +130,7 @@ Display information about the user associated with this Galaxy connection.
 
 **Help**
 
-Get the current API key for a given user. This functionality is available since Galaxy ``release_17.01``.
+Get the current API key for a given user.
 
 
 **Output**
@@ -162,9 +162,9 @@ Get a list of all registered users. If ``deleted`` is set to ``True``, get a lis
     a list of dicts with user details.
             For example::
 
-              [{u'email': u'a_user@example.com',
-                u'id': u'dda47097d9189f15',
-                u'url': u'/api/users/dda47097d9189f15'}]
+              [{'email': 'a_user@example.com',
+                'id': 'dda47097d9189f15',
+                'url': '/api/users/dda47097d9189f15'}]
     
 **Options**::
 
@@ -173,19 +173,18 @@ Get a list of all registered users. If ``deleted`` is set to ``True``, get a lis
       --f_email TEXT  filter for user emails. The filter will be active for non-
                       admin users only if the Galaxy instance has the
                       ``expose_user_email`` option set to ``true`` in the
-                      ``config/galaxy.yml`` configuration file. This parameter is
-                      silently ignored for non-admin users in Galaxy
-                      ``release_15.01`` and earlier.
+                      ``config/galaxy.yml`` configuration file.
+    
       --f_name TEXT   filter for user names. The filter will be active for non-admin
                       users only if the Galaxy instance has the ``expose_user_name``
                       option set to ``true`` in the ``config/galaxy.yml``
-                      configuration file. This parameter is silently ignored in
-                      Galaxy ``release_15.10`` and earlier.
+                      configuration file.
+    
       --f_any TEXT    filter for user email or name. Each filter will be active for
                       non-admin users only if the Galaxy instance has the
                       corresponding ``expose_user_*`` option set to ``true`` in the
-                      ``config/galaxy.yml`` configuration file. This parameter is
-                      silently ignored in Galaxy ``release_15.10`` and earlier.
+                      ``config/galaxy.yml`` configuration file.
+    
       -h, --help      Show this message and exit.
     
 
@@ -211,4 +210,29 @@ Display information about a user.
 
       --deleted   whether to return results for a deleted user
       -h, --help  Show this message and exit.
+    
+
+``update_user`` command
+-----------------------
+
+**Usage**::
+
+    parsec users update_user [OPTIONS] USER_ID
+
+**Help**
+
+Update user information. Some of the attributes that can be modified are documented below.
+
+
+**Output**
+
+
+    details of the updated user
+    
+**Options**::
+
+
+      --email TEXT     Replace user email with the given string
+      --username TEXT  Replace user name with the given string
+      -h, --help       Show this message and exit.
     

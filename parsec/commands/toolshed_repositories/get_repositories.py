@@ -16,20 +16,20 @@ Output:
           repositories present in the Tool Shed.
           For example::
 
-            [{u'category_ids': [u'c1df3132f6334b0e', u'f6d7b0037d901d9b'],
-              u'deleted': False,
-              u'deprecated': False,
-              u'description': u'Order Contigs',
-              u'homepage_url': u'',
-              u'id': u'287bd69f724b99ce',
-              u'name': u'best_tool_ever',
-              u'owner': u'billybob',
-              u'private': False,
-              u'remote_repository_url': u'',
-              u'times_downloaded': 0,
-              u'type': u'unrestricted',
-              u'url': u'/api/repositories/287bd69f724b99ce',
-              u'user_id': u'5cefd48bc04af6d4'}]
+            [{'category_ids': ['c1df3132f6334b0e', 'f6d7b0037d901d9b'],
+              'deleted': False,
+              'deprecated': False,
+              'description': 'Order Contigs',
+              'homepage_url': '',
+              'id': '287bd69f724b99ce',
+              'name': 'best_tool_ever',
+              'owner': 'billybob',
+              'private': False,
+              'remote_repository_url': '',
+              'times_downloaded': 0,
+              'type': 'unrestricted',
+              'url': '/api/repositories/287bd69f724b99ce',
+              'user_id': '5cefd48bc04af6d4'}]
 
         .. versionchanged:: 0.4.1
           Changed method name from ``get_tools`` to ``get_repositories`` to

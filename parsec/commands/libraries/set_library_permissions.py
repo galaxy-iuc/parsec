@@ -33,7 +33,7 @@ from parsec.decorators import custom_exception, dict_output
 @custom_exception
 @dict_output
 def cli(ctx, library_id, access_in="", modify_in="", add_in="", manage_in=""):
-    """Set the permissions for a library.  Note: it will override all security for this library even if you leave out a permission type.
+    """Set the permissions for a library. Note: it will override all security for this library even if you leave out a permission type.
 
 Output:
 

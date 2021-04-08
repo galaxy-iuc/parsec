@@ -13,7 +13,7 @@ def cli(ctx, role_id):
 
 Output:
 
-    A description of role
+    Details of the given role.
           For example::
 
             {"description": "Private Role for Foo",

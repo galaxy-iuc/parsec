@@ -27,6 +27,7 @@ Copy a Galaxy dataset into a library.
 
       --folder_id TEXT  id of the folder where to place the uploaded files. If not
                         provided, the root folder will be used
+    
       --message TEXT    message for copying action
       -h, --help        Show this message and exit.
     
@@ -54,6 +55,7 @@ Create a folder in a library.
       --description TEXT     description of the new folder in the data library
       --base_folder_id TEXT  id of the folder where to create the new folder. If not
                              provided, the root folder will be used
+    
       -h, --help             Show this message and exit.
     
 
@@ -133,13 +135,36 @@ Delete a library dataset in a data library.
      has been deleted.
      For example::
 
-       {u'deleted': True,
-        u'id': u'60e680a037f41974'}
+       {'deleted': True,
+        'id': '60e680a037f41974'}
     
 **Options**::
 
 
       --purged    Indicate that the dataset should be purged (permanently deleted)
+      -h, --help  Show this message and exit.
+    
+
+``get_dataset_permissions`` command
+-----------------------------------
+
+**Usage**::
+
+    parsec libraries get_dataset_permissions [OPTIONS] DATASET_ID
+
+**Help**
+
+Get the permissions for a dataset.
+
+
+**Output**
+
+
+    dictionary with all applicable permissions' values
+    
+**Options**::
+
+
       -h, --help  Show this message and exit.
     
 
@@ -167,6 +192,7 @@ Get all the folders or filter specific one(s) via the provided ``name`` or ``fol
       --name TEXT       filter for folder by name. For ``name`` specify the full
                         path of the folder starting from the library's root folder,
                         e.g. ``/subfolder/subsubfolder``.
+    
       -h, --help        Show this message and exit.
     
 
@@ -193,9 +219,11 @@ Get all the libraries or filter for specific one(s) via the provided name or ID.
       --library_id TEXT  filter for library by library id
       --name TEXT        If ``name`` is set and multiple names match the given name,
                          all the libraries matching the argument will be returned
+    
       --deleted          If ``False`` (the default), return only non-deleted
                          libraries. If ``True``, return only deleted libraries. If
-                         ``None`, return both deleted and non-deleted libraries.
+                         ``None``, return both deleted and non-deleted libraries.
+    
       -h, --help         Show this message and exit.
     
 
@@ -208,7 +236,7 @@ Get all the libraries or filter for specific one(s) via the provided name or ID.
 
 **Help**
 
-Get the permessions for a library.
+Get the permissions for a library.
 
 
 **Output**
@@ -222,6 +250,32 @@ Get the permessions for a library.
       -h, --help  Show this message and exit.
     
 
+``set_dataset_permissions`` command
+-----------------------------------
+
+**Usage**::
+
+    parsec libraries set_dataset_permissions [OPTIONS] DATASET_ID
+
+**Help**
+
+Set the permissions for a dataset. Note: it will override all security for this dataset even if you leave out a permission type.
+
+
+**Output**
+
+
+    dictionary with all applicable permissions' values
+    
+**Options**::
+
+
+      --access_in TEXT  list of role ids
+      --modify_in TEXT  list of role ids
+      --manage_in TEXT  list of role ids
+      -h, --help        Show this message and exit.
+    
+
 ``set_library_permissions`` command
 -----------------------------------
 
@@ -231,7 +285,7 @@ Get the permessions for a library.
 
 **Help**
 
-Set the permissions for a library.  Note: it will override all security for this library even if you leave out a permission type.
+Set the permissions for a library. Note: it will override all security for this library even if you leave out a permission type.
 
 
 **Output**
@@ -318,6 +372,7 @@ Get information about a library.
 
       --contents  whether to get contents of the library (rather than just the
                   library details)
+    
       -h, --help  Show this message and exit.
     
 
@@ -343,9 +398,11 @@ Update library dataset metadata. Some of the attributes that can be modified are
 
       --file_ext TEXT      Replace library dataset extension (must exist in the
                            Galaxy registry)
+    
       --genome_build TEXT  Replace library dataset genome build (dbkey)
       --misc_info TEXT     Replace library dataset misc_info with given string
       --name TEXT          Replace library dataset name with the given string
+      --tags TEXT          Replace library dataset tags with the given list
       -h, --help           Show this message and exit.
     
 
@@ -371,8 +428,10 @@ Upload pasted_content to a data library as a new file.
 
       --folder_id TEXT  id of the folder where to place the uploaded file. If not
                         provided, the root folder will be used
+    
       --file_type TEXT  Galaxy file format name  [default: auto]
       --dbkey TEXT      Dbkey  [default: ?]
+      --tags TEXT       A list of tags to add to the datasets
       -h, --help        Show this message and exit.
     
 
@@ -398,8 +457,10 @@ Read local file contents from file_local_path and upload data to a library.
 
       --folder_id TEXT  id of the folder where to place the uploaded file. If not
                         provided, the root folder will be used
+    
       --file_type TEXT  Galaxy file format name  [default: auto]
       --dbkey TEXT      Dbkey  [default: ?]
+      --tags TEXT       A list of tags to add to the datasets
       -h, --help        Show this message and exit.
     
 
@@ -425,16 +486,21 @@ Upload all files in the specified subdirectory of the Galaxy library import dire
 
       --folder_id TEXT       id of the folder where to place the uploaded files. If
                              not provided, the root folder will be used
+    
       --file_type TEXT       Galaxy file format name  [default: auto]
       --dbkey TEXT           Dbkey  [default: ?]
       --link_data_only TEXT  either 'copy_files' (default) or 'link_to_files'.
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
+    
       --roles TEXT           ???
       --preserve_dirs        Indicate whether to preserve the directory structure
                              when importing dir
+    
       --tag_using_filenames  Indicate whether to generate dataset tags from
-                             filenames  [default: True]
+                             filenames.
+    
+      --tags TEXT            A list of tags to add to the datasets
       -h, --help             Show this message and exit.
     
 
@@ -460,8 +526,10 @@ Upload a file to a library from a URL.
 
       --folder_id TEXT  id of the folder where to place the uploaded file. If not
                         provided, the root folder will be used
+    
       --file_type TEXT  Galaxy file format name  [default: auto]
       --dbkey TEXT      Dbkey  [default: ?]
+      --tags TEXT       A list of tags to add to the datasets
       -h, --help        Show this message and exit.
     
 
@@ -487,16 +555,21 @@ Upload a set of files already present on the filesystem of the Galaxy server to 
 
       --folder_id TEXT       id of the folder where to place the uploaded files. If
                              not provided, the root folder will be used
+    
       --file_type TEXT       Galaxy file format name  [default: auto]
       --dbkey TEXT           Dbkey  [default: ?]
       --link_data_only TEXT  either 'copy_files' (default) or 'link_to_files'.
                              Setting to 'link_to_files' symlinks instead of copying
                              the files
+    
       --roles TEXT           ???
       --preserve_dirs        Indicate whether to preserve the directory structure
                              when importing dir
+    
       --tag_using_filenames  Indicate whether to generate dataset tags from
-                             filenames  [default: True]
+                             filenames.
+    
+      --tags TEXT            A list of tags to add to the datasets
       -h, --help             Show this message and exit.
     
 
@@ -525,7 +598,9 @@ Wait until the library dataset state is terminal ('ok', 'empty', 'error', 'disca
                         become terminal. If the dataset state is not terminal within
                         this time, a ``DatasetTimeoutException`` will be thrown.
                         [default: 12000]
+    
       --interval FLOAT  Time (in seconds) to wait between 2 consecutive checks.
                         [default: 3]
+    
       -h, --help        Show this message and exit.
     

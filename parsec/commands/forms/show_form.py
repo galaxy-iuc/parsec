@@ -16,13 +16,13 @@ Output:
     A description of the given form.
           For example::
 
-            {u'desc': u'here it is ',
-             u'fields': [],
-             u'form_definition_current_id': u'f2db41e1fa331b3e',
-             u'id': u'f2db41e1fa331b3e',
-             u'layout': [],
-             u'model_class': u'FormDefinition',
-             u'name': u'First form',
-             u'url': u'/api/forms/f2db41e1fa331b3e'}
+            {'desc': 'here it is ',
+             'fields': [],
+             'form_definition_current_id': 'f2db41e1fa331b3e',
+             'id': 'f2db41e1fa331b3e',
+             'layout': [],
+             'model_class': 'FormDefinition',
+             'name': 'First form',
+             'url': '/api/forms/f2db41e1fa331b3e'}
     """
     return ctx.gi.forms.show_form(form_id)

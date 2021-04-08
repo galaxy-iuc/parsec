@@ -5,6 +5,60 @@ This section is auto-generated from the help text for the parsec command
 ``histories``.
 
 
+``copy_content`` command
+------------------------
+
+**Usage**::
+
+    parsec histories copy_content [OPTIONS] HISTORY_ID CONTENT_ID
+
+**Help**
+
+Copy existing content (e.g. a dataset) to a history.
+
+
+**Output**
+
+
+    Information about the copied content
+    
+**Options**::
+
+
+      --source TEXT  Source of the content to be copied: 'hda' (for a history
+                     dataset, the default), 'hdca' (for a dataset collection),
+                     'library' (for a library dataset) or 'library_folder' (for all
+                     datasets in a library folder).  [default: hda]
+    
+      -h, --help     Show this message and exit.
+    
+
+``copy_dataset`` command
+------------------------
+
+**Usage**::
+
+    parsec histories copy_dataset [OPTIONS] HISTORY_ID DATASET_ID
+
+**Help**
+
+Copy a dataset to a history.
+
+
+**Output**
+
+
+    Information about the copied dataset
+    
+**Options**::
+
+
+      --source TEXT  Source of the dataset to be copied: 'hda' (the default),
+                     'library' or 'library_folder'  [default: hda]
+    
+      -h, --help     Show this message and exit.
+    
+
 ``create_dataset_collection`` command
 -------------------------------------
 
@@ -97,16 +151,11 @@ Mark corresponding dataset as deleted.
 
 
     None
+
    .. note::
        For the purge option to work, the Galaxy instance must have the
        ``allow_user_dataset_purge`` option set to ``true`` in the
        ``config/galaxy.yml`` configuration file.
-
-   .. warning::
-       If you purge a dataset which has not been previously deleted,
-       Galaxy from release_15.03 to release_17.01 does not set the
-       ``deleted`` attribute of the dataset to ``True``, see
-       https://github.com/galaxyproject/galaxy/issues/3548
     
 **Options**::
 
@@ -192,6 +241,7 @@ Download a history export archive.  Use :meth:`export_history` to create an expo
 
       --chunk_size INTEGER  how many bytes at a time should be read into memory
                             [default: 4096]
+    
       -h, --help            Show this message and exit.
     
 
@@ -218,12 +268,15 @@ Start a job to create an export archive for the given history.
 
       --gzip             create .tar.gz archive if ``True``, else .tar  [default:
                          True]
+    
       --include_hidden   whether to include hidden datasets in the export
       --include_deleted  whether to include deleted datasets in the export
       --wait             if ``True``, block until the export is ready; else, return
                          immediately
+    
       --maxwait FLOAT    Total time (in seconds) to wait for the export to become
                          ready. When set, implies that ``wait`` is ``True``.
+    
       -h, --help         Show this message and exit.
     
 
@@ -236,15 +289,13 @@ Start a job to create an export archive for the given history.
 
 **Help**
 
-Get all histories or filter the specific one(s) via the provided ``name`` or ``history_id``. Provide only one argument, ``name`` or ``history_id``, but not both.
+Get all histories or filter the specific one(s) by ``name`` or other arguments.
 
 
 **Output**
 
 
-    Return a list of history element dicts. If more than one
-            history matches the given ``name``, return the list of all the
-            histories with the given name
+    List of history dicts.
     
 **Options**::
 
@@ -253,6 +304,14 @@ Get all histories or filter the specific one(s) via the provided ``name`` or ``h
       --name TEXT        Name of history to filter on
       --deleted          whether to filter for the deleted histories (``True``) or
                          for the non-deleted ones (``False``)
+    
+      --published TEXT   whether to filter for the published histories (``True``) or
+                         for the non-published ones (``False``). If not set, no
+                         filtering is applied. Note the filtering is only applied to
+                         the user's own histories; to access all histories published
+                         by any user, use the ``get_published_histories`` method.
+    
+      --slug TEXT        History slug to filter on
       -h, --help         Show this message and exit.
     
 
@@ -279,6 +338,34 @@ Returns the current user's most recently used history (not deleted).
       -h, --help  Show this message and exit.
     
 
+``get_published_histories`` command
+-----------------------------------
+
+**Usage**::
+
+    parsec histories get_published_histories [OPTIONS]
+
+**Help**
+
+Get all published histories (by any user) or filter the specific one(s) by ``name`` or other arguments.
+
+
+**Output**
+
+
+    List of history dicts.
+    
+**Options**::
+
+
+      --name TEXT  Name of history to filter on
+      --deleted    whether to filter for the deleted histories (``True``) or for the
+                   non-deleted ones (``False``)
+    
+      --slug TEXT  History slug to filter on
+      -h, --help   Show this message and exit.
+    
+
 ``get_status`` command
 ----------------------
 
@@ -298,6 +385,62 @@ Returns the state of this history
        'state' = This is the current state of the history, such as ok, error, new etc.
        'state_details' = Contains individual statistics for various dataset states.
        'percent_complete' = The overall number of datasets processed to completion.
+    
+**Options**::
+
+
+      -h, --help  Show this message and exit.
+    
+
+``import_history`` command
+--------------------------
+
+**Usage**::
+
+    parsec histories import_history [OPTIONS]
+
+**Help**
+
+Import a history from an archive on disk or a URL.
+
+
+**Output**
+
+
+    
+    
+**Options**::
+
+
+      --file_path TEXT  Path to exported history archive on disk. :type url: str
+                        :param url: URL for an exported history archive
+    
+      --url TEXT
+      -h, --help        Show this message and exit.
+    
+
+``open_history`` command
+------------------------
+
+**Usage**::
+
+    parsec histories open_history [OPTIONS] HISTORY_ID
+
+**Help**
+
+Open Galaxy in a new tab of the default web browser and switch to the specified history.
+
+
+**Output**
+
+
+    ``None``
+
+   .. warning::
+     After opening the specified history, all previously opened Galaxy tabs
+     in the browser session will have the current history changed to this
+     one, even if the interface still shows another history. Refreshing
+     any such tab is recommended.
     
 **Options**::
 
@@ -369,35 +512,27 @@ Get details related to how dataset was created (``id``, ``job_id``, ``tool_id``,
     Dataset provenance information
      For example::
 
-       {
-           "tool_id": "toolshed.g2.bx.psu.edu/repos/ziru-zhou/macs2/modencode_peakcalling_macs2/2.0.10.2",
-           "job_id": "5471ba76f274f929",
-           "parameters": {
-               "input_chipseq_file1": {
-                   "id": "6f0a311a444290f2",
-                   "uuid": null
-               },
-               "dbkey": ""mm9"",
-               "experiment_name": ""H3K4me3_TAC_MACS2"",
-               "input_control_file1": {
-                   "id": "c21816a91f5dc24e",
-                   "uuid": null
-               },
-               "major_command": "{"gsize": "2716965481.0", "bdg": "False", "__current_case__": 0, "advanced_options": {"advanced_options_selector": "off", "__current_case__": 1}, "input_chipseq_file1": 104715, "xls_to_interval": "False", "major_command_selector": "callpeak", "input_control_file1": 104721, "pq_options":
-       {"pq_options_selector": "qvalue", "qvalue": "0.05", "__current_case__": 1}, "bw": "300", "nomodel_type": {"nomodel_type_selector": "create_model", "__current_case__": 1}}",
-               "chromInfo": ""/usr/local/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/mm9.len""
-           },
-           "stdout": "",
-           "stderr": "",
-           "id": "6fbd9b2274c62ebe",
-           "uuid": null
-       }
+       {'id': '6fbd9b2274c62ebe',
+        'job_id': '5471ba76f274f929',
+        'parameters': {'chromInfo': '"/usr/local/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/mm9.len"',
+                       'dbkey': '"mm9"',
+                       'experiment_name': '"H3K4me3_TAC_MACS2"',
+                       'input_chipseq_file1': {'id': '6f0a311a444290f2',
+                                               'uuid': 'null'},
+                       'input_control_file1': {'id': 'c21816a91f5dc24e',
+                                               'uuid': '16f8ee5e-228f-41e2-921e-a07866edce06'},
+                       'major_command': '{"gsize": "2716965481.0", "bdg": "False", "__current_case__": 0, "advanced_options": {"advanced_options_selector": "off", "__current_case__": 1}, "input_chipseq_file1": 104715, "xls_to_interval": "False", "major_command_selector": "callpeak", "input_control_file1": 104721, "pq_options": {"pq_options_selector": "qvalue", "qvalue": "0.05", "__current_case__": 1}, "bw": "300", "nomodel_type": {"nomodel_type_selector": "create_model", "__current_case__": 1}}'},
+        'stderr': '',
+        'stdout': '',
+        'tool_id': 'toolshed.g2.bx.psu.edu/repos/ziru-zhou/macs2/modencode_peakcalling_macs2/2.0.10.2',
+        'uuid': '5c0c43f5-8d93-44bd-939d-305e82f213c6'}
     
 **Options**::
 
 
       --follow    If ``True``, recursively fetch dataset provenance information for
                   all inputs and their inputs, etc.
+    
       -h, --help  Show this message and exit.
     
 
@@ -416,25 +551,33 @@ Get details of a given history. By default, just get the history meta informatio
 **Output**
 
 
-    details of the given history
+    details of the given history or list of dataset info
     
 **Options**::
 
 
-      --contents      When ``True``, instead of the history details, return the list
-                      of datasets in the given history.
+      --contents      When ``True``, instead of the history details, return a list
+                      with info for all datasets in the given history. Note that
+                      inside each dataset info dict, the id which should be used for
+                      further requests about this history dataset is given by the
+                      value of the `id` (not `dataset_id`) key.
+    
       --deleted TEXT  When ``contents=True``, whether to filter for the deleted
                       datasets (``True``) or for the non-deleted ones (``False``).
                       If not set, no filtering is applied.
+    
       --visible TEXT  When ``contents=True``, whether to filter for the visible
                       datasets (``True``) or for the hidden ones (``False``). If not
                       set, no filtering is applied.
+    
       --details TEXT  When ``contents=True``, include dataset details. Set to 'all'
                       for the most information.
+    
       --types TEXT    When ``contents=True``, filter for history content types. If
                       set to ``['dataset']``, return only datasets. If set to
                       ``['dataset_collection']``, return only dataset collections.
                       If not set, no filtering is applied.
+    
       -h, --help      Show this message and exit.
     
 
@@ -462,6 +605,7 @@ Get dataset details for matching datasets within a history.
                           regular expression will be returned; use plain strings for
                           exact matches and None to match all datasets in the
                           history
+    
       -h, --help          Show this message and exit.
     
 
@@ -503,17 +647,22 @@ Update history dataset metadata. Some of the attributes that can be modified are
 **Output**
 
 
-    details of the updated dataset (for Galaxy release_15.01 and
-       earlier only the updated attributes)
+    details of the updated dataset
 
-   .. warning::
-       The return value was changed in BioBlend v0.8.0, previously it was
-       the status code (type int).
+   .. versionchanged:: 0.8.0
+       Changed the return value from the status code (type int) to a dict.
     
 **Options**::
 
 
       --annotation TEXT    Replace history dataset annotation with given string
+      --datatype TEXT      Replace the datatype of the history dataset with the
+                           given string. The string must be a valid Galaxy datatype,
+                           both the current and the target datatypes must allow
+                           datatype changes, and the dataset must not be in use as
+                           input or output of a running job (including uploads),
+                           otherwise an error will be raised.
+    
       --deleted            Mark or unmark history dataset as deleted
       --genome_build TEXT  Replace history dataset genome build (dbkey)
       --name TEXT          Replace history dataset name with the given string
@@ -538,9 +687,8 @@ Update history dataset collection metadata. Some of the attributes that can be m
 
     the updated dataset collection attributes
 
-   .. warning::
-       The return value was changed in BioBlend v0.8.0, previously it was
-       the status code (type int).
+   .. versionchanged:: 0.8.0
+       Changed the return value from the status code (type int) to a dict.
     
 **Options**::
 
@@ -566,12 +714,10 @@ Update history metadata information. Some of the attributes that can be modified
 **Output**
 
 
-    details of the updated history (for Galaxy release_15.01 and
-       earlier only the updated attributes)
+    details of the updated history
 
-   .. warning::
-       The return value was changed in BioBlend v0.8.0, previously it was
-       the status code (type int).
+   .. versionchanged:: 0.8.0
+       Changed the return value from the status code (type int) to a dict.
     
 **Options**::
 
@@ -582,7 +728,6 @@ Update history metadata information. Some of the attributes that can be modified
       --name TEXT        Replace history name with the given string
       --published        Mark or unmark history as published
       --purged           If ``True``, mark history as purged (permanently deleted).
-                         Ignored on Galaxy release_15.01 and earlier
       --tags TEXT        Replace history tags with the given list
       -h, --help         Show this message and exit.
     

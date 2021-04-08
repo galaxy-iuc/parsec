@@ -30,7 +30,7 @@ from parsec.decorators import custom_exception, dict_output
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, name, description, amount, operation, default="no", in_users=None, in_groups=None):
+def cli(ctx, name, description, amount, operation, default="no", in_users="", in_groups=""):
     """Create a new quota
 
 Output:
@@ -38,10 +38,10 @@ Output:
     A description of quota.
           For example::
 
-            {u'url': '/galaxy/api/quotas/386f14984287a0f7',
-             u'model_class': 'Quota',
-             u'message': "Quota 'Testing' has been created with 1 associated users and 0 associated groups.",
-             u'id': '386f14984287a0f7',
-             u'name': 'Testing'}
+            {'url': '/galaxy/api/quotas/386f14984287a0f7',
+             'model_class': 'Quota',
+             'message': "Quota 'Testing' has been created with 1 associated users and 0 associated groups.",
+             'id': '386f14984287a0f7',
+             'name': 'Testing'}
     """
     return ctx.gi.quotas.create_quota(name, description, amount, operation, default=default, in_users=in_users, in_groups=in_groups)

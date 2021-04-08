@@ -25,10 +25,16 @@ from parsec.decorators import custom_exception, dict_output
     help="Replace library dataset name with the given string",
     type=str
 )
+@click.option(
+    "--tags",
+    help="Replace library dataset tags with the given list",
+    type=str,
+    multiple=True
+)
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, dataset_id, file_ext=None, genome_build=None, misc_info=None, name=None):
+def cli(ctx, dataset_id, file_ext=None, genome_build=None, misc_info=None, name=None, tags=None):
     """Update library dataset metadata. Some of the attributes that can be modified are documented below.
 
 Output:
@@ -45,4 +51,4 @@ Output:
     if name and len(name) > 0:
         kwargs['name'] = name
 
-    return ctx.gi.libraries.update_library_dataset(dataset_id, **kwargs)
+    return ctx.gi.libraries.update_library_dataset(dataset_id, tags=tags, **kwargs)

@@ -57,6 +57,7 @@ Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_
       --name TEXT     name of the requested tool(s)
       --trackster     whether to return only tools that are compatible with
                       Trackster
+    
       -h, --help      Show this message and exit.
     
 
@@ -69,7 +70,7 @@ Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_
 
 **Help**
 
-Install dependencies for a given tool via a resolver. This works only for Conda currently. This functionality is available since Galaxy release_16.10 and is available only to Galaxy admins.
+Install dependencies for a given tool via a resolver. This works only for Conda currently. This functionality is available only to Galaxy admins.
 
 
 **Output**
@@ -133,6 +134,48 @@ Upload a string to a new dataset in the history specified by ``history_id``.
       -h, --help  Show this message and exit.
     
 
+``requirements`` command
+------------------------
+
+**Usage**::
+
+    parsec tools requirements [OPTIONS] TOOL_ID
+
+**Help**
+
+Return the resolver status for a specific tool. This functionality is available only to Galaxy admins.
+
+
+**Output**
+
+
+    List containing a resolver status dict for each tool
+     requirement. For example::
+
+       [{'cacheable': False,
+         'dependency_resolver': {'auto_init': True,
+                                 'auto_install': False,
+                                 'can_uninstall_dependencies': True,
+                                 'ensure_channels': 'iuc,conda-forge,bioconda,defaults',
+                                 'model_class': 'CondaDependencyResolver',
+                                 'prefix': '/mnt/galaxy/tool_dependencies/_conda',
+                                 'resolver_type': 'conda',
+                                 'resolves_simple_dependencies': True,
+                                 'use_local': False,
+                                 'versionless': False},
+         'dependency_type': 'conda',
+         'environment_path': '/mnt/galaxy/tool_dependencies/_conda/envs/__blast@2.10.1',
+         'exact': True,
+         'model_class': 'MergedCondaDependency',
+         'name': 'blast',
+         'version': '2.10.1'}]
+    
+**Options**::
+
+
+      -h, --help  Show this message and exit.
+    
+
 ``run_tool`` command
 --------------------
 
@@ -151,65 +194,62 @@ Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with i
     Information about outputs and job
      For example::
 
-       {
-         "outputs": [
-           {
-             "misc_blurb": "queued",
-             "peek": null,
-             "update_time": "2019-05-08T12:26:16.069798",
-             "data_type": "galaxy.datatypes.tabular.Tabular",
-             "tags": [],
-             "deleted": false,
-             "history_id": "df8fe5ddadbf3ab1",
-             "metadata_column_names": null,
-             "metadata_delimiter": "	",
-             "visible": true,
-             "genome_build": "?",
-             "create_time": "2019-05-08T12:26:15.997739",
-             "hid": 42,
-             "file_size": 0,
-             "metadata_data_lines": null,
-             "file_ext": "tabular",
-             "id": "aeb65580396167f3",
-             "misc_info": null,
-             "hda_ldda": "hda",
-             "history_content_type": "dataset",
-             "name": "Cut on data 1",
-             "metadata_columns": null,
-             "uuid": "d91d10af-7546-45be-baa9-902010661466",
-             "state": "new",
-             "metadata_comment_lines": null,
-             "model_class": "HistoryDatasetAssociation",
-             "metadata_dbkey": "?",
-             "output_name": "out_file1",
-             "purged": false,
-             "metadata_column_types": null
-           }
-         ],
-         "implicit_collections": [],
-         "jobs": [
-           {
-             "tool_id": "cut1",
-             "update_time": "2019-05-08T12:26:16.067389",
-             "exit_code": null,
-             "state": "new",
-             "create_time": "2019-05-08T12:26:16.067372",
-             "model_class": "Job",
-             "id": "7dd125b61b35d782"
-           }
-         ],
-         "output_collections": []
-       }
+       {'implicit_collections': [],
+        'jobs': [{'create_time': '2019-05-08T12:26:16.067372',
+                  'exit_code': None,
+                  'id': '7dd125b61b35d782',
+                  'model_class': 'Job',
+                  'state': 'new',
+                  'tool_id': 'cut1',
+                  'update_time': '2019-05-08T12:26:16.067389'}],
+        'output_collections': [],
+        'outputs': [{'create_time': '2019-05-08T12:26:15.997739',
+                     'data_type': 'galaxy.datatypes.tabular.Tabular',
+                     'deleted': False,
+                     'file_ext': 'tabular',
+                     'file_size': 0,
+                     'genome_build': '?',
+                     'hda_ldda': 'hda',
+                     'hid': 42,
+                     'history_content_type': 'dataset',
+                     'history_id': 'df8fe5ddadbf3ab1',
+                     'id': 'aeb65580396167f3',
+                     'metadata_column_names': None,
+                     'metadata_column_types': None,
+                     'metadata_columns': None,
+                     'metadata_comment_lines': None,
+                     'metadata_data_lines': None,
+                     'metadata_dbkey': '?',
+                     'metadata_delimiter': '	',
+                     'misc_blurb': 'queued',
+                     'misc_info': None,
+                     'model_class': 'HistoryDatasetAssociation',
+                     'name': 'Cut on data 1',
+                     'output_name': 'out_file1',
+                     'peek': None,
+                     'purged': False,
+                     'state': 'new',
+                     'tags': [],
+                     'update_time': '2019-05-08T12:26:16.069798',
+                     'uuid': 'd91d10af-7546-45be-baa9-902010661466',
+                     'visible': True}]}
 
    The ``tool_inputs`` dict should contain input datasets and parameters
    in the (largely undocumented) format used by the Galaxy API.
    Some examples can be found in `Galaxy's API test suite
-   <https://github.com/galaxyproject/galaxy/blob/dev/test/api/test_tools.py>`_.
+   <https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy_test/api/test_tools.py>`_.
     
 **Options**::
 
 
-      -h, --help  Show this message and exit.
+      --input_format TEXT  input format for the payload. Possible values are the
+                           default 'legacy' (where inputs nested inside conditionals
+                           or repeats are identified with e.g.
+                           '<conditional_name>|<input_name>') or '21.01' (where
+                           inputs inside conditionals or repeats are nested
+                           elements).  [default: legacy]
+    
+      -h, --help           Show this message and exit.
     
 
 ``show_tool`` command
@@ -261,11 +301,14 @@ Upload the file specified by ``path`` to the history specified by ``history_id``
       --file_name TEXT  (optional) name of the new history dataset
       --file_type TEXT  (optional) Galaxy datatype for the new dataset, default is
                         auto
+    
       --space_to_tab    whether to convert spaces to tabs. Default is ``False``.
                         Applicable only if to_posix_lines is ``True``
+    
       --to_posix_lines  if ``True`` (the default), convert universal line endings to
                         POSIX line endings. Set to ``False`` when uploading a gzip,
                         bz2 or zip archive containing a binary file
+    
       -h, --help        Show this message and exit.
     
 

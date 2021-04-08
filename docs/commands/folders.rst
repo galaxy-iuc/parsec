@@ -52,6 +52,7 @@ Marks the folder with the given ``id`` as `deleted` (or removes the `deleted` ma
 
       --undelete  If set to True, the folder will be undeleted (i.e. the `deleted`
                   mark will be removed)
+    
       -h, --help  Show this message and exit.
     
 
@@ -100,6 +101,7 @@ Set the permissions of a folder.
 
       --action TEXT      action to execute, only "set_permissions" is supported.
                          [default: set_permissions]
+    
       --add_ids TEXT     list of role IDs which can add datasets to the folder
       --manage_ids TEXT  list of role IDs which can manage datasets in the folder
       --modify_ids TEXT  list of role IDs which can modify datasets in the folder
@@ -128,6 +130,7 @@ Display information about a folder.
 
       --contents  True to get the contents of the folder, rather than just the
                   folder details.
+    
       -h, --help  Show this message and exit.
     
 

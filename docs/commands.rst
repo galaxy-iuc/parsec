@@ -20,6 +20,7 @@ describes these commands.
    commands/genomes.rst
    commands/groups.rst
    commands/histories.rst
+   commands/invocations.rst
    commands/jobs.rst
    commands/libraries.rst
    commands/quotas.rst

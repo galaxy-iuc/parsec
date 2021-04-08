@@ -46,8 +46,8 @@ Output:
     A dict containing the history ID where the outputs are placed
           as well as output dataset IDs. For example::
 
-            {u'history': u'64177123325c9cfd',
-             u'outputs': [u'aa4d3084af404259']}
+            {'history': '64177123325c9cfd',
+             'outputs': ['aa4d3084af404259']}
 
         The ``params`` dict should be specified as follows::
 
@@ -77,9 +77,9 @@ Output:
         post-job actions (PJAs) to their runtime values. For
         instance, if the final step has a PJA like the following::
 
-          {u'RenameDatasetActionout_file1': {u'action_arguments': {u'newname': u'${output}'},
-            u'action_type': u'RenameDatasetAction',
-            u'output_name': u'out_file1'}}
+          {'RenameDatasetActionout_file1': {'action_arguments': {'newname': '${output}'},
+                                            'action_type': 'RenameDatasetAction',
+                                            'output_name': 'out_file1'}}
 
         then the following renames the output dataset to 'foo'::
 

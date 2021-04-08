@@ -18,6 +18,13 @@ from parsec.decorators import custom_exception, dict_output
     is_flag=True
 )
 @click.option(
+    "--require_ok_state",
+    help="If ``False``, datasets will be downloaded even if not in an 'ok' state, issuing a ``DatasetStateWarning`` rather than raising a ``DatasetStateException``.",
+    default="True",
+    show_default=True,
+    is_flag=True
+)
+@click.option(
     "--maxwait",
     help="Total time (in seconds) to wait for the dataset state to become terminal. If the dataset state is not terminal within this time, a ``DatasetTimeoutException`` will be thrown.",
     default="12000",
@@ -27,12 +34,12 @@ from parsec.decorators import custom_exception, dict_output
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, dataset_id, file_path="", use_default_filename=True, maxwait=12000):
-    """Download a dataset to file or in memory. If the dataset state is not 'ok', a ``DatasetStateException`` will be thrown.
+def cli(ctx, dataset_id, file_path="", use_default_filename=True, require_ok_state=True, maxwait=12000):
+    """Download a dataset to file or in memory. If the dataset state is not 'ok', a ``DatasetStateException`` will be thrown, unless ``require_ok_state=False``.
 
 Output:
 
     If a ``file_path`` argument is not provided, returns a dict containing the file content.
                  Otherwise returns nothing.
     """
-    return ctx.gi.datasets.download_dataset(dataset_id, file_path=file_path, use_default_filename=use_default_filename, maxwait=maxwait)
+    return ctx.gi.datasets.download_dataset(dataset_id, file_path=file_path, use_default_filename=use_default_filename, require_ok_state=require_ok_state, maxwait=maxwait)

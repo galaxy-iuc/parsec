@@ -24,13 +24,13 @@ Get the list of all installed Tool Shed repositories on this Galaxy instance.
      repositories present in the Tool Shed.
      For example::
 
-       [{u'changeset_revision': u'4afe13ac23b6',
-         u'deleted': False,
-         u'dist_to_shed': False,
-         u'error_message': u'',
-         u'name': u'velvet_toolsuite',
-         u'owner': u'edward-kirton',
-         u'status': u'Installed'}]
+       [{'changeset_revision': '4afe13ac23b6',
+         'deleted': False,
+         'dist_to_shed': False,
+         'error_message': '',
+         'name': 'velvet_toolsuite',
+         'owner': 'edward-kirton',
+         'status': 'Installed'}]
 
    .. versionchanged:: 0.4.1
        Changed method name from ``get_tools`` to ``get_repositories`` to
@@ -68,25 +68,28 @@ Install a specified repository revision from a specified Tool Shed into this Gal
                                       dependencies (see
                                       https://galaxyproject.org/toolshed/tool-
                                       dependency-recipes/ for more details)
+    
       --install_repository_dependencies
                                       Whether or not to automatically handle
                                       repository dependencies (see
                                       https://galaxyproject.org/toolshed/defining-
                                       repository-dependencies/ for more details)
+    
       --install_resolver_dependencies
                                       Whether or not to automatically install
-                                      resolver dependencies (e.g. conda). This
-                                      parameter is silently ignored in Galaxy
-                                      ``release_16.04`` and earlier.
+                                      resolver dependencies (e.g. conda).
+    
       --tool_panel_section_id TEXT    The ID of the Galaxy tool panel section where
                                       the tool should be insterted under. Note that
                                       you should specify either this parameter or
                                       the ``new_tool_panel_section_label``. If both
                                       are specified, this one will take precedence.
+    
       --new_tool_panel_section_label TEXT
                                       The name of a Galaxy tool panel section that
                                       should be created and the repository installed
                                       into.
+    
       -h, --help                      Show this message and exit.
     
 
@@ -108,11 +111,11 @@ Get details of a given Tool Shed repository as it is installed on this Galaxy in
     Information about the tool
      For example::
 
-       {u'changeset_revision': u'b17455fb6222',
-        u'ctx_rev': u'8',
-        u'owner': u'aaron',
-        u'status': u'Installed',
-        u'url': u'/api/tool_shed_repositories/82de4a4c7135b20a'}
+       {'changeset_revision': 'b17455fb6222',
+        'ctx_rev': '8',
+        'owner': 'aaron',
+        'status': 'Installed',
+        'url': '/api/tool_shed_repositories/82de4a4c7135b20a'}
 
    .. versionchanged:: 0.4.1
        Changed method name from ``show_tool`` to ``show_repository`` to
@@ -146,5 +149,6 @@ Uninstalls a specified repository revision from this Galaxy instance.
 
       --remove_from_disk  whether to also remove the repository from disk (the
                           default) or only deactivate it  [default: True]
+    
       -h, --help          Show this message and exit.
     

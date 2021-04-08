@@ -17,23 +17,23 @@ Output:
           specified repository revision.
           For example::
 
-            {u'changeset_revision': u'7602de1e7f32',
-             u'do_not_test': False,
-             u'downloadable': True,
-             u'has_repository_dependencies': False,
-             u'id': u'504be8aaa652c154',
-             u'includes_datatypes': False,
-             u'includes_tool_dependencies': False,
-             u'includes_tools': True,
-             u'includes_tools_for_display_in_tool_panel': True,
-             u'includes_workflows': False,
-             u'malicious': False,
-             u'missing_test_components': True,
-             u'repository_id': u'491b7a3fddf9366f',
-             u'test_install_error': False,
-             u'time_last_tested': None,
-             u'tool_test_results': {u'missing_test_components': []},
-             u'tools_functionally_correct': False,
-             u'url': u'/api/repository_revisions/504be8aaa652c154'}
+            {'changeset_revision': '7602de1e7f32',
+             'do_not_test': False,
+             'downloadable': True,
+             'has_repository_dependencies': False,
+             'id': '504be8aaa652c154',
+             'includes_datatypes': False,
+             'includes_tool_dependencies': False,
+             'includes_tools': True,
+             'includes_tools_for_display_in_tool_panel': True,
+             'includes_workflows': False,
+             'malicious': False,
+             'missing_test_components': True,
+             'repository_id': '491b7a3fddf9366f',
+             'test_install_error': False,
+             'time_last_tested': None,
+             'tool_test_results': {'missing_test_components': []},
+             'tools_functionally_correct': False,
+             'url': '/api/repository_revisions/504be8aaa652c154'}
     """
     return ctx.gi.repositories.show_repository_revision(metadata_id)

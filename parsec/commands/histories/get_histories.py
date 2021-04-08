@@ -19,16 +19,23 @@ from parsec.decorators import custom_exception, list_output
     help="whether to filter for the deleted histories (``True``) or for the non-deleted ones (``False``)",
     is_flag=True
 )
+@click.option(
+    "--published",
+    help="whether to filter for the published histories (``True``) or for the non-published ones (``False``). If not set, no filtering is applied. Note the filtering is only applied to the user's own histories; to access all histories published by any user, use the ``get_published_histories`` method."
+)
+@click.option(
+    "--slug",
+    help="History slug to filter on",
+    type=str
+)
 @pass_context
 @custom_exception
 @list_output
-def cli(ctx, history_id="", name="", deleted=False):
-    """Get all histories or filter the specific one(s) via the provided ``name`` or ``history_id``. Provide only one argument, ``name`` or ``history_id``, but not both.
+def cli(ctx, history_id="", name="", deleted=False, published="", slug=""):
+    """Get all histories or filter the specific one(s) by ``name`` or other arguments.
 
 Output:
 
-    Return a list of history element dicts. If more than one
-                 history matches the given ``name``, return the list of all the
-                 histories with the given name
+    List of history dicts.
     """
-    return ctx.gi.histories.get_histories(history_id=history_id, name=name, deleted=deleted)
+    return ctx.gi.histories.get_histories(history_id=history_id, name=name, deleted=deleted, published=published, slug=slug)

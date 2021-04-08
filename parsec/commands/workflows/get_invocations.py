@@ -16,12 +16,12 @@ Output:
     A list of workflow invocations.
           For example::
 
-            [{u'history_id': u'2f94e8ae9edff68a',
-              u'id': u'df7a1f0c02a5b08e',
-              u'model_class': u'WorkflowInvocation',
-              u'state': u'new',
-              u'update_time': u'2015-10-31T22:00:22',
-              u'uuid': u'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',
-              u'workflow_id': u'03501d7626bd192f'}]
+            [{'history_id': '2f94e8ae9edff68a',
+              'id': 'df7a1f0c02a5b08e',
+              'model_class': 'WorkflowInvocation',
+              'state': 'new',
+              'update_time': '2015-10-31T22:00:22',
+              'uuid': 'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',
+              'workflow_id': '03501d7626bd192f'}]
     """
     return ctx.gi.workflows.get_invocations(workflow_id)

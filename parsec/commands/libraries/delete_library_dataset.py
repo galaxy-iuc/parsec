@@ -23,7 +23,7 @@ Output:
           has been deleted.
           For example::
 
-            {u'deleted': True,
-             u'id': u'60e680a037f41974'}
+            {'deleted': True,
+             'id': '60e680a037f41974'}
     """
     return ctx.gi.libraries.delete_library_dataset(library_id, dataset_id, purged=purged)

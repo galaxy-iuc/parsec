@@ -30,8 +30,8 @@ Output:
     A list of workflow dicts.
                  For example::
 
-                   [{u'id': u'92c56938c2f9b315',
-                     u'name': u'Simple',
-                     u'url': u'/api/workflows/92c56938c2f9b315'}]
+                   [{'id': '92c56938c2f9b315',
+                     'name': 'Simple',
+                     'url': '/api/workflows/92c56938c2f9b315'}]
     """
     return ctx.gi.workflows.get_workflows(workflow_id=workflow_id, name=name, published=published)

@@ -42,19 +42,23 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--tag_using_filenames",
-    help="Indicate whether to generate dataset tags from filenames",
-    default="True",
-    show_default=True,
+    help="Indicate whether to generate dataset tags from filenames.",
     is_flag=True
+)
+@click.option(
+    "--tags",
+    help="A list of tags to add to the datasets",
+    type=str,
+    multiple=True
 )
 @pass_context
 @custom_exception
 @list_output
-def cli(ctx, library_id, server_dir, folder_id="", file_type="auto", dbkey="?", link_data_only="", roles="", preserve_dirs=False, tag_using_filenames=True):
+def cli(ctx, library_id, server_dir, folder_id="", file_type="auto", dbkey="?", link_data_only="", roles="", preserve_dirs=False, tag_using_filenames=False, tags=""):
     """Upload all files in the specified subdirectory of the Galaxy library import directory to a library.
 
 Output:
 
     List with a single dictionary containing information about the LDDA
     """
-    return ctx.gi.libraries.upload_file_from_server(library_id, server_dir, folder_id=folder_id, file_type=file_type, dbkey=dbkey, link_data_only=link_data_only, roles=roles, preserve_dirs=preserve_dirs, tag_using_filenames=tag_using_filenames)
+    return ctx.gi.libraries.upload_file_from_server(library_id, server_dir, folder_id=folder_id, file_type=file_type, dbkey=dbkey, link_data_only=link_data_only, roles=roles, preserve_dirs=preserve_dirs, tag_using_filenames=tag_using_filenames, tags=tags)

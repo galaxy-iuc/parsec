@@ -25,15 +25,15 @@ Output:
     A list of datatype names.
           For example::
 
-            [u'snpmatrix',
-             u'snptest',
-             u'tabular',
-             u'taxonomy',
-             u'twobit',
-             u'txt',
-             u'vcf',
-             u'wig',
-             u'xgmml',
-             u'xml']
+            ['snpmatrix',
+             'snptest',
+             'tabular',
+             'taxonomy',
+             'twobit',
+             'txt',
+             'vcf',
+             'wig',
+             'xgmml',
+             'xml']
     """
     return ctx.gi.datatypes.get_datatypes(extension_only=extension_only, upload_only=upload_only)

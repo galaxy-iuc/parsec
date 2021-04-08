@@ -1,4 +1,6 @@
 import click
+from parsec.commands.histories.copy_content import cli as copy_content
+from parsec.commands.histories.copy_dataset import cli as copy_dataset
 from parsec.commands.histories.create_dataset_collection import cli as create_dataset_collection
 from parsec.commands.histories.create_history import cli as create_history
 from parsec.commands.histories.create_history_tag import cli as create_history_tag
@@ -9,7 +11,10 @@ from parsec.commands.histories.download_history import cli as download_history
 from parsec.commands.histories.export_history import cli as export_history
 from parsec.commands.histories.get_histories import cli as get_histories
 from parsec.commands.histories.get_most_recently_used_history import cli as get_most_recently_used_history
+from parsec.commands.histories.get_published_histories import cli as get_published_histories
 from parsec.commands.histories.get_status import cli as get_status
+from parsec.commands.histories.import_history import cli as import_history
+from parsec.commands.histories.open_history import cli as open_history
 from parsec.commands.histories.show_dataset import cli as show_dataset
 from parsec.commands.histories.show_dataset_collection import cli as show_dataset_collection
 from parsec.commands.histories.show_dataset_provenance import cli as show_dataset_provenance
@@ -27,6 +32,8 @@ def cli():
     pass
 
 
+cli.add_command(copy_content)
+cli.add_command(copy_dataset)
 cli.add_command(create_dataset_collection)
 cli.add_command(create_history)
 cli.add_command(create_history_tag)
@@ -37,7 +44,10 @@ cli.add_command(download_history)
 cli.add_command(export_history)
 cli.add_command(get_histories)
 cli.add_command(get_most_recently_used_history)
+cli.add_command(get_published_histories)
 cli.add_command(get_status)
+cli.add_command(import_history)
+cli.add_command(open_history)
 cli.add_command(show_dataset)
 cli.add_command(show_dataset_collection)
 cli.add_command(show_dataset_provenance)

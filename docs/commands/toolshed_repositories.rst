@@ -46,6 +46,7 @@ Create a new repository in a Tool Shed.
                                     "repository_suite_definition", or
                                     "tool_dependency_definition"  [default:
                                     unrestricted]
+    
       --remote_repository_url TEXT  Remote URL (e.g. GitHub/Bitbucket repository)
       --homepage_url TEXT           Upstream's homepage for the project
       --category_ids TEXT           List of encoded category IDs
@@ -94,20 +95,20 @@ Get a list of all the repositories in a Galaxy Tool Shed.
      repositories present in the Tool Shed.
      For example::
 
-       [{u'category_ids': [u'c1df3132f6334b0e', u'f6d7b0037d901d9b'],
-         u'deleted': False,
-         u'deprecated': False,
-         u'description': u'Order Contigs',
-         u'homepage_url': u'',
-         u'id': u'287bd69f724b99ce',
-         u'name': u'best_tool_ever',
-         u'owner': u'billybob',
-         u'private': False,
-         u'remote_repository_url': u'',
-         u'times_downloaded': 0,
-         u'type': u'unrestricted',
-         u'url': u'/api/repositories/287bd69f724b99ce',
-         u'user_id': u'5cefd48bc04af6d4'}]
+       [{'category_ids': ['c1df3132f6334b0e', 'f6d7b0037d901d9b'],
+         'deleted': False,
+         'deprecated': False,
+         'description': 'Order Contigs',
+         'homepage_url': '',
+         'id': '287bd69f724b99ce',
+         'name': 'best_tool_ever',
+         'owner': 'billybob',
+         'private': False,
+         'remote_repository_url': '',
+         'times_downloaded': 0,
+         'type': 'unrestricted',
+         'url': '/api/repositories/287bd69f724b99ce',
+         'user_id': '5cefd48bc04af6d4'}]
 
    .. versionchanged:: 0.4.1
      Changed method name from ``get_tools`` to ``get_repositories`` to
@@ -143,51 +144,51 @@ Return a list of dictionaries of metadata about a certain changeset revision for
 
      For example::
 
-                [{u'deleted': False,
-                  u'deprecated': False,
-                  u'description': u'Galaxy Freebayes Bayesian genetic variant detector tool',
-                  u'homepage_url': u'',
-                  u'id': u'491b7a3fddf9366f',
-                  u'long_description': u'Galaxy Freebayes Bayesian genetic variant detector tool originally included in the Galaxy code distribution but migrated to the tool shed.',
-                  u'name': u'freebayes',
-                  u'owner': u'devteam',
-                  u'private': False,
-                  u'remote_repository_url': u'',
-                  u'times_downloaded': 269,
-                  u'type': u'unrestricted',
-                  u'url': u'/api/repositories/491b7a3fddf9366f',
-                  u'user_id': u'1de29d50c3c44272'},
-                 {u'changeset_revision': u'd291dc763c4c',
-                  u'do_not_test': False,
-                  u'downloadable': True,
-                  u'has_repository_dependencies': False,
-                  u'id': u'504be8aaa652c154',
-                  u'includes_datatypes': False,
-                  u'includes_tool_dependencies': True,
-                  u'includes_tools': True,
-                  u'includes_tools_for_display_in_tool_panel': True,
-                  u'includes_workflows': False,
-                  u'malicious': False,
-                  u'repository_id': u'491b7a3fddf9366f',
-                  u'url': u'/api/repository_revisions/504be8aaa652c154'},
-                 {u'freebayes': [u'Galaxy Freebayes Bayesian genetic variant detector tool',
-                   u'http://testtoolshed.g2.bx.psu.edu/repos/devteam/freebayes',
-                   u'd291dc763c4c',
-                   u'9',
-                   u'devteam',
-                   {},
-                   {u'freebayes/0.9.6_9608597d12e127c847ae03aa03440ab63992fedf': {u'changeset_revision': u'd291dc763c4c',
-                     u'name': u'freebayes',
-                     u'repository_name': u'freebayes',
-                     u'repository_owner': u'devteam',
-                     u'type': u'package',
-                     u'version': u'0.9.6_9608597d12e127c847ae03aa03440ab63992fedf'},
-                    u'samtools/0.1.18': {u'changeset_revision': u'd291dc763c4c',
-                     u'name': u'samtools',
-                     u'repository_name': u'freebayes',
-                     u'repository_owner': u'devteam',
-                     u'type': u'package',
-                     u'version': u'0.1.18'}}]}]
+       [{'deleted': False,
+         'deprecated': False,
+         'description': 'Galaxy Freebayes Bayesian genetic variant detector tool',
+         'homepage_url': '',
+         'id': '491b7a3fddf9366f',
+         'long_description': 'Galaxy Freebayes Bayesian genetic variant detector tool originally included in the Galaxy code distribution but migrated to the tool shed.',
+         'name': 'freebayes',
+         'owner': 'devteam',
+         'private': False,
+         'remote_repository_url': '',
+         'times_downloaded': 269,
+         'type': 'unrestricted',
+         'url': '/api/repositories/491b7a3fddf9366f',
+         'user_id': '1de29d50c3c44272'},
+        {'changeset_revision': 'd291dc763c4c',
+         'do_not_test': False,
+         'downloadable': True,
+         'has_repository_dependencies': False,
+         'id': '504be8aaa652c154',
+         'includes_datatypes': False,
+         'includes_tool_dependencies': True,
+         'includes_tools': True,
+         'includes_tools_for_display_in_tool_panel': True,
+         'includes_workflows': False,
+         'malicious': False,
+         'repository_id': '491b7a3fddf9366f',
+         'url': '/api/repository_revisions/504be8aaa652c154'},
+        {'freebayes': ['Galaxy Freebayes Bayesian genetic variant detector tool',
+                       'http://testtoolshed.g2.bx.psu.edu/repos/devteam/freebayes',
+                       'd291dc763c4c',
+                       '9',
+                       'devteam',
+                       {},
+                       {'freebayes/0.9.6_9608597d12e127c847ae03aa03440ab63992fedf': {'changeset_revision': 'd291dc763c4c',
+                                                                                     'name': 'freebayes',
+                                                                                     'repository_name': 'freebayes',
+                                                                                     'repository_owner': 'devteam',
+                                                                                     'type': 'package',
+                                                                                     'version': '0.9.6_9608597d12e127c847ae03aa03440ab63992fedf'},
+                        'samtools/0.1.18': {'changeset_revision': 'd291dc763c4c',
+                                            'name': 'samtools',
+                                            'repository_name': 'freebayes',
+                                            'repository_owner': 'devteam',
+                                            'type': 'package',
+                                            'version': '0.1.18'}}]}]
     
 **Options**::
 
@@ -214,40 +215,40 @@ Returns a (possibly filtered) list of dictionaries that include information abou
      information about all repository revisions.
      For example::
 
-       [{u'changeset_revision': u'6e26c5a48e9a',
-         u'do_not_test': False,
-         u'downloadable': True,
-         u'has_repository_dependencies': False,
-         u'id': u'92250afff777a169',
-         u'includes_datatypes': False,
-         u'includes_tool_dependencies': False,
-         u'includes_tools': True,
-         u'includes_tools_for_display_in_tool_panel': True,
-         u'includes_workflows': False,
-         u'malicious': False,
-         u'missing_test_components': False,
-         u'repository_id': u'78f2604ff5e65707',
-         u'test_install_error': False,
-         u'time_last_tested': None,
-         u'tools_functionally_correct': False,
-         u'url': u'/api/repository_revisions/92250afff777a169'},
-        {u'changeset_revision': u'15a54fa11ad7',
-         u'do_not_test': False,
-         u'downloadable': True,
-         u'has_repository_dependencies': False,
-         u'id': u'd3823c748ae2205d',
-         u'includes_datatypes': False,
-         u'includes_tool_dependencies': False,
-         u'includes_tools': True,
-         u'includes_tools_for_display_in_tool_panel': True,
-         u'includes_workflows': False,
-         u'malicious': False,
-         u'missing_test_components': False,
-         u'repository_id': u'f9662009da7bfce0',
-         u'test_install_error': False,
-         u'time_last_tested': None,
-         u'tools_functionally_correct': False,
-         u'url': u'/api/repository_revisions/d3823c748ae2205d'}]
+       [{'changeset_revision': '6e26c5a48e9a',
+         'do_not_test': False,
+         'downloadable': True,
+         'has_repository_dependencies': False,
+         'id': '92250afff777a169',
+         'includes_datatypes': False,
+         'includes_tool_dependencies': False,
+         'includes_tools': True,
+         'includes_tools_for_display_in_tool_panel': True,
+         'includes_workflows': False,
+         'malicious': False,
+         'missing_test_components': False,
+         'repository_id': '78f2604ff5e65707',
+         'test_install_error': False,
+         'time_last_tested': None,
+         'tools_functionally_correct': False,
+         'url': '/api/repository_revisions/92250afff777a169'},
+        {'changeset_revision': '15a54fa11ad7',
+         'do_not_test': False,
+         'downloadable': True,
+         'has_repository_dependencies': False,
+         'id': 'd3823c748ae2205d',
+         'includes_datatypes': False,
+         'includes_tool_dependencies': False,
+         'includes_tools': True,
+         'includes_tools_for_display_in_tool_panel': True,
+         'includes_workflows': False,
+         'malicious': False,
+         'missing_test_components': False,
+         'repository_id': 'f9662009da7bfce0',
+         'test_install_error': False,
+         'time_last_tested': None,
+         'tools_functionally_correct': False,
+         'url': '/api/repository_revisions/d3823c748ae2205d'}]
     
 **Options**::
 
@@ -282,36 +283,36 @@ Search for repositories in a Galaxy Tool Shed.
      search.
      For example::
 
-       {u'hits': [{u'matched_terms': [],
-          u'repository': {u'approved': u'no',
-           u'description': u'Convert export file to fastq',
-           u'full_last_updated': u'2015-01-18 09:48 AM',
-           u'homepage_url': u'',
-           u'id': u'bdfa208f0cf6504e',
-           u'last_updated': u'less than a year',
-           u'long_description': u'This is a simple too to convert Solexas Export files to FASTQ files.',
-           u'name': u'export_to_fastq',
-           u'remote_repository_url': u'',
-           u'repo_owner_username': u'louise',
-           u'times_downloaded': 164},
-          u'score': 4.92},
-         {u'matched_terms': [],
-          u'repository': {u'approved': u'no',
-           u'description': u'Convert BAM file to fastq',
-           u'full_last_updated': u'2015-04-07 11:57 AM',
-           u'homepage_url': u'',
-           u'id': u'175812cd7caaf439',
-           u'last_updated': u'less than a month',
-           u'long_description': u'Use Picards SamToFastq to convert a BAM file to fastq. Useful for storing reads as BAM in Galaxy and converting to fastq when needed for analysis.',
-           u'name': u'bam_to_fastq',
-           u'remote_repository_url': u'',
-           u'repo_owner_username': u'brad-chapman',
-           u'times_downloaded': 138},
-          u'score': 4.14}],
-        u'hostname': u'https://testtoolshed.g2.bx.psu.edu/',
-        u'page': u'1',
-        u'page_size': u'2',
-        u'total_results': u'64'}
+       {'hits': [{'matched_terms': [],
+                  'repository': {'approved': 'no',
+                                 'description': 'Convert export file to fastq',
+                                 'full_last_updated': '2015-01-18 09:48 AM',
+                                 'homepage_url': '',
+                                 'id': 'bdfa208f0cf6504e',
+                                 'last_updated': 'less than a year',
+                                 'long_description': 'This is a simple too to convert Solexas Export files to FASTQ files.',
+                                 'name': 'export_to_fastq',
+                                 'remote_repository_url': '',
+                                 'repo_owner_username': 'louise',
+                                 'times_downloaded': 164},
+                  'score': 4.92},
+                 {'matched_terms': [],
+                  'repository': {'approved': 'no',
+                                 'description': 'Convert BAM file to fastq',
+                                 'full_last_updated': '2015-04-07 11:57 AM',
+                                 'homepage_url': '',
+                                 'id': '175812cd7caaf439',
+                                 'last_updated': 'less than a month',
+                                 'long_description': 'Use Picards SamToFastq to convert a BAM file to fastq. Useful for storing reads as BAM in Galaxy and converting to fastq when needed for analysis.',
+                                 'name': 'bam_to_fastq',
+                                 'remote_repository_url': '',
+                                 'repo_owner_username': 'brad-chapman',
+                                 'times_downloaded': 138},
+                  'score': 4.14}],
+        'hostname': 'https://testtoolshed.g2.bx.psu.edu/',
+        'page': '1',
+        'page_size': '2',
+        'total_results': '64'}
     
 **Options**::
 
@@ -339,21 +340,21 @@ Display information of a repository from Tool Shed
     Information about the tool.
      For example::
 
-       {u'category_ids': [u'c1df3132f6334b0e', u'f6d7b0037d901d9b'],
-        u'deleted': False,
-        u'deprecated': False,
-        u'description': u'Order Contigs',
-        u'homepage_url': u'',
-        u'id': u'287bd69f724b99ce',
-        u'long_description': u'',
-        u'name': u'best_tool_ever',
-        u'owner': u'billybob',
-        u'private': False,
-        u'remote_repository_url': u'',
-        u'times_downloaded': 0,
-        u'type': u'unrestricted',
-        u'url': u'/api/repositories/287bd69f724b99ce',
-        u'user_id': u'5cefd48bc04af6d4'}
+       {'category_ids': ['c1df3132f6334b0e', 'f6d7b0037d901d9b'],
+        'deleted': False,
+        'deprecated': False,
+        'description': 'Order Contigs',
+        'homepage_url': '',
+        'id': '287bd69f724b99ce',
+        'long_description': '',
+        'name': 'best_tool_ever',
+        'owner': 'billybob',
+        'private': False,
+        'remote_repository_url': '',
+        'times_downloaded': 0,
+        'type': 'unrestricted',
+        'url': '/api/repositories/287bd69f724b99ce',
+        'user_id': '5cefd48bc04af6d4'}
 
    .. versionchanged:: 0.4.1
      Changed method name from ``show_tool`` to ``show_repository`` to
@@ -384,24 +385,24 @@ Returns a dictionary that includes information about a specified repository revi
      specified repository revision.
      For example::
 
-       {u'changeset_revision': u'7602de1e7f32',
-        u'do_not_test': False,
-        u'downloadable': True,
-        u'has_repository_dependencies': False,
-        u'id': u'504be8aaa652c154',
-        u'includes_datatypes': False,
-        u'includes_tool_dependencies': False,
-        u'includes_tools': True,
-        u'includes_tools_for_display_in_tool_panel': True,
-        u'includes_workflows': False,
-        u'malicious': False,
-        u'missing_test_components': True,
-        u'repository_id': u'491b7a3fddf9366f',
-        u'test_install_error': False,
-        u'time_last_tested': None,
-        u'tool_test_results': {u'missing_test_components': []},
-        u'tools_functionally_correct': False,
-        u'url': u'/api/repository_revisions/504be8aaa652c154'}
+       {'changeset_revision': '7602de1e7f32',
+        'do_not_test': False,
+        'downloadable': True,
+        'has_repository_dependencies': False,
+        'id': '504be8aaa652c154',
+        'includes_datatypes': False,
+        'includes_tool_dependencies': False,
+        'includes_tools': True,
+        'includes_tools_for_display_in_tool_panel': True,
+        'includes_workflows': False,
+        'malicious': False,
+        'missing_test_components': True,
+        'repository_id': '491b7a3fddf9366f',
+        'test_install_error': False,
+        'time_last_tested': None,
+        'tool_test_results': {'missing_test_components': []},
+        'tools_functionally_correct': False,
+        'url': '/api/repository_revisions/504be8aaa652c154'}
     
 **Options**::
 
@@ -429,8 +430,8 @@ Update the contents of a Tool Shed repository with specified tar ball.
      will be raised generally if there are problems.
      For example a successful upload will look like::
 
-       {u'content_alert': u'',
-        u'message': u''}
+       {'content_alert': '',
+        'message': ''}
 
    .. versionadded:: 0.5.2
     
@@ -439,5 +440,6 @@ Update the contents of a Tool Shed repository with specified tar ball.
 
       --commit_message TEXT  Commit message used for the underlying Mercurial
                              repository backing Tool Shed repository.
+    
       -h, --help             Show this message and exit.
     

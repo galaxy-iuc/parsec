@@ -15,13 +15,13 @@ Output:
     Displays a collection (list) of forms.
           For example::
 
-            [{u'id': u'f2db41e1fa331b3e',
-              u'model_class': u'FormDefinition',
-              u'name': u'First form',
-              u'url': u'/api/forms/f2db41e1fa331b3e'},
-             {u'id': u'ebfb8f50c6abde6d',
-              u'model_class': u'FormDefinition',
-              u'name': u'second form',
-              u'url': u'/api/forms/ebfb8f50c6abde6d'}]
+            [{'id': 'f2db41e1fa331b3e',
+              'model_class': 'FormDefinition',
+              'name': 'First form',
+              'url': '/api/forms/f2db41e1fa331b3e'},
+             {'id': 'ebfb8f50c6abde6d',
+              'model_class': 'FormDefinition',
+              'name': 'second form',
+              'url': '/api/forms/ebfb8f50c6abde6d'}]
     """
     return ctx.gi.forms.get_forms()

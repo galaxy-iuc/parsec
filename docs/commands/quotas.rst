@@ -23,11 +23,11 @@ Create a new quota
     A description of quota.
      For example::
 
-       {u'url': '/galaxy/api/quotas/386f14984287a0f7',
-        u'model_class': 'Quota',
-        u'message': "Quota 'Testing' has been created with 1 associated users and 0 associated groups.",
-        u'id': '386f14984287a0f7',
-        u'name': 'Testing'}
+       {'url': '/galaxy/api/quotas/386f14984287a0f7',
+        'model_class': 'Quota',
+        'message': "Quota 'Testing' has been created with 1 associated users and 0 associated groups.",
+        'id': '386f14984287a0f7',
+        'name': 'Testing'}
     
 **Options**::
 
@@ -35,6 +35,7 @@ Create a new quota
       --default TEXT    Whether or not this is a default quota. Valid values are
                         ``no``, ``unregistered``, ``registered``. None is equivalent
                         to ``no``.  [default: no]
+    
       --in_users TEXT   A list of user IDs or user emails.
       --in_groups TEXT  A list of group IDs or names.
       -h, --help        Show this message and exit.
@@ -84,14 +85,14 @@ Get a list of quotas
     A list of dicts with details on individual quotas.
      For example::
 
-       [{u'id': u'0604c8a56abe9a50',
-         u'model_class': u'Quota',
-         u'name': u'test ',
-         u'url': u'/api/quotas/0604c8a56abe9a50'},
-        {u'id': u'1ee267091d0190af',
-         u'model_class': u'Quota',
-         u'name': u'workshop',
-         u'url': u'/api/quotas/1ee267091d0190af'}]
+       [{'id': '0604c8a56abe9a50',
+         'model_class': 'Quota',
+         'name': 'test ',
+         'url': '/api/quotas/0604c8a56abe9a50'},
+        {'id': '1ee267091d0190af',
+         'model_class': 'Quota',
+         'name': 'workshop',
+         'url': '/api/quotas/1ee267091d0190af'}]
     
 **Options**::
 
@@ -118,16 +119,16 @@ Display information on a quota
     A description of quota.
      For example::
 
-       {u'bytes': 107374182400,
-        u'default': [],
-        u'description': u'just testing',
-        u'display_amount': u'100.0 GB',
-        u'groups': [],
-        u'id': u'0604c8a56abe9a50',
-        u'model_class': u'Quota',
-        u'name': u'test ',
-        u'operation': u'=',
-        u'users': []}
+       {'bytes': 107374182400,
+        'default': [],
+        'description': 'just testing',
+        'display_amount': '100.0 GB',
+        'groups': [],
+        'id': '0604c8a56abe9a50',
+        'model_class': 'Quota',
+        'name': 'test ',
+        'operation': '=',
+        'users': []}
     
 **Options**::
 
@@ -187,18 +188,23 @@ Update an existing quota
 
       --name TEXT         Name for the new quota. This must be unique within a
                           Galaxy instance.
+    
       --description TEXT  Quota description. If you supply this parameter, but not
                           the name, an error will be thrown.
+    
       --amount TEXT       Quota size (E.g. ``10000MB``, ``99 gb``, ``0.2T``,
                           ``unlimited``)
+    
       --operation TEXT    One of (``+``, ``-``, ``=``). If you wish to change this
                           value, you must also provide the ``amount``, otherwise it
                           will not take effect.
+    
       --default TEXT      Whether or not this is a default quota. Valid values are
                           ``no``, ``unregistered``, ``registered``. Calling this
                           method with ``default="no"`` on a non-default quota will
                           throw an error. Not passing this parameter is equivalent
                           to passing ``no``.  [default: no]
+    
       --in_users TEXT     A list of user IDs or user emails.
       --in_groups TEXT    A list of group IDs or names.
       -h, --help          Show this message and exit.

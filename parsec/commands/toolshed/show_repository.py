@@ -16,11 +16,11 @@ Output:
     Information about the tool
           For example::
 
-            {u'changeset_revision': u'b17455fb6222',
-             u'ctx_rev': u'8',
-             u'owner': u'aaron',
-             u'status': u'Installed',
-             u'url': u'/api/tool_shed_repositories/82de4a4c7135b20a'}
+            {'changeset_revision': 'b17455fb6222',
+             'ctx_rev': '8',
+             'owner': 'aaron',
+             'status': 'Installed',
+             'url': '/api/tool_shed_repositories/82de4a4c7135b20a'}
 
         .. versionchanged:: 0.4.1
             Changed method name from ``show_tool`` to ``show_repository`` to

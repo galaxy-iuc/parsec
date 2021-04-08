@@ -31,9 +31,8 @@ Output:
 
     the updated dataset collection attributes
 
-        .. warning::
-            The return value was changed in BioBlend v0.8.0, previously it was
-            the status code (type int).
+        .. versionchanged:: 0.8.0
+            Changed the return value from the status code (type int) to a dict.
     """
     kwargs = {}
     if deleted is not None:

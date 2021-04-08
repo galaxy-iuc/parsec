@@ -15,6 +15,7 @@ from parsec.commands.workflows.run_workflow import cli as run_workflow
 from parsec.commands.workflows.show_invocation import cli as show_invocation
 from parsec.commands.workflows.show_invocation_step import cli as show_invocation_step
 from parsec.commands.workflows.show_workflow import cli as show_workflow
+from parsec.commands.workflows.update_workflow import cli as update_workflow
 
 
 @click.group()
@@ -38,3 +39,4 @@ cli.add_command(run_workflow)
 cli.add_command(show_invocation)
 cli.add_command(show_invocation_step)
 cli.add_command(show_workflow)
+cli.add_command(update_workflow)

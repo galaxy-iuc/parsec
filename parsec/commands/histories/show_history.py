@@ -7,7 +7,7 @@ from parsec.decorators import custom_exception, dict_output
 @click.argument("history_id", type=str)
 @click.option(
     "--contents",
-    help="When ``True``, instead of the history details, return the list of datasets in the given history.",
+    help="When ``True``, instead of the history details, return a list with info for all datasets in the given history. Note that inside each dataset info dict, the id which should be used for further requests about this history dataset is given by the value of the `id` (not `dataset_id`) key.",
     is_flag=True
 )
 @click.option(
@@ -37,6 +37,6 @@ def cli(ctx, history_id, contents=False, deleted="", visible="", details="", typ
 
 Output:
 
-    details of the given history
+    details of the given history or list of dataset info
     """
     return ctx.gi.histories.show_history(history_id, contents=contents, deleted=deleted, visible=visible, details=details, types=types)

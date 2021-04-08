@@ -15,15 +15,15 @@ Output:
     A list of dicts with details on individual visualizations.
           For example::
 
-            [{u'dbkey': u'eschColi_K12',
-              u'id': u'df1c7c96fc427c2d',
-              u'title': u'AVTest1',
-              u'type': u'trackster',
-              u'url': u'/api/visualizations/df1c7c96fc427c2d'},
-             {u'dbkey': u'mm9',
-              u'id': u'a669f50f8bf55b02',
-              u'title': u'Bam to Bigwig',
-              u'type': u'trackster',
-              u'url': u'/api/visualizations/a669f50f8bf55b02'}]
+            [{'dbkey': 'eschColi_K12',
+              'id': 'df1c7c96fc427c2d',
+              'title': 'AVTest1',
+              'type': 'trackster',
+              'url': '/api/visualizations/df1c7c96fc427c2d'},
+             {'dbkey': 'mm9',
+              'id': 'a669f50f8bf55b02',
+              'title': 'Bam to Bigwig',
+              'type': 'trackster',
+              'url': '/api/visualizations/a669f50f8bf55b02'}]
     """
     return ctx.gi.visual.get_visualizations()

@@ -32,7 +32,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @click.option(
     "--purged",
-    help="If ``True``, mark history as purged (permanently deleted). Ignored on Galaxy release_15.01 and earlier",
+    help="If ``True``, mark history as purged (permanently deleted).",
     is_flag=True
 )
 @click.option(
@@ -49,12 +49,10 @@ def cli(ctx, history_id, annotation=None, deleted=None, importable=None, name=No
 
 Output:
 
-    details of the updated history (for Galaxy release_15.01 and
-            earlier only the updated attributes)
+    details of the updated history
 
-        .. warning::
-            The return value was changed in BioBlend v0.8.0, previously it was
-            the status code (type int).
+        .. versionchanged:: 0.8.0
+            Changed the return value from the status code (type int) to a dict.
     """
     kwargs = {}
     if annotation and len(annotation) > 0:

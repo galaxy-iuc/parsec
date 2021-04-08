@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, dict_output
 
 
 @click.command('create_role')
@@ -20,20 +20,23 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
-def cli(ctx, role_name, description, user_ids=None, group_ids=None):
+@dict_output
+def cli(ctx, role_name, description, user_ids="", group_ids=""):
     """Create a new role.
 
 Output:
 
-    A (size 1) list with newly created role
-          details, like::
+    Details of the newly created role.
+          For example::
 
-            [{u'description': u'desc',
-              u'url': u'/api/roles/ebfb8f50c6abde6d',
-              u'model_class': u'Role',
-              u'type': u'admin',
-              u'id': u'ebfb8f50c6abde6d',
-              u'name': u'Foo'}]
+            {'description': 'desc',
+             'url': '/api/roles/ebfb8f50c6abde6d',
+             'model_class': 'Role',
+             'type': 'admin',
+             'id': 'ebfb8f50c6abde6d',
+             'name': 'Foo'}
+
+        .. versionchanged:: 0.15.0
+            Changed the return value from a 1-element list to a dict.
     """
     return ctx.gi.roles.create_role(role_name, description, user_ids=user_ids, group_ids=group_ids)
