@@ -11,7 +11,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--name",
-    help="If ``name`` is set and multiple names match the given name, all the libraries matching the argument will be returned",
+    help="Library name to filter on.",
     type=str
 )
 @click.option(
@@ -23,7 +23,7 @@ from parsec.decorators import custom_exception, list_output
 @custom_exception
 @list_output
 def cli(ctx, library_id="", name="", deleted=False):
-    """Get all the libraries or filter for specific one(s) via the provided name or ID. Provide only one argument: ``name`` or ``library_id``, but not both.
+    """Get all libraries, or select a subset by specifying optional arguments for filtering (e.g. a library name).
 
 Output:
 

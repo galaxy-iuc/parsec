@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, none_output
+from parsec.decorators import custom_exception, None_output
 
 
 @click.command('delete_dataset')
@@ -13,7 +13,7 @@ from parsec.decorators import custom_exception, none_output
 )
 @pass_context
 @custom_exception
-@none_output
+@None_output
 def cli(ctx, history_id, dataset_id, purge=False):
     """Mark corresponding dataset as deleted.
 

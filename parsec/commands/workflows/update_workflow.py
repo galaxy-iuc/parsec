@@ -21,6 +21,11 @@ from parsec.decorators import custom_exception, dict_output
     type=str
 )
 @click.option(
+    "--published",
+    help="Whether the workflow should be published or unpublished",
+    is_flag=True
+)
+@click.option(
     "--tags",
     help="Replace workflow tags with the given list",
     type=str,
@@ -34,7 +39,7 @@ from parsec.decorators import custom_exception, dict_output
 @pass_context
 @custom_exception
 @dict_output
-def cli(ctx, workflow_id, annotation=None, menu_entry=None, name=None, tags=None, workflow=None):
+def cli(ctx, workflow_id, annotation=None, menu_entry=None, name=None, published=None, tags=None, workflow=None):
     """Update a given workflow.
 
 Output:
@@ -48,5 +53,7 @@ Output:
         kwargs['menu_entry'] = menu_entry
     if name and len(name) > 0:
         kwargs['name'] = name
+    if published is not None:
+        kwargs['published'] = published
 
     return ctx.gi.workflows.update_workflow(workflow_id, **kwargs)

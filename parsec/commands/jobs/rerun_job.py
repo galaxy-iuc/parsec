@@ -29,7 +29,8 @@ def cli(ctx, job_id, remap=False, tool_inputs_update="", history_id=""):
 Output:
 
     Information about outputs and the rerun job
+
         .. note::
-          This method can only be used with Galaxy ``release_20.09`` or later.
+          This method can only be used with Galaxy ``release_21.01`` or later.
     """
     return ctx.gi.jobs.rerun_job(job_id, remap=remap, tool_inputs_update=tool_inputs_update, history_id=history_id)

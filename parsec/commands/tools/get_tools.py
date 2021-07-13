@@ -11,7 +11,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--name",
-    help="name of the requested tool(s)",
+    help="Tool name to filter on.",
     type=str
 )
 @click.option(
@@ -23,7 +23,7 @@ from parsec.decorators import custom_exception, list_output
 @custom_exception
 @list_output
 def cli(ctx, tool_id="", name="", trackster=""):
-    """Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_id``. Provide only one argument, ``name`` or ``tool_id``, but not both.
+    """Get all tools, or select a subset by specifying optional arguments for filtering (e.g. a tool name).
 
 Output:
 

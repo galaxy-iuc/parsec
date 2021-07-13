@@ -38,5 +38,10 @@ def cli(ctx, history_id, contents=False, deleted="", visible="", details="", typ
 Output:
 
     details of the given history or list of dataset info
+
+        .. note::
+            As an alternative to using the ``contents=True`` parameter, consider
+            using ``gi.datasets.get_datasets(history_id=history_id)`` which offers
+            more extensive functionality for filtering and ordering the results.
     """
     return ctx.gi.histories.show_history(history_id, contents=contents, deleted=deleted, visible=visible, details=details, types=types)

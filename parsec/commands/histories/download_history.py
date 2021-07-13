@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, none_output
+from parsec.decorators import custom_exception, None_output
 
 
 @click.command('download_history')
@@ -16,7 +16,7 @@ from parsec.decorators import custom_exception, none_output
 )
 @pass_context
 @custom_exception
-@none_output
+@None_output
 def cli(ctx, history_id, jeha_id, outf, chunk_size=4096):
     """Download a history export archive.  Use :meth:`export_history` to create an export.
 

@@ -6,7 +6,7 @@ from parsec.decorators import custom_exception, list_output
 @click.command('get_published_histories')
 @click.option(
     "--name",
-    help="Name of history to filter on",
+    help="History name to filter on.",
     type=str
 )
 @click.option(
@@ -23,7 +23,7 @@ from parsec.decorators import custom_exception, list_output
 @custom_exception
 @list_output
 def cli(ctx, name="", deleted=False, slug=""):
-    """Get all published histories (by any user) or filter the specific one(s) by ``name`` or other arguments.
+    """Get all published histories (by any user), or select a subset by specifying optional arguments for filtering (e.g. a history name).
 
 Output:
 
