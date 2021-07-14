@@ -90,12 +90,14 @@ class ParsecCLI(click.MultiCommand):
         # We pre-calculate this so it works more nicely within packaged
         # versions of parsec. Please feel free to fix this?
 
-        commands = ['config', 'datasets', 'datatypes', 'folders', 'forms',
-                    'ftpfiles', 'genomes', 'groups', 'histories', 'jobs',
-                    'libraries', 'quotas', 'roles', 'tool_data', 'tools',
-                    'users', 'utils', 'visual', 'workflows',
-                    'toolshed_categories', 'toolshed_repositories',
-                    'toolshed_tools']
+        commands = ['config', 'dataset_collections', 'datasets', 'datatypes',
+                    'folders', 'forms', 'ftpfiles', 'genomes', 'groups',
+                    'histories', 'init', 'invocations', 'jobs', 'libraries',
+                    'quotas', 'roles', 'tool_data', 'tool_dependencies',
+                    'toolshed_categories', 'toolshed', 'toolShed',
+                    'toolshed_repositories', 'toolshed_tools', 'tools',
+                    'users', 'utils', 'visual', 'workflows']
+
         return commands
 
     def get_command(self, ctx, name):

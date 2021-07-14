@@ -56,10 +56,10 @@ Welcome to
     while True:
         galaxy_url = url
         if url is None or len(url) == 0 :
-            galaxy_url = click.prompt("Please entry your Galaxy's URL")
+            galaxy_url = click.prompt("Please enter your Galaxy's URL")
         galaxy_key = api_key
         if api_key is None or len(api_key) == 0 :
-            galaxy_key = click.prompt("Please entry your Galaxy API Key")
+            galaxy_key = click.prompt("Please enter your Galaxy API Key")
         info("Testing connection...")
         gi = galaxy.GalaxyInstance(galaxy_url, galaxy_key)
         try:

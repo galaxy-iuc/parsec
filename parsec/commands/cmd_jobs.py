@@ -7,7 +7,6 @@ from parsec.commands.jobs.get_jobs import cli as get_jobs
 from parsec.commands.jobs.get_metrics import cli as get_metrics
 from parsec.commands.jobs.get_outputs import cli as get_outputs
 from parsec.commands.jobs.get_state import cli as get_state
-from parsec.commands.jobs.module import cli as module
 from parsec.commands.jobs.report_error import cli as report_error
 from parsec.commands.jobs.rerun_job import cli as rerun_job
 from parsec.commands.jobs.resume_job import cli as resume_job
@@ -31,7 +30,6 @@ cli.add_command(get_jobs)
 cli.add_command(get_metrics)
 cli.add_command(get_outputs)
 cli.add_command(get_state)
-cli.add_command(module)
 cli.add_command(report_error)
 cli.add_command(rerun_job)
 cli.add_command(resume_job)

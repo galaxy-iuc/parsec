@@ -3,7 +3,6 @@ from parsec.commands.tools.get_citations import cli as get_citations
 from parsec.commands.tools.get_tool_panel import cli as get_tool_panel
 from parsec.commands.tools.get_tools import cli as get_tools
 from parsec.commands.tools.install_dependencies import cli as install_dependencies
-from parsec.commands.tools.module import cli as module
 from parsec.commands.tools.paste_content import cli as paste_content
 from parsec.commands.tools.put_url import cli as put_url
 from parsec.commands.tools.requirements import cli as requirements
@@ -23,7 +22,6 @@ cli.add_command(get_citations)
 cli.add_command(get_tool_panel)
 cli.add_command(get_tools)
 cli.add_command(install_dependencies)
-cli.add_command(module)
 cli.add_command(paste_content)
 cli.add_command(put_url)
 cli.add_command(requirements)

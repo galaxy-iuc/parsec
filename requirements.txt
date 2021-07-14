@@ -1,7 +1,7 @@
 Click
 pyyaml
 # pre-release version
-bioblend==0.15.0
+bioblend==0.16.0
 docutils
 wrapt
 justbackoff

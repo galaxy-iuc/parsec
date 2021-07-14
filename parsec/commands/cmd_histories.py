@@ -14,7 +14,6 @@ from parsec.commands.histories.get_most_recently_used_history import cli as get_
 from parsec.commands.histories.get_published_histories import cli as get_published_histories
 from parsec.commands.histories.get_status import cli as get_status
 from parsec.commands.histories.import_history import cli as import_history
-from parsec.commands.histories.module import cli as module
 from parsec.commands.histories.open_history import cli as open_history
 from parsec.commands.histories.show_dataset import cli as show_dataset
 from parsec.commands.histories.show_dataset_collection import cli as show_dataset_collection
@@ -48,7 +47,6 @@ cli.add_command(get_most_recently_used_history)
 cli.add_command(get_published_histories)
 cli.add_command(get_status)
 cli.add_command(import_history)
-cli.add_command(module)
 cli.add_command(open_history)
 cli.add_command(show_dataset)
 cli.add_command(show_dataset_collection)

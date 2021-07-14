@@ -8,7 +8,6 @@ from parsec.commands.libraries.get_dataset_permissions import cli as get_dataset
 from parsec.commands.libraries.get_folders import cli as get_folders
 from parsec.commands.libraries.get_libraries import cli as get_libraries
 from parsec.commands.libraries.get_library_permissions import cli as get_library_permissions
-from parsec.commands.libraries.module import cli as module
 from parsec.commands.libraries.set_dataset_permissions import cli as set_dataset_permissions
 from parsec.commands.libraries.set_library_permissions import cli as set_library_permissions
 from parsec.commands.libraries.show_dataset import cli as show_dataset
@@ -37,7 +36,6 @@ cli.add_command(get_dataset_permissions)
 cli.add_command(get_folders)
 cli.add_command(get_libraries)
 cli.add_command(get_library_permissions)
-cli.add_command(module)
 cli.add_command(set_dataset_permissions)
 cli.add_command(set_library_permissions)
 cli.add_command(show_dataset)

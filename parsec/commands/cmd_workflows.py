@@ -11,7 +11,6 @@ from parsec.commands.workflows.import_shared_workflow import cli as import_share
 from parsec.commands.workflows.import_workflow_dict import cli as import_workflow_dict
 from parsec.commands.workflows.import_workflow_from_local_path import cli as import_workflow_from_local_path
 from parsec.commands.workflows.invoke_workflow import cli as invoke_workflow
-from parsec.commands.workflows.module import cli as module
 from parsec.commands.workflows.refactor_workflow import cli as refactor_workflow
 from parsec.commands.workflows.run_invocation_step_action import cli as run_invocation_step_action
 from parsec.commands.workflows.run_workflow import cli as run_workflow
@@ -39,7 +38,6 @@ cli.add_command(import_shared_workflow)
 cli.add_command(import_workflow_dict)
 cli.add_command(import_workflow_from_local_path)
 cli.add_command(invoke_workflow)
-cli.add_command(module)
 cli.add_command(refactor_workflow)
 cli.add_command(run_invocation_step_action)
 cli.add_command(run_workflow)

@@ -54,6 +54,11 @@ def none_output(wrapped, instance, args, kwargs):
 
 
 @wrapt.decorator
+def bool_output(wrapped, instance, args, kwargs):
+    print(wrapped(*args, **kwargs))
+
+
+@wrapt.decorator
 def nonetype_output(wrapped, instance, args, kwargs):
     print(wrapped(*args, **kwargs))
 
