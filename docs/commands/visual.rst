@@ -33,12 +33,12 @@ Get the list of all visualizations.
          'title': 'Bam to Bigwig',
          'type': 'trackster',
          'url': '/api/visualizations/a669f50f8bf55b02'}]
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``show_visualization`` command
 ------------------------------
@@ -69,9 +69,9 @@ Get details of a given visualization.
         'type': 'trackster',
         'url': '/u/azaron/v/visualization-for-grant-1',
         'user_id': '21e4aed91386ca8b'}
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+

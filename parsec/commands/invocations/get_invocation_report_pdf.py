@@ -20,6 +20,6 @@ def cli(ctx, invocation_id, file_path, chunk_size=4096):
 
 Output:
 
-    
+
     """
     return ctx.gi.invocations.get_invocation_report_pdf(invocation_id, file_path, chunk_size=chunk_size)

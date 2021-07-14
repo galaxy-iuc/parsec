@@ -41,11 +41,11 @@ Search for tools in a Galaxy Tool Shed.
         'page': '1',
         'page_size': '2',
         'total_results': '118'}
-    
+
 **Options**::
 
 
       --page INTEGER       page requested  [default: 1]
       --page_size INTEGER  page size requested  [default: 10]
       -h, --help           Show this message and exit.
-    
+

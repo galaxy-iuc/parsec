@@ -21,12 +21,12 @@ Create a new form.
 
 
     Unique URL of newly created form with encoded id
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``get_forms`` command
 ---------------------
@@ -54,12 +54,12 @@ Get the list of all forms.
          'model_class': 'FormDefinition',
          'name': 'second form',
          'url': '/api/forms/ebfb8f50c6abde6d'}]
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``show_form`` command
 ---------------------
@@ -87,9 +87,9 @@ Get details of a given form.
         'model_class': 'FormDefinition',
         'name': 'First form',
         'url': '/api/forms/f2db41e1fa331b3e'}
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+

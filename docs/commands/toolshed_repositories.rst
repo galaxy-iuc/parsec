@@ -37,7 +37,7 @@ Create a new repository in a Tool Shed.
         "times_downloaded": 0,
         "type": "unrestricted",
         "user_id": "adb5f5c93f827949"}
-    
+
 **Options**::
 
 
@@ -46,12 +46,11 @@ Create a new repository in a Tool Shed.
                                     "repository_suite_definition", or
                                     "tool_dependency_definition"  [default:
                                     unrestricted]
-    
       --remote_repository_url TEXT  Remote URL (e.g. GitHub/Bitbucket repository)
       --homepage_url TEXT           Upstream's homepage for the project
       --category_ids TEXT           List of encoded category IDs
       -h, --help                    Show this message and exit.
-    
+
 
 ``get_ordered_installable_revisions`` command
 ---------------------------------------------
@@ -69,12 +68,12 @@ Returns the ordered list of changeset revision hash strings that are associated 
 
 
     List of changeset revision hash strings from oldest to newest
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``get_repositories`` command
 ----------------------------
@@ -113,12 +112,12 @@ Get a list of all the repositories in a Galaxy Tool Shed.
    .. versionchanged:: 0.4.1
      Changed method name from ``get_tools`` to ``get_repositories`` to
      better align with the Tool Shed concepts.
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``get_repository_revision_install_info`` command
 ------------------------------------------------
@@ -189,12 +188,12 @@ Return a list of dictionaries of metadata about a certain changeset revision for
                                             'repository_owner': 'devteam',
                                             'type': 'package',
                                             'version': '0.1.18'}}]}]
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``repository_revisions`` command
 --------------------------------
@@ -249,7 +248,7 @@ Returns a (possibly filtered) list of dictionaries that include information abou
          'time_last_tested': None,
          'tools_functionally_correct': False,
          'url': '/api/repository_revisions/d3823c748ae2205d'}]
-    
+
 **Options**::
 
 
@@ -262,7 +261,7 @@ Returns a (possibly filtered) list of dictionaries that include information abou
       --test_install_error TEXT
       --skip_tool_test TEXT
       -h, --help                      Show this message and exit.
-    
+
 
 ``search_repositories`` command
 -------------------------------
@@ -313,14 +312,14 @@ Search for repositories in a Galaxy Tool Shed.
         'page': '1',
         'page_size': '2',
         'total_results': '64'}
-    
+
 **Options**::
 
 
       --page INTEGER       page requested  [default: 1]
       --page_size INTEGER  page size requested  [default: 10]
       -h, --help           Show this message and exit.
-    
+
 
 ``show_repository`` command
 ---------------------------
@@ -359,12 +358,12 @@ Display information of a repository from Tool Shed
    .. versionchanged:: 0.4.1
      Changed method name from ``show_tool`` to ``show_repository`` to
      better align with the Tool Shed concepts.
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``show_repository_revision`` command
 ------------------------------------
@@ -403,12 +402,12 @@ Returns a dictionary that includes information about a specified repository revi
         'tool_test_results': {'missing_test_components': []},
         'tools_functionally_correct': False,
         'url': '/api/repository_revisions/504be8aaa652c154'}
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``update_repository`` command
 -----------------------------
@@ -434,12 +433,11 @@ Update the contents of a Tool Shed repository with specified tar ball.
         'message': ''}
 
    .. versionadded:: 0.5.2
-    
+
 **Options**::
 
 
       --commit_message TEXT  Commit message used for the underlying Mercurial
                              repository backing Tool Shed repository.
-    
       -h, --help             Show this message and exit.
-    
+

@@ -21,6 +21,6 @@ def cli(ctx, file_path="", url=""):
 
 Output:
 
-    
+
     """
     return ctx.gi.histories.import_history(file_path=file_path, url=url)

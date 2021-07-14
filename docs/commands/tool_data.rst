@@ -21,12 +21,12 @@ Delete an item from a data table.
 
 
     Remaining contents of the given data table
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``get_data_tables`` command
 ---------------------------
@@ -48,12 +48,12 @@ Get the list of all data tables.
 
        [{"model_class": "TabularToolDataTable", "name": "fasta_indexes"},
         {"model_class": "TabularToolDataTable", "name": "bwa_indexes"}]
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``reload_data_table`` command
 -----------------------------
@@ -80,12 +80,12 @@ Reload a data table.
                     '/opt/galaxy-dist/tool-data/test/seq/test id.fa']],
         'model_class': 'TabularToolDataTable',
         'name': 'all_fasta'}
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``show_data_table`` command
 ---------------------------
@@ -112,9 +112,9 @@ Get details of a given data table.
                     '/opt/galaxy-dist/tool-data/test/seq/test id.fa']],
         'model_class': 'TabularToolDataTable',
         'name': 'all_fasta'}
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+

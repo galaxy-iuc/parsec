@@ -94,6 +94,6 @@ def cli(ctx, limit=500, offset=0, name="", extension="", state="", visible="", d
 
 Output:
 
-    
+
     """
     return ctx.gi.datasets.get_datasets(limit=limit, offset=offset, name=name, extension=extension, state=state, visible=visible, deleted=deleted, purged=purged, tool_id=tool_id, tag=tag, history_id=history_id, create_time_min=create_time_min, create_time_max=create_time_max, update_time_min=update_time_min, update_time_max=update_time_max, order=order)

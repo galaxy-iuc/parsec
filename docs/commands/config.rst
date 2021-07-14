@@ -36,12 +36,12 @@ Get a list of attributes about the Galaxy instance. More attributes will be pres
         'terms_url': None,
         'user_library_import_dir': None,
         'wiki_url': 'https://galaxyproject.org/'}
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``get_version`` command
 -----------------------
@@ -62,9 +62,9 @@ Get the current version of the Galaxy instance.
      For example::
 
        {'extra': {}, 'version_major': '17.01'}
-    
+
 **Options**::
 
 
       -h, --help  Show this message and exit.
-    
+

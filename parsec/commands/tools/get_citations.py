@@ -13,6 +13,6 @@ def cli(ctx, tool_id):
 
 Output:
 
-    
+
     """
     return ctx.gi.tools.get_citations(tool_id)

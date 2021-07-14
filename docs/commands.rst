@@ -12,6 +12,7 @@ describes these commands.
    :maxdepth: 0
 
    commands/config.rst
+   commands/dataset_collections.rst
    commands/datasets.rst
    commands/datatypes.rst
    commands/folders.rst
@@ -27,6 +28,7 @@ describes these commands.
    commands/roles.rst
    commands/toolShed.rst
    commands/tool_data.rst
+   commands/tool_dependencies.rst
    commands/tools.rst
    commands/toolshed.rst
    commands/toolshed_categories.rst

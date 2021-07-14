@@ -33,7 +33,7 @@ e.g.::
 
 
       -h, --help  Show this message and exit.
-    
+
 
 ``library_recurse`` command
 ---------------------------
@@ -52,13 +52,13 @@ Get all the folders or filter specific one(s) via the provided ``name`` or ``fol
 
 list of dicts each containing basic information about a folder
 
-    
+
 **Options**::
 
 
       --path TEXT  Folder path to filter on (otherwise root of repo)
       -h, --help   Show this message and exit.
-    
+
 
 ``wait_on_invocation`` command
 ------------------------------
@@ -84,11 +84,10 @@ This will exit with the following error codes:
 
       --exit_early         Exit immediately after checking status rather than
                            sleeping indefinitely
-    
       --backoff_min FLOAT  Minimum time to sleep between checks, in seconds.
       --backoff_max FLOAT  Maximum time to sleep between checks, in seconds
       -h, --help           Show this message and exit.
-    
+
 
 ``xunit_xargs`` command
 -----------------------
@@ -128,4 +127,4 @@ in turn produce XUnit XML that can be used in Jenkins or similar systems::
 
 
       -h, --help  Show this message and exit.
-    
+

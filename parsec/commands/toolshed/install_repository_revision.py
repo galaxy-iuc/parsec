@@ -41,6 +41,6 @@ def cli(ctx, tool_shed_url, name, owner, changeset_revision, install_tool_depend
 
 Output:
 
-    
+
     """
     return ctx.gi.toolshed.install_repository_revision(tool_shed_url, name, owner, changeset_revision, install_tool_dependencies=install_tool_dependencies, install_repository_dependencies=install_repository_dependencies, install_resolver_dependencies=install_resolver_dependencies, tool_panel_section_id=tool_panel_section_id, new_tool_panel_section_label=new_tool_panel_section_label)
