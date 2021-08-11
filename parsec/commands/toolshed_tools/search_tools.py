@@ -49,4 +49,4 @@ Output:
              'page_size': '2',
              'total_results': '118'}
     """
-    return ctx.gi.tools.search_tools(q, page=page, page_size=page_size)
+    return ctx.ti.tools.search_tools(q, page=page, page_size=page_size)
