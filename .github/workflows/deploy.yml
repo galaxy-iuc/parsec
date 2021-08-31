@@ -1,4 +1,4 @@
-name: Deploy Website
+name: Deploy Tagged Versions
 
 on:
   push:
@@ -7,14 +7,31 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        ruby: [2.5]
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
+      - name: Basic Tests
+        run: |
+            pip install -r requirements.txt
+            pip install -U flake8
+            flake8 parsec --exclude=parsec/commands/ --ignore=E501
+            python setup.py install
+            printf "https://usegalaxy.org\ntesting\ny" | parsec init
+            sed -i 's/testing//g' ~/.parsec.yml
+            parsec config get_config | grep version
+
+      - name: Install dependencies
+        run: pip install wheel
+
+      - name: Build package
+        run: python setup.py sdist bdist_wheel
+
       - name: Publish package
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@release/v1
