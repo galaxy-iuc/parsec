@@ -2,6 +2,7 @@ project_name: parsec
 strict: false
 module:
     base_module: bioblend.galaxy
+    instance_ctx: gi
     instance_cls: "<class 'bioblend.galaxy.GalaxyInstance'>"
     instance_func: GalaxyInstance
     instance_args:
