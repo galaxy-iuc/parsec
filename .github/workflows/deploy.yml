@@ -1,7 +1,10 @@
 name: Deploy Tagged Versions
 
 on:
+  pull_request:
   push:
+    tags:
+      - '*'
     branches:
       - main
 
