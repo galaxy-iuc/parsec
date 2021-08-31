@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_repository')
@@ -13,7 +13,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, id, tar_ball_path, commit_message=""):
     """Update the contents of a Tool Shed repository with specified tar ball.
 
@@ -29,4 +29,4 @@ Output:
 
         .. versionadded:: 0.5.2
     """
-    return ctx.gi.repositories.update_repository(id, tar_ball_path, commit_message=commit_message)
+    return ctx.ti.repositories.update_repository(id, tar_ball_path, commit_message=commit_message)

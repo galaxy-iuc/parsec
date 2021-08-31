@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_tools')
@@ -11,7 +11,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--name",
-    help="name of the requested tool(s)",
+    help="Tool name to filter on.",
     type=str
 )
 @click.option(
@@ -21,9 +21,9 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, tool_id="", name="", trackster=""):
-    """Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_id``. Provide only one argument, ``name`` or ``tool_id``, but not both.
+    """Get all tools, or select a subset by specifying optional arguments for filtering (e.g. a tool name).
 
 Output:
 

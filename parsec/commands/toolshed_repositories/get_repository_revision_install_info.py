@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('get_repository_revision_install_info')
@@ -9,7 +9,7 @@ from parsec.decorators import custom_exception, list_output
 @click.argument("changeset_revision", type=str)
 @pass_context
 @custom_exception
-@list_output
+@text_output
 def cli(ctx, name, owner, changeset_revision):
     """Return a list of dictionaries of metadata about a certain changeset revision for a single tool.
 
@@ -70,4 +70,4 @@ Output:
                                                  'type': 'package',
                                                  'version': '0.1.18'}}]}]
     """
-    return ctx.gi.repositories.get_repository_revision_install_info(name, owner, changeset_revision)
+    return ctx.ti.repositories.get_repository_revision_install_info(name, owner, changeset_revision)

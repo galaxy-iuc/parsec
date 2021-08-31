@@ -1,17 +1,17 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_workflows')
 @click.option(
     "--workflow_id",
-    help="Encoded workflow ID (incompatible with ``name``)",
+    help="Encoded workflow ID",
     type=str
 )
 @click.option(
     "--name",
-    help="Filter by name of workflow (incompatible with ``workflow_id``). If multiple names match the given name, all the workflows matching the argument will be returned.",
+    help="Workflow name to filter on.",
     type=str
 )
 @click.option(
@@ -21,9 +21,9 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, workflow_id="", name="", published=False):
-    """Get all workflows or filter the specific one(s) via the provided ``name`` or ``workflow_id``. Provide only one argument, ``name`` or ``workflow_id``, but not both.
+    """Get all workflows, or select a subset by specifying optional arguments for filtering (e.g. a workflow name).
 
 Output:
 

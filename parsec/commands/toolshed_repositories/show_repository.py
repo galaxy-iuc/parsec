@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_repository')
 @click.argument("toolShed_id", type=str)
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, toolShed_id):
     """Display information of a repository from Tool Shed
 
@@ -36,4 +36,4 @@ Output:
           Changed method name from ``show_tool`` to ``show_repository`` to
           better align with the Tool Shed concepts.
     """
-    return ctx.gi.repositories.show_repository(toolShed_id)
+    return ctx.ti.repositories.show_repository(toolShed_id)

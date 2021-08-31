@@ -253,15 +253,15 @@ Returns a (possibly filtered) list of dictionaries that include information abou
 **Options**::
 
 
-      --downloadable                  Can the tool be downloaded
-      --malicious TEXT
-      --tools_functionally_correct TEXT
-      --missing_test_components TEXT
-      --do_not_test TEXT
-      --includes_tools TEXT
-      --test_install_error TEXT
-      --skip_tool_test TEXT
-      -h, --help                      Show this message and exit.
+      --downloadable                Can the tool be downloaded
+      --malicious
+      --tools_functionally_correct
+      --missing_test_components
+      --do_not_test
+      --includes_tools
+      --test_install_error
+      --skip_tool_test
+      -h, --help                    Show this message and exit.
     
 
 ``search_repositories`` command

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_user')
@@ -17,7 +17,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, user_id, email=None, username=None):
     """Update user information. Some of the attributes that can be modified are documented below.
 
@@ -26,9 +26,5 @@ Output:
     details of the updated user
     """
     kwargs = {}
-    if email and len(email) > 0:
-        kwargs['email'] = email
-    if username and len(username) > 0:
-        kwargs['username'] = username
 
     return ctx.gi.users.update_user(user_id, **kwargs)

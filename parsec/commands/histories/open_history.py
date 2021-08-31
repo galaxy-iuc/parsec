@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, nonetype_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('open_history')
 @click.argument("history_id", type=str)
 @pass_context
 @custom_exception
-@nonetype_output
+@text_output
 def cli(ctx, history_id):
     """Open Galaxy in a new tab of the default web browser and switch to the specified history.
 

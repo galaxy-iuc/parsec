@@ -1,12 +1,12 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_repositories')
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx):
     """Get a list of all the repositories in a Galaxy Tool Shed.
 
@@ -35,4 +35,4 @@ Output:
           Changed method name from ``get_tools`` to ``get_repositories`` to
           better align with the Tool Shed concepts.
     """
-    return ctx.gi.repositories.get_repositories()
+    return ctx.ti.repositories.get_repositories()

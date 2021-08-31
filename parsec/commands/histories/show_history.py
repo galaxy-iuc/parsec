@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_history')
@@ -12,11 +12,13 @@ from parsec.decorators import custom_exception, dict_output
 )
 @click.option(
     "--deleted",
-    help="When ``contents=True``, whether to filter for the deleted datasets (``True``) or for the non-deleted ones (``False``). If not set, no filtering is applied."
+    help="When ``contents=True``, whether to filter for the deleted datasets (``True``) or for the non-deleted ones (``False``). If not set, no filtering is applied.",
+    is_flag=True
 )
 @click.option(
     "--visible",
-    help="When ``contents=True``, whether to filter for the visible datasets (``True``) or for the hidden ones (``False``). If not set, no filtering is applied."
+    help="When ``contents=True``, whether to filter for the visible datasets (``True``) or for the hidden ones (``False``). If not set, no filtering is applied.",
+    is_flag=True
 )
 @click.option(
     "--details",
@@ -31,12 +33,17 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, history_id, contents=False, deleted="", visible="", details="", types=""):
     """Get details of a given history. By default, just get the history meta information.
 
 Output:
 
     details of the given history or list of dataset info
+
+        .. note::
+            As an alternative to using the ``contents=True`` parameter, consider
+            using ``gi.datasets.get_datasets(history_id=history_id)`` which offers
+            more extensive functionality for filtering and ordering the results.
     """
     return ctx.gi.histories.show_history(history_id, contents=contents, deleted=deleted, visible=visible, details=details, types=types)

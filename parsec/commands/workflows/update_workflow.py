@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_workflow')
@@ -21,6 +21,11 @@ from parsec.decorators import custom_exception, dict_output
     type=str
 )
 @click.option(
+    "--published",
+    help="Whether the workflow should be published or unpublished",
+    is_flag=True
+)
+@click.option(
     "--tags",
     help="Replace workflow tags with the given list",
     type=str,
@@ -33,8 +38,8 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
-def cli(ctx, workflow_id, annotation=None, menu_entry=None, name=None, tags=None, workflow=None):
+@json_output
+def cli(ctx, workflow_id, annotation=None, menu_entry=None, name=None, published=None, tags=None, workflow=None):
     """Update a given workflow.
 
 Output:
@@ -42,11 +47,5 @@ Output:
     Dictionary representing the updated workflow
     """
     kwargs = {}
-    if annotation and len(annotation) > 0:
-        kwargs['annotation'] = annotation
-    if menu_entry is not None:
-        kwargs['menu_entry'] = menu_entry
-    if name and len(name) > 0:
-        kwargs['name'] = name
 
-    return ctx.gi.workflows.update_workflow(workflow_id, **kwargs)
+    return ctx.gi.workflows.update_workflow(workflow_id, tags=tags, **kwargs)

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_dataset_collection')
@@ -23,7 +23,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, history_id, dataset_collection_id, deleted=None, name=None, visible=None):
     """Update history dataset collection metadata. Some of the attributes that can be modified are documented below.
 
@@ -35,11 +35,5 @@ Output:
             Changed the return value from the status code (type int) to a dict.
     """
     kwargs = {}
-    if deleted is not None:
-        kwargs['deleted'] = deleted
-    if name and len(name) > 0:
-        kwargs['name'] = name
-    if visible is not None:
-        kwargs['visible'] = visible
 
     return ctx.gi.histories.update_dataset_collection(history_id, dataset_collection_id, **kwargs)

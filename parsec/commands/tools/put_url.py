@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('put_url')
@@ -8,7 +8,7 @@ from parsec.decorators import custom_exception, dict_output
 @click.argument("history_id", type=str)
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, content, history_id):
     """Upload a string to a new dataset in the history specified by ``history_id``.
 

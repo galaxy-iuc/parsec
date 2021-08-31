@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_file_from_local_path')
@@ -33,7 +33,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, library_id, file_local_path, folder_id="", file_type="auto", dbkey="?", tags=""):
     """Read local file contents from file_local_path and upload data to a library.
 

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_from_galaxy_filesystem')
@@ -53,7 +53,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, library_id, filesystem_paths, folder_id="", file_type="auto", dbkey="?", link_data_only="", roles="", preserve_dirs=False, tag_using_filenames=False, tags=""):
     """Upload a set of files already present on the filesystem of the Galaxy server to a library.
 

@@ -109,6 +109,40 @@ Exports a workflow in JSON format to a given local path.
       -h, --help              Show this message and exit.
     
 
+``extract_workflow_from_history`` command
+-----------------------------------------
+
+**Usage**::
+
+    parsec workflows extract_workflow_from_history [OPTIONS] HISTORY_ID
+
+**Help**
+
+Extract a workflow from a history.
+
+
+**Output**
+
+
+    A description of the created workflow
+    
+**Options**::
+
+
+      --job_ids TEXT                  Optional list of job IDs to filter the jobs to
+                                      extract from the history
+    
+      --dataset_hids TEXT             Optional list of dataset hids corresponding to
+                                      workflow inputs when extracting a workflow
+                                      from history
+    
+      --dataset_collection_hids TEXT  Optional list of dataset collection hids
+                                      corresponding to workflow inputs when
+                                      extracting a workflow from history
+    
+      -h, --help                      Show this message and exit.
+    
+
 ``get_invocations`` command
 ---------------------------
 
@@ -173,7 +207,7 @@ Get a list of workflow input IDs that match the given label. If no input matches
 
 **Help**
 
-Get all workflows or filter the specific one(s) via the provided ``name`` or ``workflow_id``. Provide only one argument, ``name`` or ``workflow_id``, but not both.
+Get all workflows, or select a subset by specifying optional arguments for filtering (e.g. a workflow name).
 
 
 **Output**
@@ -189,11 +223,8 @@ Get all workflows or filter the specific one(s) via the provided ``name`` or ``w
 **Options**::
 
 
-      --workflow_id TEXT  Encoded workflow ID (incompatible with ``name``)
-      --name TEXT         Filter by name of workflow (incompatible with
-                          ``workflow_id``). If multiple names match the given name,
-                          all the workflows matching the argument will be returned.
-    
+      --workflow_id TEXT  Encoded workflow ID
+      --name TEXT         Workflow name to filter on.
       --published         if ``True``, return also published workflows
       -h, --help          Show this message and exit.
     
@@ -473,7 +504,42 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
                                       "step_index", "step_id", "step_uuid", or
                                       "name".
     
+      --parameters_normalized         Whether Galaxy should normalize ``params`` to
+                                      ensure everything is referenced by a numeric
+                                      step ID. Default is ``False``, but when
+                                      setting ``params`` for a subworkflow, ``True``
+                                      is required.
+    
       -h, --help                      Show this message and exit.
+    
+
+``refactor_workflow`` command
+-----------------------------
+
+**Usage**::
+
+    parsec workflows refactor_workflow [OPTIONS] WORKFLOW_ID
+
+**Help**
+
+Refactor workflow with given actions.
+
+
+**Output**
+
+
+    Dictionary containing logged messages for the executed actions
+            and the refactored workflow.
+    
+**Options**::
+
+
+      --actions TEXT  [required]
+      --dry_run       When true, perform a dry run where the existing workflow is
+                      preserved. The refactored workflow is returned in the output
+                      of the method, but not saved on the Galaxy server.
+    
+      -h, --help      Show this message and exit.
     
 
 ``run_invocation_step_action`` command
@@ -692,6 +758,29 @@ See the details of a particular workflow invocation step.
       -h, --help  Show this message and exit.
     
 
+``show_versions`` command
+-------------------------
+
+**Usage**::
+
+    parsec workflows show_versions [OPTIONS] WORKFLOW_ID
+
+**Help**
+
+Get versions for a workflow.
+
+
+**Output**
+
+
+    Ordered list of version descriptions for this workflow
+    
+**Options**::
+
+
+      -h, --help  Show this message and exit.
+    
+
 ``show_workflow`` command
 -------------------------
 
@@ -745,6 +834,7 @@ Update a given workflow.
       --annotation TEXT  New annotation for the workflow
       --menu_entry       Whether the workflow should appear in the user's menu
       --name TEXT        New name of the workflow
+      --published        Whether the workflow should be published or unpublished
       --tags TEXT        Replace workflow tags with the given list
       --workflow TEXT    dictionary representing the workflow to be updated
       -h, --help         Show this message and exit.

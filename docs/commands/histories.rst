@@ -289,7 +289,7 @@ Start a job to create an export archive for the given history.
 
 **Help**
 
-Get all histories or filter the specific one(s) by ``name`` or other arguments.
+Get all histories, or select a subset by specifying optional arguments for filtering (e.g. a history name).
 
 
 **Output**
@@ -301,11 +301,11 @@ Get all histories or filter the specific one(s) by ``name`` or other arguments.
 
 
       --history_id TEXT  Encoded history ID to filter on
-      --name TEXT        Name of history to filter on
+      --name TEXT        History name to filter on.
       --deleted          whether to filter for the deleted histories (``True``) or
                          for the non-deleted ones (``False``)
     
-      --published TEXT   whether to filter for the published histories (``True``) or
+      --published        whether to filter for the published histories (``True``) or
                          for the non-published ones (``False``). If not set, no
                          filtering is applied. Note the filtering is only applied to
                          the user's own histories; to access all histories published
@@ -347,7 +347,7 @@ Returns the current user's most recently used history (not deleted).
 
 **Help**
 
-Get all published histories (by any user) or filter the specific one(s) by ``name`` or other arguments.
+Get all published histories (by any user), or select a subset by specifying optional arguments for filtering (e.g. a history name).
 
 
 **Output**
@@ -358,7 +358,7 @@ Get all published histories (by any user) or filter the specific one(s) by ``nam
 **Options**::
 
 
-      --name TEXT  Name of history to filter on
+      --name TEXT  History name to filter on.
       --deleted    whether to filter for the deleted histories (``True``) or for the
                    non-deleted ones (``False``)
     
@@ -412,10 +412,8 @@ Import a history from an archive on disk or a URL.
 **Options**::
 
 
-      --file_path TEXT  Path to exported history archive on disk. :type url: str
-                        :param url: URL for an exported history archive
-    
-      --url TEXT
+      --file_path TEXT  Path to exported history archive on disk.
+      --url TEXT        URL for an exported history archive
       -h, --help        Show this message and exit.
     
 
@@ -552,6 +550,11 @@ Get details of a given history. By default, just get the history meta informatio
 
 
     details of the given history or list of dataset info
+
+   .. note::
+       As an alternative to using the ``contents=True`` parameter, consider
+       using ``gi.datasets.get_datasets(history_id=history_id)`` which offers
+       more extensive functionality for filtering and ordering the results.
     
 **Options**::
 
@@ -562,11 +565,11 @@ Get details of a given history. By default, just get the history meta informatio
                       further requests about this history dataset is given by the
                       value of the `id` (not `dataset_id`) key.
     
-      --deleted TEXT  When ``contents=True``, whether to filter for the deleted
+      --deleted       When ``contents=True``, whether to filter for the deleted
                       datasets (``True``) or for the non-deleted ones (``False``).
                       If not set, no filtering is applied.
     
-      --visible TEXT  When ``contents=True``, whether to filter for the visible
+      --visible       When ``contents=True``, whether to filter for the visible
                       datasets (``True``) or for the hidden ones (``False``). If not
                       set, no filtering is applied.
     

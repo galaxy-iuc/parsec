@@ -5,6 +5,29 @@ This section is auto-generated from the help text for the parsec command
 ``tools``.
 
 
+``get_citations`` command
+-------------------------
+
+**Usage**::
+
+    parsec tools get_citations [OPTIONS] TOOL_ID
+
+**Help**
+
+Get BibTeX citations for a given tool ID.
+
+
+**Output**
+
+
+    
+    
+**Options**::
+
+
+      -h, --help  Show this message and exit.
+    
+
 ``get_tool_panel`` command
 --------------------------
 
@@ -40,7 +63,7 @@ Get a list of available tool elements in Galaxy's configured toolbox.
 
 **Help**
 
-Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_id``. Provide only one argument, ``name`` or ``tool_id``, but not both.
+Get all tools, or select a subset by specifying optional arguments for filtering (e.g. a tool name).
 
 
 **Output**
@@ -54,7 +77,7 @@ Get all tools or filter the specific one(s) via the provided ``name`` or ``tool_
 
 
       --tool_id TEXT  id of the requested tool
-      --name TEXT     name of the requested tool(s)
+      --name TEXT     Tool name to filter on.
       --trackster     whether to return only tools that are compatible with
                       Trackster
     
@@ -275,6 +298,29 @@ Get details of a given tool.
       --io_details    whether to get also input and output details
       --link_details  whether to get also link details
       -h, --help      Show this message and exit.
+    
+
+``uninstall_dependencies`` command
+----------------------------------
+
+**Usage**::
+
+    parsec tools uninstall_dependencies [OPTIONS] TOOL_ID
+
+**Help**
+
+Uninstall dependencies for a given tool via a resolver. This works only for Conda currently. This functionality is available only to Galaxy admins.
+
+
+**Output**
+
+
+    Tool requirement status
+    
+**Options**::
+
+
+      -h, --help  Show this message and exit.
     
 
 ``upload_file`` command

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_history')
@@ -43,7 +43,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, history_id, annotation=None, deleted=None, importable=None, name=None, published=None, purged=None, tags=None):
     """Update history metadata information. Some of the attributes that can be modified are documented below.
 
@@ -55,17 +55,5 @@ Output:
             Changed the return value from the status code (type int) to a dict.
     """
     kwargs = {}
-    if annotation and len(annotation) > 0:
-        kwargs['annotation'] = annotation
-    if deleted is not None:
-        kwargs['deleted'] = deleted
-    if importable is not None:
-        kwargs['importable'] = importable
-    if name and len(name) > 0:
-        kwargs['name'] = name
-    if published is not None:
-        kwargs['published'] = published
-    if purged is not None:
-        kwargs['purged'] = purged
 
     return ctx.gi.histories.update_history(history_id, tags=tags, **kwargs)

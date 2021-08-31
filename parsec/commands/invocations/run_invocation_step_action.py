@@ -1,15 +1,15 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('run_invocation_step_action')
 @click.argument("invocation_id", type=str)
 @click.argument("step_id", type=str)
-@click.argument("action")
+@click.argument("action", type=str)
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, invocation_id, step_id, action):
     """nature of this action and what is expected will vary based on the the type of workflow step (the only currently valid action is True/False for pause steps).
 

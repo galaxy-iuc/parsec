@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, str_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('create_form')
 @click.argument("form_xml_text", type=str)
 @pass_context
 @custom_exception
-@str_output
+@text_output
 def cli(ctx, form_xml_text):
     """Create a new form.
 

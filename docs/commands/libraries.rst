@@ -177,7 +177,7 @@ Get the permissions for a dataset.
 
 **Help**
 
-Get all the folders or filter specific one(s) via the provided ``name`` or ``folder_id`` in data library with id ``library_id``. Provide only one argument: ``name`` or ``folder_id``, but not both.
+Get all the folders in a library, or select a subset by specifying a folder name for filtering.
 
 
 **Output**
@@ -189,9 +189,9 @@ Get all the folders or filter specific one(s) via the provided ``name`` or ``fol
 
 
       --folder_id TEXT  filter for folder by folder id
-      --name TEXT       filter for folder by name. For ``name`` specify the full
-                        path of the folder starting from the library's root folder,
-                        e.g. ``/subfolder/subsubfolder``.
+      --name TEXT       Folder name to filter on. For ``name`` specify the full path
+                        of the folder starting from the library's root folder, e.g.
+                        ``/subfolder/subsubfolder``.
     
       -h, --help        Show this message and exit.
     
@@ -205,7 +205,7 @@ Get all the folders or filter specific one(s) via the provided ``name`` or ``fol
 
 **Help**
 
-Get all the libraries or filter for specific one(s) via the provided name or ID. Provide only one argument: ``name`` or ``library_id``, but not both.
+Get all libraries, or select a subset by specifying optional arguments for filtering (e.g. a library name).
 
 
 **Output**
@@ -217,9 +217,7 @@ Get all the libraries or filter for specific one(s) via the provided name or ID.
 
 
       --library_id TEXT  filter for library by library id
-      --name TEXT        If ``name`` is set and multiple names match the given name,
-                         all the libraries matching the argument will be returned
-    
+      --name TEXT        Library name to filter on.
       --deleted          If ``False`` (the default), return only non-deleted
                          libraries. If ``True``, return only deleted libraries. If
                          ``None``, return both deleted and non-deleted libraries.

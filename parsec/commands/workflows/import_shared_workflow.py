@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('import_shared_workflow')
 @click.argument("workflow_id", type=str)
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, workflow_id):
     """Imports a new workflow from the shared published workflows.
 

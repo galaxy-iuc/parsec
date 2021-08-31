@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_repository')
@@ -36,7 +36,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, name, synopsis, description="", type="unrestricted", remote_repository_url="", homepage_url="", category_ids=""):
     """Create a new repository in a Tool Shed.
 
@@ -60,4 +60,4 @@ Output:
              "type": "unrestricted",
              "user_id": "adb5f5c93f827949"}
     """
-    return ctx.gi.repositories.create_repository(name, synopsis, description=description, type=type, remote_repository_url=remote_repository_url, homepage_url=homepage_url, category_ids=category_ids)
+    return ctx.ti.repositories.create_repository(name, synopsis, description=description, type=type, remote_repository_url=remote_repository_url, homepage_url=homepage_url, category_ids=category_ids)

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_dataset_from_library')
@@ -8,7 +8,7 @@ from parsec.decorators import custom_exception, dict_output
 @click.argument("lib_dataset_id", type=str)
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, history_id, lib_dataset_id):
     """Upload a dataset into the history from a library. Requires the library dataset ID, which can be obtained from the library contents.
 

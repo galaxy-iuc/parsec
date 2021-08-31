@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_file_contents')
@@ -33,7 +33,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, library_id, pasted_content, folder_id="", file_type="auto", dbkey="?", tags=""):
     """Upload pasted_content to a data library as a new file.
 

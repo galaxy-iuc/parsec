@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('invoke_workflow')
@@ -45,10 +45,15 @@ from parsec.decorators import custom_exception, dict_output
     help="Determines how inputs are referenced. Can be \"step_index|step_uuid\" (default), \"step_index\", \"step_id\", \"step_uuid\", or \"name\".",
     type=str
 )
+@click.option(
+    "--parameters_normalized",
+    help="Whether Galaxy should normalize ``params`` to ensure everything is referenced by a numeric step ID. Default is ``False``, but when setting ``params`` for a subworkflow, ``True`` is required.",
+    is_flag=True
+)
 @pass_context
 @custom_exception
-@dict_output
-def cli(ctx, workflow_id, inputs="", params="", history_id="", history_name="", import_inputs_to_history=False, replacement_params="", allow_tool_state_corrections="", inputs_by=""):
+@json_output
+def cli(ctx, workflow_id, inputs="", params="", history_id="", history_name="", import_inputs_to_history=False, replacement_params="", allow_tool_state_corrections=False, inputs_by="", parameters_normalized=False):
     """Invoke the workflow identified by ``workflow_id``. This will cause a workflow to be scheduled and return an object describing the workflow invocation.
 
 Output:
@@ -160,4 +165,4 @@ Output:
           (which is stable across workflow imports) or the step UUID which is
           also stable.
     """
-    return ctx.gi.workflows.invoke_workflow(workflow_id, inputs=inputs, params=params, history_id=history_id, history_name=history_name, import_inputs_to_history=import_inputs_to_history, replacement_params=replacement_params, allow_tool_state_corrections=allow_tool_state_corrections, inputs_by=inputs_by)
+    return ctx.gi.workflows.invoke_workflow(workflow_id, inputs=inputs, params=params, history_id=history_id, history_name=history_name, import_inputs_to_history=import_inputs_to_history, replacement_params=replacement_params, allow_tool_state_corrections=allow_tool_state_corrections, inputs_by=inputs_by, parameters_normalized=parameters_normalized)

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_library_dataset')
@@ -33,7 +33,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, dataset_id, file_ext=None, genome_build=None, misc_info=None, name=None, tags=None):
     """Update library dataset metadata. Some of the attributes that can be modified are documented below.
 
@@ -42,13 +42,5 @@ Output:
     details of the updated dataset
     """
     kwargs = {}
-    if file_ext and len(file_ext) > 0:
-        kwargs['file_ext'] = file_ext
-    if genome_build and len(genome_build) > 0:
-        kwargs['genome_build'] = genome_build
-    if misc_info and len(misc_info) > 0:
-        kwargs['misc_info'] = misc_info
-    if name and len(name) > 0:
-        kwargs['name'] = name
 
     return ctx.gi.libraries.update_library_dataset(dataset_id, tags=tags, **kwargs)

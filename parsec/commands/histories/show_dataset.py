@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_dataset')
@@ -8,7 +8,7 @@ from parsec.decorators import custom_exception, dict_output
 @click.argument("dataset_id", type=str)
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, history_id, dataset_id):
     """Get details about a given history dataset.
 

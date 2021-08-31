@@ -2,6 +2,7 @@ project_name: parsec
 strict: false
 module:
     base_module: bioblend.toolshed
+    instance_ctx: ti
     instance_cls: "<class 'bioblend.toolshed.ToolShedInstance'>"
     instance_func: ToolShedInstance
     prefix: toolshed_

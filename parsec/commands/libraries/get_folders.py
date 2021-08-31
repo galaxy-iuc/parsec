@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_folders')
@@ -12,14 +12,14 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--name",
-    help="filter for folder by name. For ``name`` specify the full path of the folder starting from the library's root folder, e.g. ``/subfolder/subsubfolder``.",
+    help="Folder name to filter on. For ``name`` specify the full path of the folder starting from the library's root folder, e.g. ``/subfolder/subsubfolder``.",
     type=str
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, library_id, folder_id="", name=""):
-    """Get all the folders or filter specific one(s) via the provided ``name`` or ``folder_id`` in data library with id ``library_id``. Provide only one argument: ``name`` or ``folder_id``, but not both.
+    """Get all the folders in a library, or select a subset by specifying a folder name for filtering.
 
 Output:
 
