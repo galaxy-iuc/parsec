@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('wait_for_invocation')
-@click.argument("invocation_id", type=str)
+@click.argument("invocation_id", type=str, help="Invocation ID to wait for.")
 @click.option(
     "--maxwait",
     help="Total time (in seconds) to wait for the invocation state to become terminal. If the invocation state is not terminal within this time, a ``TimeoutException`` will be raised.",
@@ -28,7 +28,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, invocation_id, maxwait=12000, interval=3, check=True):
     """Wait until an invocation is in a terminal state.
 

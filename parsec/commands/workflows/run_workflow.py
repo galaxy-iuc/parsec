@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('run_workflow')
-@click.argument("workflow_id", type=str)
+@click.argument("workflow_id", type=str, help="Encoded workflow ID")
 @click.option(
     "--dataset_map",
     help="A mapping of workflow inputs to datasets. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), or HistoryDatasetAssociation (``hda``). The map must be in the following format: ``{'<input>': {'id': <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}`` (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src': 'ld'}}``)",
@@ -37,7 +37,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, workflow_id, dataset_map="", params="", history_id="", history_name="", import_inputs_to_history=False, replacement_params=""):
     """Run the workflow identified by ``workflow_id``.
 

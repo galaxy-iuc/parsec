@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_jobs')
@@ -15,15 +15,19 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--invocation_id",
-    help="Encoded workflow invocation ID to filter on."
+    help="Encoded workflow invocation ID to filter on.",
+    type=str
 )
 @click.option(
     "--tool_id",
-    help="Tool IDs to filter on."
+    help="Tool IDs to filter on.",
+    type=str,
+    multiple=True
 )
 @click.option(
     "--workflow_id",
-    help="Encoded workflow ID to filter on."
+    help="Encoded workflow ID to filter on.",
+    type=str
 )
 @click.option(
     "--user_id",
@@ -59,7 +63,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, state="", history_id="", invocation_id="", tool_id="", workflow_id="", user_id="", date_range_min="", date_range_max="", limit=500, offset=0, user_details=False):
     """Get all jobs, or select a subset by specifying optional arguments for filtering (e.g. a state).
 

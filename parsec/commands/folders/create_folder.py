@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_folder')
-@click.argument("parent_folder_id", type=str)
-@click.argument("name", type=str)
+@click.argument("parent_folder_id", type=str, help="Folder's description")
+@click.argument("name", type=str, help="name of the new folder")
 @click.option(
     "--description",
     help="folder's description",
@@ -13,7 +13,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, parent_folder_id, name, description=""):
     """Create a folder.
 

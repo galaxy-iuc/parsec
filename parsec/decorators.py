@@ -32,34 +32,13 @@ def custom_exception(wrapped, instance, args, kwargs):
 
 
 @wrapt.decorator
-def list_output(wrapped, instance, args, kwargs):
+def json_output(wrapped, instance, args, kwargs):
     output = wrapped(*args, **kwargs)
-    print((json.dumps(output, indent=4)))
+    print(json.dumps(output, indent=4))
 
 
 @wrapt.decorator
-def dict_output(wrapped, instance, args, kwargs):
-    output = wrapped(*args, **kwargs)
-    print((json.dumps(output, indent=4)))
-
-
-@wrapt.decorator
-def str_output(wrapped, instance, args, kwargs):
-    print(wrapped(*args, **kwargs))
-
-
-@wrapt.decorator
-def none_output(wrapped, instance, args, kwargs):
-    print(wrapped(*args, **kwargs))
-
-
-@wrapt.decorator
-def bool_output(wrapped, instance, args, kwargs):
-    print(wrapped(*args, **kwargs))
-
-
-@wrapt.decorator
-def nonetype_output(wrapped, instance, args, kwargs):
+def text_output(wrapped, instance, args, kwargs):
     print(wrapped(*args, **kwargs))
 
 

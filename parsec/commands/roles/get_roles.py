@@ -1,12 +1,12 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_roles')
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx):
     """Displays a collection (list) of roles.
 

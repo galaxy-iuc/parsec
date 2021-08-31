@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('set_library_permissions')
-@click.argument("library_id", type=str)
+@click.argument("library_id", type=str, help="id of the library")
 @click.option(
     "--access_in",
     help="list of role ids",
@@ -31,7 +31,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, library_id, access_in="", modify_in="", add_in="", manage_in=""):
     """Set the permissions for a library. Note: it will override all security for this library even if you leave out a permission type.
 

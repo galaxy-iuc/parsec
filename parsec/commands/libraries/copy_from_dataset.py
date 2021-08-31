@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('copy_from_dataset')
-@click.argument("library_id", type=str)
-@click.argument("dataset_id", type=str)
+@click.argument("library_id", type=str, help="id of the library where to place the uploaded file")
+@click.argument("dataset_id", type=str, help="id of the dataset to copy from")
 @click.option(
     "--folder_id",
     help="id of the folder where to place the uploaded files. If not provided, the root folder will be used",
@@ -18,7 +18,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, library_id, dataset_id, folder_id="", message=""):
     """Copy a Galaxy dataset into a library.
 

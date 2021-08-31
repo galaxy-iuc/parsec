@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, str_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('export_history')
-@click.argument("history_id", type=str)
+@click.argument("history_id", type=str, help="history ID")
 @click.option(
     "--gzip",
     help="create .tar.gz archive if ``True``, else .tar",
@@ -34,7 +34,7 @@ from parsec.decorators import custom_exception, str_output
 )
 @pass_context
 @custom_exception
-@str_output
+@text_output
 def cli(ctx, history_id, gzip=True, include_hidden=False, include_deleted=False, wait=False, maxwait=""):
     """Start a job to create an export archive for the given history.
 

@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_users')
@@ -26,7 +26,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, deleted=False, f_email="", f_name="", f_any=""):
     """Get a list of all registered users. If ``deleted`` is set to ``True``, get a list of deleted users.
 

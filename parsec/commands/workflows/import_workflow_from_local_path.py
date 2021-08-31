@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('import_workflow_from_local_path')
-@click.argument("file_local_path", type=str)
+@click.argument("file_local_path", type=str, help="File to upload to the server for new workflow")
 @click.option(
     "--publish",
     help="if ``True`` the uploaded workflow will be published; otherwise it will be visible only by the user which uploads it (default)",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, file_local_path, publish=False):
     """Imports a new workflow given the path to a file containing a previously exported workflow.
 

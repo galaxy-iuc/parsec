@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_library')
-@click.argument("name", type=str)
+@click.argument("name", type=str, help="Name of the new data library")
 @click.option(
     "--description",
     help="Optional data library description",
@@ -17,7 +17,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, name, description="", synopsis=""):
     """Create a data library with the properties defined in the arguments.
 

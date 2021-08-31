@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('summarize_toolbox')
@@ -39,7 +39,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, index="", tool_ids="", resolver_type="", include_containers=False, container_type="", index_by="requirements"):
     """Summarize requirements across toolbox (for Tool Management grid).
 

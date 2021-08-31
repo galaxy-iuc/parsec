@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('extract_workflow_from_history')
-@click.argument("history_id", type=str)
-@click.argument("workflow_name", type=str)
+@click.argument("history_id", type=str, help="Encoded history ID")
+@click.argument("workflow_name", type=str, help="Name of the workflow to create")
 @click.option(
     "--job_ids",
     help="Optional list of job IDs to filter the jobs to extract from the history",
@@ -26,7 +26,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, history_id, workflow_name, job_ids="", dataset_hids="", dataset_collection_hids=""):
     """Extract a workflow from a history.
 

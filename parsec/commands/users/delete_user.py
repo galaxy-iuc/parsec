@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('delete_user')
-@click.argument("user_id", type=str)
+@click.argument("user_id", type=str, help="encoded user ID")
 @click.option(
     "--purge",
     help="if ``True``, also purge (permanently delete) the history",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, user_id, purge=False):
     """Delete a user.
 

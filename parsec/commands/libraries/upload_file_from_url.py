@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_file_from_url')
-@click.argument("library_id", type=str)
-@click.argument("file_url", type=str)
+@click.argument("library_id", type=str, help="id of the library where to place the uploaded file")
+@click.argument("file_url", type=str, help="URL of the file to upload")
 @click.option(
     "--folder_id",
     help="id of the folder where to place the uploaded file. If not provided, the root folder will be used",
@@ -33,7 +33,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, library_id, file_url, folder_id="", file_type="auto", dbkey="?", tags=""):
     """Upload a file to a library from a URL.
 

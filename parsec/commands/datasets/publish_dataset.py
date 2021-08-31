@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('publish_dataset')
-@click.argument("dataset_id", type=str)
+@click.argument("dataset_id", type=str, help="dataset ID")
 @click.option(
     "--published",
     help="Whether to make the dataset published (``True``) or private (``False``).",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, dataset_id, published=False):
     """Make a dataset publicly available or private. For more fine-grained control (assigning different permissions to specific roles), use the ``update_permissions()`` method.
 

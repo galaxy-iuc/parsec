@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_categories')
@@ -11,7 +11,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, deleted=False):
     """Returns a list of dictionaries that contain descriptions of the repository categories found on the given Tool Shed instance.
 
@@ -30,4 +30,4 @@ Output:
 
         .. versionadded:: 0.5.2
     """
-    return ctx.gi.categories.get_categories(deleted=deleted)
+    return ctx.ti.categories.get_categories(deleted=deleted)

@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('import_workflow_dict')
-@click.argument("workflow_dict", type=str)
+@click.argument("workflow_dict", type=str, help="dictionary representing the workflow to be imported")
 @click.option(
     "--publish",
     help="if ``True`` the uploaded workflow will be published; otherwise it will be visible only by the user which uploads it (default)",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, workflow_dict, publish=False):
     """Imports a new workflow given a dictionary representing a previously exported workflow.
 
@@ -32,4 +32,4 @@ Output:
              'model_class': 'StoredWorkflow',
              'id': '94bac0a90086bdcf'}
     """
-    return ctx.gi.workflows.import_workflow_dict(json_loads(workflow_dict), publish=publish)
+    return ctx.gi.workflows.import_workflow_dict(workflow_dict, publish=publish)

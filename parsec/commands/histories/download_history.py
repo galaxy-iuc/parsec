@@ -1,12 +1,12 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, none_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('download_history')
-@click.argument("history_id", type=str)
-@click.argument("jeha_id", type=str)
-@click.argument("outf", type=click.File('rb+'))
+@click.argument("history_id", type=str, help="history ID")
+@click.argument("jeha_id", type=str, help="jeha ID (this should be obtained via :meth:`export_history`)")
+@click.argument("outf", type=click.File('rb+'), help="output file object, open for writing in binary mode")
 @click.option(
     "--chunk_size",
     help="how many bytes at a time should be read into memory",
@@ -16,7 +16,7 @@ from parsec.decorators import custom_exception, none_output
 )
 @pass_context
 @custom_exception
-@none_output
+@text_output
 def cli(ctx, history_id, jeha_id, outf, chunk_size=4096):
     """Download a history export archive.  Use :meth:`export_history` to create an export.
 

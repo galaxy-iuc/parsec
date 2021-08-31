@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_invocations')
-@click.argument("workflow_id", type=str)
+@click.argument("workflow_id", type=str, help="Encoded workflow ID")
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, workflow_id):
     """Get a list containing all the workflow invocations corresponding to the specified workflow.
 

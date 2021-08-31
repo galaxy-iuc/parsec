@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_library')
-@click.argument("library_id", type=str)
+@click.argument("library_id", type=str, help="filter for library by library id")
 @click.option(
     "--contents",
     help="whether to get contents of the library (rather than just the library details)",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, library_id, contents=False):
     """Get information about a library.
 

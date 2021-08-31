@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('download_dataset')
-@click.argument("dataset_id", type=str)
+@click.argument("dataset_id", type=str, help="Encoded dataset ID")
 @click.option(
     "--file_path",
     help="If this argument is provided, the dataset will be streamed to disk at that path (should be a directory if ``use_default_filename=True``). If the file_path argument is not provided, the dataset content is loaded into memory and returned by the method (Memory consumption may be heavy as the entire file will be in memory).",
@@ -33,7 +33,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, dataset_id, file_path="", use_default_filename=True, require_ok_state=True, maxwait=12000):
     """Download a dataset to file or in memory. If the dataset state is not 'ok', a ``DatasetStateException`` will be thrown, unless ``require_ok_state=False``.
 

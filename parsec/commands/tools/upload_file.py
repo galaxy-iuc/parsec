@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_file')
-@click.argument("path", type=str)
-@click.argument("history_id", type=str)
+@click.argument("path", type=str, help="path of the file to upload")
+@click.argument("history_id", type=str, help="id of the history where to upload the file")
 @click.option(
     "--dbkey",
     help="(optional) genome dbkey",
@@ -33,7 +33,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, path, history_id, dbkey=None, file_name=None, file_type=None, space_to_tab=None, to_posix_lines=None):
     """Upload the file specified by ``path`` to the history specified by ``history_id``.
 
@@ -42,15 +42,5 @@ Output:
     Information about the created upload job
     """
     kwargs = {}
-    if dbkey and len(dbkey) > 0:
-        kwargs['dbkey'] = dbkey
-    if file_name and len(file_name) > 0:
-        kwargs['file_name'] = file_name
-    if file_type and len(file_type) > 0:
-        kwargs['file_type'] = file_type
-    if space_to_tab is not None:
-        kwargs['space_to_tab'] = space_to_tab
-    if to_posix_lines is not None:
-        kwargs['to_posix_lines'] = to_posix_lines
 
     return ctx.gi.tools.upload_file(path, history_id, **kwargs)

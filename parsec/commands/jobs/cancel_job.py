@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, bool_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('cancel_job')
-@click.argument("job_id", type=str)
+@click.argument("job_id", type=str, help="job ID")
 @pass_context
 @custom_exception
-@bool_output
+@text_output
 def cli(ctx, job_id):
     """Cancel a job, deleting output datasets.
 

@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('copy_dataset')
-@click.argument("history_id", type=str)
-@click.argument("dataset_id", type=str)
+@click.argument("history_id", type=str, help="history ID to which the dataset should be copied")
+@click.argument("dataset_id", type=str, help="dataset ID")
 @click.option(
     "--source",
     help="Source of the dataset to be copied: 'hda' (the default), 'library' or 'library_folder'",
@@ -15,7 +15,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, history_id, dataset_id, source="hda"):
     """Copy a dataset to a history.
 

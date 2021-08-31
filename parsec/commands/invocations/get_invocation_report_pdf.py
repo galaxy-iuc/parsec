@@ -1,25 +1,26 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_invocation_report_pdf')
-@click.argument("invocation_id", type=str)
-@click.argument("file_path", type=str)
+@click.argument("invocation_id", type=str, help="Encoded workflow invocation ID")
+@click.argument("file_path", type=str, help="Path to save the report")
 @click.option(
     "--chunk_size",
-    help="",
+    help="Size of chunks to requests, defaults to bioblend.CHUNK_SIZE",
     default="4096",
-    show_default=True
+    show_default=True,
+    type=int
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, invocation_id, file_path, chunk_size=4096):
     """Get a PDF report for an invocation.
 
 Output:
 
-
+    
     """
     return ctx.gi.invocations.get_invocation_report_pdf(invocation_id, file_path, chunk_size=chunk_size)

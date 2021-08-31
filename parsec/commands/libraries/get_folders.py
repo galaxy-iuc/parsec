@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_folders')
-@click.argument("library_id", type=str)
+@click.argument("library_id", type=str, help="library id to use")
 @click.option(
     "--folder_id",
     help="filter for folder by folder id",
@@ -17,7 +17,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, library_id, folder_id="", name=""):
     """Get all the folders in a library, or select a subset by specifying a folder name for filtering.
 

@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('search_jobs')
-@click.argument("tool_id", type=str)
-@click.argument("inputs", type=str)
+@click.argument("tool_id", type=str, help="only return jobs associated with this tool ID")
+@click.argument("inputs", type=str, help="return only jobs that have matching inputs")
 @click.option(
     "--state",
     help="only return jobs in this state",
@@ -13,7 +13,7 @@ from parsec.decorators import custom_exception, list_output
 )
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, tool_id, inputs, state=""):
     """Return jobs matching input parameters.
 
@@ -33,4 +33,4 @@ Output:
         .. note::
           This method is only supported by Galaxy 18.01 or later.
     """
-    return ctx.gi.jobs.search_jobs(tool_id, json_loads(inputs), state=state)
+    return ctx.gi.jobs.search_jobs(tool_id, inputs, state=state)

@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_job')
-@click.argument("job_id", type=str)
+@click.argument("job_id", type=str, help="job ID")
 @click.option(
     "--full_details",
     help="when ``True``, the complete list of details for the given job.",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, job_id, full_details=False):
     """Get details of a given job of the current user.
 

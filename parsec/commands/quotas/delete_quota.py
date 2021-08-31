@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, str_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('delete_quota')
-@click.argument("quota_id", type=str)
+@click.argument("quota_id", type=str, help="Encoded quota ID.")
 @pass_context
 @custom_exception
-@str_output
+@text_output
 def cli(ctx, quota_id):
     """Delete a quota
 

@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('uninstall_dependencies')
-@click.argument("tool_id", type=str)
+@click.argument("tool_id", type=str, help="id of the requested tool")
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, tool_id):
     """Uninstall dependencies for a given tool via a resolver. This works only for Conda currently. This functionality is available only to Galaxy admins.
 

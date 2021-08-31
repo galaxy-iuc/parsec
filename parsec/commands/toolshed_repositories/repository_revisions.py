@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('repository_revisions')
@@ -11,35 +11,42 @@ from parsec.decorators import custom_exception, list_output
 )
 @click.option(
     "--malicious",
-    help=""
+    help="",
+    is_flag=True
 )
 @click.option(
     "--tools_functionally_correct",
-    help=""
+    help="",
+    is_flag=True
 )
 @click.option(
     "--missing_test_components",
-    help=""
+    help="",
+    is_flag=True
 )
 @click.option(
     "--do_not_test",
-    help=""
+    help="",
+    is_flag=True
 )
 @click.option(
     "--includes_tools",
-    help=""
+    help="",
+    is_flag=True
 )
 @click.option(
     "--test_install_error",
-    help=""
+    help="",
+    is_flag=True
 )
 @click.option(
     "--skip_tool_test",
-    help=""
+    help="",
+    is_flag=True
 )
 @pass_context
 @custom_exception
-@list_output
+@text_output
 def cli(ctx, downloadable="", malicious="", tools_functionally_correct="", missing_test_components="", do_not_test="", includes_tools="", test_install_error="", skip_tool_test=""):
     """Returns a (possibly filtered) list of dictionaries that include information about all repository revisions. The following parameters can be used to filter the list.
 
@@ -84,4 +91,4 @@ Output:
               'tools_functionally_correct': False,
               'url': '/api/repository_revisions/d3823c748ae2205d'}]
     """
-    return ctx.gi.repositories.repository_revisions(downloadable=downloadable, malicious=malicious, tools_functionally_correct=tools_functionally_correct, missing_test_components=missing_test_components, do_not_test=do_not_test, includes_tools=includes_tools, test_install_error=test_install_error, skip_tool_test=skip_tool_test)
+    return ctx.ti.repositories.repository_revisions(downloadable=downloadable, malicious=malicious, tools_functionally_correct=tools_functionally_correct, missing_test_components=missing_test_components, do_not_test=do_not_test, includes_tools=includes_tools, test_install_error=test_install_error, skip_tool_test=skip_tool_test)

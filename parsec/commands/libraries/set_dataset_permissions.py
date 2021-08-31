@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('set_dataset_permissions')
-@click.argument("dataset_id", type=str)
+@click.argument("dataset_id", type=str, help="id of the dataset")
 @click.option(
     "--access_in",
     help="list of role ids",
@@ -25,7 +25,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, dataset_id, access_in="", modify_in="", manage_in=""):
     """Set the permissions for a dataset. Note: it will override all security for this dataset even if you leave out a permission type.
 

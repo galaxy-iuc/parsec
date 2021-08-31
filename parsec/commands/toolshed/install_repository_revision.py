@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('install_repository_revision')
-@click.argument("tool_shed_url", type=str)
-@click.argument("name", type=str)
-@click.argument("owner", type=str)
-@click.argument("changeset_revision", type=str)
+@click.argument("tool_shed_url", type=str, help="URL of the Tool Shed from which the repository should be installed from (e.g., ``https://testtoolshed.g2.bx.psu.edu``)")
+@click.argument("name", type=str, help="The name of the repository that should be installed")
+@click.argument("owner", type=str, help="The name of the repository owner")
+@click.argument("changeset_revision", type=str, help="The revision of the repository to be installed")
 @click.option(
     "--install_tool_dependencies",
     help="Whether or not to automatically handle tool dependencies (see https://galaxyproject.org/toolshed/tool-dependency-recipes/ for more details)",
@@ -35,12 +35,12 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, tool_shed_url, name, owner, changeset_revision, install_tool_dependencies=False, install_repository_dependencies=False, install_resolver_dependencies=False, tool_panel_section_id="", new_tool_panel_section_label=""):
     """Install a specified repository revision from a specified Tool Shed into this Galaxy instance. This example demonstrates installation of a repository that contains valid tools, loading them into a section of the Galaxy tool panel or creating a new tool panel section. You can choose if tool dependencies or repository dependencies should be installed through the Tool Shed, (use ``install_tool_dependencies`` or ``install_repository_dependencies``) or through a resolver that supports installing dependencies (use ``install_resolver_dependencies``). Note that any combination of the three dependency resolving variables is valid.
 
 Output:
 
-
+    
     """
     return ctx.gi.toolshed.install_repository_revision(tool_shed_url, name, owner, changeset_revision, install_tool_dependencies=install_tool_dependencies, install_repository_dependencies=install_repository_dependencies, install_resolver_dependencies=install_resolver_dependencies, tool_panel_section_id=tool_panel_section_id, new_tool_panel_section_label=new_tool_panel_section_label)

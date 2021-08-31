@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('invoke_workflow')
-@click.argument("workflow_id", type=str)
+@click.argument("workflow_id", type=str, help="Encoded workflow ID")
 @click.option(
     "--inputs",
     help="A mapping of workflow inputs to datasets and dataset collections. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), HistoryDatasetAssociation (``hda``), or HistoryDatasetCollectionAssociation (``hdca``).",
@@ -52,7 +52,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, workflow_id, inputs="", params="", history_id="", history_name="", import_inputs_to_history=False, replacement_params="", allow_tool_state_corrections=False, inputs_by="", parameters_normalized=False):
     """Invoke the workflow identified by ``workflow_id``. This will cause a workflow to be scheduled and return an object describing the workflow invocation.
 

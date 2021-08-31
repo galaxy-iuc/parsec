@@ -1,12 +1,12 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_config')
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx):
     """Get a list of attributes about the Galaxy instance. More attributes will be present if the user is an admin.
 

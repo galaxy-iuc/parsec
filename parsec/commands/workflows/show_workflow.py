@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_workflow')
-@click.argument("workflow_id", type=str)
+@click.argument("workflow_id", type=str, help="Encoded workflow ID")
 @click.option(
     "--version",
     help="Workflow version to show",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, workflow_id, version=""):
     """Display information needed to run a workflow.
 

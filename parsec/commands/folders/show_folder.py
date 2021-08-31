@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_folder')
-@click.argument("folder_id", type=str)
+@click.argument("folder_id", type=str, help="the folder's encoded id, prefixed by 'F'")
 @click.option(
     "--contents",
     help="True to get the contents of the folder, rather than just the folder details.",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, folder_id, contents=False):
     """Display information about a folder.
 

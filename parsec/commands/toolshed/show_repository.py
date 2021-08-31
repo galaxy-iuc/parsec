@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_repository')
-@click.argument("toolShed_id", type=str)
+@click.argument("toolShed_id", type=str, help="Encoded toolShed ID")
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, toolShed_id):
     """Get details of a given Tool Shed repository as it is installed on this Galaxy instance.
 

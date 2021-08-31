@@ -1,12 +1,12 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('report_error')
-@click.argument("job_id", type=str)
-@click.argument("dataset_id", type=str)
-@click.argument("message", type=str)
+@click.argument("job_id", type=str, help="job ID")
+@click.argument("dataset_id", type=str, help="Dataset ID")
+@click.argument("message", type=str, help="Error message")
 @click.option(
     "--email",
     help="Email for error report submission. If not specified, the email associated with the Galaxy user account is used by default.",
@@ -14,7 +14,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, job_id, dataset_id, message, email=""):
     """Report an error for a given job and dataset to the server administrators.
 

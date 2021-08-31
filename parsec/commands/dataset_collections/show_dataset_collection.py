@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_dataset_collection')
-@click.argument("dataset_collection_id", type=str)
+@click.argument("dataset_collection_id", type=str, help="dataset collection ID")
 @click.option(
     "--instance_type",
     help="instance type of the collection - 'history' or 'library'",
@@ -14,7 +14,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, dataset_collection_id, instance_type="history"):
     """Get details of a given dataset collection of the current user
 

@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_common_problems')
-@click.argument("job_id", type=str)
+@click.argument("job_id", type=str, help="job ID")
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, job_id):
     """Query inputs and jobs for common potential problems that might have resulted in job failure.
 

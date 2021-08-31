@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, str_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('update_quota')
-@click.argument("quota_id", type=str)
+@click.argument("quota_id", type=str, help="Encoded quota ID")
 @click.option(
     "--name",
     help="Name for the new quota. This must be unique within a Galaxy instance.",
@@ -46,7 +46,7 @@ from parsec.decorators import custom_exception, str_output
 )
 @pass_context
 @custom_exception
-@str_output
+@text_output
 def cli(ctx, quota_id, name="", description="", amount="", operation="", default="no", in_users="", in_groups=""):
     """Update an existing quota
 

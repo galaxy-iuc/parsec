@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('delete_folder')
-@click.argument("folder_id", type=str)
+@click.argument("folder_id", type=str, help="the folder's encoded id, prefixed by 'F'")
 @click.option(
     "--undelete",
     help="If set to True, the folder will be undeleted (i.e. the `deleted` mark will be removed)",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, folder_id, undelete=False):
     """Marks the folder with the given ``id`` as `deleted` (or removes the `deleted` mark if the `undelete` param is True).
 

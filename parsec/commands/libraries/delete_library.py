@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('delete_library')
-@click.argument("library_id", type=str)
+@click.argument("library_id", type=str, help="Encoded data library ID identifying the library to be deleted")
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, library_id):
     """Delete a data library.
 

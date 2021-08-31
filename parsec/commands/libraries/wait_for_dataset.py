@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('wait_for_dataset')
-@click.argument("library_id", type=str)
-@click.argument("dataset_id", type=str)
+@click.argument("library_id", type=str, help="library id where dataset is found in")
+@click.argument("dataset_id", type=str, help="id of the dataset to wait for")
 @click.option(
     "--maxwait",
     help="Total time (in seconds) to wait for the dataset state to become terminal. If the dataset state is not terminal within this time, a ``DatasetTimeoutException`` will be thrown.",
@@ -22,7 +22,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, library_id, dataset_id, maxwait=12000, interval=3):
     """Wait until the library dataset state is terminal ('ok', 'empty', 'error', 'discarded' or 'failed_metadata').
 

@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_genome')
-@click.argument("id", type=str)
+@click.argument("id", type=str, help="Genome build ID to use")
 @click.option(
     "--num",
     help="num",
@@ -27,7 +27,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, id, num="", chrom="", low="", high=""):
     """Returns information about build <id>
 

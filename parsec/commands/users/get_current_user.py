@@ -1,12 +1,12 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_current_user')
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx):
     """Display information about the user associated with this Galaxy connection.
 

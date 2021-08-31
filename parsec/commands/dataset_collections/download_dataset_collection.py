@@ -1,14 +1,14 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('download_dataset_collection')
-@click.argument("dataset_collection_id", type=str)
-@click.argument("file_path", type=str)
+@click.argument("dataset_collection_id", type=str, help="Encoded dataset collection ID")
+@click.argument("file_path", type=str, help="The path to which the archive will be downloaded")
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, dataset_collection_id, file_path):
     """Download a history dataset collection as an archive.
 

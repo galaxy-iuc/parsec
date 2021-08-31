@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_folder')
-@click.argument("folder_id", type=str)
-@click.argument("name", type=str)
+@click.argument("folder_id", type=str, help="the folder's encoded id, prefixed by 'F'")
+@click.argument("name", type=str, help="name of the new folder")
 @click.option(
     "--description",
     help="folder's description",
@@ -13,7 +13,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, folder_id, name, description=""):
     """Update folder information.
 

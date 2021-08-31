@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_invocation')
-@click.argument("invocation_id", type=str)
+@click.argument("invocation_id", type=str, help="Encoded workflow invocation ID")
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, invocation_id):
     """Get a workflow invocation dictionary representing the scheduling of a workflow. This dictionary may be sparse at first (missing inputs and invocation steps) and will become more populated as the workflow is actually scheduled.
 

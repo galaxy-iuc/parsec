@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('delete_library_dataset')
-@click.argument("library_id", type=str)
-@click.argument("dataset_id", type=str)
+@click.argument("library_id", type=str, help="library id where dataset is found in")
+@click.argument("dataset_id", type=str, help="id of the dataset to be deleted")
 @click.option(
     "--purged",
     help="Indicate that the dataset should be purged (permanently deleted)",
@@ -13,7 +13,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, library_id, dataset_id, purged=False):
     """Delete a library dataset in a data library.
 

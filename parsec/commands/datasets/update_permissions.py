@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_permissions')
-@click.argument("dataset_id", type=str)
+@click.argument("dataset_id", type=str, help="dataset ID")
 @click.option(
     "--access_ids",
     help="role IDs which should have access permissions for the dataset.",
@@ -25,7 +25,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, dataset_id, access_ids="", manage_ids="", modify_ids=""):
     """Set access, manage or modify permissions for a dataset to a list of roles.
 

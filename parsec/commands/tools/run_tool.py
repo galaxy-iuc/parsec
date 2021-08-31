@@ -1,21 +1,22 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('run_tool')
-@click.argument("history_id", type=str)
-@click.argument("tool_id", type=str)
-@click.argument("tool_inputs", type=str)
+@click.argument("history_id", type=str, help="encoded ID of the history in which to run the tool")
+@click.argument("tool_id", type=str, help="ID of the tool to be run")
+@click.argument("tool_inputs", type=str, help="dictionary of input datasets and parameters for the tool (see below)")
 @click.option(
     "--input_format",
     help="input format for the payload. Possible values are the default 'legacy' (where inputs nested inside conditionals or repeats are identified with e.g. '<conditional_name>|<input_name>') or '21.01' (where inputs inside conditionals or repeats are nested elements).",
     default="legacy",
-    show_default=True
+    show_default=True,
+    type=str
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, history_id, tool_id, tool_inputs, input_format="legacy"):
     """Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with inputs from ``dict`` ``tool_inputs``.
 
@@ -69,4 +70,4 @@ Output:
         Some examples can be found in `Galaxy's API test suite
         <https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy_test/api/test_tools.py>`_.
     """
-    return ctx.gi.tools.run_tool(history_id, tool_id, json_loads(tool_inputs), input_format=input_format)
+    return ctx.gi.tools.run_tool(history_id, tool_id, tool_inputs, input_format=input_format)

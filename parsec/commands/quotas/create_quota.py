@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_quota')
-@click.argument("name", type=str)
-@click.argument("description", type=str)
-@click.argument("amount", type=str)
-@click.argument("operation", type=str)
+@click.argument("name", type=str, help="Name for the new quota. This must be unique within a Galaxy instance.")
+@click.argument("description", type=str, help="Quota description")
+@click.argument("amount", type=str, help="Quota size (E.g. ``10000MB``, ``99 gb``, ``0.2T``, ``unlimited``)")
+@click.argument("operation", type=str, help="One of (``+``, ``-``, ``=``)")
 @click.option(
     "--default",
     help="Whether or not this is a default quota. Valid values are ``no``, ``unregistered``, ``registered``. None is equivalent to ``no``.",
@@ -29,7 +29,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, name, description, amount, operation, default="no", in_users="", in_groups=""):
     """Create a new quota
 

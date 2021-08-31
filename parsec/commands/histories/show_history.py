@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_history')
-@click.argument("history_id", type=str)
+@click.argument("history_id", type=str, help="Encoded history ID to filter on")
 @click.option(
     "--contents",
     help="When ``True``, instead of the history details, return a list with info for all datasets in the given history. Note that inside each dataset info dict, the id which should be used for further requests about this history dataset is given by the value of the `id` (not `dataset_id`) key.",
@@ -12,11 +12,13 @@ from parsec.decorators import custom_exception, dict_output
 )
 @click.option(
     "--deleted",
-    help="When ``contents=True``, whether to filter for the deleted datasets (``True``) or for the non-deleted ones (``False``). If not set, no filtering is applied."
+    help="When ``contents=True``, whether to filter for the deleted datasets (``True``) or for the non-deleted ones (``False``). If not set, no filtering is applied.",
+    is_flag=True
 )
 @click.option(
     "--visible",
-    help="When ``contents=True``, whether to filter for the visible datasets (``True``) or for the hidden ones (``False``). If not set, no filtering is applied."
+    help="When ``contents=True``, whether to filter for the visible datasets (``True``) or for the hidden ones (``False``). If not set, no filtering is applied.",
+    is_flag=True
 )
 @click.option(
     "--details",
@@ -31,7 +33,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, history_id, contents=False, deleted="", visible="", details="", types=""):
     """Get details of a given history. By default, just get the history meta information.
 

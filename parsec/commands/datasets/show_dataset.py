@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_dataset')
-@click.argument("dataset_id", type=str)
+@click.argument("dataset_id", type=str, help="Encoded dataset ID")
 @click.option(
     "--deleted",
     help="Whether to return results for a deleted dataset",
@@ -19,7 +19,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, dataset_id, deleted=False, hda_ldda="hda"):
     """Get details about a given dataset. This can be a history or a library dataset.
 

@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, list_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('requirements')
-@click.argument("tool_id", type=str)
+@click.argument("tool_id", type=str, help="id of the requested tool")
 @pass_context
 @custom_exception
-@list_output
+@json_output
 def cli(ctx, tool_id):
     """Return the resolver status for a specific tool. This functionality is available only to Galaxy admins.
 

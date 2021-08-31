@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('rerun_invocation')
-@click.argument("invocation_id", type=str)
+@click.argument("invocation_id", type=str, help="Encoded workflow invocation ID to be rerun")
 @click.option(
     "--inputs_update",
     help="If different datasets should be used to the original invocation, this should contain a mapping of workflow inputs to the new datasets and dataset collections.",
@@ -52,7 +52,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, invocation_id, inputs_update="", params_update="", history_id="", history_name="", import_inputs_to_history=False, replacement_params="", allow_tool_state_corrections=False, inputs_by="", parameters_normalized=False):
     """Rerun a workflow invocation. For more extensive documentation of all parameters, see the ``gi.workflows.invoke_workflow()`` method.
 

@@ -1,12 +1,12 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, bool_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('show_job_lock')
 @pass_context
 @custom_exception
-@bool_output
+@text_output
 def cli(ctx):
     """Show whether the job lock is active or not. If it is active, no jobs will dispatch on the Galaxy server.
 

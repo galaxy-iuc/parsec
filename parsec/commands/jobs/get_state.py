@@ -1,13 +1,13 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, str_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('get_state')
-@click.argument("job_id", type=str)
+@click.argument("job_id", type=str, help="job ID")
 @pass_context
 @custom_exception
-@str_output
+@text_output
 def cli(ctx, job_id):
     """Display the current state for a given job of the current user.
 

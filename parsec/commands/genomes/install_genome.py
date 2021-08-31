@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('install_genome')
@@ -44,7 +44,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, func="download", source="", dbkey="", ncbi_name="", ensembl_dbkey="", url_dbkey="", indexers=""):
     """Download and/or index a genome.
 

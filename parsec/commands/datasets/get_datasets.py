@@ -1,6 +1,6 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_datasets')
@@ -88,12 +88,12 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, limit=500, offset=0, name="", extension="", state="", visible="", deleted="", purged="", tool_id="", tag="", history_id="", create_time_min="", create_time_max="", update_time_min="", update_time_max="", order="create_time-dsc"):
     """Get the latest datasets, or select another subset by specifying optional arguments for filtering (e.g. a history ID).
 
 Output:
 
-
+    
     """
     return ctx.gi.datasets.get_datasets(limit=limit, offset=offset, name=name, extension=extension, state=state, visible=visible, deleted=deleted, purged=purged, tool_id=tool_id, tag=tag, history_id=history_id, create_time_min=create_time_min, create_time_max=create_time_max, update_time_min=update_time_min, update_time_max=update_time_max, order=order)

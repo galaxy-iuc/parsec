@@ -1,14 +1,14 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_invocation_step')
-@click.argument("invocation_id", type=str)
-@click.argument("step_id", type=str)
+@click.argument("invocation_id", type=str, help="Encoded workflow invocation ID")
+@click.argument("step_id", type=str, help="Encoded workflow invocation step ID")
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, invocation_id, step_id):
     """See the details of a particular workflow invocation step.
 

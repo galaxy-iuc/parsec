@@ -1,11 +1,11 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, none_output
+from parsec.decorators import custom_exception, text_output
 
 
 @click.command('export_workflow_to_local_path')
-@click.argument("workflow_id", type=str)
-@click.argument("file_local_path", type=str)
+@click.argument("workflow_id", type=str, help="Encoded workflow ID")
+@click.argument("file_local_path", type=str, help="Local path to which the exported file will be saved. (Should not contain filename if use_default_name=True)")
 @click.option(
     "--use_default_filename",
     help="If the use_default_name parameter is True, the exported file will be saved as file_local_path/Galaxy-Workflow-%s.ga, where %s is the workflow name. If use_default_name is False, file_local_path is assumed to contain the full file path including filename.",
@@ -15,7 +15,7 @@ from parsec.decorators import custom_exception, none_output
 )
 @pass_context
 @custom_exception
-@none_output
+@text_output
 def cli(ctx, workflow_id, file_local_path, use_default_filename=True):
     """Exports a workflow in JSON format to a given local path.
 

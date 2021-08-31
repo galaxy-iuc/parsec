@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_quota')
-@click.argument("quota_id", type=str)
+@click.argument("quota_id", type=str, help="Encoded quota ID")
 @click.option(
     "--deleted",
     help="Search for quota in list of ones already marked as deleted",
@@ -12,7 +12,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, quota_id, deleted=False):
     """Display information on a quota
 

@@ -1,10 +1,10 @@
 import click
 from parsec.cli import pass_context, json_loads
-from parsec.decorators import custom_exception, dict_output
+from parsec.decorators import custom_exception, json_output
 
 
 @click.command('search_repositories')
-@click.argument("q", type=str)
+@click.argument("q", type=str, help="query string for searching purposes")
 @click.option(
     "--page",
     help="page requested",
@@ -21,7 +21,7 @@ from parsec.decorators import custom_exception, dict_output
 )
 @pass_context
 @custom_exception
-@dict_output
+@json_output
 def cli(ctx, q, page=1, page_size=10):
     """Search for repositories in a Galaxy Tool Shed.
 
@@ -62,4 +62,4 @@ Output:
              'page_size': '2',
              'total_results': '64'}
     """
-    return ctx.gi.repositories.search_repositories(q, page=page, page_size=page_size)
+    return ctx.ti.repositories.search_repositories(q, page=page, page_size=page_size)
