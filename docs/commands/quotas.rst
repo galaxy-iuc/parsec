@@ -28,17 +28,18 @@ Create a new quota
         'message': "Quota 'Testing' has been created with 1 associated users and 0 associated groups.",
         'id': '386f14984287a0f7',
         'name': 'Testing'}
-
+    
 **Options**::
 
 
       --default TEXT    Whether or not this is a default quota. Valid values are
                         ``no``, ``unregistered``, ``registered``. None is equivalent
                         to ``no``.  [default: no]
+    
       --in_users TEXT   A list of user IDs or user emails.
       --in_groups TEXT  A list of group IDs or names.
       -h, --help        Show this message and exit.
-
+    
 
 ``delete_quota`` command
 ------------------------
@@ -59,12 +60,12 @@ Delete a quota
      For example::
 
        "Deleted 1 quotas: Testing-B"
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_quotas`` command
 ----------------------
@@ -92,13 +93,13 @@ Get a list of quotas
          'model_class': 'Quota',
          'name': 'workshop',
          'url': '/api/quotas/1ee267091d0190af'}]
-
+    
 **Options**::
 
 
       --deleted   Only return quota(s) that have been deleted
       -h, --help  Show this message and exit.
-
+    
 
 ``show_quota`` command
 ----------------------
@@ -128,13 +129,13 @@ Display information on a quota
         'name': 'test ',
         'operation': '=',
         'users': []}
-
+    
 **Options**::
 
 
       --deleted   Search for quota in list of ones already marked as deleted
       -h, --help  Show this message and exit.
-
+    
 
 ``undelete_quota`` command
 --------------------------
@@ -155,12 +156,12 @@ Undelete a quota
      For example::
 
        "Undeleted 1 quotas: Testing-B"
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``update_quota`` command
 ------------------------
@@ -181,25 +182,30 @@ Update an existing quota
      For example::
 
        "Quota 'Testing-A' has been renamed to 'Testing-B'; Quota 'Testing-e' is now '-100.0 GB'; Quota 'Testing-B' is now the default for unregistered users"
-
+    
 **Options**::
 
 
       --name TEXT         Name for the new quota. This must be unique within a
                           Galaxy instance.
+    
       --description TEXT  Quota description. If you supply this parameter, but not
                           the name, an error will be thrown.
+    
       --amount TEXT       Quota size (E.g. ``10000MB``, ``99 gb``, ``0.2T``,
                           ``unlimited``)
+    
       --operation TEXT    One of (``+``, ``-``, ``=``). If you wish to change this
                           value, you must also provide the ``amount``, otherwise it
                           will not take effect.
+    
       --default TEXT      Whether or not this is a default quota. Valid values are
                           ``no``, ``unregistered``, ``registered``. Calling this
                           method with ``default="no"`` on a non-default quota will
                           throw an error. Not passing this parameter is equivalent
                           to passing ``no``.  [default: no]
+    
       --in_users TEXT     A list of user IDs or user emails.
       --in_groups TEXT    A list of group IDs or names.
       -h, --help          Show this message and exit.
-
+    

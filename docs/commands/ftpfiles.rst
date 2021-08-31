@@ -21,10 +21,10 @@ Get a list of local files.
 
 
     A list of dicts with details on individual files on FTP
-
+    
 **Options**::
 
 
       --deleted   Whether to include deleted files
       -h, --help  Show this message and exit.
-
+    

@@ -5,7 +5,7 @@ from parsec.decorators import custom_exception, json_output
 
 @click.command('refactor_workflow')
 @click.argument("workflow_id", type=str)
-@click.argument("actions", type=str, multiple=True)
+@click.option("--actions", type=str, multiple=True, required=True)
 @click.option(
     "--dry_run",
     help="When true, perform a dry run where the existing workflow is preserved. The refactored workflow is returned in the output of the method, but not saved on the Galaxy server.",

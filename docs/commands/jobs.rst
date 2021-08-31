@@ -22,12 +22,12 @@ Cancel a job, deleting output datasets.
 
     ``True`` if the job was successfully cancelled, ``False`` if
      it was already in a terminal state before the cancellation.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_common_problems`` command
 -------------------------------
@@ -48,12 +48,12 @@ Query inputs and jobs for common potential problems that might have resulted in 
 
    .. note::
      This method is only supported by Galaxy 19.05 or later.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_destination_params`` command
 ----------------------------------
@@ -75,12 +75,12 @@ Get destination parameters for a job, describing the environment and location wh
    .. note::
      This method is only supported by Galaxy 20.05 or later and requires
      the user to be an admin.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_inputs`` command
 ----------------------
@@ -98,12 +98,12 @@ Get dataset inputs used by a job.
 
 
     Inputs for the given job
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_jobs`` command
 --------------------
@@ -141,7 +141,7 @@ Get all jobs, or select a subset by specifying optional arguments for filtering 
    .. note::
      The following filtering options can only be used with Galaxy ``release_21.05`` or later:
        user_id, limit, offset, workflow_id, invocation_id
-
+    
 **Options**::
 
 
@@ -152,18 +152,23 @@ Get all jobs, or select a subset by specifying optional arguments for filtering 
       --workflow_id TEXT     Encoded workflow ID to filter on.
       --user_id TEXT         Encoded user ID to filter on. Only admin users can
                              access the jobs of other users.
+    
       --date_range_min TEXT  Mininum job update date (in YYYY-MM-DD format) to
                              filter on.
+    
       --date_range_max TEXT  Maximum job update date (in YYYY-MM-DD format) to
                              filter on.
+    
       --limit INTEGER        Maximum number of jobs to return.  [default: 500]
       --offset INTEGER       Return jobs starting from this specified position. For
                              example, if ``limit`` is set to 100 and ``offset`` to
                              200, jobs 200-299 will be returned.
+    
       --user_details         If ``True`` and the user is an admin, add the user
                              email to each returned job dictionary.
+    
       -h, --help             Show this message and exit.
-
+    
 
 ``get_metrics`` command
 -----------------------
@@ -188,12 +193,12 @@ Return job metrics for a given job.
      metrics even as a normal user as long as the Galaxy instance has the
      ``expose_potentially_sensitive_job_metrics`` option set to ``true`` in
      the ``config/galaxy.yml`` configuration file.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_outputs`` command
 -----------------------
@@ -211,12 +216,12 @@ Get dataset outputs produced by a job.
 
 
     Outputs of the given job
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_state`` command
 ---------------------
@@ -238,12 +243,12 @@ Display the current state for a given job of the current user.
      retrieved, an empty string is returned.
 
    .. versionadded:: 0.5.3
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``report_error`` command
 ------------------------
@@ -264,14 +269,15 @@ Report an error for a given job and dataset to the server administrators.
 
    .. note::
      This method is only supported by Galaxy 20.01 or later.
-
+    
 **Options**::
 
 
       --email TEXT  Email for error report submission. If not specified, the email
                     associated with the Galaxy user account is used by default.
+    
       -h, --help    Show this message and exit.
-
+    
 
 ``rerun_job`` command
 ---------------------
@@ -292,7 +298,7 @@ Rerun a job.
 
    .. note::
      This method can only be used with Galaxy ``release_21.01`` or later.
-
+    
 **Options**::
 
 
@@ -304,13 +310,16 @@ Rerun a job.
                                  output(s) will be created. Note that if Galaxy does
                                  not permit remapping for the job in question,
                                  specifying ``True`` will result in an error.
+    
       --tool_inputs_update TEXT  dictionary specifying any changes which should be
                                  made to tool parameters for the rerun job.
+    
       --history_id TEXT          ID of the history in which the job should be
                                  executed; if not specified, the same history will
                                  be used as the original job run.
+    
       -h, --help                 Show this message and exit.
-
+    
 
 ``resume_job`` command
 ----------------------
@@ -331,12 +340,12 @@ Resume a job if it is paused.
 
    .. note::
      This method is only supported by Galaxy 18.09 or later.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``search_jobs`` command
 -----------------------
@@ -366,13 +375,13 @@ Return jobs matching input parameters.
 
    .. note::
      This method is only supported by Galaxy 18.01 or later.
-
+    
 **Options**::
 
 
       --state TEXT  only return jobs in this state
       -h, --help    Show this message and exit.
-
+    
 
 ``show_job`` command
 --------------------
@@ -405,13 +414,13 @@ Get details of a given job of the current user.
         'state': 'ok',
         'tool_id': 'tab2fasta',
         'update_time': '2014-03-01T16:17:31.930728'}
-
+    
 **Options**::
 
 
       --full_details  when ``True``, the complete list of details for the given job.
       -h, --help      Show this message and exit.
-
+    
 
 ``show_job_lock`` command
 -------------------------
@@ -433,12 +442,12 @@ Show whether the job lock is active or not. If it is active, no jobs will dispat
    .. note::
      This method is only supported by Galaxy 20.05 or later and requires
      the user to be an admin.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``update_job_lock`` command
 ---------------------------
@@ -455,18 +464,14 @@ Update the job lock status by setting ``active`` to either ``True`` or ``False``
 **Output**
 
 
-    Updated status of the job lock
-
-   .. note::
-     This method is only supported by Galaxy 20.05 or later and requires
-     the user to be an admin.
-
+    
+    
 **Options**::
 
 
-      --active TEXT
-      -h, --help     Show this message and exit.
-
+      --active    The state of the job lock, locked=True
+      -h, --help  Show this message and exit.
+    
 
 ``wait_for_job`` command
 ------------------------
@@ -484,16 +489,19 @@ Wait until a job is in a terminal state.
 
 
     Details of the given job.
-
+    
 **Options**::
 
 
       --maxwait FLOAT   Total time (in seconds) to wait for the job state to become
                         terminal. If the job state is not terminal within this time,
-                        a ``TimeoutException`` will be raised.  [default: 12000.0]
+                        a ``TimeoutException`` will be raised.  [default: 12000]
+    
       --interval FLOAT  Time (in seconds) to wait between 2 consecutive checks.
-                        [default: 3.0]
+                        [default: 3]
+    
       --check           Whether to check if the job terminal state is 'ok'.
                         [default: True]
+    
       -h, --help        Show this message and exit.
-
+    

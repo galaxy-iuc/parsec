@@ -21,7 +21,7 @@ Copy existing content (e.g. a dataset) to a history.
 
 
     Information about the copied content
-
+    
 **Options**::
 
 
@@ -29,8 +29,9 @@ Copy existing content (e.g. a dataset) to a history.
                      dataset, the default), 'hdca' (for a dataset collection),
                      'library' (for a library dataset) or 'library_folder' (for all
                      datasets in a library folder).  [default: hda]
+    
       -h, --help     Show this message and exit.
-
+    
 
 ``copy_dataset`` command
 ------------------------
@@ -48,14 +49,15 @@ Copy a dataset to a history.
 
 
     Information about the copied dataset
-
+    
 **Options**::
 
 
       --source TEXT  Source of the dataset to be copied: 'hda' (the default),
                      'library' or 'library_folder'  [default: hda]
+    
       -h, --help     Show this message and exit.
-
+    
 
 ``create_dataset_collection`` command
 -------------------------------------
@@ -73,12 +75,12 @@ Create a new dataset collection
 
 
     Information about the new HDCA
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``create_history`` command
 --------------------------
@@ -96,13 +98,13 @@ Create a new history, optionally setting the ``name``.
 
 
     Dictionary containing information about newly created history
-
+    
 **Options**::
 
 
       --name TEXT  Optional name for new history
       -h, --help   Show this message and exit.
-
+    
 
 ``create_history_tag`` command
 ------------------------------
@@ -126,12 +128,12 @@ Create history tag
         'model_class': 'HistoryTagAssociation',
         'user_tname': 'NGS_PE_RUN',
         'user_value': None}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``delete_dataset`` command
 --------------------------
@@ -154,13 +156,13 @@ Mark corresponding dataset as deleted.
        For the purge option to work, the Galaxy instance must have the
        ``allow_user_dataset_purge`` option set to ``true`` in the
        ``config/galaxy.yml`` configuration file.
-
+    
 **Options**::
 
 
       --purge     if ``True``, also purge (permanently delete) the dataset
       -h, --help  Show this message and exit.
-
+    
 
 ``delete_dataset_collection`` command
 -------------------------------------
@@ -178,12 +180,12 @@ Mark corresponding dataset collection as deleted.
 
 
     None
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``delete_history`` command
 --------------------------
@@ -209,13 +211,13 @@ Delete a history.
      For the purge option to work, the Galaxy instance must have the
      ``allow_user_dataset_purge`` option set to ``true`` in the
      ``config/galaxy.yml`` configuration file.
-
+    
 **Options**::
 
 
       --purge     if ``True``, also purge (permanently delete) the history
       -h, --help  Show this message and exit.
-
+    
 
 ``download_history`` command
 ----------------------------
@@ -233,14 +235,15 @@ Download a history export archive.  Use :meth:`export_history` to create an expo
 
 
     None
-
+    
 **Options**::
 
 
       --chunk_size INTEGER  how many bytes at a time should be read into memory
                             [default: 4096]
+    
       -h, --help            Show this message and exit.
-
+    
 
 ``export_history`` command
 --------------------------
@@ -259,20 +262,23 @@ Start a job to create an export archive for the given history.
 
     ``jeha_id`` of the export, or empty if ``wait`` is ``False``
      and the export is not ready.
-
+    
 **Options**::
 
 
       --gzip             create .tar.gz archive if ``True``, else .tar  [default:
                          True]
+    
       --include_hidden   whether to include hidden datasets in the export
       --include_deleted  whether to include deleted datasets in the export
       --wait             if ``True``, block until the export is ready; else, return
                          immediately
+    
       --maxwait FLOAT    Total time (in seconds) to wait for the export to become
                          ready. When set, implies that ``wait`` is ``True``.
+    
       -h, --help         Show this message and exit.
-
+    
 
 ``get_histories`` command
 -------------------------
@@ -290,7 +296,7 @@ Get all histories, or select a subset by specifying optional arguments for filte
 
 
     List of history dicts.
-
+    
 **Options**::
 
 
@@ -298,14 +304,16 @@ Get all histories, or select a subset by specifying optional arguments for filte
       --name TEXT        History name to filter on.
       --deleted          whether to filter for the deleted histories (``True``) or
                          for the non-deleted ones (``False``)
-      --published TEXT   whether to filter for the published histories (``True``) or
+    
+      --published        whether to filter for the published histories (``True``) or
                          for the non-published ones (``False``). If not set, no
                          filtering is applied. Note the filtering is only applied to
                          the user's own histories; to access all histories published
                          by any user, use the ``get_published_histories`` method.
+    
       --slug TEXT        History slug to filter on
       -h, --help         Show this message and exit.
-
+    
 
 ``get_most_recently_used_history`` command
 ------------------------------------------
@@ -323,12 +331,12 @@ Returns the current user's most recently used history (not deleted).
 
 
     History representation
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_published_histories`` command
 -----------------------------------
@@ -346,16 +354,17 @@ Get all published histories (by any user), or select a subset by specifying opti
 
 
     List of history dicts.
-
+    
 **Options**::
 
 
       --name TEXT  History name to filter on.
       --deleted    whether to filter for the deleted histories (``True``) or for the
                    non-deleted ones (``False``)
+    
       --slug TEXT  History slug to filter on
       -h, --help   Show this message and exit.
-
+    
 
 ``get_status`` command
 ----------------------
@@ -376,12 +385,12 @@ Returns the state of this history
        'state' = This is the current state of the history, such as ok, error, new etc.
        'state_details' = Contains individual statistics for various dataset states.
        'percent_complete' = The overall number of datasets processed to completion.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``import_history`` command
 --------------------------
@@ -398,16 +407,15 @@ Import a history from an archive on disk or a URL.
 **Output**
 
 
-
-
+    
+    
 **Options**::
 
 
-      --file_path TEXT  Path to exported history archive on disk. :type url: str
-                        :param url: URL for an exported history archive
-      --url TEXT
+      --file_path TEXT  Path to exported history archive on disk.
+      --url TEXT        URL for an exported history archive
       -h, --help        Show this message and exit.
-
+    
 
 ``open_history`` command
 ------------------------
@@ -431,12 +439,12 @@ Open Galaxy in a new tab of the default web browser and switch to the specified 
      in the browser session will have the current history changed to this
      one, even if the interface still shows another history. Refreshing
      any such tab is recommended.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_dataset`` command
 ------------------------
@@ -454,12 +462,12 @@ Get details about a given history dataset.
 
 
     Information about the dataset
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_dataset_collection`` command
 -----------------------------------
@@ -477,12 +485,12 @@ Get details about a given history dataset collection.
 
 
     Information about the dataset collection
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_dataset_provenance`` command
 -----------------------------------
@@ -516,14 +524,15 @@ Get details related to how dataset was created (``id``, ``job_id``, ``tool_id``,
         'stdout': '',
         'tool_id': 'toolshed.g2.bx.psu.edu/repos/ziru-zhou/macs2/modencode_peakcalling_macs2/2.0.10.2',
         'uuid': '5c0c43f5-8d93-44bd-939d-305e82f213c6'}
-
+    
 **Options**::
 
 
       --follow    If ``True``, recursively fetch dataset provenance information for
                   all inputs and their inputs, etc.
+    
       -h, --help  Show this message and exit.
-
+    
 
 ``show_history`` command
 ------------------------
@@ -546,7 +555,7 @@ Get details of a given history. By default, just get the history meta informatio
        As an alternative to using the ``contents=True`` parameter, consider
        using ``gi.datasets.get_datasets(history_id=history_id)`` which offers
        more extensive functionality for filtering and ordering the results.
-
+    
 **Options**::
 
 
@@ -555,20 +564,25 @@ Get details of a given history. By default, just get the history meta informatio
                       inside each dataset info dict, the id which should be used for
                       further requests about this history dataset is given by the
                       value of the `id` (not `dataset_id`) key.
-      --deleted TEXT  When ``contents=True``, whether to filter for the deleted
+    
+      --deleted       When ``contents=True``, whether to filter for the deleted
                       datasets (``True``) or for the non-deleted ones (``False``).
                       If not set, no filtering is applied.
-      --visible TEXT  When ``contents=True``, whether to filter for the visible
+    
+      --visible       When ``contents=True``, whether to filter for the visible
                       datasets (``True``) or for the hidden ones (``False``). If not
                       set, no filtering is applied.
+    
       --details TEXT  When ``contents=True``, include dataset details. Set to 'all'
                       for the most information.
+    
       --types TEXT    When ``contents=True``, filter for history content types. If
                       set to ``['dataset']``, return only datasets. If set to
                       ``['dataset_collection']``, return only dataset collections.
                       If not set, no filtering is applied.
+    
       -h, --help      Show this message and exit.
-
+    
 
 ``show_matching_datasets`` command
 ----------------------------------
@@ -586,7 +600,7 @@ Get dataset details for matching datasets within a history.
 
 
     List of dictionaries
-
+    
 **Options**::
 
 
@@ -594,8 +608,9 @@ Get dataset details for matching datasets within a history.
                           regular expression will be returned; use plain strings for
                           exact matches and None to match all datasets in the
                           history
+    
       -h, --help          Show this message and exit.
-
+    
 
 ``undelete_history`` command
 ----------------------------
@@ -613,12 +628,12 @@ Undelete a history
 
 
     'OK' if it was deleted
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``update_dataset`` command
 --------------------------
@@ -639,7 +654,7 @@ Update history dataset metadata. Some of the attributes that can be modified are
 
    .. versionchanged:: 0.8.0
        Changed the return value from the status code (type int) to a dict.
-
+    
 **Options**::
 
 
@@ -650,12 +665,13 @@ Update history dataset metadata. Some of the attributes that can be modified are
                            datatype changes, and the dataset must not be in use as
                            input or output of a running job (including uploads),
                            otherwise an error will be raised.
+    
       --deleted            Mark or unmark history dataset as deleted
       --genome_build TEXT  Replace history dataset genome build (dbkey)
       --name TEXT          Replace history dataset name with the given string
       --visible            Mark or unmark history dataset as visible
       -h, --help           Show this message and exit.
-
+    
 
 ``update_dataset_collection`` command
 -------------------------------------
@@ -676,7 +692,7 @@ Update history dataset collection metadata. Some of the attributes that can be m
 
    .. versionchanged:: 0.8.0
        Changed the return value from the status code (type int) to a dict.
-
+    
 **Options**::
 
 
@@ -684,7 +700,7 @@ Update history dataset collection metadata. Some of the attributes that can be m
       --name TEXT  Replace history dataset collection name with the given string
       --visible    Mark or unmark history dataset collection as visible
       -h, --help   Show this message and exit.
-
+    
 
 ``update_history`` command
 --------------------------
@@ -705,7 +721,7 @@ Update history metadata information. Some of the attributes that can be modified
 
    .. versionchanged:: 0.8.0
        Changed the return value from the status code (type int) to a dict.
-
+    
 **Options**::
 
 
@@ -717,7 +733,7 @@ Update history metadata information. Some of the attributes that can be modified
       --purged           If ``True``, mark history as purged (permanently deleted).
       --tags TEXT        Replace history tags with the given list
       -h, --help         Show this message and exit.
-
+    
 
 ``upload_dataset_from_library`` command
 ---------------------------------------
@@ -735,9 +751,9 @@ Upload a dataset into the history from a library. Requires the library dataset I
 
 
     Information about the newly created HDA
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    

@@ -32,14 +32,14 @@ Create a new role.
 
    .. versionchanged:: 0.15.0
        Changed the return value from a 1-element list to a dict.
-
+    
 **Options**::
 
 
       --user_ids TEXT   A list of encoded user IDs to add to the new role
       --group_ids TEXT  A list of encoded group IDs to add to the new role
       -h, --help        Show this message and exit.
-
+    
 
 ``get_roles`` command
 ---------------------
@@ -67,12 +67,12 @@ Displays a collection (list) of roles.
          "model_class": "Role",
          "name": "Bar",
          "url": "/api/roles/f597429621d6eb2b"}]
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_role`` command
 ---------------------
@@ -98,9 +98,9 @@ Display information on a single role
         "name": "Foo",
         "type": "private",
         "url": "/api/roles/f2db41e1fa331b3e"}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    

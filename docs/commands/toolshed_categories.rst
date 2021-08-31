@@ -32,13 +32,13 @@ Returns a list of dictionaries that contain descriptions of the repository categ
          'url': '/api/categories/175812cd7caaf439'}]
 
    .. versionadded:: 0.5.2
-
+    
 **Options**::
 
 
       --deleted   whether to show deleted categories
       -h, --help  Show this message and exit.
-
+    
 
 ``show_category`` command
 -------------------------
@@ -56,9 +56,9 @@ Get details of a given category.
 
 
     details of the given category
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    

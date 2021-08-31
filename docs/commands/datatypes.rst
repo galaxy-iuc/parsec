@@ -33,14 +33,14 @@ Get the list of all installed datatypes.
         'wig',
         'xgmml',
         'xml']
-
+    
 **Options**::
 
 
       --extension_only  Return only the extension rather than the datatype name
       --upload_only     Whether to return only datatypes which can be uploaded
       -h, --help        Show this message and exit.
-
+    
 
 ``get_sniffers`` command
 ------------------------
@@ -69,9 +69,9 @@ Get the list of all installed sniffers.
         'galaxy.datatypes.sequence:Maf',
         'galaxy.datatypes.sequence:Lav',
         'galaxy.datatypes.sequence:csFasta']
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    

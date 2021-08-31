@@ -21,12 +21,12 @@ Create a new Galaxy local user.
 
 
     a dictionary containing information about the created user
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``create_remote_user`` command
 ------------------------------
@@ -44,12 +44,12 @@ Create a new Galaxy remote user.
 
 
     a dictionary containing information about the created user
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``create_user_apikey`` command
 ------------------------------
@@ -67,12 +67,12 @@ Create a new API key for a given user.
 
 
     the API key for the user
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``delete_user`` command
 -----------------------
@@ -90,13 +90,13 @@ Delete a user.
 
 
     a dictionary containing information about the deleted user
-
+    
 **Options**::
 
 
       --purge     if ``True``, also purge (permanently delete) the history
       -h, --help  Show this message and exit.
-
+    
 
 ``get_current_user`` command
 ----------------------------
@@ -114,12 +114,12 @@ Display information about the user associated with this Galaxy connection.
 
 
     a dictionary containing information about the current user
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_user_apikey`` command
 ---------------------------
@@ -137,12 +137,12 @@ Get the current API key for a given user.
 
 
     the API key for the user
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_users`` command
 ---------------------
@@ -165,7 +165,7 @@ Get a list of all registered users. If ``deleted`` is set to ``True``, get a lis
               [{'email': 'a_user@example.com',
                 'id': 'dda47097d9189f15',
                 'url': '/api/users/dda47097d9189f15'}]
-
+    
 **Options**::
 
 
@@ -174,16 +174,19 @@ Get a list of all registered users. If ``deleted`` is set to ``True``, get a lis
                       admin users only if the Galaxy instance has the
                       ``expose_user_email`` option set to ``true`` in the
                       ``config/galaxy.yml`` configuration file.
+    
       --f_name TEXT   filter for user names. The filter will be active for non-admin
                       users only if the Galaxy instance has the ``expose_user_name``
                       option set to ``true`` in the ``config/galaxy.yml``
                       configuration file.
+    
       --f_any TEXT    filter for user email or name. Each filter will be active for
                       non-admin users only if the Galaxy instance has the
                       corresponding ``expose_user_*`` option set to ``true`` in the
                       ``config/galaxy.yml`` configuration file.
+    
       -h, --help      Show this message and exit.
-
+    
 
 ``show_user`` command
 ---------------------
@@ -201,13 +204,13 @@ Display information about a user.
 
 
     a dictionary containing information about the user
-
+    
 **Options**::
 
 
       --deleted   whether to return results for a deleted user
       -h, --help  Show this message and exit.
-
+    
 
 ``update_user`` command
 -----------------------
@@ -225,11 +228,11 @@ Update user information. Some of the attributes that can be modified are documen
 
 
     details of the updated user
-
+    
 **Options**::
 
 
       --email TEXT     Replace user email with the given string
       --username TEXT  Replace user name with the given string
       -h, --help       Show this message and exit.
-
+    

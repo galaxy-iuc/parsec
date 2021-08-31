@@ -37,12 +37,12 @@ Get the list of all installed Tool Shed repositories on this Galaxy instance.
        better align with the Tool Shed concepts
 
    .. seealso:: bioblend.galaxy.tools.get_tool_panel()
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``install_repository_revision`` command
 ---------------------------------------
@@ -59,8 +59,8 @@ Install a specified repository revision from a specified Tool Shed into this Gal
 **Output**
 
 
-
-
+    
+    
 **Options**::
 
 
@@ -68,25 +68,30 @@ Install a specified repository revision from a specified Tool Shed into this Gal
                                       dependencies (see
                                       https://galaxyproject.org/toolshed/tool-
                                       dependency-recipes/ for more details)
+    
       --install_repository_dependencies
                                       Whether or not to automatically handle
                                       repository dependencies (see
                                       https://galaxyproject.org/toolshed/defining-
                                       repository-dependencies/ for more details)
+    
       --install_resolver_dependencies
                                       Whether or not to automatically install
                                       resolver dependencies (e.g. conda).
+    
       --tool_panel_section_id TEXT    The ID of the Galaxy tool panel section where
                                       the tool should be insterted under. Note that
                                       you should specify either this parameter or
                                       the ``new_tool_panel_section_label``. If both
                                       are specified, this one will take precedence.
+    
       --new_tool_panel_section_label TEXT
                                       The name of a Galaxy tool panel section that
                                       should be created and the repository installed
                                       into.
+    
       -h, --help                      Show this message and exit.
-
+    
 
 ``show_repository`` command
 ---------------------------
@@ -115,12 +120,12 @@ Get details of a given Tool Shed repository as it is installed on this Galaxy in
    .. versionchanged:: 0.4.1
        Changed method name from ``show_tool`` to ``show_repository`` to
        better align with the Tool Shed concepts
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``uninstall_repository_revision`` command
 -----------------------------------------
@@ -138,11 +143,12 @@ Uninstalls a specified repository revision from this Galaxy instance.
 
 
     If successful, a dictionary with a message noting the removal
-
+    
 **Options**::
 
 
       --remove_from_disk  whether to also remove the repository from disk (the
                           default) or only deactivate it  [default: True]
+    
       -h, --help          Show this message and exit.
-
+    

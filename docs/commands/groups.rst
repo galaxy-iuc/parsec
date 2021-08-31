@@ -21,12 +21,12 @@ Add a role to the given group.
 
 
     Added group role's info
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``add_group_user`` command
 --------------------------
@@ -44,12 +44,12 @@ Add a user to the given group.
 
 
     Added group user's info
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``create_group`` command
 ------------------------
@@ -73,14 +73,14 @@ Create a new group.
          'model_class': 'Group',
          'name': 'My Group Name',
          'url': '/api/groups/7c9636938c3e83bf'}]
-
+    
 **Options**::
 
 
       --user_ids TEXT  A list of encoded user IDs to add to the new group
       --role_ids TEXT  A list of encoded role IDs to add to the new group
       -h, --help       Show this message and exit.
-
+    
 
 ``delete_group_role`` command
 -----------------------------
@@ -98,12 +98,12 @@ Remove a role from the given group.
 
 
     The role which was removed
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``delete_group_user`` command
 -----------------------------
@@ -121,12 +121,12 @@ Remove a user from the given group.
 
 
     The user which was removed
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_group_roles`` command
 ---------------------------
@@ -144,12 +144,12 @@ Get the list of roles associated to the given group.
 
 
     List of group roles' info
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_group_users`` command
 ---------------------------
@@ -167,12 +167,12 @@ Get the list of users associated to the given group.
 
 
     List of group users' info
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_groups`` command
 ----------------------
@@ -200,12 +200,12 @@ Get all (not deleted) groups.
          'model_class': 'Group',
          'name': 'LPN',
          'url': '/api/groups/73187219cd372cf8'}]
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_group`` command
 ----------------------
@@ -231,12 +231,12 @@ Get details of a given group.
         'roles_url': '/api/groups/33abac023ff186c2/roles',
         'url': '/api/groups/33abac023ff186c2',
         'users_url': '/api/groups/33abac023ff186c2/users'}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``update_group`` command
 ------------------------
@@ -254,17 +254,20 @@ Update a group.
 
 
     None
-
+    
 **Options**::
 
 
       --group_name TEXT  A new name for the group. If None, the group name is not
                          changed.
+    
       --user_ids TEXT    New list of encoded user IDs for the group. It will
                          substitute the previous list of users (with [] if not
                          specified)
+    
       --role_ids TEXT    New list of encoded role IDs for the group. It will
                          substitute the previous list of roles (with [] if not
                          specified)
+    
       -h, --help         Show this message and exit.
-
+    

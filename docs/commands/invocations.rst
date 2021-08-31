@@ -21,12 +21,12 @@ Cancel the scheduling of a workflow.
 
 
     The workflow invocation being cancelled
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_invocation_biocompute_object`` command
 --------------------------------------------
@@ -44,12 +44,12 @@ Get a BioCompute object for an invocation.
 
 
     The BioCompute object
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_invocation_report`` command
 ---------------------------------
@@ -88,12 +88,12 @@ Get a Markdown report for an invocation.
 ',
         'render_format': 'markdown',
         'workflows': {'f2db41e1fa331b3e': {'name': 'Example workflow'}}}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_invocation_report_pdf`` command
 -------------------------------------
@@ -110,14 +110,16 @@ Get a PDF report for an invocation.
 **Output**
 
 
-
-
+    
+    
 **Options**::
 
 
-      --chunk_size TEXT  [default: 4096]
-      -h, --help         Show this message and exit.
-
+      --chunk_size INTEGER  Size of chunks to requests, defaults to
+                            bioblend.CHUNK_SIZE  [default: 4096]
+    
+      -h, --help            Show this message and exit.
+    
 
 ``get_invocation_step_jobs_summary`` command
 --------------------------------------------
@@ -149,12 +151,12 @@ Get a detailed summary of an invocation, listing all jobs with their job IDs and
          'model': 'Job',
          'populated_state': 'ok',
          'states': {'new': 1}}]
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_invocation_summary`` command
 ----------------------------------
@@ -178,12 +180,12 @@ Get a summary of an invocation, stating the number of jobs which succeed, which 
         'model': 'WorkflowInvocation',
         'id': 'a799d38679e985db',
         'populated_state': 'ok'}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_invocations`` command
 ---------------------------
@@ -210,7 +212,7 @@ Get all workflow invocations, or select a subset by specifying optional argument
          'update_time': '2015-10-31T22:00:22',
          'uuid': 'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',
          'workflow_id': '03501d7626bd192f'}]
-
+    
 **Options**::
 
 
@@ -218,15 +220,19 @@ Get all workflow invocations, or select a subset by specifying optional argument
       --history_id TEXT   Encoded history ID to filter on
       --user_id TEXT      Encoded user ID to filter on. This must be your own user
                           ID if your are not an admin user.
+    
       --include_terminal  Whether to include terminal states.  [default: True]
       --limit INTEGER     Maximum number of invocations to return - if specified,
                           the most recent invocations will be returned.
+    
       --view TEXT         Level of detail to return per invocation, either 'element'
                           or 'collection'.  [default: collection]
+    
       --step_details      If 'view' is 'element', also include details on individual
                           steps.
+    
       -h, --help          Show this message and exit.
-
+    
 
 ``rerun_invocation`` command
 ----------------------------
@@ -247,7 +253,7 @@ Rerun a workflow invocation. For more extensive documentation of all parameters,
 
    .. note::
      This method can only be used with Galaxy ``release_21.01`` or later.
-
+    
 **Options**::
 
 
@@ -255,43 +261,52 @@ Rerun a workflow invocation. For more extensive documentation of all parameters,
                                       original invocation, this should contain a
                                       mapping of workflow inputs to the new datasets
                                       and dataset collections.
+    
       --params_update TEXT            If different non-dataset tool parameters
                                       should be used to the original invocation,
                                       this should contain a mapping of the new
                                       parameter values.
+    
       --history_id TEXT               The encoded history ID where to store the
                                       workflow outputs. Alternatively,
                                       ``history_name`` may be specified to create a
                                       new history.
+    
       --history_name TEXT             Create a new history with the given name to
                                       store the workflow outputs. If both
                                       ``history_id`` and ``history_name`` are
                                       provided, ``history_name`` is ignored. If
                                       neither is specified, a new 'Unnamed history'
                                       is created.
+    
       --import_inputs_to_history      If ``True``, used workflow inputs will be
                                       imported into the history. If ``False``, only
                                       workflow outputs will be visible in the given
                                       history.
+    
       --replacement_params TEXT       pattern-based replacements for post-job
                                       actions
+    
       --allow_tool_state_corrections  If True, allow Galaxy to fill in missing tool
                                       state when running workflows. This may be
                                       useful for workflows using tools that have
                                       changed over time or for workflows built
                                       outside of Galaxy with only a subset of inputs
                                       defined.
+    
       --inputs_by TEXT                Determines how inputs are referenced. Can be
                                       "step_index|step_uuid" (default),
                                       "step_index", "step_id", "step_uuid", or
                                       "name".
+    
       --parameters_normalized         Whether Galaxy should normalize the input
                                       parameters to ensure everything is referenced
                                       by a numeric step ID. Default is ``False``,
                                       but when setting parameters for a subworkflow,
                                       ``True`` is required.
+    
       -h, --help                      Show this message and exit.
-
+    
 
 ``run_invocation_step_action`` command
 --------------------------------------
@@ -309,12 +324,12 @@ nature of this action and what is expected will vary based on the the type of wo
 
 
     Representation of the workflow invocation step
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_invocation`` command
 ---------------------------
@@ -364,12 +379,12 @@ Get a workflow invocation dictionary representing the scheduling of a workflow. 
         'update_time': '2015-10-31T22:00:26',
         'uuid': 'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',
         'workflow_id': '03501d7626bd192f'}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_invocation_step`` command
 --------------------------------
@@ -399,12 +414,12 @@ See the details of a particular workflow invocation step.
         'workflow_step_id': '52e496b945151ee8',
         'workflow_step_label': None,
         'workflow_step_uuid': '4060554c-1dd5-4287-9040-8b4f281cf9dc'}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``wait_for_invocation`` command
 -------------------------------
@@ -422,17 +437,20 @@ Wait until an invocation is in a terminal state.
 
 
     Details of the workflow invocation.
-
+    
 **Options**::
 
 
       --maxwait FLOAT   Total time (in seconds) to wait for the invocation state to
                         become terminal. If the invocation state is not terminal
                         within this time, a ``TimeoutException`` will be raised.
-                        [default: 12000.0]
+                        [default: 12000]
+    
       --interval FLOAT  Time (in seconds) to wait between 2 consecutive checks.
-                        [default: 3.0]
+                        [default: 3]
+    
       --check           Whether to check if the invocation terminal state is
                         'scheduled'.  [default: True]
+    
       -h, --help        Show this message and exit.
-
+    

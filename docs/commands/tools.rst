@@ -20,13 +20,13 @@ Get BibTeX citations for a given tool ID.
 **Output**
 
 
-
-
+    
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_tool_panel`` command
 --------------------------
@@ -47,12 +47,12 @@ Get a list of available tool elements in Galaxy's configured toolbox.
             with nested tool descriptions.
 
    .. seealso:: bioblend.galaxy.toolshed.get_repositories()
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_tools`` command
 ---------------------
@@ -72,7 +72,7 @@ Get all tools, or select a subset by specifying optional arguments for filtering
     List of tool descriptions.
 
    .. seealso:: bioblend.galaxy.toolshed.get_repositories()
-
+    
 **Options**::
 
 
@@ -80,8 +80,9 @@ Get all tools, or select a subset by specifying optional arguments for filtering
       --name TEXT     Tool name to filter on.
       --trackster     whether to return only tools that are compatible with
                       Trackster
+    
       -h, --help      Show this message and exit.
-
+    
 
 ``install_dependencies`` command
 --------------------------------
@@ -99,12 +100,12 @@ Install dependencies for a given tool via a resolver. This works only for Conda 
 
 
     Tool requirement status
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``paste_content`` command
 -------------------------
@@ -124,12 +125,12 @@ Upload a string to a new dataset in the history specified by ``history_id``.
     Information about the created upload job
 
    See :meth:`upload_file` for the optional parameters.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``put_url`` command
 -------------------
@@ -149,12 +150,12 @@ Upload a string to a new dataset in the history specified by ``history_id``.
     Information about the created upload job
 
    See :meth:`upload_file` for the optional parameters.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``requirements`` command
 ------------------------
@@ -191,12 +192,12 @@ Return the resolver status for a specific tool. This functionality is available 
          'model_class': 'MergedCondaDependency',
          'name': 'blast',
          'version': '2.10.1'}]
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``run_tool`` command
 --------------------
@@ -260,7 +261,7 @@ Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with i
    in the (largely undocumented) format used by the Galaxy API.
    Some examples can be found in `Galaxy's API test suite
    <https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy_test/api/test_tools.py>`_.
-
+    
 **Options**::
 
 
@@ -270,8 +271,9 @@ Runs tool specified by ``tool_id`` in history indicated by ``history_id`` with i
                            '<conditional_name>|<input_name>') or '21.01' (where
                            inputs inside conditionals or repeats are nested
                            elements).  [default: legacy]
+    
       -h, --help           Show this message and exit.
-
+    
 
 ``show_tool`` command
 ---------------------
@@ -289,14 +291,14 @@ Get details of a given tool.
 
 
     Information about the tool's interface
-
+    
 **Options**::
 
 
       --io_details    whether to get also input and output details
       --link_details  whether to get also link details
       -h, --help      Show this message and exit.
-
+    
 
 ``uninstall_dependencies`` command
 ----------------------------------
@@ -314,12 +316,12 @@ Uninstall dependencies for a given tool via a resolver. This works only for Cond
 
 
     Tool requirement status
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``upload_file`` command
 -----------------------
@@ -337,7 +339,7 @@ Upload the file specified by ``path`` to the history specified by ``history_id``
 
 
     Information about the created upload job
-
+    
 **Options**::
 
 
@@ -345,13 +347,16 @@ Upload the file specified by ``path`` to the history specified by ``history_id``
       --file_name TEXT  (optional) name of the new history dataset
       --file_type TEXT  (optional) Galaxy datatype for the new dataset, default is
                         auto
+    
       --space_to_tab    whether to convert spaces to tabs. Default is ``False``.
                         Applicable only if to_posix_lines is ``True``
+    
       --to_posix_lines  if ``True`` (the default), convert universal line endings to
                         POSIX line endings. Set to ``False`` when uploading a gzip,
                         bz2 or zip archive containing a binary file
+    
       -h, --help        Show this message and exit.
-
+    
 
 ``upload_from_ftp`` command
 ---------------------------
@@ -369,9 +374,9 @@ Upload the file specified by ``path`` from the user's FTP directory to the histo
 
 
     Information about the created upload job
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    

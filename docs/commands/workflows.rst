@@ -21,12 +21,12 @@ Cancel the scheduling of a workflow.
 
 
     The workflow invocation being cancelled
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``delete_workflow`` command
 ---------------------------
@@ -48,12 +48,12 @@ Delete a workflow identified by `workflow_id`.
    .. warning::
        Deleting a workflow is irreversible - all workflow data
        will be permanently deleted.
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``export_workflow_dict`` command
 --------------------------------
@@ -71,13 +71,13 @@ Exports a workflow.
 
 
     Dictionary representing the requested workflow
-
+    
 **Options**::
 
 
       --version INTEGER  Workflow version to export
       -h, --help         Show this message and exit.
-
+    
 
 ``export_workflow_to_local_path`` command
 -----------------------------------------
@@ -95,7 +95,7 @@ Exports a workflow in JSON format to a given local path.
 
 
     None
-
+    
 **Options**::
 
 
@@ -105,8 +105,9 @@ Exports a workflow in JSON format to a given local path.
                               use_default_name is False, file_local_path is assumed
                               to contain the full file path including filename.
                               [default: True]
+    
       -h, --help              Show this message and exit.
-
+    
 
 ``extract_workflow_from_history`` command
 -----------------------------------------
@@ -124,20 +125,23 @@ Extract a workflow from a history.
 
 
     A description of the created workflow
-
+    
 **Options**::
 
 
       --job_ids TEXT                  Optional list of job IDs to filter the jobs to
                                       extract from the history
+    
       --dataset_hids TEXT             Optional list of dataset hids corresponding to
                                       workflow inputs when extracting a workflow
                                       from history
+    
       --dataset_collection_hids TEXT  Optional list of dataset collection hids
                                       corresponding to workflow inputs when
                                       extracting a workflow from history
+    
       -h, --help                      Show this message and exit.
-
+    
 
 ``get_invocations`` command
 ---------------------------
@@ -164,12 +168,12 @@ Get a list containing all the workflow invocations corresponding to the specifie
          'update_time': '2015-10-31T22:00:22',
          'uuid': 'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',
          'workflow_id': '03501d7626bd192f'}]
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_workflow_inputs`` command
 -------------------------------
@@ -187,12 +191,12 @@ Get a list of workflow input IDs that match the given label. If no input matches
 
 
     list of workflow inputs matching the label query
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``get_workflows`` command
 -------------------------
@@ -215,7 +219,7 @@ Get all workflows, or select a subset by specifying optional arguments for filte
               [{'id': '92c56938c2f9b315',
                 'name': 'Simple',
                 'url': '/api/workflows/92c56938c2f9b315'}]
-
+    
 **Options**::
 
 
@@ -223,7 +227,7 @@ Get all workflows, or select a subset by specifying optional arguments for filte
       --name TEXT         Workflow name to filter on.
       --published         if ``True``, return also published workflows
       -h, --help          Show this message and exit.
-
+    
 
 ``import_shared_workflow`` command
 ----------------------------------
@@ -249,12 +253,12 @@ Imports a new workflow from the shared published workflows.
         'published': False,
         'tags': [],
         'url': '/api/workflows/ee0e2b4b696d9092'}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``import_workflow_dict`` command
 --------------------------------
@@ -284,14 +288,15 @@ Imports a new workflow given a dictionary representing a previously exported wor
         'owner': 'jane-doe',
         'model_class': 'StoredWorkflow',
         'id': '94bac0a90086bdcf'}
-
+    
 **Options**::
 
 
       --publish   if ``True`` the uploaded workflow will be published; otherwise it
                   will be visible only by the user which uploads it (default)
+    
       -h, --help  Show this message and exit.
-
+    
 
 ``import_workflow_from_local_path`` command
 -------------------------------------------
@@ -321,14 +326,15 @@ Imports a new workflow given the path to a file containing a previously exported
         'owner': 'jane-doe',
         'model_class': 'StoredWorkflow',
         'id': '94bac0a90086bdcf'}
-
+    
 **Options**::
 
 
       --publish   if ``True`` the uploaded workflow will be published; otherwise it
                   will be visible only by the user which uploads it (default)
+    
       -h, --help  Show this message and exit.
-
+    
 
 ``invoke_workflow`` command
 ---------------------------
@@ -451,7 +457,7 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
      property is instead indexed by either the ``order_index`` property
      (which is stable across workflow imports) or the step UUID which is
      also stable.
-
+    
 **Options**::
 
 
@@ -462,48 +468,57 @@ Invoke the workflow identified by ``workflow_id``. This will cause a workflow to
                                       HistoryDatasetAssociation (``hda``), or
                                       HistoryDatasetCollectionAssociation
                                       (``hdca``).
+    
       --params TEXT                   A mapping of non-datasets tool parameters (see
                                       below)
+    
       --history_id TEXT               The encoded history ID where to store the
                                       workflow output. Alternatively,
                                       ``history_name`` may be specified to create a
                                       new history.
+    
       --history_name TEXT             Create a new history with the given name to
                                       store the workflow output. If both
                                       ``history_id`` and ``history_name`` are
                                       provided, ``history_name`` is ignored. If
                                       neither is specified, a new 'Unnamed history'
                                       is created.
+    
       --import_inputs_to_history      If ``True``, used workflow inputs will be
                                       imported into the history. If ``False``, only
                                       workflow outputs will be visible in the given
                                       history.
+    
       --replacement_params TEXT       pattern-based replacements for post-job
                                       actions (see below)
+    
       --allow_tool_state_corrections  If True, allow Galaxy to fill in missing tool
                                       state when running workflows. This may be
                                       useful for workflows using tools that have
                                       changed over time or for workflows built
                                       outside of Galaxy with only a subset of inputs
                                       defined.
+    
       --inputs_by TEXT                Determines how inputs are referenced. Can be
                                       "step_index|step_uuid" (default),
                                       "step_index", "step_id", "step_uuid", or
                                       "name".
+    
       --parameters_normalized         Whether Galaxy should normalize ``params`` to
                                       ensure everything is referenced by a numeric
                                       step ID. Default is ``False``, but when
                                       setting ``params`` for a subworkflow, ``True``
                                       is required.
+    
       -h, --help                      Show this message and exit.
-
+    
 
 ``refactor_workflow`` command
 -----------------------------
 
 **Usage**::
 
-    parsec workflows refactor_workflow [OPTIONS] WORKFLOW_ID ACTIONS
+    parsec workflows refactor_workflow [OPTIONS] WORKFLOW_ID
 
 **Help**
 
@@ -515,15 +530,17 @@ Refactor workflow with given actions.
 
     Dictionary containing logged messages for the executed actions
             and the refactored workflow.
-
+    
 **Options**::
 
 
-      --dry_run   When true, perform a dry run where the existing workflow is
-                  preserved. The refactored workflow is returned in the output of
-                  the method, but not saved on the Galaxy server.
-      -h, --help  Show this message and exit.
-
+      --actions TEXT  [required]
+      --dry_run       When true, perform a dry run where the existing workflow is
+                      preserved. The refactored workflow is returned in the output
+                      of the method, but not saved on the Galaxy server.
+    
+      -h, --help      Show this message and exit.
+    
 
 ``run_invocation_step_action`` command
 --------------------------------------
@@ -541,12 +558,12 @@ nature of this action and what is expected will vary based on the the type of wo
 
 
     Representation of the workflow invocation step
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``run_workflow`` command
 ------------------------
@@ -614,7 +631,7 @@ Run the workflow identified by ``workflow_id``.
        method has therefore been deprecated in favor of
        :meth:`invoke_workflow`, which also features improved default
        behavior for dataset input handling.
-
+    
 **Options**::
 
 
@@ -627,23 +644,29 @@ Run the workflow identified by ``workflow_id``.
                                   <encoded dataset ID>, 'src': '[ldda, ld, hda]'}}``
                                   (e.g. ``{'23': {'id': '29beef4fadeed09f', 'src':
                                   'ld'}}``)
+    
       --params TEXT               A mapping of non-datasets tool parameters (see
                                   below)
+    
       --history_id TEXT           The encoded history ID where to store the workflow
                                   output. Alternatively, ``history_name`` may be
                                   specified to create a new history.
+    
       --history_name TEXT         Create a new history with the given name to store
                                   the workflow output. If both ``history_id`` and
                                   ``history_name`` are provided, ``history_name`` is
                                   ignored. If neither is specified, a new 'Unnamed
                                   history' is created.
+    
       --import_inputs_to_history  If ``True``, used workflow inputs will be imported
                                   into the history. If ``False``, only workflow
                                   outputs will be visible in the given history.
+    
       --replacement_params TEXT   pattern-based replacements for post-job actions
                                   (see below)
+    
       -h, --help                  Show this message and exit.
-
+    
 
 ``show_invocation`` command
 ---------------------------
@@ -693,12 +716,12 @@ Get a workflow invocation object representing the scheduling of a workflow. This
         'update_time': '2015-10-31T22:00:26',
         'uuid': 'c8aa2b1c-801a-11e5-a9e5-8ca98228593c',
         'workflow_id': '03501d7626bd192f'}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_invocation_step`` command
 --------------------------------
@@ -728,12 +751,12 @@ See the details of a particular workflow invocation step.
         'workflow_step_id': '52e496b945151ee8',
         'workflow_step_label': None,
         'workflow_step_uuid': '4060554c-1dd5-4287-9040-8b4f281cf9dc'}
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_versions`` command
 -------------------------
@@ -751,12 +774,12 @@ Get versions for a workflow.
 
 
     Ordered list of version descriptions for this workflow
-
+    
 **Options**::
 
 
       -h, --help  Show this message and exit.
-
+    
 
 ``show_workflow`` command
 -------------------------
@@ -780,13 +803,13 @@ Display information needed to run a workflow.
         'inputs': {'23': {'label': 'Input Dataset', 'value': ''}},
         'name': 'Simple',
         'url': '/api/workflows/92c56938c2f9b315'}
-
+    
 **Options**::
 
 
       --version INTEGER  Workflow version to show
       -h, --help         Show this message and exit.
-
+    
 
 ``update_workflow`` command
 ---------------------------
@@ -804,7 +827,7 @@ Update a given workflow.
 
 
     Dictionary representing the updated workflow
-
+    
 **Options**::
 
 
@@ -815,4 +838,4 @@ Update a given workflow.
       --tags TEXT        Replace workflow tags with the given list
       --workflow TEXT    dictionary representing the workflow to be updated
       -h, --help         Show this message and exit.
-
+    
