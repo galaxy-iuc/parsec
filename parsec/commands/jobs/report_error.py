@@ -4,9 +4,9 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('report_error')
-@click.argument("job_id", type=str, help="job ID")
-@click.argument("dataset_id", type=str, help="Dataset ID")
-@click.argument("message", type=str, help="Error message")
+@click.argument("job_id", type=str)
+@click.argument("dataset_id", type=str)
+@click.argument("message", type=str)
 @click.option(
     "--email",
     help="Email for error report submission. If not specified, the email associated with the Galaxy user account is used by default.",

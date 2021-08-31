@@ -4,9 +4,9 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('run_tool')
-@click.argument("history_id", type=str, help="encoded ID of the history in which to run the tool")
-@click.argument("tool_id", type=str, help="ID of the tool to be run")
-@click.argument("tool_inputs", type=str, help="dictionary of input datasets and parameters for the tool (see below)")
+@click.argument("history_id", type=str)
+@click.argument("tool_id", type=str)
+@click.argument("tool_inputs", type=str)
 @click.option(
     "--input_format",
     help="input format for the payload. Possible values are the default 'legacy' (where inputs nested inside conditionals or repeats are identified with e.g. '<conditional_name>|<input_name>') or '21.01' (where inputs inside conditionals or repeats are nested elements).",

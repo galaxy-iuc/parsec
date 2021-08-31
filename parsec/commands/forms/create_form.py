@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('create_form')
-@click.argument("form_xml_text", type=str, help="Form xml to create a form on galaxy instance")
+@click.argument("form_xml_text", type=str)
 @pass_context
 @custom_exception
 @text_output

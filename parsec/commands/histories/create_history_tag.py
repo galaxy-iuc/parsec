@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_history_tag')
-@click.argument("history_id", type=str, help="Encoded history ID")
-@click.argument("tag", type=str, help="Add tag to history")
+@click.argument("history_id", type=str)
+@click.argument("tag", type=str)
 @pass_context
 @custom_exception
 @json_output

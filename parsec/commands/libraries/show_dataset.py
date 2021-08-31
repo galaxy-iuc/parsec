@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_dataset')
-@click.argument("library_id", type=str, help="library id where dataset is found in")
-@click.argument("dataset_id", type=str, help="id of the dataset to be inspected")
+@click.argument("library_id", type=str)
+@click.argument("dataset_id", type=str)
 @pass_context
 @custom_exception
 @json_output

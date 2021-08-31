@@ -4,9 +4,9 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('get_repository_revision_install_info')
-@click.argument("name", type=str, help="the name of the repository")
-@click.argument("owner", type=str, help="the owner of the repository")
-@click.argument("changeset_revision", type=str, help="the changeset_revision of the RepositoryMetadata object associated with the repository")
+@click.argument("name", type=str)
+@click.argument("owner", type=str)
+@click.argument("changeset_revision", type=str)
 @pass_context
 @custom_exception
 @text_output

@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('extract_workflow_from_history')
-@click.argument("history_id", type=str, help="Encoded history ID")
-@click.argument("workflow_name", type=str, help="Name of the workflow to create")
+@click.argument("history_id", type=str)
+@click.argument("workflow_name", type=str)
 @click.option(
     "--job_ids",
     help="Optional list of job IDs to filter the jobs to extract from the history",

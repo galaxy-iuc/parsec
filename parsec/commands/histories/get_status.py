@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_status')
-@click.argument("history_id", type=str, help="Encoded history ID")
+@click.argument("history_id", type=str)
 @pass_context
 @custom_exception
 @json_output

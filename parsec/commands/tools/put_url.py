@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('put_url')
-@click.argument("content", type=str, help="content of the new dataset to upload or a list of URLs (one per line) to upload")
-@click.argument("history_id", type=str, help="id of the history where to upload the content")
+@click.argument("content", type=str)
+@click.argument("history_id", type=str)
 @pass_context
 @custom_exception
 @json_output

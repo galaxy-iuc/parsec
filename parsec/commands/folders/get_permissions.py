@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_permissions')
-@click.argument("folder_id", type=str, help="the folder's encoded id, prefixed by 'F'")
-@click.argument("scope", type=str, help="scope of permissions, either 'current' or 'available'")
+@click.argument("folder_id", type=str)
+@click.argument("scope", type=str)
 @pass_context
 @custom_exception
 @json_output

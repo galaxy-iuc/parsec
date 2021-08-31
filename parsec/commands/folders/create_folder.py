@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_folder')
-@click.argument("parent_folder_id", type=str, help="Folder's description")
-@click.argument("name", type=str, help="name of the new folder")
+@click.argument("parent_folder_id", type=str)
+@click.argument("name", type=str)
 @click.option(
     "--description",
     help="folder's description",

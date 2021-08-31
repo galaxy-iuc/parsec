@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('get_state')
-@click.argument("job_id", type=str, help="job ID")
+@click.argument("job_id", type=str)
 @pass_context
 @custom_exception
 @text_output

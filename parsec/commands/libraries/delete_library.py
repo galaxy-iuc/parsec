@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('delete_library')
-@click.argument("library_id", type=str, help="Encoded data library ID identifying the library to be deleted")
+@click.argument("library_id", type=str)
 @pass_context
 @custom_exception
 @json_output

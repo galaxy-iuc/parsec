@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('search_jobs')
-@click.argument("tool_id", type=str, help="only return jobs associated with this tool ID")
-@click.argument("inputs", type=str, help="return only jobs that have matching inputs")
+@click.argument("tool_id", type=str)
+@click.argument("inputs", type=str)
 @click.option(
     "--state",
     help="only return jobs in this state",

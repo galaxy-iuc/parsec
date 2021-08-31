@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('import_workflow_from_local_path')
-@click.argument("file_local_path", type=str, help="File to upload to the server for new workflow")
+@click.argument("file_local_path", type=str)
 @click.option(
     "--publish",
     help="if ``True`` the uploaded workflow will be published; otherwise it will be visible only by the user which uploads it (default)",

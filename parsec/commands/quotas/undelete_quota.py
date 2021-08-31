@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('undelete_quota')
-@click.argument("quota_id", type=str, help="Encoded quota ID.")
+@click.argument("quota_id", type=str)
 @pass_context
 @custom_exception
 @text_output

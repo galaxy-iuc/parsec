@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('rerun_invocation')
-@click.argument("invocation_id", type=str, help="Encoded workflow invocation ID to be rerun")
+@click.argument("invocation_id", type=str)
 @click.option(
     "--inputs_update",
     help="If different datasets should be used to the original invocation, this should contain a mapping of workflow inputs to the new datasets and dataset collections.",

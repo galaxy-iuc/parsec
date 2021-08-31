@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('delete_workflow')
-@click.argument("workflow_id", type=str, help="Encoded workflow ID")
+@click.argument("workflow_id", type=str)
 @pass_context
 @custom_exception
 @text_output

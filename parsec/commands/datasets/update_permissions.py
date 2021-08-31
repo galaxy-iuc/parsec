@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_permissions')
-@click.argument("dataset_id", type=str, help="dataset ID")
+@click.argument("dataset_id", type=str)
 @click.option(
     "--access_ids",
     help="role IDs which should have access permissions for the dataset.",

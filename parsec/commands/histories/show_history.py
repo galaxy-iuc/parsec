@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_history')
-@click.argument("history_id", type=str, help="Encoded history ID to filter on")
+@click.argument("history_id", type=str)
 @click.option(
     "--contents",
     help="When ``True``, instead of the history details, return a list with info for all datasets in the given history. Note that inside each dataset info dict, the id which should be used for further requests about this history dataset is given by the value of the `id` (not `dataset_id`) key.",

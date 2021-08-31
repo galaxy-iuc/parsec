@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_user')
-@click.argument("user_id", type=str, help="encoded user ID")
+@click.argument("user_id", type=str)
 @click.option(
     "--deleted",
     help="whether to return results for a deleted user",

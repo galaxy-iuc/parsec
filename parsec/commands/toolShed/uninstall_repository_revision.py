@@ -4,10 +4,10 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('uninstall_repository_revision')
-@click.argument("name", type=str, help="The name of the repository")
-@click.argument("owner", type=str, help="The owner of the repository")
-@click.argument("changeset_revision", type=str, help="The revision of the repository to uninstall")
-@click.argument("tool_shed_url", type=str, help="URL of the Tool Shed from which the repository was installed from (e.g., ``https://testtoolshed.g2.bx.psu.edu``)")
+@click.argument("name", type=str)
+@click.argument("owner", type=str)
+@click.argument("changeset_revision", type=str)
+@click.argument("tool_shed_url", type=str)
 @click.option(
     "--remove_from_disk",
     help="whether to also remove the repository from disk (the default) or only deactivate it",

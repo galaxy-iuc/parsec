@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_repository')
-@click.argument("name", type=str, help="Name of the repository")
-@click.argument("synopsis", type=str, help="Synopsis of the repository")
+@click.argument("name", type=str)
+@click.argument("synopsis", type=str)
 @click.option(
     "--description",
     help="Optional description of the repository",

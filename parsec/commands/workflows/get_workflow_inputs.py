@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_workflow_inputs')
-@click.argument("workflow_id", type=str, help="Encoded workflow ID")
-@click.argument("label", type=str, help="label to filter workflow inputs on")
+@click.argument("workflow_id", type=str)
+@click.argument("label", type=str)
 @pass_context
 @custom_exception
 @json_output

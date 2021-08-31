@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('export_history')
-@click.argument("history_id", type=str, help="history ID")
+@click.argument("history_id", type=str)
 @click.option(
     "--gzip",
     help="create .tar.gz archive if ``True``, else .tar",

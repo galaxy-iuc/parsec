@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_history')
-@click.argument("history_id", type=str, help="Encoded history ID")
+@click.argument("history_id", type=str)
 @click.option(
     "--annotation",
     help="Replace history annotation with given string",

@@ -4,9 +4,9 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('download_history')
-@click.argument("history_id", type=str, help="history ID")
-@click.argument("jeha_id", type=str, help="jeha ID (this should be obtained via :meth:`export_history`)")
-@click.argument("outf", type=click.File('rb+'), help="output file object, open for writing in binary mode")
+@click.argument("history_id", type=str)
+@click.argument("jeha_id", type=str)
+@click.argument("outf", type=click.File('rb+'))
 @click.option(
     "--chunk_size",
     help="how many bytes at a time should be read into memory",

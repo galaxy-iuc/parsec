@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_job')
-@click.argument("job_id", type=str, help="job ID")
+@click.argument("job_id", type=str)
 @click.option(
     "--full_details",
     help="when ``True``, the complete list of details for the given job.",

@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_group')
-@click.argument("group_id", type=str, help="Encoded group ID")
+@click.argument("group_id", type=str)
 @pass_context
 @custom_exception
 @json_output

@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('open_history')
-@click.argument("history_id", type=str, help="ID of the history to switch to")
+@click.argument("history_id", type=str)
 @pass_context
 @custom_exception
 @text_output

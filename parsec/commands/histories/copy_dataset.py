@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('copy_dataset')
-@click.argument("history_id", type=str, help="history ID to which the dataset should be copied")
-@click.argument("dataset_id", type=str, help="dataset ID")
+@click.argument("history_id", type=str)
+@click.argument("dataset_id", type=str)
 @click.option(
     "--source",
     help="Source of the dataset to be copied: 'hda' (the default), 'library' or 'library_folder'",

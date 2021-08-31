@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_library_permissions')
-@click.argument("library_id", type=str, help="id of the library")
+@click.argument("library_id", type=str)
 @pass_context
 @custom_exception
 @json_output

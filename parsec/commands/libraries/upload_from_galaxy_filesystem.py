@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_from_galaxy_filesystem')
-@click.argument("library_id", type=str, help="id of the library where to place the uploaded file")
-@click.argument("filesystem_paths", type=str, help="file paths on the Galaxy server to upload to the library, one file per line")
+@click.argument("library_id", type=str)
+@click.argument("filesystem_paths", type=str)
 @click.option(
     "--folder_id",
     help="id of the folder where to place the uploaded files. If not provided, the root folder will be used",

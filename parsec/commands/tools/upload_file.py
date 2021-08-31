@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_file')
-@click.argument("path", type=str, help="path of the file to upload")
-@click.argument("history_id", type=str, help="id of the history where to upload the file")
+@click.argument("path", type=str)
+@click.argument("history_id", type=str)
 @click.option(
     "--dbkey",
     help="(optional) genome dbkey",

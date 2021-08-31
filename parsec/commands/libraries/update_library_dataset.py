@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_library_dataset')
-@click.argument("dataset_id", type=str, help="id of the dataset to be deleted")
+@click.argument("dataset_id", type=str)
 @click.option(
     "--file_ext",
     help="Replace library dataset extension (must exist in the Galaxy registry)",

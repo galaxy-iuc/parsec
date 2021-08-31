@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_dataset_from_library')
-@click.argument("history_id", type=str, help="Encoded history ID")
-@click.argument("lib_dataset_id", type=str, help="Encoded library dataset ID")
+@click.argument("history_id", type=str)
+@click.argument("lib_dataset_id", type=str)
 @pass_context
 @custom_exception
 @json_output

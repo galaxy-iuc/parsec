@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_dataset')
-@click.argument("history_id", type=str, help="Encoded history ID")
-@click.argument("dataset_id", type=str, help="ID of the dataset")
+@click.argument("history_id", type=str)
+@click.argument("dataset_id", type=str)
 @click.option(
     "--annotation",
     help="Replace history dataset annotation with given string",

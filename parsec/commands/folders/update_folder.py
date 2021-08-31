@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('update_folder')
-@click.argument("folder_id", type=str, help="the folder's encoded id, prefixed by 'F'")
-@click.argument("name", type=str, help="name of the new folder")
+@click.argument("folder_id", type=str)
+@click.argument("name", type=str)
 @click.option(
     "--description",
     help="folder's description",

@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('update_quota')
-@click.argument("quota_id", type=str, help="Encoded quota ID")
+@click.argument("quota_id", type=str)
 @click.option(
     "--name",
     help="Name for the new quota. This must be unique within a Galaxy instance.",

@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('set_library_permissions')
-@click.argument("library_id", type=str, help="id of the library")
+@click.argument("library_id", type=str)
 @click.option(
     "--access_in",
     help="list of role ids",

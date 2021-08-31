@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('search_tools')
-@click.argument("q", type=str, help="query string for searching purposes")
+@click.argument("q", type=str)
 @click.option(
     "--page",
     help="page requested",

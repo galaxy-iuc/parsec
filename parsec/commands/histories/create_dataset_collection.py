@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_dataset_collection')
-@click.argument("history_id", type=str, help="Encoded history ID")
-@click.argument("collection_description", type=str, help="a description of the dataset collection For example::")
+@click.argument("history_id", type=str)
+@click.argument("collection_description", type=str)
 @pass_context
 @custom_exception
 @json_output

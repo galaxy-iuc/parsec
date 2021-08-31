@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_dataset_collection')
-@click.argument("dataset_collection_id", type=str, help="dataset collection ID")
+@click.argument("dataset_collection_id", type=str)
 @click.option(
     "--instance_type",
     help="instance type of the collection - 'history' or 'library'",

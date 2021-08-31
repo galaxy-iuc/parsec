@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_quota')
-@click.argument("quota_id", type=str, help="Encoded quota ID")
+@click.argument("quota_id", type=str)
 @click.option(
     "--deleted",
     help="Search for quota in list of ones already marked as deleted",

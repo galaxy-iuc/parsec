@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_invocation_report_pdf')
-@click.argument("invocation_id", type=str, help="Encoded workflow invocation ID")
-@click.argument("file_path", type=str, help="Path to save the report")
+@click.argument("invocation_id", type=str)
+@click.argument("file_path", type=str)
 @click.option(
     "--chunk_size",
     help="Size of chunks to requests, defaults to bioblend.CHUNK_SIZE",

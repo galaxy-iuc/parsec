@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('wait_for_invocation')
-@click.argument("invocation_id", type=str, help="Invocation ID to wait for.")
+@click.argument("invocation_id", type=str)
 @click.option(
     "--maxwait",
     help="Total time (in seconds) to wait for the invocation state to become terminal. If the invocation state is not terminal within this time, a ``TimeoutException`` will be raised.",

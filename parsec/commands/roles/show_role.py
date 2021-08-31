@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_role')
-@click.argument("role_id", type=str, help="Encoded role ID")
+@click.argument("role_id", type=str)
 @pass_context
 @custom_exception
 @json_output

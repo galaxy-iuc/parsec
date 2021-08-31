@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('wait_for_job')
-@click.argument("job_id", type=str, help="job ID")
+@click.argument("job_id", type=str)
 @click.option(
     "--maxwait",
     help="Total time (in seconds) to wait for the job state to become terminal. If the job state is not terminal within this time, a ``TimeoutException`` will be raised.",

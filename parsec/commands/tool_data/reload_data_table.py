@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('reload_data_table')
-@click.argument("data_table_id", type=str, help="ID of the data table")
+@click.argument("data_table_id", type=str)
 @pass_context
 @custom_exception
 @json_output

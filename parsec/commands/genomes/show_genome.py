@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_genome')
-@click.argument("id", type=str, help="Genome build ID to use")
+@click.argument("id", type=str)
 @click.option(
     "--num",
     help="num",

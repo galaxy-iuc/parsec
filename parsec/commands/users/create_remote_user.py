@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_remote_user')
-@click.argument("user_email", type=str, help="email of the user to be created")
+@click.argument("user_email", type=str)
 @pass_context
 @custom_exception
 @json_output

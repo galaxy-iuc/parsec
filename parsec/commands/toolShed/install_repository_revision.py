@@ -4,10 +4,10 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('install_repository_revision')
-@click.argument("tool_shed_url", type=str, help="URL of the Tool Shed from which the repository should be installed from (e.g., ``https://testtoolshed.g2.bx.psu.edu``)")
-@click.argument("name", type=str, help="The name of the repository that should be installed")
-@click.argument("owner", type=str, help="The name of the repository owner")
-@click.argument("changeset_revision", type=str, help="The revision of the repository to be installed")
+@click.argument("tool_shed_url", type=str)
+@click.argument("name", type=str)
+@click.argument("owner", type=str)
+@click.argument("changeset_revision", type=str)
 @click.option(
     "--install_tool_dependencies",
     help="Whether or not to automatically handle tool dependencies (see https://galaxyproject.org/toolshed/tool-dependency-recipes/ for more details)",

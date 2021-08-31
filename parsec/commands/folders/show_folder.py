@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_folder')
-@click.argument("folder_id", type=str, help="the folder's encoded id, prefixed by 'F'")
+@click.argument("folder_id", type=str)
 @click.option(
     "--contents",
     help="True to get the contents of the folder, rather than just the folder details.",

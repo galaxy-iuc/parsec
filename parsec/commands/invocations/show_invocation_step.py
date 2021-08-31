@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_invocation_step')
-@click.argument("invocation_id", type=str, help="Encoded workflow invocation ID")
-@click.argument("step_id", type=str, help="Encoded workflow invocation step ID")
+@click.argument("invocation_id", type=str)
+@click.argument("step_id", type=str)
 @pass_context
 @custom_exception
 @json_output

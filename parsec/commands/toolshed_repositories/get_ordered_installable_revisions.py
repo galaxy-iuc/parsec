@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_ordered_installable_revisions')
-@click.argument("name", type=str, help="the name of the repository")
-@click.argument("owner", type=str, help="the owner of the repository")
+@click.argument("name", type=str)
+@click.argument("owner", type=str)
 @pass_context
 @custom_exception
 @json_output

@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_form')
-@click.argument("form_id", type=str, help="Encoded form ID")
+@click.argument("form_id", type=str)
 @pass_context
 @custom_exception
 @json_output

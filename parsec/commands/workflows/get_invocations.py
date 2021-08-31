@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('get_invocations')
-@click.argument("workflow_id", type=str, help="Encoded workflow ID")
+@click.argument("workflow_id", type=str)
 @pass_context
 @custom_exception
 @json_output

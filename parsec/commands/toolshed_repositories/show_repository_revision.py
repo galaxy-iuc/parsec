@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_repository_revision')
-@click.argument("metadata_id", type=str, help="Encoded repository metadata ID")
+@click.argument("metadata_id", type=str)
 @pass_context
 @custom_exception
 @json_output

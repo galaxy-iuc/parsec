@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_dataset')
-@click.argument("dataset_id", type=str, help="Encoded dataset ID")
+@click.argument("dataset_id", type=str)
 @click.option(
     "--deleted",
     help="Whether to return results for a deleted dataset",

@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_dataset_provenance')
-@click.argument("history_id", type=str, help="Encoded history ID")
-@click.argument("dataset_id", type=str, help="Encoded dataset ID")
+@click.argument("history_id", type=str)
+@click.argument("dataset_id", type=str)
 @click.option(
     "--follow",
     help="If ``True``, recursively fetch dataset provenance information for all inputs and their inputs, etc.",

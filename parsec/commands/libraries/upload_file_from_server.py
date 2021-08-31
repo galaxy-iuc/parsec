@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('upload_file_from_server')
-@click.argument("library_id", type=str, help="id of the library where to place the uploaded file")
-@click.argument("server_dir", type=str, help="relative path of the subdirectory of ``library_import_dir`` to upload. All and only the files (i.e. no subdirectories) contained in the specified directory will be uploaded")
+@click.argument("library_id", type=str)
+@click.argument("server_dir", type=str)
 @click.option(
     "--folder_id",
     help="id of the folder where to place the uploaded files. If not provided, the root folder will be used",

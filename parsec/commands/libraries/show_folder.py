@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_folder')
-@click.argument("library_id", type=str, help="library id to inspect folders in")
-@click.argument("folder_id", type=str, help="id of the folder to be inspected")
+@click.argument("library_id", type=str)
+@click.argument("folder_id", type=str)
 @pass_context
 @custom_exception
 @json_output

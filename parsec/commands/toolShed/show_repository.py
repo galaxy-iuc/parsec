@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_repository')
-@click.argument("toolShed_id", type=str, help="Encoded toolShed ID")
+@click.argument("toolShed_id", type=str)
 @pass_context
 @custom_exception
 @json_output

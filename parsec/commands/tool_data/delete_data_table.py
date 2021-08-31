@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('delete_data_table')
-@click.argument("data_table_id", type=str, help="ID of the data table")
-@click.argument("values", type=str, help="a \"|\" separated list of column contents, there must be a value for all the columns of the data table")
+@click.argument("data_table_id", type=str)
+@click.argument("values", type=str)
 @pass_context
 @custom_exception
 @json_output

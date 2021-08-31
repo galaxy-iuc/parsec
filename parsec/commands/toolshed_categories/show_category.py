@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_category')
-@click.argument("category_id", type=str, help="Encoded category ID")
+@click.argument("category_id", type=str)
 @pass_context
 @custom_exception
 @json_output

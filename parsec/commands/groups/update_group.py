@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('update_group')
-@click.argument("group_id", type=str, help="Encoded group ID")
+@click.argument("group_id", type=str)
 @click.option(
     "--group_name",
     help="A new name for the group. If None, the group name is not changed.",

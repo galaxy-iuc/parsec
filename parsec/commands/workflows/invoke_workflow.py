@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('invoke_workflow')
-@click.argument("workflow_id", type=str, help="Encoded workflow ID")
+@click.argument("workflow_id", type=str)
 @click.option(
     "--inputs",
     help="A mapping of workflow inputs to datasets and dataset collections. The datasets source can be a LibraryDatasetDatasetAssociation (``ldda``), LibraryDataset (``ld``), HistoryDatasetAssociation (``hda``), or HistoryDatasetCollectionAssociation (``hdca``).",

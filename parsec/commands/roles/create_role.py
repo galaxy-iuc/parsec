@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_role')
-@click.argument("role_name", type=str, help="A name for the new role")
-@click.argument("description", type=str, help="Description for the new role")
+@click.argument("role_name", type=str)
+@click.argument("description", type=str)
 @click.option(
     "--user_ids",
     help="A list of encoded user IDs to add to the new role",

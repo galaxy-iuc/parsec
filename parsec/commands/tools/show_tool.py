@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_tool')
-@click.argument("tool_id", type=str, help="id of the requested tool")
+@click.argument("tool_id", type=str)
 @click.option(
     "--io_details",
     help="whether to get also input and output details",

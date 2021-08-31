@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('wait_for_dataset_collection')
-@click.argument("dataset_collection_id", type=str, help="dataset collection ID")
+@click.argument("dataset_collection_id", type=str)
 @click.option(
     "--maxwait",
     help="Total time (in seconds) to wait for the dataset states in the dataset collection to become terminal. If not all datasets are in a terminal state within this time, a ``DatasetCollectionTimeoutException`` will be raised.",

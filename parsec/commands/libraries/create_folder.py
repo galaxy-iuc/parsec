@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_folder')
-@click.argument("library_id", type=str, help="library id to use")
-@click.argument("folder_name", type=str, help="name of the new folder in the data library")
+@click.argument("library_id", type=str)
+@click.argument("folder_name", type=str)
 @click.option(
     "--description",
     help="description of the new folder in the data library",

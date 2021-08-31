@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_group')
-@click.argument("group_name", type=str, help="A name for the new group")
+@click.argument("group_name", type=str)
 @click.option(
     "--user_ids",
     help="A list of encoded user IDs to add to the new group",

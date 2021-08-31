@@ -4,10 +4,10 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('run_invocation_step_action')
-@click.argument("workflow_id", type=str, help="Encoded workflow ID")
-@click.argument("invocation_id", type=str, help="Encoded workflow invocation ID")
-@click.argument("step_id", type=str, help="Encoded workflow invocation step ID")
-@click.argument("action", type=str, help="Action to use when updating state, semantics depends on step type.")
+@click.argument("workflow_id", type=str)
+@click.argument("invocation_id", type=str)
+@click.argument("step_id", type=str)
+@click.argument("action", type=str)
 @pass_context
 @custom_exception
 @json_output

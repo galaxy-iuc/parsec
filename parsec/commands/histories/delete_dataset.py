@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, text_output
 
 
 @click.command('delete_dataset')
-@click.argument("history_id", type=str, help="Encoded history ID")
-@click.argument("dataset_id", type=str, help="Encoded dataset ID")
+@click.argument("history_id", type=str)
+@click.argument("dataset_id", type=str)
 @click.option(
     "--purge",
     help="if ``True``, also purge (permanently delete) the dataset",

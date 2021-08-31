@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_visualization')
-@click.argument("visual_id", type=str, help="Encoded visualization ID")
+@click.argument("visual_id", type=str)
 @pass_context
 @custom_exception
 @json_output

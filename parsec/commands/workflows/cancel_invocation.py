@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('cancel_invocation')
-@click.argument("workflow_id", type=str, help="Encoded workflow ID")
-@click.argument("invocation_id", type=str, help="Encoded workflow invocation ID")
+@click.argument("workflow_id", type=str)
+@click.argument("invocation_id", type=str)
 @pass_context
 @custom_exception
 @json_output

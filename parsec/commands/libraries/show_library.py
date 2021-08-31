@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('show_library')
-@click.argument("library_id", type=str, help="filter for library by library id")
+@click.argument("library_id", type=str)
 @click.option(
     "--contents",
     help="whether to get contents of the library (rather than just the library details)",

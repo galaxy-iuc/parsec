@@ -4,8 +4,8 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('delete_group_role')
-@click.argument("group_id", type=str, help="Encoded group ID")
-@click.argument("role_id", type=str, help="Encoded role ID to remove from the group")
+@click.argument("group_id", type=str)
+@click.argument("role_id", type=str)
 @pass_context
 @custom_exception
 @json_output

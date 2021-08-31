@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('delete_history')
-@click.argument("history_id", type=str, help="Encoded history ID")
+@click.argument("history_id", type=str)
 @click.option(
     "--purge",
     help="if ``True``, also purge (permanently delete) the history",

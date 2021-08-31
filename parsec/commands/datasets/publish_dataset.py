@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('publish_dataset')
-@click.argument("dataset_id", type=str, help="dataset ID")
+@click.argument("dataset_id", type=str)
 @click.option(
     "--published",
     help="Whether to make the dataset published (``True``) or private (``False``).",

@@ -4,7 +4,7 @@ from parsec.decorators import custom_exception, json_output
 
 
 @click.command('create_library')
-@click.argument("name", type=str, help="Name of the new data library")
+@click.argument("name", type=str)
 @click.option(
     "--description",
     help="Optional data library description",
