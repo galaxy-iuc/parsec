@@ -18,7 +18,7 @@ def get_instance(instance_name=None):
             raise Exception("Unknown Galaxy instance and no __default provided")
 
     if instance_name not in conf:
-        raise Exception("Unknown Galaxy instance; check spelling or add to ~/.planemo.yml")
+        raise Exception("Unknown Galaxy instance; check spelling or add to ~/.parsec.yml")
 
     return conf[instance_name]
 
